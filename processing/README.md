@@ -1,0 +1,25 @@
+<h3>Complete</h3>
+<ul>
+  <li>Bubble_sort</li>
+  <li>Camera_drawing_to_screen</li>
+  <li>Phyllotaxis</li>
+  <li>Rendered_Ray_Casting</li>
+  <li>SnowFall</li>
+  <li>sketch_2DRay_casting</li>
+  <li>terrain_generator_with_perlin_noise</li>
+  <li>Camera_Color_Filter</li>
+  <li>tick_tack_toe</li>
+  <li>FindWord_GeneticAlgorithm</li>
+</ul>
+<h3>Incomplete</h3>
+<ul>
+  <li>IdentifyBox_NeuralNetwork</li>
+  <li>Camera_OpenCV</li>
+  <li>Four_in_a_row</li>
+  <li>snake</li>
+  <li>astirodes</li>
+  <li>Smart_Rockets</li>
+  <li>HandWrittenDigits_NeuralNetwork</li>
+  <li>XOR_NeuralNetwork</li>
+  <li>Insertion_Sort</li>
+</ul>
