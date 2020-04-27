@@ -14,6 +14,10 @@ void setup(){
 
 void draw(){
   background(color(0,150,255));
+  
+  //rect(0,0, width, 20);
+  
+  
   //strokeWeight(20);
   //stroke(color(0,0,255));
   //line(0,0,0,height);
@@ -65,11 +69,7 @@ void mousePressed(){
   }
 }
 
-boolean checkWin(){
-  for(int x=0; x<cells.length; x++){
-    for(int y=0; y<cells[x].length; y++){
-      
-    }
-  }
-  return true; 
+boolean checkWin(int x, int y){
+  
+  return false;
 }
