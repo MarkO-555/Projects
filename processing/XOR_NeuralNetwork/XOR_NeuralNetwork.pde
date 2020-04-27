@@ -1,7 +1,7 @@
 NeuralNetwork nn = new NeuralNetwork(2, 2, 2, 2, false);
 
 void setup(){
-  float[] inputs = {0};
+  float[] inputs = {0, 0};
   
   //nn.train(inputs,expected);
   

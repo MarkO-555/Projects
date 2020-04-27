@@ -20,7 +20,7 @@ class NeuralNetwork{
     
     int weightCount = 0;
     if(HiddenX>0)
-      weightCount = Input*HiddenY+ (int)Math.pow(HiddenY,HiddenX-1)+HiddenY*Output;
+      weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + HiddenY*Output;
     else
       weightCount = Input*HiddenY+HiddenY*Output;
     
@@ -81,18 +81,16 @@ class NeuralNetwork{
       for(int i=0; i<weights.length; i++){
         weights[i] = 1;//random(-range, range);
         
-        println("IH",Inputs.length * Hiddens[0].length);
-        println("HH",Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2));
-        println("HO",Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2) + Hiddens[0].length*Outputs.length);
-        if(i<=Inputs.length*Hiddens[0].length-1)
-          weightsdef[i] = 0;
-        else if(i<=Inputs.length*Hiddens[0].length)
-          weightsdef[i] = 1;
-        else if(i<=2)
-          weightsdef[i] = 2;
+        //println("IH",Inputs.length * Hiddens[0].length);
+        //println("HH",Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2));
+        //println("HO",Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2) + Hiddens[0].length*Outputs.length);
         
-        //Inputs, Hiddens, Outputs
-        // Inputs * HiddenY + (HiddenX-1) * HiddenY^2 + HiddenY * Outputs  Weights!!!
+        if(i<=Inputs.length * Hiddens[0].length-1)//IH
+          weightsdef[i] = 0;
+        else if(i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2)-1)//HH
+          weightsdef[i] = 1;
+        else if(i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2) + Hiddens[0].length*Outputs.length-1)//HO
+          weightsdef[i] = 2;
       }
     }
   }
@@ -133,8 +131,16 @@ class NeuralNetwork{
     len = weights.length;
     
     for(int i=0; i<len; i++){
-       //weights[i] += learningrate * avr * connectedValue;
+       //weights[i] += learningrate * avr * prevLayerAxons;
     }
+  }
+  
+  private float dSigmoid(float x){
+    return sigmoid(x) * (1 - sigmoid(x)); 
+  }
+  
+  private float sigmoid(float x) {
+    return (float)(1/( 1 + Math.pow(Math.E,(-1*x))));
   }
   
   public void saveWeights(){
