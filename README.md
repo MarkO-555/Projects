@@ -40,7 +40,7 @@
 	<li>Search engine</li>
 	<li>Weather Prediction</li>
 	<li>Get Atomic Time</li>
-	<li>Chat Messaging<li>
+	<li>Chat Messaging</li>
 	<li>School GradeBook</li>
 	<li>Library Catalog</li>
 	<li>Form Generator</li>
