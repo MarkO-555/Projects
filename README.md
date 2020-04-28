@@ -30,7 +30,7 @@
 	<li>Minesweeper</li>
 	<li>Cloth Simulation</li>
 	<li>Flappy Birds</li>
-	<li>Solar Systems<li>
+	<li>Solar Systems</li>
 </ul>
 
 <h3>Server</h3>
