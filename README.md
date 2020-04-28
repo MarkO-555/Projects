@@ -31,12 +31,10 @@
 
 <h3>Server</h3>
 <ul>
-	<li></li>
 </ul>
 
 <h3>Unity</h3>
-<ul>
-	
+<ul>	
 </ul>
 
 <h3>Websites/WebApps</h3>
