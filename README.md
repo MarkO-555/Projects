@@ -27,6 +27,10 @@
 	<li>Traveling Salesman</li>
 	<li>Predict Random Numbers</li>
 	<li>SoundBoard</li>
+	<li>Minesweeper</li>
+	<li>Cloth Simulation</li>
+	<li>Flappy Birds</li>
+	<li>Solar Systems<li>
 </ul>
 
 <h3>Server</h3>
