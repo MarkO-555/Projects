@@ -48,5 +48,10 @@
 	<li>Graphing Tool</li>
 	<li>Family Tree</li>
 	<li>Video Call</li>
+	<li>Chatbot</li>
+</ul>
+
+<h3>Server</h3>
+<ul>
 	<li></li>
 </ul>
