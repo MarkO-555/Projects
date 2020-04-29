@@ -38,12 +38,17 @@
 </ul>
 
 <h3>Unity</h3>
-<ul>	
+<ul>
+	<li>VR Lightsabers</li>
+	<li>VR Pokemon</li>
+	<li>VR Space Flight</li>
+	<li>VR Shooting</li>
+	<li>VR Submarine</li>
+	<li>VR Maze</li>
 </ul>
 
 <h3>Websites/WebApps</h3>
 <ul>
-	<li>Login/Register App</li>
 	<li>Search engine</li>
 	<li>Weather Prediction</li>
 	<li>Get Atomic Time</li>
