@@ -12,14 +12,18 @@
 		$result = $conn->query($qu);
 
 		if ($result->num_rows > 0) {
+			$res = "";
 			while($row = $result->fetch_assoc()) {				
 				if($_POST['Username'] == $row['Username'] && $_POST['Password'] == $row['Password']){
-					echo("Login Successful");
+					$res = "Login Successful";
+					break;
 				}
 				else{
-					echo("Login Unsuccessful");
+					$res = "Login Unsuccessful";
 				}
 			}
+			
+			echo($res);
 		}
 		else{
 			echo "There is no rows in this table";
