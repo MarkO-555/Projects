@@ -6,7 +6,6 @@
 	<li>DIY MultiMeter</li>
 	<li>Bluetooth Serial Communication</li>
 	<li>Home Automation</li>
-	<li>ISP Programmer</li>
 	<li>I2C communication</li>
 	<li>PWM Communication</li>
 	<li>Waveform Generator</li>
