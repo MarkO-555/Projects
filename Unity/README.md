@@ -3,5 +3,4 @@
 </ul>
 <h3>Incomplete</h3>
 <ul>
-  <li>space_flying</li>
 </ul>
