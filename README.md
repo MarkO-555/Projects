@@ -46,6 +46,7 @@
 	<li>VR Shooting</li>
 	<li>VR Submarine</li>
 	<li>VR Maze</li>
+	<li>VR DuckHunt</li>
 </ul>
 
 <h3>Websites/WebApps</h3>
