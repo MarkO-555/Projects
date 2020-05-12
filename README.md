@@ -74,5 +74,5 @@
 
 <h3>Useful Links</h3>
 <ul>
-	<li href="http://www.bristolwatch.com/">bristolwatch</li>
+	<li><a href="http://www.bristolwatch.com/">bristolwatch</a></li>
 </ul>
