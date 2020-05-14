@@ -1,4 +1,4 @@
-String expected = "tim helland";
+String expected = "cool name dude";
 //String expected = "abcdefghijklmnopqrstuvwxyz";
 //ArrayList<String> population = new ArrayList<String>();
 ArrayList<String> matingPool = new ArrayList<String>();
@@ -6,14 +6,26 @@ float bestScore =0;
 String bestString = "";
 
 
-int count = 500;
+int count = 1000;
 void setup(){
   //size(600, 500);
+  println("Generating inital population");
+  println("____________________________");
   
-  while(matingPool.size() < count)
+  Thread pre = new preThread();
+  pre.start();
+  
+  //int pre=-1;
+  while(matingPool.size() < count){
+    //if(pre < (100*matingPool.size()/count)){
+    //  pre = 100*matingPool.size()/count;
+    //  println(pre+"%");
+    //}
     makeGuess();
+  }
     
-  //println("end");
+  println("end");
+  println("");
    
 }
 
@@ -27,6 +39,23 @@ void draw(){
     
   while(matingPool.size() >2*count)
     matingPool.remove(0);
+}
+
+class preThread extends Thread{
+  int pre=-1;
+  void run(){
+    while(pre<100){
+      for(int i=0; i<2; i++){
+        if(i==0){
+          int num = 100*matingPool.size()/count;
+          if(pre < num){
+            println(pre+"%");
+            pre = num;
+          }
+        }
+      }
+    }
+  }
 }
 
 float grade(String current){

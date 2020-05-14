@@ -9,12 +9,13 @@ void setup(){
   float[] result = nn.feedForward(inputs);
   nn.train(inputs, expected);
   
+  println("");
   println("before");
   println(result);
-  println("");
   
   result = nn.feedForward(inputs);
   
+  println("");
   println("after");
   println(result);
 

@@ -177,7 +177,7 @@ class NeuralNetwork{
           y++;
         }
         
-        Neurons[Hiddens[weightsHXmap[i-inputs.length]][weightsHYmap[i-inputs.length]]].getNonProcessedAxon();
+        //Neurons[Hiddens[weightsHXmap[i-inputs.length]][weightsHYmap[i-inputs.length]]].getNonProcessedAxon();
         
         nonproc=0;
         count++;
