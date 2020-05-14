@@ -152,26 +152,26 @@ class NeuralNetwork{
     len = weights.length;
     
     println(weightsmap);
-      
+    
+    int count =0;
+    int y=0;
+        
     for(int i=0; i<len; i++){
       float nonproc = 1;
       
       if(weightsmap[i] == 0){//Connected Hiddens, Inputs
-        int count =0;
-        int y=0;
+        nonproc = Neurons[Hiddens[0][y]].getNonProcessedAxon();
+        count++;
         
         if(count>Hiddens[0].length){
           count=0;
+          if(y>Hiddens[0].length)
+            y=0;
           y++;
         }
-        
-        nonproc = Neurons[Hiddens[0][y]].getNonProcessedAxon();
-        count++;
       }
       else if(weightsmap[i] == 1){//Connected Hiddens, Hiddens
-        int count =0;
-        int y=0;
-        
+      println(count);
         if(count>Hiddens[0].length){
           count=0;
           y++;
