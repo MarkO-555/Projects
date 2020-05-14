@@ -23,6 +23,10 @@ class Neuron{
    return axonValue; 
   }
   
+  float getNonProcessedAxon(){
+   return nonProcessed;
+  }
+  
   void addDendrite(Neuron neuron, float weight){
     dendrites.add(neuron);
     weights.add(weight);

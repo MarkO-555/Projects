@@ -6,8 +6,11 @@ class NeuralNetwork{
   private int[] Inputs;
   private int[][] Hiddens;
   private int[] Outputs;
+  
   private float[] weights;
-  private int[] weightsdef;
+  private int[] weightsmap;
+  private int[] weightsHXmap;
+  private int[] weightsHYmap;
   
   private float learningrate =0.1;
   
@@ -25,10 +28,17 @@ class NeuralNetwork{
       weightCount = Input*HiddenY+HiddenY*Output;
     
     weights = new float[weightCount];
-    weightsdef = new int[weightCount];
+    weightsmap = new int[weightCount];
+    weightsHXmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
+    weightsHYmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
     
     initWeights(loading);
-    println(weightsdef);
+    
+    //println(weightsmap);
+    //println("X");
+    //println(weightsHXmap);
+    //println("Y");
+    //println(weightsHYmap);
     
     int y = 0;
     int Count = 0;
@@ -75,22 +85,33 @@ class NeuralNetwork{
   }
   
   void initWeights(boolean loading){
+    int count =0;
+    int xcount =0;
+    int ycount =0;
+    
     if(loading)
       weights = loadWeights(weights.length);
     else{
       for(int i=0; i<weights.length; i++){
         weights[i] = 1;//random(-range, range);
         
-        //println("IH",Inputs.length * Hiddens[0].length);
-        //println("HH",Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2));
-        //println("HO",Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2) + Hiddens[0].length*Outputs.length);
-        
         if(i<=Inputs.length * Hiddens[0].length-1)//IH
-          weightsdef[i] = 0;
-        else if(i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2)-1)//HH
-          weightsdef[i] = 1;
+          weightsmap[i] = 0;
+        else if(i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2)-1){//HH
+          weightsmap[i] = 1;
+          
+          if(ycount >= Hiddens[0].length){
+            xcount++;
+            ycount=0;
+          }
+          
+          weightsHXmap[count]=xcount;
+          weightsHYmap[count]=ycount;
+          ycount++;
+          count++;
+        }
         else if(i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length,2) + Hiddens[0].length*Outputs.length-1)//HO
-          weightsdef[i] = 2;
+          weightsmap[i] = 2;
       }
     }
   }
@@ -130,8 +151,42 @@ class NeuralNetwork{
     
     len = weights.length;
     
+    println(weightsmap);
+      
     for(int i=0; i<len; i++){
-       //weights[i] += learningrate * avr * prevLayerAxons;
+      float nonproc = 1;
+      
+      if(weightsmap[i] == 0){//Connected Hiddens, Inputs
+        int count =0;
+        int y=0;
+        
+        if(count>Hiddens[0].length){
+          count=0;
+          y++;
+        }
+        
+        nonproc = Neurons[Hiddens[0][y]].getNonProcessedAxon();
+        count++;
+      }
+      else if(weightsmap[i] == 1){//Connected Hiddens, Hiddens
+        int count =0;
+        int y=0;
+        
+        if(count>Hiddens[0].length){
+          count=0;
+          y++;
+        }
+        
+        Neurons[Hiddens[weightsHXmap[i-inputs.length]][weightsHYmap[i-inputs.length]]].getNonProcessedAxon();
+        
+        nonproc=0;
+        count++;
+      }
+      else{//Connected to Outputs, Hiddens
+      
+      }
+        
+      weights[i] += learningrate * avr * nonproc;
     }
   }
   

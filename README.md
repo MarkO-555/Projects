@@ -32,6 +32,7 @@
 	<li>Cloth Simulation</li>
 	<li>Flappy Birds</li>
 	<li>Solar Systems</li>
+	<li>Pokemon grinder AI</li>
 </ul>
 
 <h3>Server</h3>
