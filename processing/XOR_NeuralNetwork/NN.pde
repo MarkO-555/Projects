@@ -163,11 +163,11 @@ class NeuralNetwork{
         nonproc = Neurons[Hiddens[0][y]].getNonProcessedAxon();
         count++;
         
-        if(count>Hiddens[0].length){
+        if(count>=Hiddens[0].length){
           count=0;
-          if(y>Hiddens[0].length)
-            y=0;
           y++;
+          if(y>=Hiddens[0].length)
+            y=0;
         }
       }
       else if(weightsmap[i] == 1){//Connected Hiddens, Hiddens
