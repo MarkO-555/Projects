@@ -23,5 +23,5 @@
   <li>XOR_NeuralNetwork</li>
   <li>Insertion_Sort</li>
   <li>Pokemon_Grinding</li>
-  <li>Tanks</li>
+  <li>TanksFighters</li>
 </ul>
