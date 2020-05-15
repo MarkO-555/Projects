@@ -1,13 +1,16 @@
-boolean left, right, up, down, visual;
+boolean left, right, up, down, firing;
 
 class Tank{
-  PVector pos = new PVector(width/2, height/2);
+  PVector pos = new PVector(random(width), random(height));
   PVector vel = new PVector(0, 0);
   PVector acc = new PVector(0, 0);
-  int RED, GREEN, BLUE;
-  boolean player = true;
+  PVector barrel = new PVector(0, 0);
   
-  float maxVel = 20;
+  boolean player;
+  
+  int RED, GREEN, BLUE;
+  
+  float maxVel = 5;
   float maxAcc = 1;
   
   
@@ -50,7 +53,12 @@ class Tank{
      acc.add(vec);
      //vel.set(vel);
   }
-  
+
+  void fire(){
+    bullets.add(new bullet(this));
+    firing = false;
+  }
+
   void controls(){
     PVector vec = new PVector(0, 0);
     float num = 5;
@@ -62,6 +70,8 @@ class Tank{
       vec.set(-num, vec.y);
     if (right)
       vec.set(num, vec.y);
+    if(firing)
+      fire();
       
     applyForce(vec);
   }
@@ -89,6 +99,7 @@ class Tank{
     
     push();
       translate(pos.x, pos.y);
+      
       PVector target = new PVector(0, 0);
       
       if(player)
@@ -96,11 +107,11 @@ class Tank{
       else
         target = new PVector(0, 0);
       
-      PVector distance = pos.copy().sub(target);
+      barrel = pos.copy().sub(target);
       
       
       
-      rotate(distance.heading() + 2*PI/4);
+      rotate(barrel.heading() + 2*PI/4);
       strokeWeight(0);
       
       //if(player)
@@ -134,6 +145,8 @@ void keyPressed() {
     down = true;
   if(key=='z')
     visual = true;
+  if(key=='q')
+    firing = true;
 }
 
 void keyReleased() {
@@ -147,4 +160,6 @@ void keyReleased() {
     down = false;
   if(key=='z')
     visual = false;
+  if(key=='q')
+    firing = false;
 }
