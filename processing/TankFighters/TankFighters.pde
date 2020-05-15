@@ -6,9 +6,9 @@ void setup() {
   size(800, 800);
   tanks = new ArrayList<Tank>();
 
-  tanks.add(new Tank(true));
+  tanks.add(new Tank(true, 0, 1, 0));
   
-  tanks.add(new Tank(false));
+  tanks.add(new Tank(false, 1, 0, 0));
   
 }
 

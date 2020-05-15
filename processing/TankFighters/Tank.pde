@@ -4,6 +4,7 @@ class Tank{
   PVector pos = new PVector(width/2, height/2);
   PVector vel = new PVector(0, 0);
   PVector acc = new PVector(0, 0);
+  int RED, GREEN, BLUE;
   boolean player = true;
   
   float maxVel = 20;
@@ -11,11 +12,15 @@ class Tank{
   
   
   Tank(){
-    this(true); 
+    this(true, 0, 1, 0); 
   }
   
-  Tank(boolean player){
+  Tank(boolean player, int RED, int GREEN, int BLUE){
     this.player = player;
+    
+    this.RED = RED;
+    this.BLUE = BLUE;
+    this.GREEN = GREEN;
     
     left = false;
     right = false;
@@ -72,10 +77,12 @@ class Tank{
       
       rotate(theta);
       
-      if(player)
-        fill(0, 100, 0);
-      else
-        fill(100, 0, 0);
+      //if(player)
+      //  fill(0, 100, 0);
+      //else
+      //  fill(100, 0, 0);
+        
+      fill(RED*100, GREEN*100, BLUE*100);
       rect(-20, -15, 40, 30);
       
     pop();
@@ -96,17 +103,19 @@ class Tank{
       rotate(distance.heading() + 2*PI/4);
       strokeWeight(0);
       
-      if(player)
-        fill(0, 140, 0);
-      else
-        fill(140, 0, 0);
+      //if(player)
+      //  fill(0, 140, 0);
+      //else
+      //  fill(140, 0, 0);
+        
+      fill(140*RED, 140*GREEN, 140*BLUE);
       
       ellipse(0, 13, 5, 40);
       
-      if(player)
-        fill(0, 140, 0);
-      else
-        fill(140, 0, 0);
+      //if(player)
+      //  fill(0, 140, 0);
+      //else
+      //  fill(140, 0, 0);
       
       ellipse(0, 0, 26, 26);
       //line(0, 0, 25, 25);
