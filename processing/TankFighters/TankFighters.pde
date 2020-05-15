@@ -1,5 +1,5 @@
 Tank tank;
-boolean left, right, up, down;
+boolean left, right, up, down, visual;
 
 void setup() {
   size(800, 800);
@@ -15,12 +15,14 @@ void setup() {
 void draw() {
   background(0);
   
-  float it =50;
-  
-  for(int x=0; x<width; x+=it){
-    for(int y=0; y<height; y+=it){
-      rect(x, y, it, it);
-    } 
+  if(visual){
+    float it =50;
+    
+    for(int x=0; x<width; x+=it){
+      for(int y=0; y<height; y+=it){
+        rect(x, y, it, it);
+      } 
+    }
   }
 
   PVector vec = new PVector(0, 0);
@@ -49,6 +51,8 @@ void keyPressed() {
     up = true;
   if (key=='s')
     down = true;
+  if(key=='z')
+    visual = true;
 }
 
 void keyReleased() {
@@ -60,4 +64,6 @@ void keyReleased() {
     up = false;
   if (key=='s')
     down = false;
+  if(key=='z')
+    visual = false;
 }

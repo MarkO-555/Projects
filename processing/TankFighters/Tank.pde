@@ -19,19 +19,17 @@ class Tank{
     vel.mult(0.9);
     
     float theta = (vel.heading());
-    fill(0);
-    stroke(200);
-    strokeWeight(1);
+    //fill(0);
+    stroke(0);
+    strokeWeight(2);
     
     push();
       translate(pos.x, pos.y);
       
       rotate(theta);
       
-      line(-20, -15, 20, -15);
-      line(-20, 15, 20, 15);
-      line(-20, -15, -20, 15);
-      line(20, -15, 20, 15);
+      fill(0, 100, 0);
+      rect(-20, -15, 40, 30);
       
     pop();
     
@@ -41,7 +39,15 @@ class Tank{
       PVector distance = pos.copy().sub(mouse);
       
       rotate(distance.heading()+3*PI/4);
-      line(0, 0, 25, 25);
+      strokeWeight(0);
+      
+      fill(0, 140, 0);
+      ellipse(0, 13, 5, 40);
+      
+      
+      fill(0, 140, 0);
+      ellipse(0, 0, 26, 26);
+      //line(0, 0, 25, 25);
     pop();
     apos = pos.copy();
   }
