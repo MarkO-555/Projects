@@ -13,15 +13,15 @@
 </ul>
 <h3>Incomplete</h3>
 <ul>
-  <li>HandWrittenDigits_NeuralNetwork</li>
-  <li>XOR_NeuralNetwork</li>
-  <li>Tanks</li>
-  <li>Four_in_a_row</li>
   <li>IdentifyBox_NeuralNetwork</li>
   <li>Camera_OpenCV</li>
+  <li>Four_in_a_row</li>
   <li>snake</li>
   <li>astirodes</li>
   <li>Smart_Rockets</li>
+  <li>HandWrittenDigits_NeuralNetwork</li>
+  <li>XOR_NeuralNetwork</li>
   <li>Insertion_Sort</li>
   <li>Pokemon_Grinding</li>
+  <li>Tanks</li>
 </ul>
