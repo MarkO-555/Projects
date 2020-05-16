@@ -23,5 +23,5 @@
   <li>XOR_NeuralNetwork</li>
   <li>Insertion_Sort</li>
   <li>Pokemon_Grinding</li>
-  <li>TanksFighters <a href="https://trello.com/invite/b/oCmDPaSM/a217f9b845f4ad0889d241875352177d/tankfighters">Task Board</a></li>
+  <li>TanksFighters <a href="https://trello.com/invite/b/oCmDPaSM/a217f9b845f4ad0889d241875352177d/tankfighters">-Trello Task Board-</a></li>
 </ul>
