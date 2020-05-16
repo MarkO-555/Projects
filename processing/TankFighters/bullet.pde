@@ -1,12 +1,15 @@
 class bullet{
   PVector pos = new PVector(0, 0);
   PVector vel = new PVector(0, 1);
+  int ID = -1;
   float maxVel = 10;
   float r = 5;
   Tank tank;
   
-  bullet(Tank tank){
+  bullet(Tank tank, int ID){
      this.tank = tank;
+     this.ID = ID;
+     
      pos = tank.pos.copy();
      vel = tank.barrel.copy();
      

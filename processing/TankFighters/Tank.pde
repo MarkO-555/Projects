@@ -70,11 +70,19 @@ class Tank{
   
   void applyForce(PVector vec){
     acc.add(vec);
-    //vel.set(vel);
   }
 
   void fire(){
-    bullets.add(new bullet(this));
+    int id = Math.round(random(100000));
+    
+    for(int i=0; i<bullets.size(); i++){
+      if(id == bullets.get(i).ID){
+        fire();
+        return;
+      }
+    }
+    
+    bullets.add(new bullet(this, id));
     applyForce(barrel.copy().setMag(2));
     firing = false;
   }
