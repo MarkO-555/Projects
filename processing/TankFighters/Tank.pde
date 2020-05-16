@@ -1,23 +1,26 @@
-boolean left, right, up, down, firing;
+boolean left, right, up, down, firing, ring;
 
 class Tank{
   PVector pos = new PVector(random(width), random(height));
   PVector vel = new PVector(0, 0);
   PVector acc = new PVector(0, 0);
-  PVector barrel = new PVector(0, 0);
+  float r;
   
-  float r = 25;
+  private PVector target = new PVector(0, 0);
+  private PVector barrel = new PVector(0, 0);
   
-  private float Health = 1;
-  private float maxHealth = 1;
+  
+  private float Health = 10;
+  private float maxHealth = 10;
+  
   private float scale = 1;
   private float Width = 40;
   private float Height = 30;
+  private float maxVel = 5;
+  private float maxAcc = 1;
   private boolean player;
   private int RED, GREEN, BLUE;
   
-  float maxVel = 5;
-  float maxAcc = 1;
   
   
   Tank(){
@@ -34,7 +37,8 @@ class Tank{
     Width *= scale;
     Height *= scale;
     
-    r = Width + 35;
+    //r = Width + 35;
+    r = Width;
     
     left = false;
     right = false;
@@ -43,11 +47,15 @@ class Tank{
   }
   
   void update(){
-    if(player){
+    if(player)
       controls();
-    }
+    else
+      AI();
     
     Draw();
+    
+    if(Health > maxHealth)
+      Health = maxHealth;
     
     acc.set(constrain(acc.x,-maxAcc, maxAcc), constrain(acc.y,-maxAcc, maxAcc));
     
@@ -88,6 +96,13 @@ class Tank{
     applyForce(vec);
   }
   
+  void AI(){
+    for(int i=0; i<tanks.size(); i++){
+      if(tanks.get(i).player)
+        target = tanks.get(i).pos;
+    }
+  }
+  
   void hit(){
     Health -= 1; 
   }
@@ -95,27 +110,18 @@ class Tank{
   void Draw(){
     float theta = (vel.heading());
     
-    
     push();
       translate(pos.x, pos.y);
       
-      //push();
-      //  translate(-50, -40);
-      //  fill(255, 0, 0);
-      //  rect(0, 0, 100, 10);
-        
-      //  fill(0, 255, 0);
-      //  rect(0, 0, map(Health, 0, maxHealth, 0, 100), 10);
-      //pop();
-      
-      
       rotate(theta);
-      
-      noFill();
-      float val = map(Health, 0, maxHealth, 0, 255);
-      stroke(RED*val, GREEN*val, BLUE*val);
-      strokeWeight(3);
-      ellipse(0, 0, r, r);
+      if(ring){
+        noFill();
+        float val = map(Health, 0, maxHealth, 0, 255);
+        
+        stroke(RED*val, GREEN*val, BLUE*val);
+        strokeWeight(3);
+        ellipse(0, 0, r, r);
+      }
       
       stroke(0);
       strokeWeight(2);
@@ -127,12 +133,19 @@ class Tank{
     push();
       translate(pos.x, pos.y);
       
-      PVector target = new PVector(0, 0);
       
       if(player)
         target = new PVector(mouseX, mouseY);
-      else
-        target = new PVector(0, 0);
+      //float it = 10;
+      
+      //if(actual.x < target.x)
+      //  actual.x += it;
+      //else if(actual.x > target.x)
+      //  actual.x -= it;
+      //if(actual.y < target.y)
+      //  actual.y += it;
+      //else if(actual.y > target.y)
+      //  actual.y -= it;
       
       barrel = pos.copy().sub(target);
       
@@ -185,6 +198,8 @@ void keyPressed() {
     down = true;
     up = false;
   }
+  if(key=='q')
+    ring = true;
   if(key=='z')
     visual = true;
 }
@@ -198,6 +213,8 @@ void keyReleased() {
     up = false;
   if (key=='s')
     down = false;
+  if(key=='q')
+    ring = false;
   if(key=='z')
     visual = false;
 }

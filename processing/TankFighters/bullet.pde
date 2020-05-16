@@ -29,6 +29,7 @@ class bullet{
       if(tank.player != this.tank.player){
         if(dist(pos.x, pos.y, tank.pos.x, tank.pos.y) <= (r+tank.r)){
           tank.hit();
+          tank.applyForce(vel.copy().setMag(2));
           return true;
         }
       }
