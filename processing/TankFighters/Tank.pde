@@ -6,9 +6,15 @@ class Tank{
   PVector acc = new PVector(0, 0);
   PVector barrel = new PVector(0, 0);
   
-  boolean player;
+  float r = 25;
   
-  int RED, GREEN, BLUE;
+  private float Health = 1;
+  private float maxHealth = 1;
+  private float scale = 1;
+  private float Width = 40;
+  private float Height = 30;
+  private boolean player;
+  private int RED, GREEN, BLUE;
   
   float maxVel = 5;
   float maxAcc = 1;
@@ -24,6 +30,11 @@ class Tank{
     this.RED = RED;
     this.BLUE = BLUE;
     this.GREEN = GREEN;
+    
+    Width *= scale;
+    Height *= scale;
+    
+    r = Width + 35;
     
     left = false;
     right = false;
@@ -50,12 +61,13 @@ class Tank{
   }
   
   void applyForce(PVector vec){
-     acc.add(vec);
-     //vel.set(vel);
+    acc.add(vec);
+    //vel.set(vel);
   }
 
   void fire(){
     bullets.add(new bullet(this));
+    applyForce(barrel.copy().setMag(2));
     firing = false;
   }
 
@@ -76,24 +88,39 @@ class Tank{
     applyForce(vec);
   }
   
+  void hit(){
+    Health -= 1; 
+  }
+  
   void Draw(){
-        float theta = (vel.heading());
-    //fill(0);
-    stroke(0);
-    strokeWeight(2);
+    float theta = (vel.heading());
+    
     
     push();
       translate(pos.x, pos.y);
       
+      //push();
+      //  translate(-50, -40);
+      //  fill(255, 0, 0);
+      //  rect(0, 0, 100, 10);
+        
+      //  fill(0, 255, 0);
+      //  rect(0, 0, map(Health, 0, maxHealth, 0, 100), 10);
+      //pop();
+      
+      
       rotate(theta);
       
-      //if(player)
-      //  fill(0, 100, 0);
-      //else
-      //  fill(100, 0, 0);
-        
+      noFill();
+      float val = map(Health, 0, maxHealth, 0, 255);
+      stroke(RED*val, GREEN*val, BLUE*val);
+      strokeWeight(3);
+      ellipse(0, 0, r, r);
+      
+      stroke(0);
+      strokeWeight(2);
       fill(RED*100, GREEN*100, BLUE*100);
-      rect(-20, -15, 40, 30);
+      rect(-Width/2, -Height/2, Width, Height);
       
     pop();
     
@@ -109,44 +136,57 @@ class Tank{
       
       barrel = pos.copy().sub(target);
       
-      
-      
       rotate(barrel.heading() + 2*PI/4);
       strokeWeight(0);
-      
-      //if(player)
-      //  fill(0, 140, 0);
-      //else
-      //  fill(140, 0, 0);
         
       fill(140*RED, 140*GREEN, 140*BLUE);
       
-      ellipse(0, 13, 5, 40);
+      ellipse(0, Width*13/40, Width/8, Width);
       
-      //if(player)
-      //  fill(0, 140, 0);
-      //else
-      //  fill(140, 0, 0);
-      
-      ellipse(0, 0, 26, 26);
+      //30*26/30
+      ellipse(0, 0, Height*26/30, Height*26/30);
       //line(0, 0, 25, 25);
     pop();
   }
+  
+  void collisions(){
+    
+  }
+  
+  boolean isDead(){
+    if(Health<=0)
+      return true;
+    return false; 
+  }
+}
+
+void mousePressed(){
+  firing=true;
+}
+
+void mouseReleased(){
+  firing=false; 
 }
 
 void keyPressed() {
-  if (key=='a')
+  if (key=='a'){
     left = true;
-  if (key=='d')
+    right = false;
+  }
+  if (key=='d'){
     right = true;
-  if (key=='w')
+    left = false;
+  }
+  if (key=='w'){
     up = true;
-  if (key=='s')
+    down = false;
+  }
+  if (key=='s'){
     down = true;
+    up = false;
+  }
   if(key=='z')
     visual = true;
-  if(key=='q')
-    firing = true;
 }
 
 void keyReleased() {
@@ -160,6 +200,4 @@ void keyReleased() {
     down = false;
   if(key=='z')
     visual = false;
-  if(key=='q')
-    firing = false;
 }
