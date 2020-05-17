@@ -19,15 +19,13 @@ class Tank{
   private float maxVel = 5;
   private float maxAcc = 1;
   private boolean player;
-  private int RED, GREEN, BLUE;
-  
-  
+  private float RED, GREEN, BLUE;
   
   Tank(){
     this(true, 0, 1, 0); 
   }
   
-  Tank(boolean player, int RED, int GREEN, int BLUE){
+  Tank(boolean player, float RED, float GREEN, float BLUE){
     this.player = player;
     
     this.RED = RED;
@@ -70,6 +68,7 @@ class Tank{
   
   void applyForce(PVector vec){
     acc.add(vec);
+    return;
   }
 
   void fire(){
@@ -82,9 +81,16 @@ class Tank{
       }
     }
     
+    PImage img = loadImage("texture.png");
+    particlesystem.add(new ParticleSystem(10, pos.copy().sub(barrel.copy().setMag(Width-1)), img));
+    
+    //particlesystem.add(new ParticleSystem(10, pos.copy().sub(barrel.copy().setMag(Width-0.5)), 1, 1, 1)); //bookmark
+    
     bullets.add(new bullet(this, id));
     applyForce(barrel.copy().setMag(2));
+    
     firing = false;
+    return;
   }
 
   void controls(){
@@ -102,6 +108,7 @@ class Tank{
       fire();
       
     applyForce(vec);
+    return;
   }
   
   void AI(){
@@ -109,10 +116,14 @@ class Tank{
       if(tanks.get(i).player)
         target = tanks.get(i).pos;
     }
+    return;
   }
   
   void hit(){
+    //particlesystem.add(new ParticleSystem(10, pos, RED*100, GREEN*100, BLUE*100));
     Health -= 1; 
+    
+    return;
   }
   
   void Draw(){
@@ -135,26 +146,14 @@ class Tank{
       strokeWeight(2);
       fill(RED*100, GREEN*100, BLUE*100);
       rect(-Width/2, -Height/2, Width, Height);
-      
     pop();
     
     push();
       translate(pos.x, pos.y);
       
-      
       if(player)
         target = new PVector(mouseX, mouseY);
-      //float it = 10;
-      
-      //if(actual.x < target.x)
-      //  actual.x += it;
-      //else if(actual.x > target.x)
-      //  actual.x -= it;
-      //if(actual.y < target.y)
-      //  actual.y += it;
-      //else if(actual.y > target.y)
-      //  actual.y -= it;
-      
+        
       barrel = pos.copy().sub(target);
       
       rotate(barrel.heading() + 2*PI/4);
@@ -168,6 +167,7 @@ class Tank{
       ellipse(0, 0, Height*26/30, Height*26/30);
       //line(0, 0, 25, 25);
     pop();
+    return;
   }
   
   void collisions(){

@@ -21,6 +21,7 @@ class bullet{
     pos.add(vel);
     
     Draw();
+    return;
   }
   
   boolean checkhit(){
@@ -31,6 +32,8 @@ class bullet{
       Tank tank = tanks.get(i);
       if(tank.player != this.tank.player){
         if(dist(pos.x, pos.y, tank.pos.x, tank.pos.y) <= (r+tank.r)){
+          particlesystem.add(new ParticleSystem(10, this, tank));
+          
           tank.hit();
           tank.applyForce(vel.copy().setMag(2));
           return true;
@@ -44,5 +47,6 @@ class bullet{
     fill(255);
     strokeWeight(1);
     ellipse(pos.x, pos.y, r, r); 
+    return;
   }
 }
