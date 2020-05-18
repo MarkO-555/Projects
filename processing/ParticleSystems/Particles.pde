@@ -8,10 +8,32 @@ class ParticleSystem{
     
     //cos
     
-    PVector vec = direction.sub(pos);
+    PVector vec = direction.copy().sub(pos);
+    
+    float distance = dist(direction.x, direction.y, pos.x, pos.y);
     
     for(int i=0; i<num; i++){
-      //float ranAngle = random(-angle/2, angle/2);
+      //vec = new PVector(random(-5, 5), random(-5, 5));
+      float deg = vec.heading() + radians(random(-angle/2, angle/2));
+      //float deg = vec.heading();
+      
+      float x = (cos(deg) * distance);
+      float y = (sin(deg) * distance);
+      
+      vec.set(x, y).setMag(random(5));
+      
+      //if(vec.x > 0 && vec.y > 0){ //sector 1 Top right
+        
+      //}
+      //else if(vec.x > 0 && vec.y < 0){ //sector 4 bottom right
+      
+      //}
+      //else if(vec.x < 0 && vec.y > 0){ //sector 2 top left
+      
+      //}
+      //else if(vec.x < 0 && vec.y < 0){ //sector 3 top left
+      
+      //}
       
       //float x = 1;
       //float y = 1;
@@ -19,7 +41,7 @@ class ParticleSystem{
       //newVec.x += x;
       //newVec.y += y;
       
-      particles.add(new Particle(pos.copy(), vec));
+      particles.add(new Particle(pos.copy(), vec.copy()));
     }
   }
   
@@ -61,11 +83,8 @@ class Particle{
   
   Particle(PVector pos, PVector vel){
     this.pos = pos;
-    this.vel = new PVector(random(-5, 5), random(-5, 5));
-    //this.vel = vel;
+    this.vel = vel;
     this.acc = new PVector(0, 0);
-    
-    acc = new PVector(0, 0);
   }
   
   void update(){
