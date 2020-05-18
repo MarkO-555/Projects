@@ -1,7 +1,11 @@
 ArrayList<Tank> tanks;
 ArrayList<bullet> bullets;
 ArrayList<ParticleSystem> particlesystem;
-boolean visual = false;
+boolean mouseDown;
+//UI ui;
+MainMenu mainMenu;
+boolean menuWasUp = true;
+//boolean visual = false;
 
 float it =80; // 20px X 20px
 
@@ -10,42 +14,84 @@ void setup() {
   tanks = new ArrayList<Tank>();
   bullets = new ArrayList<bullet>();
   particlesystem = new ArrayList<ParticleSystem>();
+  mainMenu = new MainMenu();
 
   tanks.add(new Tank(true, 0, 1, 0));
-  tanks.add(new Tank(false, random(1), random(1), random(1)));
+  //tanks.add(new Tank(false, 1, 0, 0));
+}
+int count = 0;
+int pauseCount = 0;
+void draw() {
+  mainMenu.update();
+    
+  if(!mainMenu.open){
+    
+    background(0);
+    
+    for(int i=0; i<bullets.size(); i++){
+      bullets.get(i).update(); 
+      if(bullets.get(i).checkhit())
+        bullets.remove(i);
+    }
+    
+    for(int i=0; i<tanks.size(); i++){
+        tanks.get(i).update();
+        if(tanks.get(i).isDead())
+          tanks.remove(i);
+    }
+    
+    for(int i=0; i<particlesystem.size(); i++){
+      ParticleSystem system = particlesystem.get(i);
+      system.update();
+      if(system.isDead())
+        particlesystem.remove(i);
+    }
+    count++;
+  }
 }
 
-void draw() {
-  background(0);
-  //background(150);
-  if(visual){
-    for(int x=0; x<width; x+=it){
-      for(int y=0; y<height; y+=it){
-        fill(255);
-        strokeWeight(1);
-        stroke(0);
-        rect(x, y, it, it);
-      } 
-    }
-  }
-  
-  for(int i=0; i<particlesystem.size(); i++){
-    ParticleSystem system = particlesystem.get(i);
-    system.run();
-    if(system.isDead())
-      particlesystem.remove(i);
-  }
+void mousePressed(){
+  mouseDown = true;
+}
 
-  for(int i=0; i<bullets.size(); i++){
-    bullets.get(i).update(); 
-    if(bullets.get(i).checkhit())
-      bullets.remove(i);
+void mouseReleased(){
+  mouseDown = false; 
+}
+
+void keyPressed() {
+  if (key=='a'){
+    left = true;
+    right = false;
   }
-  
-  for(int i=0; i<tanks.size(); i++){
-    tanks.get(i).update();
-    if(tanks.get(i).isDead())
-      tanks.remove(i);
+  if (key=='d'){
+    right = true;
+    left = false;
   }
-  
+  if (key=='w'){
+    up = true;
+    down = false;
+  }
+  if (key=='s'){
+    down = true;
+    up = false;
+  }
+  if(key=='q')
+    ring = true;
+  //if(key=='z')
+  //  visual = true;
+}
+
+void keyReleased() {
+  if (key=='a')
+    left = false;
+  if (key=='d')
+    right = false;
+  if (key=='w')
+    up = false;
+  if (key=='s')
+    down = false;
+  if(key=='q')
+    ring = false;
+  //if(key=='z')
+  //  visual = false;
 }

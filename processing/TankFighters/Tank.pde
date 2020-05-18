@@ -1,4 +1,4 @@
-boolean left, right, up, down, firing, ring;
+boolean left, right, up, down, ring;
 
 class Tank{
   PVector pos = new PVector(random(width), random(height));
@@ -72,24 +72,15 @@ class Tank{
   }
 
   void fire(){
-    int id = Math.round(random(100000));
+    particlesystem.add(new ParticleSystem(20, pos.copy().sub(barrel.copy().setMag(Width-10)), pos.copy().sub(barrel), 45, 2, 2, 2));
     
-    for(int i=0; i<bullets.size(); i++){
-      if(id == bullets.get(i).ID){
-        fire();
-        return;
-      }
-    }
-    
-    PImage img = loadImage("texture.png");
-    particlesystem.add(new ParticleSystem(10, pos.copy().sub(barrel.copy().setMag(Width-1)), img));
     
     //particlesystem.add(new ParticleSystem(10, pos.copy().sub(barrel.copy().setMag(Width-0.5)), 1, 1, 1)); //bookmark
     
-    bullets.add(new bullet(this, id));
+    bullets.add(new bullet(this));
     applyForce(barrel.copy().setMag(2));
     
-    firing = false;
+    mouseDown = false;
     return;
   }
 
@@ -104,8 +95,10 @@ class Tank{
       vec.set(-num, vec.y);
     if (right)
       vec.set(num, vec.y);
-    if(firing)
+    if(mouseDown && !menuWasUp)
       fire();
+      
+    menuWasUp = false;
       
     applyForce(vec);
     return;
@@ -175,54 +168,10 @@ class Tank{
   }
   
   boolean isDead(){
-    if(Health<=0)
+    if(Health<=0){
+      particlesystem.add(new ParticleSystem(50,pos.copy().add(pos.copy().sub(pos).setMag(20)), vel.copy().mult(-1), 360, RED, GREEN, BLUE));
       return true;
+    }
     return false; 
   }
-}
-
-void mousePressed(){
-  firing=true;
-}
-
-void mouseReleased(){
-  firing=false; 
-}
-
-void keyPressed() {
-  if (key=='a'){
-    left = true;
-    right = false;
-  }
-  if (key=='d'){
-    right = true;
-    left = false;
-  }
-  if (key=='w'){
-    up = true;
-    down = false;
-  }
-  if (key=='s'){
-    down = true;
-    up = false;
-  }
-  if(key=='q')
-    ring = true;
-  if(key=='z')
-    visual = true;
-}
-
-void keyReleased() {
-  if (key=='a')
-    left = false;
-  if (key=='d')
-    right = false;
-  if (key=='w')
-    up = false;
-  if (key=='s')
-    down = false;
-  if(key=='q')
-    ring = false;
-  if(key=='z')
-    visual = false;
 }

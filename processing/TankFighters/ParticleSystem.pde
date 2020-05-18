@@ -1,61 +1,71 @@
-
-// A class to describe a group of Particles
-// An ArrayList is used to manage the list of Particles 
-
-class ParticleSystem {
-
-  ArrayList<Particle> particles;    // An arraylist for all the particles
-  PVector origin;                   // An origin point for where particles are birthed
-  PImage img;
-  Tank tank;
-  bullet b;
-
-  ParticleSystem(int num, PVector pos, PImage img_) {
-    particles = new ArrayList<Particle>();              // Initialize the arraylist
-    origin = pos.copy();                                   // Store the origin point
-    img = img_;
-    for (int i = 0; i < num; i++) {
-      particles.add(new Particle(origin, img));         // Add "num" amount of particles to the arraylist
+class ParticleSystem{
+  PVector pos;
+  ArrayList<Particle> particles;
+  float RED, GREEN, BLUE;
+  
+  ParticleSystem(int num, PVector pos, PVector direction, float angle, float RED, float GREEN, float BLUE){
+    particles = new ArrayList<Particle>();
+    this.pos = pos;
+    
+    this.RED = RED;
+    this.GREEN = GREEN;
+    this.BLUE = BLUE;
+    
+    //cos
+    
+    PVector vec = direction.copy().sub(pos);
+    
+    float distance = dist(direction.x, direction.y, pos.x, pos.y);
+    
+    for(int i=0; i<num; i++){
+      //vec = new PVector(random(-5, 5), random(-5, 5));
+      float deg = vec.heading() + radians(random(-angle/2, angle/2));
+      //float deg = vec.heading();
+      
+      float x = (cos(deg) * distance);
+      float y = (sin(deg) * distance);
+      
+      vec.set(x, y).setMag(random(5));
+      
+      //if(vec.x > 0 && vec.y > 0){ //sector 1 Top right
+        
+      //}
+      //else if(vec.x > 0 && vec.y < 0){ //sector 4 bottom right
+      
+      //}
+      //else if(vec.x < 0 && vec.y > 0){ //sector 2 top left
+      
+      //}
+      //else if(vec.x < 0 && vec.y < 0){ //sector 3 top left
+      
+      //}
+      
+      //float x = 1;
+      //float y = 1;
+      
+      //newVec.x += x;
+      //newVec.y += y;
+      
+      particles.add(new Particle(pos.copy(), vec.copy(), RED, GREEN, BLUE));
     }
   }
   
-  ParticleSystem(int num, bullet b, Tank tank) {
-    particles = new ArrayList<Particle>();              // Initialize the arraylist
-    origin = b.pos.copy();                                   // Store the origin point
-    img = null;
-    
-    origin.sub(origin.copy().sub(tank.pos).div(2));
-    
-    this.b = b;
-    this.tank = tank;
-    
-    for (int i = 0; i < num; i++) {
-      particles.add(new Particle(origin, tank.RED*100, tank.GREEN*100, tank.BLUE*100));         // Add "num" amount of particles to the arraylist
-    }
+  void update(){
+    for(int i=0; i<particles.size(); i++)
+      particles.get(i).update();
+    return;
   }
-
-  void run() {
-    for (int i = particles.size()-1; i >= 0; i--) {
-      Particle p = particles.get(i);
-      p.run();
-      if (p.isDead()) {
-        particles.remove(i);
-      }
-    }
+  
+  void applyForce(PVector vec){
+    for(int i=0; i<particles.size(); i++)
+      particles.get(i).applyForce(vec);
+    return;
   }
-
-  // Method to add a force vector to all particles currently in the system
-  void applyForce(PVector dir) {
-    for (Particle p : particles) {
-      p.applyForce(dir);
-    }
-  }  
-
-  void addParticle() {
-    if(img==null)
-      particles.add(new Particle(origin, tank.RED, tank.GREEN, tank.BLUE));
-    else
-      particles.add(new Particle(origin, img));
+  
+  void chanceRadius(float radius){
+    for(int i=0; i<particles.size(); i++)
+      particles.get(i).r = radius;
+    return;
   }
   
   boolean isDead(){
@@ -67,93 +77,54 @@ class ParticleSystem {
   }
 }
 
-
-
-// A simple Particle class, renders the particle as an image
-
-class Particle {
-  private float RED, GREEN, BLUE;
-  
-  PVector loc;
+class Particle{
+  PVector pos;
   PVector vel;
   PVector acc;
-  PVector target;
   
-  float lifespan;
-  PImage img;
-
-  Particle(PVector pos, PImage img_) {
-    acc = new PVector(0, 0);
-    float vx = randomGaussian()*0.3;
-    float vy = randomGaussian()*0.3 - 1.0;
-    
-    vel = new PVector(vx, vy);
-    //vel = new PVector(randomGaussian()*0.3, -Math.abs(randomGaussian()*0.50));
-    
-    loc = pos.copy();
-    lifespan = random(150);
-    img = img_;
-  }
+  float lifeSpan = 300;
+  float lifeSpanMax = lifeSpan;
+  float it = 2.5;
+  float r = 4;
   
-  Particle(PVector pos, float RED, float GREEN, float BLUE) {
-    acc = new PVector(0, 0);
-    float vx = randomGaussian()*0.3;
-    float vy = randomGaussian()*0.3 - 1.0;
-    vel = new PVector(vx, vy);
-    //vel = new PVector(randomGaussian()*0.3, -Math.abs(randomGaussian()*0.50));
+  float RED, GREEN, BLUE;
+  
+  Particle(PVector pos, PVector vel, float RED, float GREEN, float BLUE){
+    this.pos = pos;
+    this.vel = vel;
+    this.acc = new PVector(0, 0);
     
     this.RED = RED;
-    this.BLUE = BLUE;
     this.GREEN = GREEN;
-    
-    //println("test", RED);
-    
-    loc = pos.copy();
-    lifespan = random(200);
-    img = null;
+    this.BLUE = BLUE;
   }
   
-  void run() {
-    update();
-    render();
-  }
-
-  // Method to apply a force vector to the Particle object
-  // Note we are ignoring "mass" here
-  void applyForce(PVector f) {
-    acc.add(f);
-  }  
-
-  // Method to update position
-  void update() {
-    target = new PVector(mouseX, mouseY);
-    
+  void update(){
     vel.add(acc);
-    loc.add(vel);
-    lifespan -= 2.5;
-    acc.mult(0); // clear Acceleration
+    pos.add(vel);
+    acc.set(0, 0);
+    lifeSpan -= it;
+    
+    vel.mult(0.9);
+    
+    Draw();
+    return;
   }
-
-  // Method to display
-  void render() {
-    if(img==null){
-      noStroke();
-      fill(RED, GREEN, BLUE);
-      ellipse(loc.x, loc.y, 4, 4);
-    }
-    else{
-      imageMode(CENTER);
-      tint(255, lifespan);
-      image(img, loc.x, loc.y);
-    }
+  
+  void Draw(){
+    noStroke();
+    //fill(255, lifeSpan);//color
+    fill(120*RED, 120*GREEN, 120*BLUE, map(lifeSpan, 0, lifeSpanMax, 0, 255));
+    ellipse(pos.x, pos.y, 4, 4); 
+    return;
   }
-
-  // Is the particle still useful?
-  boolean isDead() {
-    if (lifespan <= 0.0) {
-      return true;
-    } else {
-      return false;
-    }
+  
+  void applyForce(PVector vec){
+    acc.add(vec); 
+    return;
+  }
+  
+  boolean isDead(){
+     return (lifeSpan <= 0);
   }
 }
