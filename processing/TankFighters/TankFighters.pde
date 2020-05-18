@@ -77,8 +77,11 @@ void keyPressed() {
   }
   if(key=='q')
     ring = true;
-  //if(key=='z')
-  //  visual = true;
+  if(key=='z'){
+    mainMenu.open = true;
+    menuWasUp = true;
+  }
+    
 }
 
 void keyReleased() {

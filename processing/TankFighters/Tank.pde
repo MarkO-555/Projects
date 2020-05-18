@@ -72,13 +72,15 @@ class Tank{
   }
 
   void fire(){
-    particlesystem.add(new ParticleSystem(20, pos.copy().sub(barrel.copy().setMag(Width-10)), pos.copy().sub(barrel), 45, 2, 2, 2));
-    
-    
-    //particlesystem.add(new ParticleSystem(10, pos.copy().sub(barrel.copy().setMag(Width-0.5)), 1, 1, 1)); //bookmark
-    
-    bullets.add(new bullet(this));
-    applyForce(barrel.copy().setMag(2));
+    if(!menuWasUp){
+      particlesystem.add(new ParticleSystem(20, pos.copy().sub(barrel.copy().setMag(Width-10)), pos.copy().sub(barrel), 45, 2, 2, 2));
+      
+      
+      //particlesystem.add(new ParticleSystem(10, pos.copy().sub(barrel.copy().setMag(Width-0.5)), 1, 1, 1)); //bookmark
+      
+      bullets.add(new bullet(this));
+      applyForce(barrel.copy().setMag(2));
+    }
     
     mouseDown = false;
     return;
@@ -95,7 +97,7 @@ class Tank{
       vec.set(-num, vec.y);
     if (right)
       vec.set(num, vec.y);
-    if(mouseDown && !menuWasUp)
+    if(mouseDown)
       fire();
       
     menuWasUp = false;

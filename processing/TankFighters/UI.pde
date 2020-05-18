@@ -1,6 +1,5 @@
-ArrayList<UIButton> buttons;
-
 class MainMenu{
+  private ArrayList<UIButton> buttons;
   boolean open = true;
   
   MainMenu(){
@@ -17,7 +16,7 @@ class MainMenu{
     background(150);
     
     for(int i=0; i<buttons.size(); i++){
-      if(buttons.get(i).Clicked()){
+      if(buttons.get(i).Hover()){
         buttons.get(i).background  = 190;
         if(mouseDown){
           if(i==0)
@@ -34,6 +33,9 @@ class MainMenu{
   
   void display(){
     fill(0);
+    textSize(70);
+    text("TankFighters", 165, 160); 
+     
     for(int i=0; i<buttons.size(); i++)
       buttons.get(i).display();
   }
@@ -62,7 +64,7 @@ class UIButton{
      text(text, x+30, y+h/2+10);
    }
    
-   boolean Clicked(){
+   boolean Hover(){
      return(mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+h);
    }
 }
