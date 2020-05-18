@@ -74,14 +74,13 @@ class Tank{
   void fire(){
     if(!menuWasUp){
       particlesystem.add(new ParticleSystem(20, pos.copy().sub(barrel.copy().setMag(Width-10)), pos.copy().sub(barrel), 45, 2, 2, 2));
-      
-      
       //particlesystem.add(new ParticleSystem(10, pos.copy().sub(barrel.copy().setMag(Width-0.5)), 1, 1, 1)); //bookmark
       
       bullets.add(new bullet(this));
       applyForce(barrel.copy().setMag(2));
     }
     
+    menuWasUp = false;
     mouseDown = false;
     return;
   }
@@ -100,7 +99,6 @@ class Tank{
     if(mouseDown)
       fire();
       
-    menuWasUp = false;
       
     applyForce(vec);
     return;

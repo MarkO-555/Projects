@@ -75,6 +75,13 @@ class ParticleSystem{
     }
     return false;
   }
+  
+  void setLifeSpan(float lifeSpan){
+    for(int i=0; i<particles.size(); i++){
+      particles.get(i).lifeSpan = lifeSpan;
+      particles.get(i).lifeSpanMax = lifeSpan;
+    }
+  }
 }
 
 class Particle{
@@ -84,7 +91,7 @@ class Particle{
   
   float lifeSpan = 300;
   float lifeSpanMax = lifeSpan;
-  float it = 2.5;
+  float it = 4;
   float r = 4;
   
   float RED, GREEN, BLUE;

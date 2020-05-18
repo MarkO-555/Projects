@@ -2,7 +2,6 @@ ArrayList<Tank> tanks;
 ArrayList<bullet> bullets;
 ArrayList<ParticleSystem> particlesystem;
 boolean mouseDown;
-//UI ui;
 MainMenu mainMenu;
 boolean menuWasUp = true;
 //boolean visual = false;
@@ -17,7 +16,7 @@ void setup() {
   mainMenu = new MainMenu();
 
   tanks.add(new Tank(true, 0, 1, 0));
-  //tanks.add(new Tank(false, 1, 0, 0));
+  tanks.add(new Tank(false, 1, 0, 0));
 }
 int count = 0;
 int pauseCount = 0;
