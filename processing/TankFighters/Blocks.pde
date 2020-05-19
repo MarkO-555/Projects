@@ -29,9 +29,13 @@ class Block{
   
   
   void isColliding(Tank tank){
-    if(tank.pos.x+tank.r/2 >= x*it && tank.pos.x-tank.r/2 <= (x+w)*it && tank.pos.y+tank.r/2 >= y*it && tank.pos.y-tank.r/2 <= (y+h)*it){
-      tank.pos.add(tank.pos.copy().sub((x+w/2)*it, (y+h/2)*it).setMag(2)).sub(tank.vel);
-      tank.vel.mult(-2);
+    float offset = 2.5;
+    if(tank.pos.x+tank.r/2-offset >= x*it && tank.pos.x-tank.r/2+offset <= (x+w)*it && tank.pos.y+tank.r/2-offset >= y*it && tank.pos.y-tank.r/2+offset <= (y+h)*it){
+      tank.pos.add(tank.pos.copy().sub((x+w/2)*it, (y+h/2)*it).setMag(1)).sub(tank.vel);
+      tank.vel.div(100);
+      //tank.pos.sub(tank.vel);
+      //tank.pos.sub(tank.acc);
+      //tank.acc.set(0, 0);
     }
 
   }
