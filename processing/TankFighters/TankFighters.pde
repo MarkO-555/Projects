@@ -21,7 +21,7 @@ void setup() {
   tanks.add(new Tank(true, 0, 1, 0));
   tanks.add(new Tank(false, 1, 0, 0));
   
-  blocks.add(new Block(5, 5, 1, 1, 150, 150, 150, 0));
+  //blocks.add(new Block(5, 5, 1, 1, 150, 150, 150, 0));
 }
 
 void draw() {
