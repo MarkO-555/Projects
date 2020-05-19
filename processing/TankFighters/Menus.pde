@@ -25,7 +25,8 @@ class MainMenu{
         LevelCreator.addButton("", x, y, it/2, it/2);
       }
     }
-    LevelCreator.addButton("Back", 100, 660, 600, 100);
+    LevelCreator.addButton("Back", 100, 660, 250, 100);
+    LevelCreator.addButton("Save Stage", 100, 660, 250, 100);
     
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
