@@ -15,7 +15,7 @@ class ParticleSystem{
     
     PVector vec = direction.copy().sub(pos);
     
-    float distance = dist(direction.x, direction.y, pos.x, pos.y);
+    float distance = dist(direction.x, direction.y, pos.x, pos.y); //Possible Logic Error!!!
     
     for(int i=0; i<num; i++){
       //vec = new PVector(random(-5, 5), random(-5, 5));
@@ -26,25 +26,6 @@ class ParticleSystem{
       float y = (sin(deg) * distance);
       
       vec.set(x, y).setMag(random(5));
-      
-      //if(vec.x > 0 && vec.y > 0){ //sector 1 Top right
-        
-      //}
-      //else if(vec.x > 0 && vec.y < 0){ //sector 4 bottom right
-      
-      //}
-      //else if(vec.x < 0 && vec.y > 0){ //sector 2 top left
-      
-      //}
-      //else if(vec.x < 0 && vec.y < 0){ //sector 3 top left
-      
-      //}
-      
-      //float x = 1;
-      //float y = 1;
-      
-      //newVec.x += x;
-      //newVec.y += y;
       
       particles.add(new Particle(pos.copy(), vec.copy(), RED, GREEN, BLUE));
     }
