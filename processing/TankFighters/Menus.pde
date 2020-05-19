@@ -3,30 +3,38 @@ class MainMenu{
   //private ArrayList<UIButton> buttons;
   int state = -1;
   boolean open = true;
+  
   Menu Main = new Menu();
   Menu LevelCreator = new Menu();
   Menu MultiPlayer = new Menu();
   Menu Options = new Menu();
+  Menu Tutorial = new Menu();
   
   MainMenu(){ 
     int[] MainText = {165, 160};
-    Main.addText("TankFighters", MainText);
+    Main.addText("TankFighters", MainText, 70);
     Main.addButton("Play", 100, 300, 600, 100); 
     Main.addButton("Level Creator", 100, 420, 600, 100); 
     Main.addButton("Multiplayer", 100, 540, 600, 100); 
     Main.addButton("Options", 100, 660, 600, 100);
     
     int[] LevelCreatorText = {165, 160};
-    LevelCreator.addText("Level Creator", LevelCreatorText);
+    LevelCreator.addText("Level Creator", LevelCreatorText, 70);
     LevelCreator.addButton("Back", 100, 660, 600, 100);
     
     int[] MultiPlayerText = {165, 160};
-    MultiPlayer.addText("MultiPlayer", MultiPlayerText);
+    MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
     MultiPlayer.addButton("Back", 100, 660, 600, 100);
     
     int[] optionText = {165, 160};
-    Options.addText("Options", optionText); 
+    Options.addText("Options", optionText, 70); 
     Options.addButton("Back", 100, 660, 600, 100);
+    
+    int[] TutorialText = {165, 160};
+    Tutorial.addText("Tutorial", TutorialText, 70);
+    
+    int[] exit = {500, 780};
+    Tutorial.addText("Mouse Click to Countinue", exit, 20);
   }
   
   void update(){
@@ -39,14 +47,13 @@ class MainMenu{
      }
        
      else if(state == 0){
-       this.open = false;
        Main.setState(-1);
-       state = Main.getState();
+       state = 4;
      }
      else if(state == 1){
        LevelCreator.update();
        if(LevelCreator.getState() != -1){
-         state = LevelCreator.getState() + 3+LevelCreator.buttons.size();
+         state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();
          LevelCreator.setState(-1);
        }
        Main.setState(-1);
@@ -55,7 +62,7 @@ class MainMenu{
      else if(state == 2){
        MultiPlayer.update();
        if(MultiPlayer.getState() != -1){
-         state = MultiPlayer.getState() + 3+LevelCreator.buttons.size()+MultiPlayer.buttons.size();
+         state = MultiPlayer.getState() + 4 + LevelCreator.buttons.size() + MultiPlayer.buttons.size();
          MultiPlayer.setState(-1);
        }
        Main.setState(-1);
@@ -63,10 +70,15 @@ class MainMenu{
      else if(state == 3){
        Options.update();
        if(Options.getState() != -1){
-         state = Options.getState() + 3+LevelCreator.buttons.size()+MultiPlayer.buttons.size()+Options.buttons.size();
+         state = Options.getState() + 4 + LevelCreator.buttons.size() + MultiPlayer.buttons.size() + Options.buttons.size();
          Options.setState(-1);
        }
        Main.setState(-1);
+     }
+     else if(state == 4){
+       Tutorial.update();
+       if(mouseDown && !buttonDown)
+         this.open = false;
      }
      else{
        state = -1; 
@@ -93,8 +105,13 @@ class Menu{
   private ArrayList<UIButton> buttons;
   private int state = -1;
   
-  ArrayList<String> text = new ArrayList<String>();
-  ArrayList<int[]> textpos = new ArrayList<int[]>();
+  private ArrayList<String> text = new ArrayList<String>();
+  private ArrayList<int[]> textpos = new ArrayList<int[]>();
+  private ArrayList<Float> fontSize = new ArrayList<Float>();
+  
+  private ArrayList<PImage> images = new ArrayList<PImage>();
+  private float backgroundColor = 150;
+  private float RED, GREEN, BLUE;
   
   Menu(){
     buttons = new ArrayList<UIButton>();
@@ -104,10 +121,15 @@ class Menu{
     buttons.add(new UIButton(text, x, y, w, h)); 
   }
   
-  void addText(String text, int[] pos){
+  void addText(String text, int[] pos, float fontSize){
     //text(text, x, y); 
     this.text.add(text);
     this.textpos.add(pos);
+    this.fontSize.add(fontSize);
+  }
+  
+  void addImage(String img){
+    images.add(loadImage(img));
   }
   
   int getState(){
@@ -118,8 +140,22 @@ class Menu{
     state = nstate;
   }
   
+  void setBackground(float num){
+    backgroundColor = num;
+  }
+  
+  void setBackground(float RED, float GREEN, float BLUE){
+    this.RED = RED;
+    this.GREEN = GREEN;
+    this.BLUE = BLUE;
+    
+    this.backgroundColor = -1;
+  }
+  
   void update(){
-    background(150);
+    if(backgroundColor == -1){
+    }
+    background(backgroundColor);
     
     display();
     for(int i=0; i<buttons.size(); i++){
@@ -138,8 +174,8 @@ class Menu{
   
   void display(){
     fill(0);
-    textSize(70);
     for(int i=0; i<text.size(); i++){
+      textSize(fontSize.get(i));
       int[] pos = textpos.get(i);
       text(text.get(i), pos[0], pos[1]);
     }
