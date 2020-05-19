@@ -31,14 +31,21 @@ class bullet{
       if(tank.player != this.tank.player){
         if(dist(pos.x, pos.y, tank.pos.x, tank.pos.y) <= (r+tank.r)){
           particlesystem.add(new ParticleSystem(10,pos.copy().add(tank.pos.copy().sub(pos).setMag(20)), vel.copy().mult(-1), 45, tank.RED, tank.GREEN, tank.BLUE));
-          //particlesystem.get(particlesystem.size()-1).RED = tank.RED;
-          //particlesystem.get(particlesystem.size()-1).GREEN = tank.GREEN;
-          //particlesystem.get(particlesystem.size()-1).BLUE = tank.BLUE;
           
           tank.hit();
           tank.applyForce(vel.copy().setMag(2));
           return true;
         }
+      }
+    }
+    
+    for(int i=0; i<blocks.size(); i++){
+      Block block = blocks.get(i);
+      PVector bpos = new PVector(block.x + block.w/2, block.y + block.h/2).mult(it);
+      if(pos.x+r/2 >= block.x*it && pos.x-r/2 <= (block.x+block.w)*it && pos.y+r/2 >= block.y*it && pos.y-r/2 <= (block.y+block.h)*it){
+        //println(degrees(vel.heading()), degrees(vel.copy().mult(-1).heading()), vel.x, vel.y, vel.copy().mult(-1).x, vel.copy().mult(-1).y);
+        particlesystem.add(new ParticleSystem(20, pos.copy(), vel.copy().mult(-2), 360, block.RED, block.GREEN, block.BLUE));
+        return true;
       }
     }
     return false;

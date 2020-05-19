@@ -163,10 +163,6 @@ class Tank{
     return;
   }
   
-  void collisions(){
-    
-  }
-  
   boolean isDead(){
     if(Health<=0){
       particlesystem.add(new ParticleSystem(50,pos.copy().add(pos.copy().sub(pos).setMag(20)), vel.copy().mult(-1), 360, RED, GREEN, BLUE));

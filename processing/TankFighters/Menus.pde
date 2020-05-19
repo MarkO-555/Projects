@@ -20,6 +20,11 @@ class MainMenu{
     
     int[] LevelCreatorText = {165, 160};
     LevelCreator.addText("Level Creator", LevelCreatorText, 70);
+    for(int x=200; x<width/2+200; x+=it/2){
+      for(int y=220; y<height/2+220; y+=it/2){
+        LevelCreator.addButton("", x, y, it/2, it/2);
+      }
+    }
     LevelCreator.addButton("Back", 100, 660, 600, 100);
     
     int[] MultiPlayerText = {165, 160};
@@ -48,14 +53,23 @@ class MainMenu{
        
      else if(state == 0){
        Main.setState(-1);
-       state = 4;
+       this.open = false;
+       //state = 4;
      }
      else if(state == 1){
        LevelCreator.update();
+           
+        //println(LevelCreator.getState());
+       
        if(LevelCreator.getState() != -1){
-         state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();
-         LevelCreator.setState(-1);
+         if(LevelCreator.getState() == 100){
+           state = -1;
+         }
+         
+         //state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();
+         LevelCreator.setState(-1); 
        }
+       
        Main.setState(-1);
      }
      
@@ -154,6 +168,7 @@ class Menu{
   
   void update(){
     if(backgroundColor == -1){
+      
     }
     background(backgroundColor);
     
@@ -199,7 +214,6 @@ class UIButton{
    }
    
    void display(){
-     
      fill(background);
      rect(x, y, w, h); 
      

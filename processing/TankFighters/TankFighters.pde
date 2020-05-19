@@ -1,6 +1,7 @@
 ArrayList<Tank> tanks;
 ArrayList<bullet> bullets;
 ArrayList<ParticleSystem> particlesystem;
+ArrayList<Block> blocks;
 boolean mouseDown, openMenu;
 boolean menuWasUp = true;
 int count = 0;
@@ -15,9 +16,12 @@ void setup() {
   bullets = new ArrayList<bullet>();
   particlesystem = new ArrayList<ParticleSystem>();
   mainMenu = new MainMenu();
+  blocks = new ArrayList<Block>();
 
   tanks.add(new Tank(true, 0, 1, 0));
   tanks.add(new Tank(false, 1, 0, 0));
+  
+  //blocks.add(new Block(5, 5, 1, 1, 150, 150, 150, 0));
 }
 
 void draw() {
@@ -46,6 +50,14 @@ void draw() {
       if(system.isDead())
         particlesystem.remove(i);
     }
+    
+    for(int i=0; i<blocks.size(); i++){
+      blocks.get(i).update(); 
+      for(int t=0; t<tanks.size(); t++){
+        blocks.get(i).isColliding(tanks.get(t)); 
+      }
+    }
+    
     count++;
   }
 }
@@ -80,6 +92,7 @@ void keyPressed() {
     ring = true;
   if(key=='z'){
     mainMenu.open = true;
+    mainMenu.state = -1;
     menuWasUp = true;
   }
     
