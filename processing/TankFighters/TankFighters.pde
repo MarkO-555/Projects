@@ -1,12 +1,13 @@
 ArrayList<Tank> tanks;
 ArrayList<bullet> bullets;
 ArrayList<ParticleSystem> particlesystem;
-boolean mouseDown;
-MainMenu mainMenu;
+boolean mouseDown, openMenu;
 boolean menuWasUp = true;
-//boolean visual = false;
+int count = 0;
+int pauseCount = 0;
 
 float it =80; // 20px X 20px
+MainMenu mainMenu;
 
 void setup() {
   size(800, 800);
@@ -18,13 +19,13 @@ void setup() {
   tanks.add(new Tank(true, 0, 1, 0));
   tanks.add(new Tank(false, 1, 0, 0));
 }
-int count = 0;
-int pauseCount = 0;
+
 void draw() {
-  mainMenu.update();
     
-  if(!mainMenu.open){
-    
+  if(mainMenu.open){
+    mainMenu.update(); 
+  }
+  else{
     background(0);
     
     for(int i=0; i<bullets.size(); i++){
@@ -55,6 +56,7 @@ void mousePressed(){
 
 void mouseReleased(){
   mouseDown = false; 
+  buttonDown = false;
 }
 
 void keyPressed() {
