@@ -40,18 +40,18 @@ void loop() {
     // sentence:
     if (Serial.read() == '\n') {
       // constrain the values to 0 - 255
-      green = constrain(green, 0, 255);
-      red = constrain(red, 0, 255);
-      yellow = constrain(yellow, 0, 255);
+      green = constrain(green + yellow, 0, 255);
+      red = constrain(red + yellow, 0, 255);
+//      yellow = constrain(yellow, 0, 255);
       
       // fade the green, yellow, and red LEDs:
       analogWrite(greenPin, green);
       analogWrite(redPin, red);
-      analogWrite(yellowPin, yellow);
+//      analogWrite(yellowPin, yellow);
 
       // print the three numbers in one string as hexadecimal:
       Serial.print(green, HEX);
-      Serial.print(yellow, HEX);
+//      Serial.print(yellow, HEX);
       Serial.println(red, HEX);
     }
   }
