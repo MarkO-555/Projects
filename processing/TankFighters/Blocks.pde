@@ -42,6 +42,8 @@ class Block{
   
   void Draw(){
     if(texture == null){
+      //noStroke();
+      stroke(1);
       fill(RED, GREEN, BLUE);
       rect(x*it, y*it, w*it, h*it);
     }

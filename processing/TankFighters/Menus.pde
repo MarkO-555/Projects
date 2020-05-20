@@ -59,21 +59,20 @@ class MainMenu{
      }
      else if(state == 1){
        LevelCreator.update();
+       
        for(int i=0; i<blocks.size(); i++){
          Block block = blocks.get(i);
          fill(block.RED, block.GREEN, block.BLUE);
          rect(block.x/2*it+200, block.y/2*it+220, it/2, it/2);
        }
-       //println(blocks.size());
-           
-        //println(LevelCreator.getState());
+       
        float st = LevelCreator.getState();
        if(st != -1){
          if(st == 100){
            state = -1;
          }
          else{
-           blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, 255, 0, 0, 0));
+           blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, 150, 150, 150, 0));
          }
          
          //state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();

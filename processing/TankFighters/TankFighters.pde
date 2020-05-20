@@ -20,8 +20,6 @@ void setup() {
 
   tanks.add(new Tank(true, 0, 1, 0));
   tanks.add(new Tank(false, 1, 0, 0));
-  
-  //blocks.add(new Block(5, 5, 1, 1, 150, 150, 150, 0));
 }
 
 void draw() {
@@ -51,10 +49,19 @@ void draw() {
         particlesystem.remove(i);
     }
     
+    println(blocks.size());
+    //ArrayList<Integer> badBlocks = new ArrayList<Integer>();
     for(int i=0; i<blocks.size(); i++){
       blocks.get(i).update(); 
       for(int t=0; t<tanks.size(); t++){
         blocks.get(i).isColliding(tanks.get(t)); 
+      }
+      
+      for(int v=0; v<blocks.size(); v++){
+        if(v != i){
+          if(blocks.get(i).x == blocks.get(v).x && blocks.get(i).y == blocks.get(v).y)
+            blocks.remove(v);
+        }
       }
     }
     
