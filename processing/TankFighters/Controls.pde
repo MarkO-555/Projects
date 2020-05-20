@@ -51,6 +51,4 @@ void keyReleased() {
     down = false;
   if(key=='q')
     ring = false;
-  //if(key=='z')
-  //  visual = false;
 }

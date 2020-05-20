@@ -334,23 +334,6 @@ class UITextbox{
       background = 220;
     else
       background = 255;
-    //println(text);
-    
-    //String newText = "";
-    //if(numOnly){
-    //  for(int i=0; i<text.length()-1; i++){
-    //    boolean goodchar = false;
-    //    for(int v=0; v<10; v++){
-    //      println(text.substring(i, i+1), ""+v, text.substring(i, i+1) == ""+v);
-    //      if(text.substring(i, i+1) == ""+v){
-    //        goodchar = true;
-    //      }
-    //    }
-    //    if(goodchar)
-    //      newText += text.substring(i, i+1);
-    //  }
-    //  text = newText;
-    //}
   }
   
   void display(){

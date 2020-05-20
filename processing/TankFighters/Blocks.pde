@@ -1,5 +1,6 @@
 class Block{
-  float x, y, w, h, RED, GREEN, BLUE;
+  float x, y, w, h;
+  float RED, GREEN, BLUE;
   PImage texture;
   int type;
   Block(float x, float y, float w, float h, PImage texture, int type){
@@ -33,9 +34,6 @@ class Block{
     if(tank.pos.x+tank.r/2-offset >= x*it && tank.pos.x-tank.r/2+offset <= (x+w)*it && tank.pos.y+tank.r/2-offset >= y*it && tank.pos.y-tank.r/2+offset <= (y+h)*it){
       tank.pos.add(tank.pos.copy().sub((x+w/2)*it, (y+h/2)*it).setMag(1)).sub(tank.vel);
       tank.vel.div(100);
-      //tank.pos.sub(tank.vel);
-      //tank.pos.sub(tank.acc);
-      //tank.acc.set(0, 0);
     }
 
   }
