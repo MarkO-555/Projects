@@ -2,8 +2,6 @@ ArrayList<Tank> tanks;
 ArrayList<bullet> bullets;
 ArrayList<ParticleSystem> particlesystem;
 ArrayList<Block> blocks;
-boolean mouseDown, openMenu;
-boolean menuWasUp = true;
 int count = 0;
 int pauseCount = 0;
 
@@ -12,6 +10,11 @@ MainMenu mainMenu;
 
 void setup() {
   size(800, 800);
+  
+  //for(int i=0; i<200; i++){
+  //  println(i, char(i));
+  //}
+  
   tanks = new ArrayList<Tank>();
   bullets = new ArrayList<bullet>();
   particlesystem = new ArrayList<ParticleSystem>();
@@ -24,6 +27,7 @@ void setup() {
 
 void draw() {
     
+  //println(key, keyCode);
   if(mainMenu.open){
     mainMenu.update(); 
   }
@@ -49,7 +53,7 @@ void draw() {
         particlesystem.remove(i);
     }
     
-    println(blocks.size());
+    //println(blocks.size());
     //ArrayList<Integer> badBlocks = new ArrayList<Integer>();
     for(int i=0; i<blocks.size(); i++){
       blocks.get(i).update(); 
@@ -67,55 +71,4 @@ void draw() {
     
     count++;
   }
-}
-
-void mousePressed(){
-  mouseDown = true;
-}
-
-void mouseReleased(){
-  mouseDown = false; 
-  buttonDown = false;
-}
-
-void keyPressed() {
-  if (key=='a'){
-    left = true;
-    right = false;
-  }
-  if (key=='d'){
-    right = true;
-    left = false;
-  }
-  if (key=='w'){
-    up = true;
-    down = false;
-  }
-  if (key=='s'){
-    down = true;
-    up = false;
-  }
-  if(key=='q')
-    ring = true;
-  if(key=='z'){
-    mainMenu.open = true;
-    mainMenu.state = -1;
-    menuWasUp = true;
-  }
-    
-}
-
-void keyReleased() {
-  if (key=='a')
-    left = false;
-  if (key=='d')
-    right = false;
-  if (key=='w')
-    up = false;
-  if (key=='s')
-    down = false;
-  if(key=='q')
-    ring = false;
-  //if(key=='z')
-  //  visual = false;
 }

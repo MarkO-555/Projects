@@ -1,5 +1,3 @@
-boolean left, right, up, down, ring;
-
 class Tank{
   PVector pos = new PVector(random(width), random(height));
   PVector vel = new PVector(0, 0);
