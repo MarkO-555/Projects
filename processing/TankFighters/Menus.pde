@@ -24,7 +24,6 @@ class MainMenu{
     int[] LevelCreatorText = {165, 160};
     LevelCreator.addText("Level Creator", LevelCreatorText, 70);
     
-    
     for(int x=xoff; x<width/2+xoff; x+=it/2){
       for(int y=yoff; y<height/2+yoff; y+=it/2){
         LevelCreator.addButton("", x, y, it/2, it/2);
@@ -34,7 +33,25 @@ class MainMenu{
     LevelCreator.addButton("Back", 100, 660, 250, 100);
     LevelCreator.addButton("Save Stage", 400, 660, 250, 100);
     
-    LevelCreator.addTextbox(50, 250, 275, 50);
+    int tSize = 20;
+    int x = 125;
+    int xdif = 80;
+    
+    int[] Colorpos = {x+50, yoff+30};
+    int[] redpos = {x-xdif, yoff+80};
+    int[] greenpos = {x-xdif, yoff+140};
+    int[] bluepos = {x-xdif, yoff+200};
+    
+    LevelCreator.addRect(25, yoff, 325, 240, 200);
+    
+    LevelCreator.addText("Color", Colorpos, tSize);
+    LevelCreator.addText("Red", redpos, tSize);
+    LevelCreator.addText("Green", greenpos, tSize);
+    LevelCreator.addText("Blue", bluepos, tSize);
+    
+    LevelCreator.addTextbox("150", x, yoff+50, 200, 50);
+    LevelCreator.addTextbox("150", x, yoff+110, 200, 50);
+    LevelCreator.addTextbox("150", x, yoff+170, 200, 50);
     
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
@@ -80,8 +97,13 @@ class MainMenu{
            state = -1;
          }
          else if(st <= 100){
-           if(mouseButton == LEFT)
-             blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, 150, 150, 150, 0));
+           if(mouseButton == LEFT){
+             float RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
+             float GREEN = Float.parseFloat(LevelCreator.getTextBoxValue(1));
+             float BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
+             
+             blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, RED, GREEN, BLUE, 0));
+           }
            else if(mouseButton == RIGHT){
              for(int i=0; i<blocks.size(); i++){
                 if(blocks.get(i).x == (int)Math.floor(st/10) && blocks.get(i).y == (int)(st - Math.floor(st/10)*10))
@@ -90,6 +112,8 @@ class MainMenu{
            }
            LevelCreator.setState(-1);
          }
+         
+         
          
          //state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();
          LevelCreator.setState(-1); 
@@ -149,6 +173,7 @@ class Menu{
   
   private ArrayList<PVector> rectPos = new ArrayList<PVector>();
   private ArrayList<PVector> rectSize = new ArrayList<PVector>();
+  private ArrayList<Float> rectColor = new ArrayList<Float>();
   
   private ArrayList<PImage> images = new ArrayList<PImage>();
   private ArrayList<PVector> imagePos = new ArrayList<PVector>();
@@ -156,16 +181,17 @@ class Menu{
   private ArrayList<UIButton> buttons = new ArrayList<UIButton>();
   private ArrayList<UITextbox> textboxs = new ArrayList<UITextbox>();
   
-  private float backgroundColor = 150;
+  private float backgroundColor = 165;
   private float RED, GREEN, BLUE;
   
   void addButton(String text, float x, float y, float w, float h){
     buttons.add(new UIButton(text, x, y, w, h)); 
   }
   
-  void addRect(float x, float y, float w, float h){
+  void addRect(float x, float y, float w, float h, float Color){
     rectPos.add(new PVector(x, y));
     rectSize.add(new PVector(w, h));
+    rectColor.add(Color);
   }
   
   void addText(String text, int[] pos, float fontSize){
@@ -175,13 +201,17 @@ class Menu{
     this.fontSize.add(fontSize);
   }
   
-  void addTextbox(float x, float y, float w, float h){
-     textboxs.add(new UITextbox(x, y, w, h));
+  void addTextbox(String defaultValue, float x, float y, float w, float h){
+     textboxs.add(new UITextbox(defaultValue, x, y, w, h));
   }
   
   void addImage(String img, PVector imagePos){
     this.images.add(loadImage(img));
     this.imagePos.add(imagePos);
+  }
+  
+  String getTextBoxValue(int index){
+    return textboxs.get(index).text;
   }
   
   int getState(){
@@ -231,14 +261,18 @@ class Menu{
   }
   
   void display(){
-    fill(0);
+    //fill(0);
+    
+    for(int i=0; i<rectPos.size(); i++){
+      fill(rectColor.get(i));
+      rect(rectPos.get(i).x, rectPos.get(i).y, rectSize.get(i).x, rectSize.get(i).y);
+    }
+    
     for(int i=0; i<text.size(); i++){
+      fill(0);
       textSize(fontSize.get(i));
       int[] pos = textpos.get(i);
       text(text.get(i), pos[0], pos[1]);
-    }
-    for(int i=0; i<rectPos.size(); i++){
-      rect(rectPos.get(i).x, rectPos.get(i).y, rectSize.get(i).x, rectSize.get(i).y);
     }
     
     for(int i=0; i<images.size(); i++){
@@ -287,14 +321,21 @@ class UITextbox{
   private boolean change = false;
   private boolean numOnly = true;
   private float background;
+  private String defaultValue;
   
-  UITextbox(float x, float y, float w, float h){
+  UITextbox(String defaultValue, float x, float y, float w, float h){
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     
     textlength = (int)(w * 19/200);
+    if(defaultValue.length() > textlength)
+      this.defaultValue = defaultValue.substring(0, defaultValue.length() - (defaultValue.length() - textlength));
+    else
+      this.defaultValue = defaultValue;
+      
+    text = this.defaultValue;
   }
   
   void update(){

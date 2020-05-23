@@ -5,15 +5,11 @@ ArrayList<Block> blocks;
 int count = 0;
 int pauseCount = 0;
 
-float it =80; // 20px X 20px
+float it = 80;
 MainMenu mainMenu;
 
 void setup() {
   size(800, 800);
-  
-  //for(int i=0; i<200; i++){
-  //  println(i, char(i));
-  //}
   
   tanks = new ArrayList<Tank>();
   bullets = new ArrayList<bullet>();
@@ -26,8 +22,6 @@ void setup() {
 }
 
 void draw() {
-    
-  //println(key, keyCode);
   if(mainMenu.open){
     mainMenu.update(); 
   }
@@ -53,8 +47,6 @@ void draw() {
         particlesystem.remove(i);
     }
     
-    //println(blocks.size());
-    //ArrayList<Integer> badBlocks = new ArrayList<Integer>();
     for(int i=0; i<blocks.size(); i++){
       blocks.get(i).update(); 
       for(int t=0; t<tanks.size(); t++){

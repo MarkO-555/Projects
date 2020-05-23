@@ -3,6 +3,7 @@ class Block{
   float RED, GREEN, BLUE;
   PImage texture;
   int type;
+  
   Block(float x, float y, float w, float h, PImage texture, int type){
     this.x = x;
     this.y = y;
