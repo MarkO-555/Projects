@@ -1,5 +1,6 @@
 class Tank{
-  PVector pos = new PVector(random(width), random(height));
+  //PVector pos = new PVector(random(width), random(height));
+  PVector pos = new PVector(0, 0);
   PVector vel = new PVector(0, 0);
   PVector acc = new PVector(0, 0);
   float r;
@@ -20,11 +21,16 @@ class Tank{
   private float RED, GREEN, BLUE;
   
   Tank(){
-    this(true, 0, 1, 0); 
+    this(true, new PVector(random(width), random(height)), 0, 1, 0);
   }
   
   Tank(boolean player, float RED, float GREEN, float BLUE){
+    this(player, new PVector(random(width), random(height)), RED, GREEN, BLUE);
+  }
+  
+  Tank(boolean player, PVector pos,  float RED, float GREEN, float BLUE){
     this.player = player;
+    this.pos = pos;
     
     this.RED = RED;
     this.BLUE = BLUE;

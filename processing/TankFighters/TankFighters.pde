@@ -17,8 +17,8 @@ void setup() {
   mainMenu = new MainMenu();
   blocks = new ArrayList<Block>();
 
-  tanks.add(new Tank(true, 0, 1, 0));
-  tanks.add(new Tank(false, 1, 0, 0));
+  //tanks.add(new Tank(true, 0, 1, 0));
+  //tanks.add(new Tank(false, 1, 0, 0));
 }
 
 void draw() {
