@@ -6,6 +6,7 @@ class MainMenu{
   
   private int xoff = 375;
   private int yoff = 220;
+  private float scale = 2;
   
   Menu Main = new Menu();
   Menu LevelCreator = new Menu();
@@ -24,14 +25,16 @@ class MainMenu{
     int[] LevelCreatorText = {165, 160};
     LevelCreator.addText("Level Creator", LevelCreatorText, 70);
     
-    for(int x=xoff; x<width/2+xoff; x+=it/2){
-      for(int y=yoff; y<height/2+yoff; y+=it/2){
-        LevelCreator.addButton("", x, y, it/2, it/2);
+    
+    for(int x=xoff; x<width/scale+xoff; x+=it/scale){
+      for(int y=yoff; y<height/scale+yoff; y+=it/scale){
+        LevelCreator.addButton("", x, y, it/scale, it/scale);
       }
     }
     
-    LevelCreator.addButton("Back", 100, 660, 250, 100);
-    LevelCreator.addButton("Save Stage", 400, 660, 250, 100);
+    LevelCreator.addButton("Back", 660, 660, 100, 100);
+    LevelCreator.addButton("Save Stage", 40, 660, 250, 45);
+    LevelCreator.addButton("Load Stage", 40, 660+55, 250, 45);
     
     int tSize = 20;
     int x = 125;
@@ -95,12 +98,22 @@ class MainMenu{
        if(st != -1){
          if(st == 100){
            state = -1;
-         }
+         } 
          else if(st <= 100){
            if(mouseButton == LEFT){
-             float RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
-             float GREEN = Float.parseFloat(LevelCreator.getTextBoxValue(1));
-             float BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
+             float RED, GREEN, BLUE;
+             if(LevelCreator.getTextBoxValue(0) != "")
+               RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
+             else
+               RED = 0;
+             if(LevelCreator.getTextBoxValue(1) != "")
+               GREEN = Float.parseFloat(LevelCreator.getTextBoxValue(1));
+             else
+               GREEN = 0;
+             if(LevelCreator.getTextBoxValue(2) != "")
+               BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
+             else
+               BLUE = 0;
              
              blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, RED, GREEN, BLUE, 0));
            }
@@ -112,8 +125,23 @@ class MainMenu{
            }
            LevelCreator.setState(-1);
          }
-         
-         
+         else if(st == 101){//Save
+           //PImage img = new PImage();
+           PImage img = createImage(int(width/it), int(height/it), RGB);
+           for(int i=0; i<blocks.size(); i++){
+             Block block = blocks.get(i);
+             //println(block.x, block.y);
+             
+             img.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
+           }
+           
+           img.save("test.png");
+           //.setState(-1);
+           st = -1;
+         }
+         else if(st == 102){//Load
+           
+         }
          
          //state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();
          LevelCreator.setState(-1); 
