@@ -489,25 +489,49 @@ class UITextbox{
   boolean Hover(){
      return(mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+h);
   }
+}
+
+class UIScrollTab{
+  private float x, y, w, h;
   
-  //public float[] loadWeights(int weightCount){
-  //  BufferedReader Reader = createReader("Weights.txt");
+  UIScrollTab(float x, float y, float w, float h){
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+  }
+  
+  void update(){
     
-  //  float[] weights_ = new float[weightCount];
-  //  String line = null;
-  //  int i=0;
+  }
+}
+
+class ButtonChooser{
+  private float x, y, w, h;
+  private ArrayList<UIButton> buttons;
+  private int state = 0;
+  
+  ButtonChooser(float x, float y, float w, float h){
+    this.buttons = new ArrayList<UIButton>();
     
-  //  try {
-  //    while ((line = weightsLog.readLine()) != null) {
-  //      weights_[i] = float(line);
-  //      i++;
-  //    }
-  //    weightsLog.close();
-  //  }
-  //  catch (IOException e) {
-  //    e.printStackTrace();
-  //  }
-    
-  //  return weights_;
-  //}
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+  }
+  
+  int getState(){
+    return this.state;
+  }
+  
+  void addButton(String str, float x, float y, float w, float h){
+    this.buttons.add(new UIButton(str, x, y, w, h));
+  }
+  
+  void update(){
+    for(int i=0; i<buttons.size(); i++){
+      if(this.buttons.get(i).Hover() && mouseDown && !buttonDown)
+        this.state = i;
+    }
+  }
 }
