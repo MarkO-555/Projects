@@ -1,8 +1,8 @@
 class Block{
   float x, y, w, h;
   float RED, GREEN, BLUE;
-  PImage texture;
-  int type;
+  private PImage texture;
+  private int type;
   
   Block(float x, float y, float w, float h, PImage texture, int type){
     this.x = x;
@@ -29,6 +29,9 @@ class Block{
     Draw();
   }
   
+  int getType(){
+    return type; 
+  }
   
   void isColliding(Tank tank){
     float offset = 2.5;

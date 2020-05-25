@@ -192,19 +192,26 @@ class MainMenu{
      else if(state == 5){//Save
        SaveMenu.update();
        if(SaveMenu.getState() == 1){
-           PImage img = createImage(int(width/it), int(height/it), RGB);
+           PImage col  = createImage(int(width/it), int(height/it), RGB);
+           PImage type  = createImage(int(width/it), int(height/it), RGB);
+           
            for(int i=0; i<blocks.size(); i++){
              Block block = blocks.get(i);
              
-             img.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
+             col.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
+             int t = block.getType();
+             //println(t);
+             type.set((int)block.x, (int)block.y, color(t, t, t));
            }
            
            String str = SaveMenu.getTextBoxValue(0);
            if(str == "")
              str = "default";
              
-           img.save("Levels/"+str+".png");
-           Writer.println(str);
+           col.save("Levels/"+str+"-color.png");
+           type.save("Levels/"+str+"-type.png");
+           
+           //Writer.println(str);
            Writer.flush();
        }
        if(SaveMenu.getState() != -1){
@@ -214,8 +221,6 @@ class MainMenu{
      }
      else if(state == 6){//Load
        LoadMenu.update();
-       
-       //println(Levels);
        
        if(LoadMenu.getState() != -1){
          state = 1;

@@ -19,7 +19,7 @@ void setup() {
 
   try {
     while ((line = Reader.readLine()) != null) {
-      println(line);
+      //println(line);
       Levels.add(line);
     }
     Reader.close();
