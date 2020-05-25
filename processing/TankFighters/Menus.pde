@@ -12,7 +12,7 @@ class MainMenu{
   Menu LevelCreator = new Menu();
   Menu MultiPlayer = new Menu();
   Menu Options = new Menu();
-  Menu Tutorial = new Menu();
+  Menu PlayMenu = new Menu();
   
   MainMenu(){
     int[] MainText = {165, 160};
@@ -64,11 +64,11 @@ class MainMenu{
     Options.addText("Options", optionText, 70); 
     Options.addButton("Back", 100, 660, 600, 100);
     
-    int[] TutorialText = {165, 160};
-    Tutorial.addText("Tutorial", TutorialText, 70);
+    int[] PlayText = {165, 160};
+    PlayMenu.addText("Tutorial", PlayText, 70);
     
     int[] exit = {500, 780};
-    Tutorial.addText("Mouse Click to Countinue", exit, 20);
+    
   }
   
   void update(){
@@ -135,7 +135,7 @@ class MainMenu{
              img.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
            }
            
-           img.save("test.png");
+           img.save("Levels/test.png");
            //.setState(-1);
            st = -1;
          }
@@ -167,7 +167,7 @@ class MainMenu{
        Main.setState(-1);
      }
      else if(state == 4){
-       Tutorial.update();
+       PlayMenu.update();
        if(mouseDown && !buttonDown)
          this.open = false;
      }
