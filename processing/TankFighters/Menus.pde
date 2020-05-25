@@ -1,8 +1,9 @@
 boolean buttonDown = false;
 class MainMenu{
   //private ArrayList<UIButton> buttons;
-  int state = -1;
+  int state = 6;
   boolean open = true;
+  PrintWriter Writer;
   
   private int xoff = 375;
   private int yoff = 220;
@@ -19,6 +20,12 @@ class MainMenu{
   Menu LoadMenu = new Menu();
   
   MainMenu(){
+    Writer = createWriter("Levels/Levels.txt");
+    
+    for(int i=0; i<Levels.size(); i++)
+      Writer.println(Levels.get(i));
+    Writer.flush();
+    
     int[] MainText = {165, 160};
     Main.addText("TankFighters", MainText, 70);
     Main.addButton("Play", 100, 300, 600, 100); 
@@ -184,7 +191,7 @@ class MainMenu{
      }
      else if(state == 5){//Save
        SaveMenu.update();
-       if(SaveMenu.getState() == 2){
+       if(SaveMenu.getState() == 1){
            PImage img = createImage(int(width/it), int(height/it), RGB);
            for(int i=0; i<blocks.size(); i++){
              Block block = blocks.get(i);
@@ -196,7 +203,9 @@ class MainMenu{
            if(str == "")
              str = "default";
              
-           img.save(String.format("Levels/{0}.png", str));
+           img.save("Levels/"+str+".png");
+           Writer.println(str);
+           Writer.flush();
        }
        if(SaveMenu.getState() != -1){
          state = 1;
@@ -205,6 +214,9 @@ class MainMenu{
      }
      else if(state == 6){//Load
        LoadMenu.update();
+       
+       //println(Levels);
+       
        if(LoadMenu.getState() != -1){
          state = 1;
          LoadMenu.setState(-1);
@@ -213,7 +225,6 @@ class MainMenu{
      else{
        state = -1; 
      }
-     
      
      //else if(state == 4){
      //   state = -1;
@@ -313,7 +324,7 @@ class Menu{
     
     for(int i=0; i<buttons.size(); i++){
       if(buttons.get(i).Hover()){
-        buttons.get(i).background  = 190;
+        buttons.get(i).background  = 190;//150
         if(mouseDown && !buttonDown){
           state = i;
           buttonDown = true;
@@ -461,4 +472,25 @@ class UITextbox{
   boolean Hover(){
      return(mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+h);
   }
+  
+  //public float[] loadWeights(int weightCount){
+  //  BufferedReader Reader = createReader("Weights.txt");
+    
+  //  float[] weights_ = new float[weightCount];
+  //  String line = null;
+  //  int i=0;
+    
+  //  try {
+  //    while ((line = weightsLog.readLine()) != null) {
+  //      weights_[i] = float(line);
+  //      i++;
+  //    }
+  //    weightsLog.close();
+  //  }
+  //  catch (IOException e) {
+  //    e.printStackTrace();
+  //  }
+    
+  //  return weights_;
+  //}
 }
