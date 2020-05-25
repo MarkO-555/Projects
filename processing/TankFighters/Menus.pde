@@ -1,7 +1,8 @@
 boolean buttonDown = false;
 class MainMenu{
   //private ArrayList<UIButton> buttons;
-  int state = 6;
+  int state = -1;
+  int loadTargetState, loadBackState;
   boolean open = true;
   PrintWriter Writer;
   
@@ -84,8 +85,8 @@ class MainMenu{
     
     int[] SaveTitleText = {165, 160};
     SaveMenu.addText("Save Menu", SaveTitleText, 70);
-    SaveMenu.addButton("Back", 425, 660, 300, 100);
-    SaveMenu.addButton("Save", 75, 660, 300, 100);
+    SaveMenu.addButton("Back", 75, 660, 300, 100);
+    SaveMenu.addButton("Save", 425, 660, 300, 100);
     
     int[] SaveName = {120, 452};
     SaveMenu.addText("Save Name", SaveName, 20);
@@ -94,23 +95,26 @@ class MainMenu{
     
     int[] LoadTitleText = {165, 160};
     LoadMenu.addText("Load Menu", LoadTitleText, 70);
-    LoadMenu.addButton("Back", 100, 660, 600, 100);
+    LoadMenu.addButton("Back", 75, 660, 300, 100);
+    LoadMenu.addButton("Load", 425, 660, 300, 100);
     
   }
   
   void update(){
      if(!open)
        return;
-      
-     if(state == -1){
+     if(state == -2){
+       this.open = false;
+       Main.setState(-1);
+     }
+     else if(state == -1){
        Main.update();
        state = Main.getState();
      }
-       
      else if(state == 0){
-       Main.setState(-1);
-       this.open = false;
-       //state = 4;
+       loadBackState = -1;
+       loadTargetState = -2;
+       state = 6;
      }
      else if(state == 1){
        LevelCreator.update();
@@ -158,6 +162,8 @@ class MainMenu{
          }
          else if(st == 102){//Load
            st = -1;
+           loadBackState = 1;
+           loadTargetState = 1;
            state = 6;
          }
          
@@ -221,11 +227,17 @@ class MainMenu{
      }
      else if(state == 6){//Load
        LoadMenu.update();
+       Main.setState(-1);
        
-       if(LoadMenu.getState() != -1){
-         state = 1;
-         LoadMenu.setState(-1);
+       if(LoadMenu.getState() == 0){
+         state = loadBackState;
        }
+       else if(LoadMenu.getState() == 1){
+         state = loadTargetState;
+       }
+       
+       if(LoadMenu.getState() != -1)
+         LoadMenu.setState(-1);
      }
      else{
        state = -1; 
