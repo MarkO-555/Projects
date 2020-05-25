@@ -31,11 +31,11 @@ void keyPressed() {
   }
   if(key=='q')
     ring = true;
-  if(key=='z'){
-    mainMenu.open = true;
-    mainMenu.state = -1;
-    menuWasUp = true;
-  }
+  //if(key=='z'){
+  //  mainMenu.open = true;
+  //  mainMenu.state = -1;
+  //  menuWasUp = true;
+  //}
     
 }
 

@@ -11,8 +11,12 @@ class MainMenu{
   Menu Main = new Menu();
   Menu LevelCreator = new Menu();
   Menu MultiPlayer = new Menu();
+  
   Menu Options = new Menu();
   Menu PlayMenu = new Menu();
+  
+  Menu SaveMenu = new Menu();
+  Menu LoadMenu = new Menu();
   
   MainMenu(){
     int[] MainText = {165, 160};
@@ -56,6 +60,10 @@ class MainMenu{
     LevelCreator.addTextbox("150", x, yoff+110, 200, 50);
     LevelCreator.addTextbox("150", x, yoff+170, 200, 50);
     
+    LevelCreator.setTextboxType(0, true);
+    LevelCreator.setTextboxType(1, true);
+    LevelCreator.setTextboxType(2, true);
+    
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
     MultiPlayer.addButton("Back", 100, 660, 600, 100);
@@ -67,7 +75,19 @@ class MainMenu{
     int[] PlayText = {165, 160};
     PlayMenu.addText("Tutorial", PlayText, 70);
     
-    int[] exit = {500, 780};
+    int[] SaveTitleText = {165, 160};
+    SaveMenu.addText("Save Menu", SaveTitleText, 70);
+    SaveMenu.addButton("Back", 425, 660, 300, 100);
+    SaveMenu.addButton("Save", 75, 660, 300, 100);
+    
+    int[] SaveName = {120, 452};
+    SaveMenu.addText("Save Name", SaveName, 20);
+    SaveMenu.addTextbox("", 250, 420, 400, 50);
+    
+    
+    int[] LoadTitleText = {165, 160};
+    LoadMenu.addText("Load Menu", LoadTitleText, 70);
+    LoadMenu.addButton("Back", 100, 660, 600, 100);
     
   }
   
@@ -126,21 +146,12 @@ class MainMenu{
            LevelCreator.setState(-1);
          }
          else if(st == 101){//Save
-           //PImage img = new PImage();
-           PImage img = createImage(int(width/it), int(height/it), RGB);
-           for(int i=0; i<blocks.size(); i++){
-             Block block = blocks.get(i);
-             //println(block.x, block.y);
-             
-             img.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
-           }
-           
-           img.save("Levels/test.png");
-           //.setState(-1);
            st = -1;
+           state = 5;
          }
          else if(st == 102){//Load
-           
+           st = -1;
+           state = 6;
          }
          
          //state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();
@@ -170,6 +181,34 @@ class MainMenu{
        PlayMenu.update();
        if(mouseDown && !buttonDown)
          this.open = false;
+     }
+     else if(state == 5){//Save
+       SaveMenu.update();
+       if(SaveMenu.getState() == 2){
+           PImage img = createImage(int(width/it), int(height/it), RGB);
+           for(int i=0; i<blocks.size(); i++){
+             Block block = blocks.get(i);
+             
+             img.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
+           }
+           
+           String str = SaveMenu.getTextBoxValue(0);
+           if(str == "")
+             str = "default";
+             
+           img.save(String.format("Levels/{0}.png", str));
+       }
+       if(SaveMenu.getState() != -1){
+         state = 1;
+         SaveMenu.setState(-1);
+       }
+     }
+     else if(state == 6){//Load
+       LoadMenu.update();
+       if(LoadMenu.getState() != -1){
+         state = 1;
+         LoadMenu.setState(-1);
+       }
      }
      else{
        state = -1; 
@@ -244,6 +283,10 @@ class Menu{
   
   int getState(){
      return state;
+  }
+  
+  void setTextboxType(int index, boolean type){
+    textboxs.get(index).numOnly = type;
   }
   
   void setState(int nstate){
@@ -347,7 +390,7 @@ class UITextbox{
   
   private int textlength;
   private boolean change = false;
-  private boolean numOnly = true;
+  private boolean numOnly = false;
   private float background;
   private String defaultValue;
   
