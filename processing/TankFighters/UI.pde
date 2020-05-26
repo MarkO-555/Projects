@@ -1,13 +1,10 @@
-class UI{
-  UI(){
-    
+class UI {
+  UI() {
   }
-  
-  void update(){
-    
+
+  void update() {
   }
-  
-  void Draw(){
-    
+
+  void Draw() {
   }
 }

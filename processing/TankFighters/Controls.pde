@@ -2,41 +2,40 @@ boolean mouseDown, openMenu, keyDown;
 boolean left, right, up, down, ring;
 boolean menuWasUp = true;
 
-void mousePressed(){
+void mousePressed() {
   mouseDown = true;
 }
 
-void mouseReleased(){
+void mouseReleased() {
   mouseDown = false; 
   buttonDown = false;
 }
 
 void keyPressed() {
   keyDown = true;
-  if (key=='a'){
+  if (key=='a') {
     left = true;
     right = false;
   }
-  if (key=='d'){
+  if (key=='d') {
     right = true;
     left = false;
   }
-  if (key=='w'){
+  if (key=='w') {
     up = true;
     down = false;
   }
-  if (key=='s'){
+  if (key=='s') {
     down = true;
     up = false;
   }
-  if(key=='q')
+  if (key=='q')
     ring = true;
   //if(key=='z'){
   //  mainMenu.open = true;
   //  mainMenu.state = -1;
   //  menuWasUp = true;
   //}
-    
 }
 
 void keyReleased() {
@@ -49,6 +48,6 @@ void keyReleased() {
     up = false;
   if (key=='s')
     down = false;
-  if(key=='q')
+  if (key=='q')
     ring = false;
 }

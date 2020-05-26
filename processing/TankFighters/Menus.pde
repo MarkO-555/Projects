@@ -191,9 +191,9 @@ class MainMenu{
        Main.setState(-1);
      }
      else if(state == 4){
-       PlayMenu.update();
-       if(mouseDown && !buttonDown)
-         this.open = false;
+       //PlayMenu.update();
+       //if(mouseDown && !buttonDown)
+       //  this.open = false;
      }
      else if(state == 5){//Save
        SaveMenu.update();
@@ -234,6 +234,9 @@ class MainMenu{
        }
        else if(LoadMenu.getState() == 1){
          state = loadTargetState;
+         
+         blocks = new ArrayList<Block>();
+         tanks = new ArrayList<Tank>();
        }
        
        if(LoadMenu.getState() != -1)
@@ -261,7 +264,6 @@ class MainMenu{
 
 class Menu{
   private int state = -1;
-  
   private ArrayList<String> text = new ArrayList<String>();
   private ArrayList<int[]> textpos = new ArrayList<int[]>();
   private ArrayList<Float> fontSize = new ArrayList<Float>();
@@ -276,8 +278,9 @@ class Menu{
   private ArrayList<UIButton> buttons = new ArrayList<UIButton>();
   private ArrayList<UITextbox> textboxs = new ArrayList<UITextbox>();
   
-  private float backgroundColor = 165;
-  private float RED, GREEN, BLUE;
+  //private float backgroundColor = 165;
+  //private float RED, GREEN, BLUE;
+  private color col = color(165);
   
   void addButton(String text, float x, float y, float w, float h){
     buttons.add(new UIButton(text, x, y, w, h)); 
@@ -322,20 +325,23 @@ class Menu{
   }
   
   void setBackground(float num){
-    backgroundColor = num;
+    //backgroundColor = num;
+    this.col = color(num);
   }
   
   void setBackground(float RED, float GREEN, float BLUE){
-    this.RED = RED;
-    this.GREEN = GREEN;
-    this.BLUE = BLUE;
+    //this.RED = RED;
+    //this.GREEN = GREEN;
+    //this.BLUE = BLUE;
     
-    this.backgroundColor = -1;
+    this.col = color(RED, GREEN, BLUE);
+    
+    //this.backgroundColor = -1;
   }
   
   void update(){
     //if(backgroundColor == -1){}
-    background(backgroundColor);
+    background(this.col);
     
     display();
     
@@ -381,7 +387,7 @@ class Menu{
   }
 }
 
-class UIButton{
+class UIButton implements UIObject{
   float x, y, w, h;
   String text;
   
@@ -412,7 +418,7 @@ class UIButton{
    }
 }
 
-class UITextbox{
+class UITextbox implements UIObject{
   float x, y, w, h;
   String text = "";
   
@@ -491,7 +497,7 @@ class UITextbox{
   }
 }
 
-class UIScrollTab{
+class UIScrollTab implements UIObject{
   private float x, y, w, h;
   
   UIScrollTab(float x, float y, float w, float h){
@@ -506,7 +512,7 @@ class UIScrollTab{
   }
 }
 
-class ButtonChooser{
+class ButtonChooser implements UIObject{
   private float x, y, w, h;
   private ArrayList<UIButton> buttons;
   private int state = 0;

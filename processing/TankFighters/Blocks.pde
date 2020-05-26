@@ -1,7 +1,8 @@
 class Block{
   float x, y, w, h;
   float RED, GREEN, BLUE;
-  private PImage texture;
+  color col;
+  private PImage texture = null;
   private int type;
   
   Block(float x, float y, float w, float h, PImage texture, int type){
@@ -18,10 +19,10 @@ class Block{
     this.y = y;
     this.w = w;
     this.h = h;
-    this.texture = null;
     this.RED = RED;
     this.GREEN = GREEN;
     this.BLUE = BLUE;
+    //this.col = color(RED, GREEN, BLUE);
     this.type = type;
   }
   
@@ -47,6 +48,7 @@ class Block{
       //noStroke();
       stroke(1);
       fill(RED, GREEN, BLUE);
+      //fill(col);
       rect(x*it, y*it, w*it, h*it);
     }
     else{
