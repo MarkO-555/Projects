@@ -139,29 +139,29 @@ class Tank {
     }
 
     stroke(0);
-    strokeWeight(2);
-    fill(RED*100, GREEN*100, BLUE*100);
-    rect(-Width/2, -Height/2, Width, Height);
+      strokeWeight(2);
+      fill(RED*100, GREEN*100, BLUE*100);
+      rect(-Width/2, -Height/2, Width, Height);
     pop();
 
     push();
-    translate(pos.x, pos.y);
-
-    if (player)
-      target = new PVector(mouseX, mouseY);
-
-    barrel = pos.copy().sub(target);
-
-    rotate(barrel.heading() + 2*PI/4);
-    strokeWeight(0);
-
-    fill(140*RED, 140*GREEN, 140*BLUE);
-
-    ellipse(0, Width*13/40, Width/8, Width);
-
-    //30*26/30
-    ellipse(0, 0, Height*26/30, Height*26/30);
-    //line(0, 0, 25, 25);
+      translate(pos.x, pos.y);
+  
+      if (player)
+        target = new PVector(mouseX, mouseY);
+  
+      barrel = pos.copy().sub(target);
+  
+      rotate(barrel.heading() + 2*PI/4);
+      strokeWeight(0);
+  
+      fill(140*RED, 140*GREEN, 140*BLUE);
+  
+      ellipse(0, Width*13/40, Width/8, Width);
+  
+      //30*26/30
+      ellipse(0, 0, Height*26/30, Height*26/30);
+      //line(0, 0, 25, 25);
     pop();
     return;
   }
