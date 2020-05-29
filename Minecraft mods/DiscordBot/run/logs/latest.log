@@ -1,28 +1,25 @@
-[16:36:53] [main/INFO]: Extra: []
-[16:36:53] [main/INFO]: Running with arguments: [--tweakClass, net.minecraftforge.fml.common.launcher.FMLServerTweaker, --tweakClass, net.minecraftforge.gradle.tweakers.CoremodTweaker]
-[16:36:53] [main/INFO]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
-[16:36:53] [main/INFO]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
-[16:36:53] [main/INFO]: Loading tweak class name net.minecraftforge.gradle.tweakers.CoremodTweaker
-[16:36:53] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLServerTweaker
-[16:37:07] [Server thread/INFO]: Starting minecraft server version 1.12.2
-[16:37:07] [Server thread/WARN]: To start the server with more ram, launch it as "java -Xmx1024M -Xms1024M -jar minecraft_server.jar"
-[16:37:12] [Server thread/INFO]: Loading properties
-[16:37:12] [Server thread/INFO]: Default game type: SURVIVAL
-[16:37:12] [Server thread/INFO]: Generating keypair
-[16:37:13] [Server thread/INFO]: Starting Minecraft server on *:25565
-[16:37:13] [Server thread/INFO]: Using default channel type
-[16:37:14] [Server thread/INFO]: Preparing level "world"
-[16:37:16] [Server thread/INFO]: Loaded 488 advancements
-[16:37:17] [Server thread/INFO]: Preparing start region for level 0
-[16:37:18] [Server thread/INFO]: Preparing spawn area: 0%
-[16:37:19] [Server thread/INFO]: Preparing spawn area: 47%
-[16:37:20] [Server thread/INFO]: Preparing spawn area: 88%
-[16:37:20] [Server thread/INFO]: Done (5.643s)! For help, type "help" or "?"
-[16:38:21] [Server thread/INFO]: Stopping the server
-[16:38:21] [Server thread/INFO]: Stopping server
-[16:38:21] [Server thread/INFO]: Saving players
-[16:38:21] [Server thread/INFO]: Saving worlds
-[16:38:21] [Server thread/INFO]: Saving chunks for level 'world'/overworld
-[16:38:22] [Server thread/INFO]: Saving chunks for level 'world'/the_nether
-[16:38:22] [Server thread/INFO]: Saving chunks for level 'world'/the_end
-[16:38:22] [Server Shutdown Thread/INFO]: Stopping server
+[15:46:19] [main/INFO]: Extra: []
+[15:46:19] [main/INFO]: Running with arguments: [--tweakClass, net.minecraftforge.fml.common.launcher.FMLServerTweaker, --tweakClass, net.minecraftforge.gradle.tweakers.CoremodTweaker]
+[15:46:19] [main/INFO]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[15:46:19] [main/INFO]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[15:46:19] [main/INFO]: Loading tweak class name net.minecraftforge.gradle.tweakers.CoremodTweaker
+[15:46:19] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLServerTweaker
+[15:46:33] [Server thread/INFO]: Starting minecraft server version 1.12.2
+[15:46:33] [Server thread/WARN]: To start the server with more ram, launch it as "java -Xmx1024M -Xms1024M -jar minecraft_server.jar"
+[15:46:51] [Server thread/INFO]: Loading properties
+[15:46:52] [Server thread/INFO]: Default game type: SURVIVAL
+[15:46:52] [Server thread/INFO]: Generating keypair
+[15:46:52] [Server thread/INFO]: Starting Minecraft server on *:25565
+[15:46:52] [Server thread/INFO]: Using default channel type
+[15:46:55] [Server thread/INFO]: Preparing level "world"
+[15:46:57] [Server thread/INFO]: Loaded 488 advancements
+[15:46:57] [Server thread/INFO]: Preparing start region for level 0
+[15:46:58] [Server thread/INFO]: Preparing spawn area: 0%
+[15:47:00] [Server thread/INFO]: Preparing spawn area: 54%
+[15:47:01] [Server thread/INFO]: Done (6.094s)! For help, type "help" or "?"
+[15:47:14] [Server thread/INFO]: Stopping server
+[15:47:14] [Server thread/INFO]: Saving players
+[15:47:14] [Server thread/INFO]: Saving worlds
+[15:47:14] [Server thread/INFO]: Saving chunks for level 'world'/overworld
+[15:47:14] [Server thread/INFO]: Saving chunks for level 'world'/the_nether
+[15:47:14] [Server thread/INFO]: Saving chunks for level 'world'/the_end
