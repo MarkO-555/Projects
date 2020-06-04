@@ -27,7 +27,8 @@ class Block{
   }
   
   void update(){
-    Draw();
+    if(type==2)
+      Draw();
   }
   
   int getType(){
@@ -45,14 +46,12 @@ class Block{
   
   void Draw(){
     if(texture == null){
-      //noStroke();
       stroke(1);
       fill(RED, GREEN, BLUE);
-      //fill(col);
       rect(x*it, y*it, w*it, h*it);
     }
     else{
       image(texture, x*it + (w*it)/2, y*it + (h*it)/2);
     }
   }
-}
+}  

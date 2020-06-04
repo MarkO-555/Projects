@@ -1,7 +1,8 @@
 boolean buttonDown = false;
 class MainMenu{
   //private ArrayList<UIButton> buttons;
-  int state = -1;
+  //int state = -1;
+  int state = 1;
   int loadTargetState, loadBackState;
   boolean open = true;
   PrintWriter Writer;
@@ -36,8 +37,7 @@ class MainMenu{
     
     int[] LevelCreatorText = {165, 160};
     LevelCreator.addText("Level Creator", LevelCreatorText, 70);
-    
-    
+        
     for(int x=xoff; x<width/scale+xoff; x+=it/scale){
       for(int y=yoff; y<height/scale+yoff; y+=it/scale){
         LevelCreator.addButton("", x, y, it/scale, it/scale);
@@ -57,7 +57,7 @@ class MainMenu{
     int[] greenpos = {x-xdif, yoff+140};
     int[] bluepos = {x-xdif, yoff+200};
     
-    LevelCreator.addRect(25, yoff, 325, 240, 200);
+    LevelCreator.addRect(25, yoff, 325, 240, Constants.TabBackground);
     
     LevelCreator.addText("Color", Colorpos, tSize);
     LevelCreator.addText("Red", redpos, tSize);
@@ -72,6 +72,18 @@ class MainMenu{
     LevelCreator.setTextboxType(1, true);
     LevelCreator.setTextboxType(2, true);
     
+    ArrayList<UIButton> btns = new ArrayList<UIButton>();
+    
+    float cx = 30;
+    float cy = 470;
+    float off = 5;
+    
+    btns.add(new UIButton(loadImage("Icons/Player.png"), cx+off, cy+off));
+    btns.add(new UIButton(loadImage("Icons/Enemy.png"), cx+30+off, cy+off));
+    btns.add(new UIButton(loadImage("Icons/Block.png"), cx+60+off, cy+off));
+    
+    LevelCreator.addChooser(cx, cy, 100, 100, Constants.TabBackground, btns);
+    
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
     MultiPlayer.addButton("Back", 100, 660, 600, 100);
@@ -80,8 +92,8 @@ class MainMenu{
     Options.addText("Options", optionText, 70); 
     Options.addButton("Back", 100, 660, 600, 100);
     
-    int[] PlayText = {165, 160};
-    PlayMenu.addText("Tutorial", PlayText, 70);
+    //int[] PlayText = {165, 160};
+    //PlayMenu.addText("Tutorial", PlayText, 70);
     
     int[] SaveTitleText = {165, 160};
     SaveMenu.addText("Save Menu", SaveTitleText, 70);
@@ -145,8 +157,9 @@ class MainMenu{
                BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
              else
                BLUE = 0;
+               
+             blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, RED, GREEN, BLUE, LevelCreator.getChooserState(0)));
              
-             blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, RED, GREEN, BLUE, 0));
            }
            else if(mouseButton == RIGHT){
              for(int i=0; i<blocks.size(); i++){
@@ -217,7 +230,6 @@ class MainMenu{
            col.save("Levels/"+str+"-color.png");
            type.save("Levels/"+str+"-type.png");
            
-           //Writer.println(str);
            Writer.flush();
        }
        if(SaveMenu.getState() != -1){
@@ -259,285 +271,5 @@ class MainMenu{
      //   Options.setState(-1);
      //}
      
-  }
-}
-
-class Menu{
-  private int state = -1;
-  private ArrayList<String> text = new ArrayList<String>();
-  private ArrayList<int[]> textpos = new ArrayList<int[]>();
-  private ArrayList<Float> fontSize = new ArrayList<Float>();
-  
-  private ArrayList<PVector> rectPos = new ArrayList<PVector>();
-  private ArrayList<PVector> rectSize = new ArrayList<PVector>();
-  private ArrayList<Float> rectColor = new ArrayList<Float>();
-  
-  private ArrayList<PImage> images = new ArrayList<PImage>();
-  private ArrayList<PVector> imagePos = new ArrayList<PVector>();
-  
-  private ArrayList<UIButton> buttons = new ArrayList<UIButton>();
-  private ArrayList<UITextbox> textboxs = new ArrayList<UITextbox>();
-  
-  //private float backgroundColor = 165;
-  //private float RED, GREEN, BLUE;
-  private color col = color(165);
-  
-  void addButton(String text, float x, float y, float w, float h){
-    buttons.add(new UIButton(text, x, y, w, h)); 
-  }
-  
-  void addRect(float x, float y, float w, float h, float Color){
-    rectPos.add(new PVector(x, y));
-    rectSize.add(new PVector(w, h));
-    rectColor.add(Color);
-  }
-  
-  void addText(String text, int[] pos, float fontSize){
-    //text(text, x, y); 
-    this.text.add(text);
-    this.textpos.add(pos);
-    this.fontSize.add(fontSize);
-  }
-  
-  void addTextbox(String defaultValue, float x, float y, float w, float h){
-     textboxs.add(new UITextbox(defaultValue, x, y, w, h));
-  }
-  
-  void addImage(String img, PVector imagePos){
-    this.images.add(loadImage(img));
-    this.imagePos.add(imagePos);
-  }
-  
-  String getTextBoxValue(int index){
-    return textboxs.get(index).text;
-  }
-  
-  int getState(){
-     return state;
-  }
-  
-  void setTextboxType(int index, boolean type){
-    textboxs.get(index).numOnly = type;
-  }
-  
-  void setState(int nstate){
-    state = nstate;
-  }
-  
-  void setBackground(float num){
-    //backgroundColor = num;
-    this.col = color(num);
-  }
-  
-  void setBackground(float RED, float GREEN, float BLUE){
-    //this.RED = RED;
-    //this.GREEN = GREEN;
-    //this.BLUE = BLUE;
-    
-    this.col = color(RED, GREEN, BLUE);
-    
-    //this.backgroundColor = -1;
-  }
-  
-  void update(){
-    //if(backgroundColor == -1){}
-    background(this.col);
-    
-    display();
-    
-    for(int i=0; i<buttons.size(); i++){
-      if(buttons.get(i).Hover()){
-        buttons.get(i).background  = 190;//150
-        if(mouseDown && !buttonDown){
-          state = i;
-          buttonDown = true;
-        }
-        
-      }
-      else
-        buttons.get(i).background  = 220;
-    }
-    
-    for(int i=0; i<textboxs.size(); i++)
-      textboxs.get(i).update();
-    for(int i=0; i<buttons.size(); i++)
-      buttons.get(i).update();
-      
-  }
-  
-  void display(){
-    //fill(0);
-    
-    for(int i=0; i<rectPos.size(); i++){
-      fill(rectColor.get(i));
-      rect(rectPos.get(i).x, rectPos.get(i).y, rectSize.get(i).x, rectSize.get(i).y);
-    }
-    
-    for(int i=0; i<text.size(); i++){
-      fill(0);
-      textSize(fontSize.get(i));
-      int[] pos = textpos.get(i);
-      text(text.get(i), pos[0], pos[1]);
-    }
-    
-    for(int i=0; i<images.size(); i++){
-      image(images.get(i), imagePos.get(i).x, imagePos.get(i).y);
-    }
-    
-  }
-}
-
-class UIButton implements UIObject{
-  float x, y, w, h;
-  String text;
-  
-  float background = 220;
-   UIButton(String text, float x, float y, float w, float h){
-     this.x = x;
-     this.y = y;
-     this.w = w;
-     this.h = h;
-     this.text = text;
-   }
-   
-   void update(){
-     display(); 
-   }
-   
-   void display(){
-     fill(background);
-     rect(x, y, w, h); 
-     
-     fill(0);
-     textSize(20);
-     text(text, x+30, y+h/2+10);
-   }
-   
-   boolean Hover(){
-     return(mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+h);
-   }
-}
-
-class UITextbox implements UIObject{
-  float x, y, w, h;
-  String text = "";
-  
-  private int textlength;
-  private boolean change = false;
-  private boolean numOnly = false;
-  private float background;
-  private String defaultValue;
-  
-  UITextbox(String defaultValue, float x, float y, float w, float h){
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    
-    textlength = (int)(w * 19/200);
-    if(defaultValue.length() > textlength)
-      this.defaultValue = defaultValue.substring(0, defaultValue.length() - (defaultValue.length() - textlength));
-    else
-      this.defaultValue = defaultValue;
-      
-    text = this.defaultValue;
-  }
-  
-  void update(){
-    display();
-    
-    if(mouseDown){
-      change = Hover();
-    }
-    else if(change && keyDown){
-      if(key == ''){
-        if(text.length() <= 1)
-          text = "";
-        else
-          text = text.substring(0, text.length() -1);
-        keyDown = false;
-      }
-      else if(keyCode ==16 || keyCode==17 || keyCode==UP || keyCode==LEFT || keyCode==RIGHT || keyCode==DOWN){}
-      else if(text.length() < textlength){
-        char c = key;
-        if(numOnly){
-          for(int i=0; i<10; i++){
-            //println(c, i, str(c).equals(str(i)));
-            if(str(c).equals(str(i))){
-              text += c;
-              keyDown = false;
-            }
-          }
-        }
-        else{
-          text += c; 
-          keyDown = false;
-        }
-      }
-    }
-    
-    if(change)
-      background = 220;
-    else
-      background = 255;
-  }
-  
-  void display(){
-    fill(background);
-    rect(x, y, w, h);
-    
-    textSize(15);
-    fill(0);
-    text(text, x + 10, y + h/2+5);
-    //println(19, w, text.length());
-  }
-  
-  boolean Hover(){
-     return(mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+h);
-  }
-}
-
-class UIScrollTab implements UIObject{
-  private float x, y, w, h;
-  
-  UIScrollTab(float x, float y, float w, float h){
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-  }
-  
-  void update(){
-    
-  }
-}
-
-class ButtonChooser implements UIObject{
-  private float x, y, w, h;
-  private ArrayList<UIButton> buttons;
-  private int state = 0;
-  
-  ButtonChooser(float x, float y, float w, float h){
-    this.buttons = new ArrayList<UIButton>();
-    
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-  }
-  
-  int getState(){
-    return this.state;
-  }
-  
-  void addButton(String str, float x, float y, float w, float h){
-    this.buttons.add(new UIButton(str, x, y, w, h));
-  }
-  
-  void update(){
-    for(int i=0; i<buttons.size(); i++){
-      if(this.buttons.get(i).Hover() && mouseDown && !buttonDown)
-        this.state = i;
-    }
   }
 }
