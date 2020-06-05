@@ -18,11 +18,13 @@ void setup() {
   String line = null;
 
   try {
-    while ((line = Reader.readLine()) != null) {
-      //println(line);
-      Levels.add(line);
+    if(Reader != null){
+      while ((line = Reader.readLine()) != null) {
+        //println(line);
+        Levels.add(line);
+      }
+      Reader.close();
     }
-    Reader.close();
   }
   catch (IOException e) {
     e.printStackTrace();

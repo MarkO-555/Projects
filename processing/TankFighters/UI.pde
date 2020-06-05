@@ -23,7 +23,7 @@ class Menu{
   void addChooser(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons){
     Choosers.add(new ButtonChooser(x, y, w, h, background));
     for(int i=0; i<buttons.size(); i++)
-      Choosers.get(Choosers.size()-1).addButton(buttons.get(i));
+      Choosers.get(Choosers.size()-1).addButton(buttons.get(i), 0);
   }
   
   void addButton(String text, float x, float y, float w, float h){
@@ -259,34 +259,24 @@ class UITextbox implements UIObject{
   }
 }
 
-class UIScrollTab implements UIObject{
-  private float x, y, w, h;
-  
-  UIScrollTab(float x, float y, float w, float h){
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-  }
-  
-  void update(){
-    
-  }
-}
-
 class ButtonChooser implements UIObject{
   private float x, y, w, h;
   private ArrayList<UIButton> buttons;
+  private ArrayList<Integer> buttonPaged;
   private int state = 0;
   private float background = 150;
+  private int currentPage = 0;
+  
   
   ButtonChooser(float x, float y, float w, float h, float background){
     this.buttons = new ArrayList<UIButton>();
+    this.buttonPaged = new ArrayList<Integer>();
     
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
+    
     this.background = background;
   }
   
@@ -298,12 +288,31 @@ class ButtonChooser implements UIObject{
     this.background = background; 
   }
   
-  void addButton(String str, float x, float y, float w, float h){
+  void addButton(String str, float x, float y, float w, float h, int page){
     this.buttons.add(new UIButton(str, x, y, w, h));
+    this.buttonPaged.add(page);
   }
   
-  void addButton(UIButton button){
+  void addButton(UIButton button, int page){
     this.buttons.add(button); 
+    this.buttonPaged.add(page);
+  }
+  
+  void nextPage(){
+    this.currentPage++;
+  }
+  
+  void prevPage(){
+    if(this.currentPage>0)
+      this.currentPage--;
+  }
+  
+  void toPage(int page){
+    this.currentPage = page; 
+  }
+  
+  int getCurrentPage(){
+    return currentPage;
   }
   
   void update(){
@@ -311,13 +320,16 @@ class ButtonChooser implements UIObject{
     
     if(buttons.size() > 0){
       for(int i=0; i<buttons.size(); i++){
-        UIButton btn = buttons.get(i);
-        btn.update();
-        
-        if(this.buttons.get(i).Hover() && mouseDown && !buttonDown){
-          state = i;
+        //println(i, buttonPaged.get(i), currentPage, buttonPaged.get(i) != currentPage);
+        if(buttonPaged.get(i) == currentPage){
+          UIButton btn = buttons.get(i);
+          btn.update();
+          
+          if(this.buttons.get(i).Hover() && mouseDown && !buttonDown){
+            state = i;
+          }
+          //buttons.get(state).background = Constants.ButtonPressed;//190;
         }
-        //buttons.get(state).background = Constants.ButtonPressed;//190;
       }
       
       UIButton btn = buttons.get(state);

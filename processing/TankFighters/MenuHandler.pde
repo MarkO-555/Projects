@@ -2,7 +2,7 @@ boolean buttonDown = false;
 class MainMenu{
   //private ArrayList<UIButton> buttons;
   //int state = -1;
-  int state = 1;
+  int state = 6;
   int loadTargetState, loadBackState;
   boolean open = true;
   PrintWriter Writer;
@@ -92,8 +92,8 @@ class MainMenu{
     Options.addText("Options", optionText, 70); 
     Options.addButton("Back", 100, 660, 600, 100);
     
-    //int[] PlayText = {165, 160};
-    //PlayMenu.addText("Tutorial", PlayText, 70);
+    int[] PlayText = {165, 160};
+    PlayMenu.addText("Tutorial", PlayText, 70);
     
     int[] SaveTitleText = {165, 160};
     SaveMenu.addText("Save Menu", SaveTitleText, 70);
@@ -204,23 +204,23 @@ class MainMenu{
        Main.setState(-1);
      }
      else if(state == 4){
-       //PlayMenu.update();
-       //if(mouseDown && !buttonDown)
-       //  this.open = false;
+       PlayMenu.update();
+       if(mouseDown && !buttonDown)
+         this.open = false;
      }
-     else if(state == 5){//Save
+     else if(state == 5){//Save Menu
        SaveMenu.update();
        if(SaveMenu.getState() == 1){
            PImage col  = createImage(int(width/it), int(height/it), RGB);
            PImage type  = createImage(int(width/it), int(height/it), RGB);
            
+           //println("Size",blocks.size());
            for(int i=0; i<blocks.size(); i++){
              Block block = blocks.get(i);
-             
+             //println((int)block.x, (int)block.y);
              col.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
              int t = block.getType();
-             //println(t);
-             type.set((int)block.x, (int)block.y, color(t, t, t));
+             type.set((int)block.x, (int)block.y, color(t+1, t+1, t+1));
            }
            
            String str = SaveMenu.getTextBoxValue(0);
@@ -230,6 +230,7 @@ class MainMenu{
            col.save("Levels/"+str+"-color.png");
            type.save("Levels/"+str+"-type.png");
            
+           Writer.println(str);
            Writer.flush();
        }
        if(SaveMenu.getState() != -1){
@@ -237,7 +238,7 @@ class MainMenu{
          SaveMenu.setState(-1);
        }
      }
-     else if(state == 6){//Load
+     else if(state == 6){//Load Menu
        LoadMenu.update();
        Main.setState(-1);
        
