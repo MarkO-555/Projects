@@ -320,6 +320,10 @@ class ButtonChooser implements UIObject{
     
   }
   
+  void setState(int state){
+    this.state = state;
+  }
+  
   int getState(){
     return this.state;
   }

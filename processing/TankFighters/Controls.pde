@@ -1,5 +1,6 @@
 boolean mouseDown, openMenu, keyDown;
 boolean left, right, up, down, ring;
+boolean buttonDown = false;
 boolean menuWasUp = true;
 
 void mousePressed() {

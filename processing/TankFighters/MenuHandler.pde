@@ -1,4 +1,3 @@
-boolean buttonDown = false;
 class MainMenu{
   //private ArrayList<UIButton> buttons;
   int state = -1;
@@ -83,6 +82,7 @@ class MainMenu{
     btns.add(new UIButton(loadImage("Icons/Block.png"), Lcx+60+Loff, Lcy+Loff));
     
     LevelCreator.addChooserB(Lcx, Lcy, 100, 100, Constants.TabBackground, btns);
+    LevelCreator.getChooser(0).setState(Constants.Blocktype);
     
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
@@ -145,32 +145,6 @@ class MainMenu{
      }
      else if(state == 1){
        LevelCreator.update();
-       
-       
-       //if(mouseDown && !buttonDown && LevelCreator.getChooser(0).Hover()){
-       //  ButtonChooser chooser = LevelCreator.getChooser(0);
-         
-       //  ArrayList<String> vals = new ArrayList<String>();
-       //  if(chooser.getState() == 0){//Player
-       //    vals.add("0");
-       //    vals.add("255");
-       //    vals.add("0");
-           
-       //  }
-       //  else if(chooser.getState() == 1){//Enemy
-       //    vals.add("255");
-       //    vals.add("0");
-       //    vals.add("0");
-       //  }
-       //  else{
-       //    vals.add("0");
-       //    vals.add("0");
-       //    vals.add("0");
-       //  }
-         
-       //  LevelCreator.setTextBoxValues(vals);
-       //  buttonDown = true;
-       //}
        
        for(int i=0; i<blocks.size(); i++){
          Block block = blocks.get(i);
