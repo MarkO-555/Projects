@@ -105,33 +105,26 @@ class MainMenu{
     SaveMenu.addTextbox("", 250, 420, 400, 50);
     
     
-    int[] LoadTitleText = {165, 160};
+    int[] LoadTitleText = {215, 130};
     LoadMenu.addText("Load Menu", LoadTitleText, 70);
     LoadMenu.addButton("Back", 75, 660, 300, 100);
     LoadMenu.addButton("Load", 425, 660, 300, 100);
+    LoadMenu.addButton("Delete", 0, 0, 100, 100);
     
-    //ArrayList<UIButton> LMBtns = new ArrayList<UIButton>();
-    //ArrayList<Integer> LMBpages = new ArrayList<Integer>();
     ArrayList<String> LMBstrs = new ArrayList<String>();
     
     float LMWidth = 600;
     float LMHeight = 400;
     
-    float LMcx = 100;
-    float LMcy = 170;
-    
     int maxButtons = (int)Math.ceil(LMHeight / Constants.loadButtonHeight);
-    //println(maxButtons, Constants.loadButtonHeight, LMHeight);
     
     for(int i=0; i<Levels.size(); i++){
-      //LMBtns.add(new UIButton(Levels.get(i), LMcx, LMcy+i*Constants.loadButtonHeight, Constants.loadButtonWidth, Constants.loadButtonHeight));
-      //LMBpages.add(0);
-      //LMBpages.add((int)Math.ceil(i/maxButtons));
       LMBstrs.add(Levels.get(i));
     }
     
-    LoadMenu.addChooser(LMcx, LMcy, LMWidth, LMHeight, Constants.TabBackground, LMBstrs);//, LMBtns, LMBpages);
-    LoadMenu.getChooser(0).setMaxButtonsPerPage(maxButtons);
+    LoadMenu.addChooser(100, 170, LMWidth, LMHeight, Constants.TabBackground, LMBstrs, maxButtons);//, LMBtns, LMBpages);
+    //println(maxButtons);
+    //LoadMenu.getChooser(0).setMaxButtonsPerPage(maxButtons);
   }
   
   void update(){
@@ -152,6 +145,32 @@ class MainMenu{
      }
      else if(state == 1){
        LevelCreator.update();
+       
+       
+       //if(mouseDown && !buttonDown && LevelCreator.getChooser(0).Hover()){
+       //  ButtonChooser chooser = LevelCreator.getChooser(0);
+         
+       //  ArrayList<String> vals = new ArrayList<String>();
+       //  if(chooser.getState() == 0){//Player
+       //    vals.add("0");
+       //    vals.add("255");
+       //    vals.add("0");
+           
+       //  }
+       //  else if(chooser.getState() == 1){//Enemy
+       //    vals.add("255");
+       //    vals.add("0");
+       //    vals.add("0");
+       //  }
+       //  else{
+       //    vals.add("0");
+       //    vals.add("0");
+       //    vals.add("0");
+       //  }
+         
+       //  LevelCreator.setTextBoxValues(vals);
+       //  buttonDown = true;
+       //}
        
        for(int i=0; i<blocks.size(); i++){
          Block block = blocks.get(i);
@@ -236,10 +255,8 @@ class MainMenu{
            PImage col  = createImage(int(width/it), int(height/it), RGB);
            PImage type  = createImage(int(width/it), int(height/it), RGB);
            
-           //println("Size",blocks.size());
            for(int i=0; i<blocks.size(); i++){
              Block block = blocks.get(i);
-             //println((int)block.x, (int)block.y);
              col.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
              int t = block.getType();
              type.set((int)block.x, (int)block.y, color(t+1, t+1, t+1));
@@ -267,7 +284,7 @@ class MainMenu{
        LoadMenu.update();
        Main.setState(-1);
        
-       if(LoadMenu.getState() == 0){
+       if(LoadMenu.getState() == 0){//back
          state = loadBackState;
        }
        else if(LoadMenu.getState() == 1){//Loading in Level!!!!
@@ -309,8 +326,13 @@ class MainMenu{
          state = loadTargetState;
          
        }
+       else if(LoadMenu.getState() == 2){//delete
+         ButtonChooser chooser = LoadMenu.getChooser(0);
+         chooser.removeButton(chooser.getState());
+         LoadMenu.setState(-1);
+       }
        
-       if(LoadMenu.getState() != -1)
+       if(LoadMenu.getState() != -1 && LoadMenu.getState() != 2)
          LoadMenu.setState(-1);
      }
      else{

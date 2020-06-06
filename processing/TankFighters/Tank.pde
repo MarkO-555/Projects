@@ -32,9 +32,12 @@ class Tank {
     this.player = player;
     this.pos = pos;
 
-    this.RED = RED;
-    this.BLUE = BLUE;
-    this.GREEN = GREEN;
+    if(RED >= 1)
+      this.RED = 1;
+    if(GREEN >= 1)
+      this.GREEN = 1;
+    if(BLUE >= 1)
+      this.GREEN = 1;
 
     Width *= scale;
     Height *= scale;

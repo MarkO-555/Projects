@@ -20,6 +20,14 @@ class Menu{
   //private float RED, GREEN, BLUE;
   private color col = color(165);
   
+  void setTextBoxValues(ArrayList<String> vals){
+    for(int i=0; i<vals.size(); i++){
+      if(i >= textboxs.size())
+        return;
+      textboxs.get(i).setValue(vals.get(i));
+    }
+  }
+  
   void addChooser(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons, ArrayList<Integer> pages){
     Choosers.add(new ButtonChooser(x, y, w, h, background));
     for(int i=0; i<buttons.size(); i++)
@@ -32,14 +40,19 @@ class Menu{
       Choosers.get(Choosers.size()-1).addButton(buttons.get(i), 0);
   }
   
-  void addChooser(float x, float y, float w, float h, float background, ArrayList<String> strs){
-    Choosers.add(new ButtonChooser(x, y, w, h, background));
-    for(int i=0; i<buttons.size(); i++)
-      Choosers.get(Choosers.size()-1).addButton(strs.get(i));
+  void addChooser(float x, float y, float w, float h, float background, ArrayList<String> strs, int maxButtons){
+    ButtonChooser chooser = new ButtonChooser(x, y, w, h, background);
+    
+    chooser.setMaxButtonsPerPage(maxButtons);
+    
+    for(int i=0; i<strs.size(); i++)
+      chooser.addButton(strs.get(i));
+      
+    Choosers.add(chooser);
   }
   
   ButtonChooser getChooser(int index){
-    return Choosers.get(i);
+    return Choosers.get(index);
   }
   
   void addButton(String text, float x, float y, float w, float h){
@@ -221,6 +234,14 @@ class UITextbox implements UIObject{
     text = this.defaultValue;
   }
   
+  String getValue(){
+    return text; 
+  }
+  
+  void setValue(String value){
+    text = value; 
+  }
+  
   void update(){
     display();
     
@@ -311,6 +332,17 @@ class ButtonChooser implements UIObject{
     this.background = background; 
   }
   
+  void removeButton(){
+    removeButton(buttons.size()-1);
+  }
+  
+  void removeButton(int index){
+    if(buttons.size() > 0){
+      buttons.remove(index);
+      buttonPaged.remove(index);
+    }
+  }
+  
   void addButton(String str, float x, float y, float w, float h, int page){
     this.buttons.add(new UIButton(str, x, y, w, h));
     this.buttonPaged.add(page);
@@ -329,6 +361,7 @@ class ButtonChooser implements UIObject{
   
   void addButton(String str){//bookmark
     int page = (int)Math.floor((buttons.size())/maxButtonsPerPage);
+    //println(buttons.size(), maxButtonsPerPage, page);
     this.buttons.add(new UIButton(str, x, y + Constants.loadButtonHeight*(buttons.size() - page*buttons.size()), Constants.loadButtonWidth, Constants.loadButtonHeight));
     this.buttonPaged.add(page);
     
@@ -371,14 +404,12 @@ class ButtonChooser implements UIObject{
     
     if(buttons.size() > 0){
       for(int i=0; i<buttons.size(); i++){
-        //println(i, buttonPaged.get(i), currentPage, buttonPaged.get(i) != currentPage);
-        //println(i, buttonPaged.size());
         if(buttonPaged.get(i) == currentPage){
           UIButton btn = buttons.get(i);
           btn.update();
-          
           if(this.buttons.get(i).Hover() && mouseDown && !buttonDown){
             state = i;
+            buttonDown = true;
           }
         }
       }
@@ -392,5 +423,10 @@ class ButtonChooser implements UIObject{
   void Draw(){
     fill(background);
     rect(x, y, w, h);
+  }
+  
+  
+  boolean Hover(){
+     return(mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+h);
   }
 }
