@@ -323,7 +323,7 @@ class ButtonChooser implements UIObject{
   
   void addButton(String str){//bookmark
     int page = (int)Math.floor((buttons.size())/maxButtonsPerPage);
-    this.buttons.add(new UIButton(str, x, y + Constants.loadButtonHeight*(buttons.size()+1), Constants.loadButtonHeight, Constants.loadButtonWidth));
+    this.buttons.add(new UIButton(str, x, y + Constants.loadButtonHeight*(buttons.size()), Constants.loadButtonWidth, Constants.loadButtonHeight));
     this.buttonPaged.add(page);
   }
   

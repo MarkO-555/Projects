@@ -120,7 +120,9 @@ class MainMenu{
     float LMcx = 100;
     float LMcy = 170;
     
-    int maxButtons = (int)Math.ceil(Constants.loadButtonHeight / LMHeight);
+    int maxButtons = (int)Math.ceil(LMHeight / Constants.loadButtonHeight);
+    println(maxButtons, Constants.loadButtonHeight, LMHeight);
+    
     
     for(int i=0; i<Levels.size(); i++){
       LMBtns.add(new UIButton(Levels.get(i), LMcx, LMcy+i*Constants.loadButtonHeight, Constants.loadButtonWidth, Constants.loadButtonHeight));
