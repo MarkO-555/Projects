@@ -26,11 +26,11 @@ class Menu{
       Choosers.get(Choosers.size()-1).addButton(buttons.get(i), pages.get(i));
   }
   
-  //void addChooser(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons){
-  //  Choosers.add(new ButtonChooser(x, y, w, h, background));
-  //  for(int i=0; i<buttons.size(); i++)
-  //    Choosers.get(Choosers.size()-1).addButton(buttons.get(i), 0);
-  //}
+  void addChooserB(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons){
+    Choosers.add(new ButtonChooser(x, y, w, h, background));
+    for(int i=0; i<buttons.size(); i++)
+      Choosers.get(Choosers.size()-1).addButton(buttons.get(i), 0);
+  }
   
   void addChooser(float x, float y, float w, float h, float background, ArrayList<String> strs){
     Choosers.add(new ButtonChooser(x, y, w, h, background));

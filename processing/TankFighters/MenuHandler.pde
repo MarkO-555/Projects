@@ -82,7 +82,7 @@ class MainMenu{
     btns.add(new UIButton(loadImage("Icons/Enemy.png"), Lcx+30+Loff, Lcy+Loff));
     btns.add(new UIButton(loadImage("Icons/Block.png"), Lcx+60+Loff, Lcy+Loff));
     
-    LevelCreator.addChooser(Lcx, Lcy, 100, 100, Constants.TabBackground, btns);
+    LevelCreator.addChooserB(Lcx, Lcy, 100, 100, Constants.TabBackground, btns);
     
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
