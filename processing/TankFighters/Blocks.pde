@@ -27,7 +27,7 @@ class Block{
   }
   
   void update(){
-    if(type==2)
+    if(type==Constants.Blocktype)
       Draw();
   }
   

@@ -66,15 +66,19 @@ void draw() {
     }
 
     for (int i=0; i<blocks.size(); i++) {
-      blocks.get(i).update(); 
-      for (int t=0; t<tanks.size(); t++) {
-        blocks.get(i).isColliding(tanks.get(t));
-      }
+      Block block = blocks.get(i);
+      block.update(); 
+      
+      if(block.type != Constants.Playertype && block.type != Constants.Enemytype){
+        for (int t=0; t<tanks.size(); t++) {
+          block.isColliding(tanks.get(t));
+        }
 
-      for (int v=0; v<blocks.size(); v++) {
-        if (v != i) {
-          if (blocks.get(i).x == blocks.get(v).x && blocks.get(i).y == blocks.get(v).y)
-            blocks.remove(v);
+        for (int v=0; v<blocks.size(); v++) {
+          if (v != i) {
+            if (blocks.get(i).x == blocks.get(v).x && blocks.get(i).y == blocks.get(v).y)
+              blocks.remove(v);
+          }
         }
       }
     }

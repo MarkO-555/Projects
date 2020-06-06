@@ -41,7 +41,7 @@ class bullet {
 
     for (int i=0; i<blocks.size(); i++) {
       Block block = blocks.get(i);
-      if (pos.x+r/2 >= block.x*it && pos.x-r/2 <= (block.x+block.w)*it && pos.y+r/2 >= block.y*it && pos.y-r/2 <= (block.y+block.h)*it) {
+      if ((block.type != Constants.Enemytype && block.type != Constants.Playertype) && (pos.x+r/2 >= block.x*it && pos.x-r/2 <= (block.x+block.w)*it && pos.y+r/2 >= block.y*it && pos.y-r/2 <= (block.y+block.h)*it)) {
         particlesystem.add(new ParticleSystem(20, pos.copy(), vel.copy().mult(-2), 360, block.RED, block.GREEN, block.BLUE));
         return true;
       }

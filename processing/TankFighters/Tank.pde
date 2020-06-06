@@ -154,10 +154,12 @@ class Tank {
   
       rotate(barrel.heading() + 2*PI/4);
       strokeWeight(0);
+      stroke(0);
   
       fill(140*RED, 140*GREEN, 140*BLUE);
-  
       ellipse(0, Width*13/40, Width/8, Width);
+      
+      //strokeWeight(1);
   
       //30*26/30
       ellipse(0, 0, Height*26/30, Height*26/30);

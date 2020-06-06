@@ -1,8 +1,8 @@
 boolean buttonDown = false;
 class MainMenu{
   //private ArrayList<UIButton> buttons;
-  //int state = -1;
-  int state = 6;
+  int state = -1;
+  //int state = 6;
   int loadTargetState, loadBackState;
   boolean open = true;
   PrintWriter Writer;
@@ -74,15 +74,15 @@ class MainMenu{
     
     ArrayList<UIButton> btns = new ArrayList<UIButton>();
     
-    float cx = 30;
-    float cy = 470;
-    float off = 5;
+    float Lcx = 30;
+    float Lcy = 470;
+    float Loff = 5;
     
-    btns.add(new UIButton(loadImage("Icons/Player.png"), cx+off, cy+off));
-    btns.add(new UIButton(loadImage("Icons/Enemy.png"), cx+30+off, cy+off));
-    btns.add(new UIButton(loadImage("Icons/Block.png"), cx+60+off, cy+off));
+    btns.add(new UIButton(loadImage("Icons/Player.png"), Lcx+Loff, Lcy+Loff));
+    btns.add(new UIButton(loadImage("Icons/Enemy.png"), Lcx+30+Loff, Lcy+Loff));
+    btns.add(new UIButton(loadImage("Icons/Block.png"), Lcx+60+Loff, Lcy+Loff));
     
-    LevelCreator.addChooser(cx, cy, 100, 100, Constants.TabBackground, btns);
+    LevelCreator.addChooser(Lcx, Lcy, 100, 100, Constants.TabBackground, btns);
     
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
@@ -110,6 +110,26 @@ class MainMenu{
     LoadMenu.addButton("Back", 75, 660, 300, 100);
     LoadMenu.addButton("Load", 425, 660, 300, 100);
     
+    ArrayList<UIButton> LMBtns = new ArrayList<UIButton>();
+    ArrayList<Integer> LMBpages = new ArrayList<Integer>();
+    
+    
+    float LMWidth = 600;
+    float LMHeight = 400;
+    
+    float LMcx = 100;
+    float LMcy = 170;
+    
+    int maxButtons = (int)Math.ceil(Constants.loadButtonHeight / LMHeight);
+    
+    for(int i=0; i<Levels.size(); i++){
+      LMBtns.add(new UIButton(Levels.get(i), LMcx, LMcy+i*Constants.loadButtonHeight, Constants.loadButtonWidth, Constants.loadButtonHeight));
+      LMBpages.add(0);
+      LMBpages.add((int)Math.ceil(i/maxButtons));
+    }
+    
+    LoadMenu.addChooser(LMcx, LMcy, LMWidth, LMHeight, Constants.TabBackground, LMBtns, LMBpages);
+    LoadMenu.getChooser(0).setMaxButtonsPerPage(maxButtons);
   }
   
   void update(){
@@ -232,6 +252,9 @@ class MainMenu{
            
            Writer.println(str);
            Writer.flush();
+           
+           Levels.add(str);
+           LoadMenu.getChooser(0).addButton(str);  //bookmark
        }
        if(SaveMenu.getState() != -1){
          state = 1;
@@ -245,11 +268,44 @@ class MainMenu{
        if(LoadMenu.getState() == 0){
          state = loadBackState;
        }
-       else if(LoadMenu.getState() == 1){
-         state = loadTargetState;
+       else if(LoadMenu.getState() == 1){//Loading in Level!!!!
          
          blocks = new ArrayList<Block>();
          tanks = new ArrayList<Tank>();
+         
+         String name = Levels.get(LoadMenu.getChooserState(0));
+         
+         PImage col = loadImage("Levels/"+name+"-color.png");
+         PImage type = loadImage("Levels/"+name+"-type.png");
+         
+         //image(col, 0, 0);
+         //noLoop();
+         //println(col.width, col.height);
+         
+         for(int x=0; x<col.width; x++){
+           for(int y=0; y<col.height; y++){
+             color Ccol = col.get(x, y); 
+             color Ctype = type.get(x, y);
+             
+             if(red(Ctype) != 0){
+               blocks.add(new Block(x, y, 1, 1, red(Ccol), green(Ccol), blue(Ccol), (int)red(Ctype)-1));
+               
+               //println(red(Ctype), blocks.get(blocks.size()-1).type);
+               //println(red(Ctype), 0, 1);
+               
+               if(red(Ctype) == 1 || red(Ctype)==2)
+                 tanks.add(new Tank(red(Ctype) == 1, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+               
+               //if(red(Ctype)==1)
+               //  tanks.add(new Tank(true, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+               //else if(red(Ctype)==2)
+               //  tanks.add(new Tank(false, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+             }
+           }
+         }
+         
+         state = loadTargetState;
+         
        }
        
        if(LoadMenu.getState() != -1)
