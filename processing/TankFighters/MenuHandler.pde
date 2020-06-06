@@ -110,9 +110,9 @@ class MainMenu{
     LoadMenu.addButton("Back", 75, 660, 300, 100);
     LoadMenu.addButton("Load", 425, 660, 300, 100);
     
-    ArrayList<UIButton> LMBtns = new ArrayList<UIButton>();
-    ArrayList<Integer> LMBpages = new ArrayList<Integer>();
-    
+    //ArrayList<UIButton> LMBtns = new ArrayList<UIButton>();
+    //ArrayList<Integer> LMBpages = new ArrayList<Integer>();
+    ArrayList<String> LMBstrs = new ArrayList<String>();
     
     float LMWidth = 600;
     float LMHeight = 400;
@@ -121,16 +121,16 @@ class MainMenu{
     float LMcy = 170;
     
     int maxButtons = (int)Math.ceil(LMHeight / Constants.loadButtonHeight);
-    println(maxButtons, Constants.loadButtonHeight, LMHeight);
-    
+    //println(maxButtons, Constants.loadButtonHeight, LMHeight);
     
     for(int i=0; i<Levels.size(); i++){
-      LMBtns.add(new UIButton(Levels.get(i), LMcx, LMcy+i*Constants.loadButtonHeight, Constants.loadButtonWidth, Constants.loadButtonHeight));
-      LMBpages.add(0);
-      LMBpages.add((int)Math.ceil(i/maxButtons));
+      //LMBtns.add(new UIButton(Levels.get(i), LMcx, LMcy+i*Constants.loadButtonHeight, Constants.loadButtonWidth, Constants.loadButtonHeight));
+      //LMBpages.add(0);
+      //LMBpages.add((int)Math.ceil(i/maxButtons));
+      LMBstrs.add(Levels.get(i));
     }
     
-    LoadMenu.addChooser(LMcx, LMcy, LMWidth, LMHeight, Constants.TabBackground, LMBtns, LMBpages);
+    LoadMenu.addChooser(LMcx, LMcy, LMWidth, LMHeight, Constants.TabBackground, LMBstrs);//, LMBtns, LMBpages);
     LoadMenu.getChooser(0).setMaxButtonsPerPage(maxButtons);
   }
   

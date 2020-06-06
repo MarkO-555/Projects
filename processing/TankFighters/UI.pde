@@ -26,10 +26,16 @@ class Menu{
       Choosers.get(Choosers.size()-1).addButton(buttons.get(i), pages.get(i));
   }
   
-  void addChooser(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons){
+  //void addChooser(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons){
+  //  Choosers.add(new ButtonChooser(x, y, w, h, background));
+  //  for(int i=0; i<buttons.size(); i++)
+  //    Choosers.get(Choosers.size()-1).addButton(buttons.get(i), 0);
+  //}
+  
+  void addChooser(float x, float y, float w, float h, float background, ArrayList<String> strs){
     Choosers.add(new ButtonChooser(x, y, w, h, background));
     for(int i=0; i<buttons.size(); i++)
-      Choosers.get(Choosers.size()-1).addButton(buttons.get(i), 0);
+      Choosers.get(Choosers.size()-1).addButton(strs.get(i));
   }
   
   ButtonChooser getChooser(int index){
@@ -323,8 +329,16 @@ class ButtonChooser implements UIObject{
   
   void addButton(String str){//bookmark
     int page = (int)Math.floor((buttons.size())/maxButtonsPerPage);
-    this.buttons.add(new UIButton(str, x, y + Constants.loadButtonHeight*(buttons.size()), Constants.loadButtonWidth, Constants.loadButtonHeight));
+    this.buttons.add(new UIButton(str, x, y + Constants.loadButtonHeight*(buttons.size() - page*buttons.size()), Constants.loadButtonWidth, Constants.loadButtonHeight));
     this.buttonPaged.add(page);
+    
+    return;
+  }
+  
+  void addButtons(ArrayList<String> strs){
+    for(int i=0; i<strs.size(); i++){
+      addButton(strs.get(i)); 
+    }
   }
   
   void addButtons(ArrayList<UIButton> buttons, ArrayList<Integer> pages){
