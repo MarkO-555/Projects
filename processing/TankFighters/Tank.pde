@@ -7,8 +7,7 @@ class Tank {
 
   private PVector target = new PVector(0, 0);
   private PVector barrel = new PVector(0, 0);
-
-
+  
   private float Health = 10;
   private float maxHealth = 10;
 
@@ -19,6 +18,8 @@ class Tank {
   private float maxAcc = 1;
   private boolean player;
   private float RED, GREEN, BLUE;
+  
+  private int equippedWeapon = 0;
 
   Tank() {
     this(true, new PVector(random(width), random(height)), 0, 1, 0);
