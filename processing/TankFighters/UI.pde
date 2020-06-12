@@ -65,6 +65,7 @@ class Menu{
     rectColor.add(Color);
   }
   
+  
   void addText(String text, int[] pos, float fontSize){
     //text(text, x, y); 
     this.text.add(text);
@@ -177,6 +178,10 @@ class UIButton implements UIObject{
      this.w = w;
      this.h = h;
      this.text = text;
+   }
+   
+   String getText(){
+     return text;
    }
    
    UIButton(PImage img, float x, float y){
@@ -334,6 +339,14 @@ class ButtonChooser implements UIObject{
   
   void setBackground(float background){
     this.background = background; 
+  }
+  
+  UIButton getButton(int index){
+    return buttons.get(index);
+  }
+  
+  int getButtonCount(){
+    return buttons.size();
   }
   
   void removeButton(){

@@ -226,28 +226,39 @@ class MainMenu{
      else if(state == 5){//Save Menu
        SaveMenu.update();
        if(SaveMenu.getState() == 1){
-           PImage col  = createImage(int(width/it), int(height/it), RGB);
-           PImage type  = createImage(int(width/it), int(height/it), RGB);
+           String str = SaveMenu.getTextBoxValue(0);
+           boolean pass = true;
            
-           for(int i=0; i<blocks.size(); i++){
-             Block block = blocks.get(i);
-             col.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
-             int t = block.getType();
-             type.set((int)block.x, (int)block.y, color(t+1, t+1, t+1));
+           for(int i=0; i<Levels.size(); i++){
+             if(Levels.get(i) == str){
+               pass = false;
+               break;
+             }
            }
            
-           String str = SaveMenu.getTextBoxValue(0);
-           if(str == "")
-             str = "default";
+           if(pass){
+             PImage col  = createImage(int(width/it), int(height/it), RGB);
+             PImage type  = createImage(int(width/it), int(height/it), RGB);
              
-           col.save("Levels/"+str+"-color.png");
-           type.save("Levels/"+str+"-type.png");
-           
-           Writer.println(str);
-           Writer.flush();
-           
-           Levels.add(str);
-           LoadMenu.getChooser(0).addButton(str);  //bookmark
+             for(int i=0; i<blocks.size(); i++){
+               Block block = blocks.get(i);
+               col.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
+               int t = block.getType();
+               type.set((int)block.x, (int)block.y, color(t+1, t+1, t+1));
+             }
+             
+             if(str == "")
+               str = "default";
+               
+             col.save("Levels/"+str+"-color.png");
+             type.save("Levels/"+str+"-type.png");
+             
+             Writer.println(str);
+             Writer.flush();
+             
+             Levels.add(str);
+             LoadMenu.getChooser(0).addButton(str);
+           }
        }
        if(SaveMenu.getState() != -1){
          state = 1;
@@ -262,48 +273,69 @@ class MainMenu{
          state = loadBackState;
        }
        else if(LoadMenu.getState() == 1){//Loading in Level!!!!
+         LoadMenu.setState(-1);
+         ButtonChooser chooser = LoadMenu.getChooser(0);
          
-         blocks = new ArrayList<Block>();
-         tanks = new ArrayList<Tank>();
-         
-         String name = Levels.get(LoadMenu.getChooserState(0));
-         
-         PImage col = loadImage("Levels/"+name+"-color.png");
-         PImage type = loadImage("Levels/"+name+"-type.png");
-         
-         //image(col, 0, 0);
-         //noLoop();
-         //println(col.width, col.height);
-         
-         for(int x=0; x<col.width; x++){
-           for(int y=0; y<col.height; y++){
-             color Ccol = col.get(x, y); 
-             color Ctype = type.get(x, y);
-             
-             if(red(Ctype) != 0){
-               blocks.add(new Block(x, y, 1, 1, red(Ccol), green(Ccol), blue(Ccol), (int)red(Ctype)-1));
+         if(chooser.getButtonCount() > 0){
+           blocks = new ArrayList<Block>();
+           tanks = new ArrayList<Tank>();
+           
+           String name = Levels.get(LoadMenu.getChooserState(0));
+           
+           PImage col = loadImage("Levels/"+name+"-color.png");
+           PImage type = loadImage("Levels/"+name+"-type.png");
+           
+           //image(col, 0, 0);
+           //noLoop();
+           //println(col.width, col.height);
+           
+           for(int x=0; x<col.width; x++){
+             for(int y=0; y<col.height; y++){
+               color Ccol = col.get(x, y); 
+               color Ctype = type.get(x, y);
                
-               //println(red(Ctype), blocks.get(blocks.size()-1).type);
-               //println(red(Ctype), 0, 1);
-               
-               if(red(Ctype) == 1 || red(Ctype)==2)
-                 tanks.add(new Tank(red(Ctype) == 1, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
-               
-               //if(red(Ctype)==1)
-               //  tanks.add(new Tank(true, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
-               //else if(red(Ctype)==2)
-               //  tanks.add(new Tank(false, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+               if(red(Ctype) != 0){
+                 blocks.add(new Block(x, y, 1, 1, red(Ccol), green(Ccol), blue(Ccol), (int)red(Ctype)-1));
+                 
+                 //println(red(Ctype), blocks.get(blocks.size()-1).type);
+                 //println(red(Ctype), 0, 1);
+                 
+                 if(red(Ctype) == 1 || red(Ctype)==2)
+                   tanks.add(new Tank(red(Ctype) == 1, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+                 
+                 //if(red(Ctype)==1)
+                 //  tanks.add(new Tank(true, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+                 //else if(red(Ctype)==2)
+                 //  tanks.add(new Tank(false, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+               }
              }
            }
+           state = loadTargetState;
          }
-         
-         state = loadTargetState;
-         
        }
        else if(LoadMenu.getState() == 2){//delete
-         ButtonChooser chooser = LoadMenu.getChooser(0);
-         chooser.removeButton(chooser.getState());
          LoadMenu.setState(-1);
+         ButtonChooser chooser = LoadMenu.getChooser(0);
+         
+         if(chooser.getButtonCount() > 0){
+           Writer = createWriter("Levels/Levels.txt");
+           
+           int index = chooser.getState();         
+           String name = chooser.getButton(index).getText();
+           //println(Levels.get(index) == name);
+           //ArrayList<String> oldLevels = Levels;
+           
+           chooser.removeButton(index);
+           
+           sketchFile(sketchPath(name+"-color.png")).delete();
+           sketchFile(sketchPath(name+"-type.png")).delete();
+           Levels.remove(index);
+           
+           for(int i=0; i<Levels.size(); i++)
+             Writer.println(Levels.get(i));
+           Writer.flush();
+         }
+         
        }
        
        if(LoadMenu.getState() != -1 && LoadMenu.getState() != 2)
