@@ -259,12 +259,7 @@ class MainMenu{
              Writer.flush();
              
              Levels.add(str);
-             LoadMenu.getChooser(0).addButton(str);
-             
-             for(int i=0; i<blocks.size(); i++){
-                println(blocks.get(i).getType(), blocks.get(i).getType().ordinal());
-             }
-             
+             LoadMenu.getChooser(0).addButton(str);             
            }
        }
        if(SaveMenu.getState() != -1){
@@ -313,20 +308,25 @@ class MainMenu{
          ButtonChooser chooser = LoadMenu.getChooser(0);
          
          if(chooser.getButtonCount() > 0){
-           Writer = createWriter("Levels/Levels.txt");
-           
-           int index = chooser.getState();         
-           String name = chooser.getButton(index).getText();
-           
-           chooser.removeButton(index);
-           
-           sketchFile(sketchPath(name+"-color.png")).delete();
-           sketchFile(sketchPath(name+"-type.png")).delete();
-           Levels.remove(index);
-           
-           for(int i=0; i<Levels.size(); i++)
-             Writer.println(Levels.get(i));
-           Writer.flush();
+           try{
+             Writer = createWriter("Levels/Levels.txt");
+             
+             int index = chooser.getState();         
+             String name = chooser.getButton(index).getText();
+             
+             chooser.removeButton(index);
+             
+             sketchFile(sketchPath(name+"-color.png")).delete();
+             sketchFile(sketchPath(name+"-type.png")).delete();
+             Levels.remove(index);
+             
+             for(int i=0; i<Levels.size(); i++)
+               Writer.println(Levels.get(i));
+             Writer.flush();
+           }
+           catch(Exception ext){
+             println("There is an error while deleting:",ext);
+           }
          }
          
        }
@@ -337,19 +337,5 @@ class MainMenu{
      else{
        state = -1; 
      }
-     
-     //else if(state == 4){
-     //   state = -1;
-     //   LevelCreator.setState(-1);
-     //}
-     //else if(state == 5){
-     //   state = -1;
-     //   MultiPlayer.setState(-1);
-     //}
-     //else if(state == 6){
-     //   state = -1;
-     //   Options.setState(-1);
-     //}
-     
   }
 }
