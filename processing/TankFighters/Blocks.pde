@@ -3,9 +3,20 @@ class Block{
   float RED, GREEN, BLUE;
   color col;
   private PImage texture = null;
-  private int type;
+  //private int type;
   
-  Block(float x, float y, float w, float h, PImage texture, int type){
+  private blockTypes type;
+  
+  //Block(float x, float y, float w, float h, PImage texture, int type){
+  //  this.x = x;
+  //  this.y = y;
+  //  this.w = w;
+  //  this.h = h;
+  //  this.texture = texture;
+  //  this.type = type;
+  //}
+  
+  Block(float x, float y, float w, float h, PImage texture, blockTypes type){
     this.x = x;
     this.y = y;
     this.w = w;
@@ -22,16 +33,15 @@ class Block{
     this.RED = RED;
     this.GREEN = GREEN;
     this.BLUE = BLUE;
-    //this.col = color(RED, GREEN, BLUE);
-    this.type = type;
+    this.type = blockTypes.values()[type];
   }
   
   void update(){
-    if(type==Constants.Blocktype)
+    if(type == blockTypes.Block)
       Draw();
   }
   
-  int getType(){
+  blockTypes getType(){
     return type; 
   }
   

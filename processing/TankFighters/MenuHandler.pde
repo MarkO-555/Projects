@@ -82,7 +82,9 @@ class MainMenu{
     btns.add(new UIButton(loadImage("Icons/Block.png"), Lcx+60+Loff, Lcy+Loff));
     
     LevelCreator.addChooserB(Lcx, Lcy, 100, 100, Constants.TabBackground, btns);
-    LevelCreator.getChooser(0).setState(Constants.Blocktype);
+    //LevelCreator.getChooser(0).setState(Constants.Blocktype);
+    LevelCreator.getChooser(0).setState(blockTypes.Block.ordinal());//prob: does enums start with 0
+    
     
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
@@ -242,8 +244,8 @@ class MainMenu{
              
              for(int i=0; i<blocks.size(); i++){
                Block block = blocks.get(i);
+               int t = block.getType().ordinal();
                col.set((int)block.x, (int)block.y, color(block.RED, block.GREEN, block.BLUE));
-               int t = block.getType();
                type.set((int)block.x, (int)block.y, color(t+1, t+1, t+1));
              }
              
@@ -258,6 +260,11 @@ class MainMenu{
              
              Levels.add(str);
              LoadMenu.getChooser(0).addButton(str);
+             
+             for(int i=0; i<blocks.size(); i++){
+                println(blocks.get(i).getType(), blocks.get(i).getType().ordinal());
+             }
+             
            }
        }
        if(SaveMenu.getState() != -1){
@@ -289,11 +296,12 @@ class MainMenu{
              for(int y=0; y<col.height; y++){
                color Ccol = col.get(x, y); 
                color Ctype = type.get(x, y);
+               int t = (int)red(Ctype) - 1;
                
-               if(red(Ctype) != 0){
-                 blocks.add(new Block(x, y, 1, 1, red(Ccol), green(Ccol), blue(Ccol), (int)red(Ctype)-1));
-                 if(red(Ctype) == 1 || red(Ctype)==2)
-                   tanks.add(new Tank(red(Ctype) == 1, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
+               if(t != -1){
+                 blocks.add(new Block(x, y, 1, 1, red(Ccol), green(Ccol), blue(Ccol), t));
+               if(t == blockTypes.Player.ordinal() || t == blockTypes.Enemy.ordinal())
+                 tanks.add(new Tank(t == blockTypes.Player.ordinal(), new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
                }
              }
            }
