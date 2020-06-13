@@ -40,7 +40,7 @@ void setup() {
   //tanks.add(new Tank(false, 1, 0, 0));
 }
 
-void draw() {
+void draw() {  
   if (mainMenu.open) {
     mainMenu.update();
   } else {

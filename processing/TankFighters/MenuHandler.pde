@@ -285,10 +285,6 @@ class MainMenu{
            PImage col = loadImage("Levels/"+name+"-color.png");
            PImage type = loadImage("Levels/"+name+"-type.png");
            
-           //image(col, 0, 0);
-           //noLoop();
-           //println(col.width, col.height);
-           
            for(int x=0; x<col.width; x++){
              for(int y=0; y<col.height; y++){
                color Ccol = col.get(x, y); 
@@ -296,17 +292,8 @@ class MainMenu{
                
                if(red(Ctype) != 0){
                  blocks.add(new Block(x, y, 1, 1, red(Ccol), green(Ccol), blue(Ccol), (int)red(Ctype)-1));
-                 
-                 //println(red(Ctype), blocks.get(blocks.size()-1).type);
-                 //println(red(Ctype), 0, 1);
-                 
                  if(red(Ctype) == 1 || red(Ctype)==2)
                    tanks.add(new Tank(red(Ctype) == 1, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
-                 
-                 //if(red(Ctype)==1)
-                 //  tanks.add(new Tank(true, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
-                 //else if(red(Ctype)==2)
-                 //  tanks.add(new Tank(false, new PVector(x*it+it/2, y*it+it/2), red(Ccol), green(Ccol), blue(Ccol))); 
                }
              }
            }
@@ -322,8 +309,6 @@ class MainMenu{
            
            int index = chooser.getState();         
            String name = chooser.getButton(index).getText();
-           //println(Levels.get(index) == name);
-           //ArrayList<String> oldLevels = Levels;
            
            chooser.removeButton(index);
            
