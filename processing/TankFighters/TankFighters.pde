@@ -69,6 +69,8 @@ void draw() {
       Block block = blocks.get(i);
       block.update(); 
       
+      
+      
       if(block.type != Constants.Playertype && block.type != Constants.Enemytype){
         for (int t=0; t<tanks.size(); t++) {
           block.isColliding(tanks.get(t));

@@ -19,7 +19,7 @@ class Tank {
   private boolean player;
   private float RED, GREEN, BLUE;
   
-  private int equippedWeapon = 0;
+  private Weapon weapon;
 
   Tank() {
     this(true, new PVector(random(width), random(height)), 0, 1, 0);
@@ -50,6 +50,8 @@ class Tank {
     right = false;
     up = false;
     down = false;
+    
+    weapon = new Weapon(this);
   }
 
   void update() {
@@ -80,15 +82,7 @@ class Tank {
   }
 
   void fire() {
-    if (!menuWasUp) {
-      particlesystem.add(new ParticleSystem(20, pos.copy().sub(barrel.copy().setMag(Width-10)), pos.copy().sub(barrel), 45, 2, 2, 2));
-
-      bullets.add(new bullet(this));
-      applyForce(barrel.copy().setMag(2));
-    }
-    mouseDown = false;
-
-    menuWasUp = false;
+    weapon.fire();
     return;
   }
 
