@@ -3,7 +3,24 @@ enum blockTypes{
   Enemy,
   Block
 }
+
+enum WeaponLists{
+  Default(1, 2),
+  Tracker(5, 2);
   
-static enum Weapons {
-  Default
+  private int coolDown = -1;
+  private int kick = -1;
+  
+  private WeaponLists(int coolDown, int kick){
+    this.coolDown = coolDown;
+    this.kick = kick;
+  }
+  
+  public int getcoolDown(){
+    return coolDown;
+  }
+  
+  public int getkick(){
+    return kick; 
+  }
 }

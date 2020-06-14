@@ -4,9 +4,11 @@ class bullet {
   float maxVel = 10;
   float r = 5;
   Tank tank;
+  WeaponLists weapon;
 
-  bullet(Tank tank) {
+  bullet(Tank tank, WeaponLists weapon) {
     this.tank = tank;
+    this.weapon = weapon;
 
     pos = tank.pos.copy();
     vel = tank.barrel.copy();

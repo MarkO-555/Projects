@@ -1,13 +1,13 @@
 class Weapon{
-  
-  int eqquiped;
+  //int eqquiped;
+  WeaponLists eqquiped;
   Tank tank;
   
   void fire(){
     if (!menuWasUp) {
       particlesystem.add(new ParticleSystem(20, tank.pos.copy().sub(tank.barrel.copy().setMag(tank.Width-10)), tank.pos.copy().sub(tank.barrel), 45, 2, 2, 2));
 
-      bullets.add(new bullet(tank));
+      bullets.add(new bullet(tank, eqquiped));
       tank.applyForce(tank.barrel.copy().setMag(2));
       mouseDown = false;
     }
@@ -19,7 +19,7 @@ class Weapon{
   
   Weapon(Tank tank){
     this.tank = tank;
-    eqquiped = 0;
+    eqquiped = WeaponLists.Default;
   }
   
   void update(){
@@ -27,20 +27,14 @@ class Weapon{
   }
   
   void NextWeapon(){
-    eqquiped++;
   }
   
   void PrevWeapon(){
-    eqquiped--;
   }
   
   void ToWeapon(int num){
-    eqquiped = num; 
   }
   
   void Draw(){
-    if(eqquiped == 0){
-      
-    }
   }
 }
