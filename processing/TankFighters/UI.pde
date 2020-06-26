@@ -204,7 +204,8 @@ class UIButton implements UIObject{
      fill(0);
      textSize(20);
      if(text != null)
-       text(text, x+30, y+h/2+10);
+       text(text, x+w/2-text.length()*4.5, y+h/2+10);
+       //text(text, x+30, y+h/2+10);
      else
        image(img, x, y);
    }

@@ -1,7 +1,7 @@
 class MainMenu{
   //private ArrayList<UIButton> buttons;
-  int state = -1;
-  //int state = 6;
+  //int state = -1;
+  int state = 6;
   int loadTargetState, loadBackState;
   boolean open = true;
   PrintWriter Writer;
@@ -111,11 +111,11 @@ class MainMenu{
     LoadMenu.addText("Load Menu", LoadTitleText, 70);
     LoadMenu.addButton("Back", 75, 660, 300, 100);
     LoadMenu.addButton("Load", 425, 660, 300, 100);
-    LoadMenu.addButton("Delete", 0, 0, 100, 100);
+    LoadMenu.addButton("Delete", 655, 300, 100, 100);
     
     ArrayList<String> LMBstrs = new ArrayList<String>();
     
-    float LMWidth = 600;
+    float LMWidth = 550;
     float LMHeight = 400;
     
     int maxButtons = (int)Math.ceil(LMHeight / Constants.loadButtonHeight);
@@ -124,7 +124,7 @@ class MainMenu{
       LMBstrs.add(Levels.get(i));
     }
     
-    LoadMenu.addChooser(100, 170, LMWidth, LMHeight, Constants.TabBackground, LMBstrs, maxButtons);//, LMBtns, LMBpages);
+    LoadMenu.addChooser(100, 170, LMWidth, LMHeight, Constants.TabBackground, LMBstrs, maxButtons);
     //println(maxButtons);
     //LoadMenu.getChooser(0).setMaxButtonsPerPage(maxButtons);
   }
