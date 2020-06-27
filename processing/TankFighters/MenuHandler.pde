@@ -143,7 +143,7 @@ class MainMenu{
   }
   
   void update(){
-     println(blocks.size());
+     //println(blocks.size());
       
      if(!open)
        return;
