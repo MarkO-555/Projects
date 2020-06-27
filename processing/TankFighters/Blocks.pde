@@ -34,6 +34,8 @@ class Block{
     this.GREEN = GREEN;
     this.BLUE = BLUE;
     this.type = blockTypes.values()[type];
+    
+    //this.type = blockTypes.values()[0];
   }
   
   void update(){

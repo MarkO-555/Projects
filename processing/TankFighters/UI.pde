@@ -16,8 +16,6 @@ class Menu{
   
   private ArrayList<ButtonChooser> Choosers = new ArrayList<ButtonChooser>();
   
-  //private float backgroundColor = 165;
-  //private float RED, GREEN, BLUE;
   private color col = color(165);
   
   void setTextBoxValues(ArrayList<String> vals){
@@ -29,15 +27,25 @@ class Menu{
   }
   
   void addChooser(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons, ArrayList<Integer> pages){
-    Choosers.add(new ButtonChooser(x, y, w, h, background));
-    for(int i=0; i<buttons.size(); i++)
-      Choosers.get(Choosers.size()-1).addButton(buttons.get(i), pages.get(i));
+    ButtonChooser Chooser = new ButtonChooser(x, y, w, h, background);
+    for(int i=0; i<buttons.size(); i++){
+      int num = 0;
+      
+      if(pages != null)
+        num = pages.get(i);
+        
+      Chooser.addButton(buttons.get(i), num);
+    }
+      
+    Choosers.add(Chooser);
   }
   
   void addChooserB(float x, float y, float w, float h, float background, ArrayList<UIButton> buttons){
-    Choosers.add(new ButtonChooser(x, y, w, h, background));
+    ButtonChooser Chooser = new ButtonChooser(x, y, w, h, background);
     for(int i=0; i<buttons.size(); i++)
-      Choosers.get(Choosers.size()-1).addButton(buttons.get(i), 0);
+      Chooser.addButton(buttons.get(i), 0);
+      
+    Choosers.add(Chooser);
   }
   
   void addChooser(float x, float y, float w, float h, float background, ArrayList<String> strs, int maxButtons){
@@ -59,6 +67,14 @@ class Menu{
     buttons.add(new UIButton(text, x, y, w, h)); 
   }
   
+  void addButton(PImage img, float x, float y){
+    buttons.add(new UIButton(img, x, y)); 
+  }
+  
+  void addButton(UIButton btn){
+    buttons.add(btn); 
+  }
+  
   void addRect(float x, float y, float w, float h, float Color){
     rectPos.add(new PVector(x, y));
     rectSize.add(new PVector(w, h));
@@ -67,7 +83,6 @@ class Menu{
   
   
   void addText(String text, int[] pos, float fontSize){
-    //text(text, x, y); 
     this.text.add(text);
     this.textpos.add(pos);
     this.fontSize.add(fontSize);
@@ -103,27 +118,20 @@ class Menu{
   }
   
   void setBackground(float num){
-    //backgroundColor = num;
     this.col = color(num);
   }
   
   void setBackground(float RED, float GREEN, float BLUE){
-    //this.RED = RED;
-    //this.GREEN = GREEN;
-    //this.BLUE = BLUE;
-    
     this.col = color(RED, GREEN, BLUE);
-    
-    //this.backgroundColor = -1;
   }
   
   void update(){
-    //if(backgroundColor == -1){}
     background(this.col);
     
     display();
     
     for(int i=0; i<buttons.size(); i++){
+      
       if(buttons.get(i).Hover()){
         buttons.get(i).background  = Constants.ButtonPressed;// 190;
         if(mouseDown && !buttonDown){
@@ -205,7 +213,6 @@ class UIButton implements UIObject{
      textSize(20);
      if(text != null)
        text(text, x+w/2-text.length()*4.5, y+h/2+10);
-       //text(text, x+30, y+h/2+10);
      else
        image(img, x, y);
    }
@@ -309,8 +316,9 @@ class ButtonChooser implements UIObject{
   private int state = 0;
   private float background = 150;
   private int currentPage = 0;
-  private int pageCount = 0;
-  private int maxButtonsPerPage = 100;// =  Constants.loadButtonHeight / w;
+  private int MaxPage = 0;
+  private int maxButtonsPerPage = 100;
+  private boolean Drag = false;
   
   
   ButtonChooser(float x, float y, float w, float h, float background){
@@ -326,8 +334,29 @@ class ButtonChooser implements UIObject{
     
   }
   
+  void Rebuild(){
+    ArrayList<String> btns = new ArrayList<String>();
+    
+    for(int i=0; i<Levels.size(); i++){
+      btns.add(buttons.get(i).getText());
+    }
+    
+    buttons = new ArrayList<UIButton>();
+    buttonPaged = new ArrayList<Integer>();
+    
+    for(int i=0; i<btns.size(); i++){
+       addButton(btns.get(i));
+    }
+    
+    state = maxButtonsPerPage*currentPage;
+  }
+  
   void setState(int state){
     this.state = state;
+  }
+  
+  void setClickMode(boolean mode){
+    Drag = mode;
   }
   
   int getState(){
@@ -365,22 +394,21 @@ class ButtonChooser implements UIObject{
     this.buttons.add(new UIButton(str, x, y, w, h));
     this.buttonPaged.add(page);
     
-    if(page > pageCount)
-      pageCount = page;
+    if(page > MaxPage)
+      MaxPage = page;
   }
   
   void addButton(UIButton button, int page){
     this.buttons.add(button); 
     this.buttonPaged.add(page);
     
-    if(page > pageCount)
-      pageCount = page;
+    if(page > MaxPage)
+      MaxPage = page;
   }
   
-  void addButton(String str){//bookmark
+  void addButton(String str){
     int page = (int)Math.floor((buttons.size())/maxButtonsPerPage);
-    //println(buttons.size(), maxButtonsPerPage, page);
-    this.buttons.add(new UIButton(str, x, y + Constants.loadButtonHeight*(buttons.size() - page*buttons.size()), Constants.loadButtonWidth, Constants.loadButtonHeight));
+    this.buttons.add(new UIButton(str, x, y + Constants.loadButtonHeight*(buttons.size() - maxButtonsPerPage*(page-1))-400, w, Constants.loadButtonHeight));
     this.buttonPaged.add(page);
     
     return;
@@ -400,16 +428,21 @@ class ButtonChooser implements UIObject{
   }
   
   void nextPage(){
-    this.currentPage++;
+    if(this.currentPage < MaxPage){
+      this.currentPage++;
+      state = maxButtonsPerPage*currentPage;
+    }
   }
   
   void prevPage(){
-    if(this.currentPage > 0)
+    if(this.currentPage > 0){
       this.currentPage--;
+      state = maxButtonsPerPage*currentPage;
+    }
   }
   
   void toPage(int page){
-    if(page <= pageCount)
+    if(page <= MaxPage)
       this.currentPage = page; 
   }
   
@@ -419,16 +452,40 @@ class ButtonChooser implements UIObject{
   
   void update(){
     Draw();
-    
+    //println(blocks.size());
     if(buttons.size() > 0){
+      
+      MaxPage = 0;
+      for(int i=0; i<buttonPaged.size(); i++){
+        int num = buttonPaged.get(i);
+        if(num  > MaxPage)
+          MaxPage = num;
+      }
+      
+      if(currentPage > MaxPage)
+        currentPage = MaxPage;
+      
       for(int i=0; i<buttons.size(); i++){
         if(buttonPaged.get(i) == currentPage){
           UIButton btn = buttons.get(i);
           btn.update();
-          if(this.buttons.get(i).Hover() && mouseDown && !buttonDown){
+          
+          if(this.buttons.get(i).Hover())
+            this.buttons.get(i).background = 175;
+          else
+            this.buttons.get(i).background = 220;
+          
+          if(!Drag && this.buttons.get(i).Hover() && mouseDown && !buttonDown){
+            //println("other test");
             state = i;
             buttonDown = true;
           }
+          else if(Drag && this.buttons.get(i).Hover() && mouseDown && !buttonDown){
+            state = i;
+            //println("test");
+          }
+          
+          
         }
       }
       

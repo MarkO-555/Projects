@@ -1,7 +1,7 @@
 class MainMenu{
   //private ArrayList<UIButton> buttons;
-  //int state = -1;
-  int state = 6;
+  int state = -1;
+  //int state = 6;
   int loadTargetState, loadBackState;
   boolean open = true;
   PrintWriter Writer;
@@ -34,14 +34,19 @@ class MainMenu{
     Main.addButton("Multiplayer", 100, 540, 600, 100); 
     Main.addButton("Options", 100, 660, 600, 100);
     
+    ArrayList<UIButton> LVbtns = new ArrayList<UIButton>();
+    
     int[] LevelCreatorText = {165, 160};
     LevelCreator.addText("Level Creator", LevelCreatorText, 70);
         
     for(int x=xoff; x<width/scale+xoff; x+=it/scale){
       for(int y=yoff; y<height/scale+yoff; y+=it/scale){
-        LevelCreator.addButton("", x, y, it/scale, it/scale);
+        LVbtns.add(new UIButton("", x, y, it/scale, it/scale));
+        //LevelCreator.addButton("", x, y, it/scale, it/scale);
       }
     }
+    
+    LevelCreator.addChooser(0, 0, 0, 0, 0, LVbtns, null);
     
     LevelCreator.addButton("Back", 660, 660, 100, 100);
     LevelCreator.addButton("Save Stage", 40, 660, 250, 45);
@@ -82,9 +87,9 @@ class MainMenu{
     btns.add(new UIButton(loadImage("Icons/Block.png"), Lcx+60+Loff, Lcy+Loff));
     
     LevelCreator.addChooserB(Lcx, Lcy, 100, 100, Constants.TabBackground, btns);
-    //LevelCreator.getChooser(0).setState(Constants.Blocktype);
-    LevelCreator.getChooser(0).setState(blockTypes.Block.ordinal());//prob: does enums start with 0
     
+    LevelCreator.getChooser(0).setState(blockTypes.Block.ordinal());
+    LevelCreator.getChooser(0).setClickMode(true);
     
     int[] MultiPlayerText = {165, 160};
     MultiPlayer.addText("MultiPlayer", MultiPlayerText, 70);
@@ -111,12 +116,20 @@ class MainMenu{
     LoadMenu.addText("Load Menu", LoadTitleText, 70);
     LoadMenu.addButton("Back", 75, 660, 300, 100);
     LoadMenu.addButton("Load", 425, 660, 300, 100);
-    LoadMenu.addButton("Delete", 655, 300, 100, 100);
+    LoadMenu.addButton("Delete", 655, 315, 100, 100);
     
-    ArrayList<String> LMBstrs = new ArrayList<String>();
+    PImage Next = loadImage("Icons/Next.png");
+    PImage Prev = loadImage("Icons/Prev.png");
     
     float LMWidth = 550;
     float LMHeight = 400;
+    
+    LoadMenu.addButton(Next, 655, 170);
+    LoadMenu.addButton(Prev, 655, 70+LMHeight);
+    
+    
+    ArrayList<String> LMBstrs = new ArrayList<String>();
+    
     
     int maxButtons = (int)Math.ceil(LMHeight / Constants.loadButtonHeight);
     
@@ -130,6 +143,8 @@ class MainMenu{
   }
   
   void update(){
+     println(blocks.size());
+      
      if(!open)
        return;
      if(state == -2){
@@ -145,8 +160,9 @@ class MainMenu{
        loadTargetState = -2;
        state = 6;
      }
-     else if(state == 1){
+     else if(state == 1){//Level Editor
        LevelCreator.update();
+       ButtonChooser editor = LevelCreator.getChooser(0);
        
        for(int i=0; i<blocks.size(); i++){
          Block block = blocks.get(i);
@@ -155,42 +171,79 @@ class MainMenu{
        }
        
        float st = LevelCreator.getState();
+       float sta = editor.getState();
+        
+       
+       boolean pass = true;
+       
+       for(int i=0; i<blocks.size(); i++){
+         if(blocks.get(i).x == (int)Math.floor(sta/10) && blocks.get(i).y == (int)(sta - Math.floor(sta/10)*10))
+           pass = false;
+       }
+       
+       if(!buttonDown && pass && mouseDown && mouseButton == LEFT){
+         //println("test", sta);
+         float RED, GREEN, BLUE;
+         if(LevelCreator.getTextBoxValue(0) != "")
+           RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
+         else
+           RED = 0;
+         if(LevelCreator.getTextBoxValue(1) != "")
+           GREEN = Float.parseFloat(LevelCreator.getTextBoxValue(1));
+         else
+           GREEN = 0;
+         if(LevelCreator.getTextBoxValue(2) != "")
+           BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
+         else
+           BLUE = 0;
+         
+         blocks.add(new Block((int)Math.floor(sta/10), (int)(sta - Math.floor(sta/10)*10), 1, 1, RED, GREEN, BLUE, LevelCreator.getChooserState(1)));
+       }
+       else if(mouseDown && mouseButton == RIGHT){
+         for(int i=0; i<blocks.size(); i++){
+            if(blocks.get(i).x == (int)Math.floor(sta/10) && blocks.get(i).y == (int)(sta - Math.floor(sta/10)*10))
+              blocks.remove(i);
+         }
+       }
+         
+         //if(mouseDown && buttonDown){
+         //  if(mouseButton == LEFT){
+         //    float RED, GREEN, BLUE;
+         //    if(LevelCreator.getTextBoxValue(0) != "")
+         //      RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
+         //    else
+         //      RED = 0;
+         //    if(LevelCreator.getTextBoxValue(1) != "")
+         //      GREEN = Float.parseFloat(LevelCreator.getTextBoxValue(1));
+         //    else
+         //      GREEN = 0;
+         //    if(LevelCreator.getTextBoxValue(2) != "")
+         //      BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
+         //    else
+         //      BLUE = 0;
+             
+         //    blocks.add(new Block((int)Math.floor(sta/10), (int)(sta - Math.floor(sta/10)*10), 1, 1, RED, GREEN, BLUE, LevelCreator.getChooserState(1)));
+             
+         //  }
+         //  else if(mouseButton == RIGHT){
+         //    println("test");
+         //    for(int i=0; i<blocks.size(); i++){
+         //       if(blocks.get(i).x == (int)Math.floor(sta/10) && blocks.get(i).y == (int)(sta - Math.floor(sta/10)*10))
+         //         blocks.remove(i);
+         //    }
+         //  }
+         //}
+         
+              
        if(st != -1){
-         if(st == 100){
+         if(st == 0){
            state = -1;
          } 
-         else if(st <= 100){
-           if(mouseButton == LEFT){
-             float RED, GREEN, BLUE;
-             if(LevelCreator.getTextBoxValue(0) != "")
-               RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
-             else
-               RED = 0;
-             if(LevelCreator.getTextBoxValue(1) != "")
-               GREEN = Float.parseFloat(LevelCreator.getTextBoxValue(1));
-             else
-               GREEN = 0;
-             if(LevelCreator.getTextBoxValue(2) != "")
-               BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
-             else
-               BLUE = 0;
-               
-             blocks.add(new Block((int)Math.floor(st/10), (int)(st - Math.floor(st/10)*10), 1, 1, RED, GREEN, BLUE, LevelCreator.getChooserState(0)));
-             
-           }
-           else if(mouseButton == RIGHT){
-             for(int i=0; i<blocks.size(); i++){
-                if(blocks.get(i).x == (int)Math.floor(st/10) && blocks.get(i).y == (int)(st - Math.floor(st/10)*10))
-                  blocks.remove(i);
-             }
-           }
-           LevelCreator.setState(-1);
-         }
-         else if(st == 101){//Save
+         else if(st == 1){//Save
            st = -1;
            state = 5;
          }
-         else if(st == 102){//Load
+         else if(st == 2){//Load
            st = -1;
            loadBackState = 1;
            loadTargetState = 1;
@@ -269,14 +322,15 @@ class MainMenu{
      }
      else if(state == 6){//Load Menu
        LoadMenu.update();
-       Main.setState(-1);
+       Main.setState(-1);//fix prob
        
+       ButtonChooser chooser = LoadMenu.getChooser(0);
+         
        if(LoadMenu.getState() == 0){//back
          state = loadBackState;
        }
        else if(LoadMenu.getState() == 1){//Loading in Level!!!!
          LoadMenu.setState(-1);
-         ButtonChooser chooser = LoadMenu.getChooser(0);
          
          if(chooser.getButtonCount() > 0){
            blocks = new ArrayList<Block>();
@@ -300,12 +354,13 @@ class MainMenu{
                }
              }
            }
+           
+           //debug
            state = loadTargetState;
          }
        }
        else if(LoadMenu.getState() == 2){//delete
          LoadMenu.setState(-1);
-         ButtonChooser chooser = LoadMenu.getChooser(0);
          
          if(chooser.getButtonCount() > 0){
            try{
@@ -327,11 +382,22 @@ class MainMenu{
            catch(Exception ext){
              println("There is an error while deleting:",ext);
            }
+           
+           chooser.Rebuild();
          }
          
+         //chooser.setState(0);
+       }
+       else if(LoadMenu.getState() == 3){//Prev
+         chooser.prevPage();
+         LoadMenu.setState(-1);
+       }
+       else if(LoadMenu.getState() == 4){//Next
+         chooser.nextPage();
+         LoadMenu.setState(-1);
        }
        
-       if(LoadMenu.getState() != -1 && LoadMenu.getState() != 2)
+       if(LoadMenu.getState() == 1 || LoadMenu.getState() == 0)
          LoadMenu.setState(-1);
      }
      else{
