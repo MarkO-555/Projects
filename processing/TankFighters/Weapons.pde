@@ -27,6 +27,7 @@ class Weapon{
   }
   
   void NextWeapon(){
+    //eqquiped = eqquiped.Cardonal;
   }
   
   void PrevWeapon(){
