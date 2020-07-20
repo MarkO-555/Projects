@@ -1,7 +1,12 @@
 class Weapon{
-  //int eqquiped;
+  int eqquipedNum;
   WeaponLists eqquiped;
   Tank tank;
+  int maxWeapons = -1;
+  
+  Weapon(){
+    maxWeapons = WeaponLists.values().length;
+  }
   
   void fire(){
     if (!menuWasUp) {
@@ -27,13 +32,22 @@ class Weapon{
   }
   
   void NextWeapon(){
-    //eqquiped = eqquiped.Cardonal;
+    if(eqquipedNum+1 > maxWeapons)
+      eqquiped = WeaponLists.values()[eqquipedNum+1];
+    else
+      eqquiped = WeaponLists.values()[0];
   }
   
   void PrevWeapon(){
+    if(eqquipedNum+1 > maxWeapons)
+      eqquiped = WeaponLists.values()[eqquipedNum-1];
+    else
+      eqquiped = WeaponLists.values()[maxWeapons-1];
   }
   
-  void ToWeapon(int num){
+  void ToWeapon(int ID){
+    if((ID > maxWeapons) || (ID < 0))
+      eqquiped = WeaponLists.values()[ID];
   }
   
   void Draw(){

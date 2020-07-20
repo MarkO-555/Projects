@@ -1,5 +1,4 @@
 class Tank {
-  //PVector pos = new PVector(random(width), random(height));
   PVector pos = new PVector(0, 0);
   PVector vel = new PVector(0, 0);
   PVector acc = new PVector(0, 0);
@@ -43,7 +42,6 @@ class Tank {
     Width *= scale;
     Height *= scale;
 
-    //r = Width + 35;
     r = Width;
 
     left = false;
@@ -114,7 +112,6 @@ class Tank {
   }
 
   void hit() {
-    //particlesystem.add(new ParticleSystem(10, pos, RED*100, GREEN*100, BLUE*100));
     Health -= 1; 
 
     return;
@@ -157,11 +154,8 @@ class Tank {
       fill(140*RED, 140*GREEN, 140*BLUE);
       ellipse(0, Width*13/40, Width/8, Width);
       
-      //strokeWeight(1);
-  
       //30*26/30
       ellipse(0, 0, Height*26/30, Height*26/30);
-      //line(0, 0, 25, 25);
     pop();
     return;
   }

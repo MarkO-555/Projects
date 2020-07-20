@@ -20,7 +20,6 @@ class ParticleSystem {
     for (int i=0; i<num; i++) {
       //vec = new PVector(random(-5, 5), random(-5, 5));
       float deg = vec.heading() + radians(random(-angle/2, angle/2));
-      //float deg = vec.heading();
 
       float x = (cos(deg) * distance);
       float y = (sin(deg) * distance);
@@ -101,7 +100,6 @@ class Particle {
 
   void Draw() {
     noStroke();
-    //fill(255, lifeSpan);//color
     fill(120*RED, 120*GREEN, 120*BLUE, map(lifeSpan, 0, lifeSpanMax, 0, 255));
     ellipse(pos.x, pos.y, 4, 4); 
     return;

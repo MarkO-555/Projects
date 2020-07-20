@@ -138,13 +138,9 @@ class MainMenu{
     }
     
     LoadMenu.addChooser(100, 170, LMWidth, LMHeight, Constants.TabBackground, LMBstrs, maxButtons);
-    //println(maxButtons);
-    //LoadMenu.getChooser(0).setMaxButtonsPerPage(maxButtons);
   }
   
   void update(){
-     //println(blocks.size());
-      
      if(!open)
        return;
      if(state == -2){
@@ -182,7 +178,6 @@ class MainMenu{
        }
        
        if(!buttonDown && pass && mouseDown && mouseButton == LEFT){
-         //println("test", sta);
          float RED, GREEN, BLUE;
          if(LevelCreator.getTextBoxValue(0) != "")
            RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
@@ -205,35 +200,6 @@ class MainMenu{
               blocks.remove(i);
          }
        }
-         
-         //if(mouseDown && buttonDown){
-         //  if(mouseButton == LEFT){
-         //    float RED, GREEN, BLUE;
-         //    if(LevelCreator.getTextBoxValue(0) != "")
-         //      RED = Float.parseFloat(LevelCreator.getTextBoxValue(0));
-         //    else
-         //      RED = 0;
-         //    if(LevelCreator.getTextBoxValue(1) != "")
-         //      GREEN = Float.parseFloat(LevelCreator.getTextBoxValue(1));
-         //    else
-         //      GREEN = 0;
-         //    if(LevelCreator.getTextBoxValue(2) != "")
-         //      BLUE = Float.parseFloat(LevelCreator.getTextBoxValue(2));
-         //    else
-         //      BLUE = 0;
-             
-         //    blocks.add(new Block((int)Math.floor(sta/10), (int)(sta - Math.floor(sta/10)*10), 1, 1, RED, GREEN, BLUE, LevelCreator.getChooserState(1)));
-             
-         //  }
-         //  else if(mouseButton == RIGHT){
-         //    println("test");
-         //    for(int i=0; i<blocks.size(); i++){
-         //       if(blocks.get(i).x == (int)Math.floor(sta/10) && blocks.get(i).y == (int)(sta - Math.floor(sta/10)*10))
-         //         blocks.remove(i);
-         //    }
-         //  }
-         //}
-         
               
        if(st != -1){
          if(st == 0){
@@ -249,8 +215,6 @@ class MainMenu{
            loadTargetState = 1;
            state = 6;
          }
-         
-         //state = LevelCreator.getState() + 4 + LevelCreator.buttons.size();
          LevelCreator.setState(-1); 
        }
        
@@ -385,8 +349,6 @@ class MainMenu{
            
            chooser.Rebuild();
          }
-         
-         //chooser.setState(0);
        }
        else if(LoadMenu.getState() == 3){//Prev
          chooser.prevPage();
@@ -709,7 +671,6 @@ class UITextbox implements UIObject{
     textSize(15);
     fill(0);
     text(text, x + 10, y + h/2+5);
-    //println(19, w, text.length());
   }
   
   boolean Hover(){
@@ -884,13 +845,11 @@ class ButtonChooser implements UIObject{
             this.buttons.get(i).background = 220;
           
           if(!Drag && this.buttons.get(i).Hover() && mouseDown && !buttonDown){
-            //println("other test");
             state = i;
             buttonDown = true;
           }
           else if(Drag && this.buttons.get(i).Hover() && mouseDown && !buttonDown){
             state = i;
-            //println("test");
           }
           
           

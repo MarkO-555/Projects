@@ -17,7 +17,6 @@ class bullet {
   }
 
   void update() {
-    //vel.set(constrain(vel.x, -maxVel, maxVel), constrain(vel.y, -maxVel, maxVel));
     pos.add(vel);
 
     Draw();
