@@ -87,7 +87,7 @@ class NeuralNetwork{
       weights = loadWeights(weights.length);
     else{
       for(int i=0; i<weights.length; i++){
-        weights[i] = 1;
+        weights[i] = 0;
         //weights[i] = random(-Weightrange, Weightrange);
         
         if(i<=Inputs.length * Hiddens[0].length-1)//IH
@@ -115,7 +115,7 @@ class NeuralNetwork{
     int len = this.Inputs.length;
     
     if(len != Inputs.length){
-      println("fed Inputs length is not expected value");
+      println("The inputs length is not expected value");
     }
     
     for(int i=0; i<Neurons.length-len; i++){
@@ -142,43 +142,23 @@ class NeuralNetwork{
        avr+= error[i];
     }
     
-    avr/=len;
+    avr /= len;
     
     len = weights.length;
     
     //println(weightsmap);
-    
-    int count =0;
-    int y=0;
         
     for(int i=0; i<len; i++){
       float nonproc = 1;
       
       if(weightsmap[i] == 0){//Connected Hiddens, Inputs
-        nonproc = Neurons[Hiddens[0][y]].getNonProcessedAxon();
-        count++;
         
-        if(count>=Hiddens[0].length){
-          count=0;
-          y++;
-          if(y>=Hiddens[0].length)
-            y=0;
-        }
       }
       else if(weightsmap[i] == 1){//Connected Hiddens, Hiddens
-      //println(count);
-        if(count>Hiddens[0].length){
-          count=0;
-          y++;
-        }
         
-        //Neurons[Hiddens[weightsHXmap[i-inputs.length]][weightsHYmap[i-inputs.length]]].getNonProcessedAxon();
-        
-        nonproc=0;
-        count++;
       }
       else{//Connected to Outputs, Hiddens
-      
+        
       }
         
       weights[i] += learningrate * avr * nonproc;
@@ -195,16 +175,6 @@ class NeuralNetwork{
     return (float)(1/( 1 + Math.pow(Math.E,(-1*x))));
   }
   
-  private void saveWeights(){
-    PrintWriter weightLog;
-    
-    weightLog = createWriter("Weights.txt");
-    
-    for(int i=0; i<weights.length; i++){
-      weightLog.println(weights[i]); 
-    }
-    weightLog.flush();
-  }
   
   private void updateWeights(){
     int Count = 0;
@@ -217,6 +187,17 @@ class NeuralNetwork{
       }
      n.setWeights(nW);
     }
+  }
+  
+  private void saveWeights(){
+    PrintWriter weightLog;
+    
+    weightLog = createWriter("Weights.txt");
+    
+    for(int i=0; i<weights.length; i++){
+      weightLog.println(weights[i]); 
+    }
+    weightLog.flush();
   }
   
   private float[] loadWeights(int weightCount){
