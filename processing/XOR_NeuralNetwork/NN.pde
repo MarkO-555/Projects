@@ -1,5 +1,5 @@
 class NeuralNetwork{
-  private float range = 1;
+  private float Weightrange = 1;
   
   private Neuron[] Neurons;
   
@@ -33,12 +33,6 @@ class NeuralNetwork{
     weightsHYmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
     
     initWeights(loading);
-    
-    //println(weightsmap);
-    //println("X");
-    //println(weightsHXmap);
-    //println("Y");
-    //println(weightsHYmap);
     
     int y = 0;
     int Count = 0;
@@ -84,7 +78,7 @@ class NeuralNetwork{
     
   }
   
-  void initWeights(boolean loading){
+  private void initWeights(boolean loading){
     int count =0;
     int xcount =0;
     int ycount =0;
@@ -93,7 +87,8 @@ class NeuralNetwork{
       weights = loadWeights(weights.length);
     else{
       for(int i=0; i<weights.length; i++){
-        weights[i] = 1;//random(-range, range);
+        weights[i] = 1;
+        //weights[i] = random(-Weightrange, Weightrange);
         
         if(i<=Inputs.length * Hiddens[0].length-1)//IH
           weightsmap[i] = 0;
@@ -116,7 +111,7 @@ class NeuralNetwork{
     }
   }
   
-  float[] feedForward(float[] Inputs){
+  public float[] feedForward(float[] Inputs){
     int len = this.Inputs.length;
     
     if(len != Inputs.length){
@@ -136,7 +131,7 @@ class NeuralNetwork{
     return Outputs;
   }
   
-  void train(float[] inputs, float[] expected){
+  public void train(float[] inputs, float[] expected){
     int len = expected.length;
     float[] result = feedForward(inputs);
     float[] error = new float[len];
@@ -151,7 +146,7 @@ class NeuralNetwork{
     
     len = weights.length;
     
-    println(weightsmap);
+    //println(weightsmap);
     
     int count =0;
     int y=0;
@@ -171,7 +166,7 @@ class NeuralNetwork{
         }
       }
       else if(weightsmap[i] == 1){//Connected Hiddens, Hiddens
-      println(count);
+      //println(count);
         if(count>Hiddens[0].length){
           count=0;
           y++;
@@ -188,6 +183,8 @@ class NeuralNetwork{
         
       weights[i] += learningrate * avr * nonproc;
     }
+    
+    updateWeights();
   }
   
   private float dSigmoid(float x){
@@ -198,7 +195,7 @@ class NeuralNetwork{
     return (float)(1/( 1 + Math.pow(Math.E,(-1*x))));
   }
   
-  public void saveWeights(){
+  private void saveWeights(){
     PrintWriter weightLog;
     
     weightLog = createWriter("Weights.txt");
@@ -209,8 +206,20 @@ class NeuralNetwork{
     weightLog.flush();
   }
   
+  private void updateWeights(){
+    int Count = 0;
+    for(int i=0; i<Neurons.length; i++){
+      Neuron n = Neurons[i];
+      ArrayList<Float> nW = new ArrayList<Float>(); 
+      for(int v=0; v<Neurons[i].weights.size(); v++){
+        nW.add(weights[Count]);
+        Count++;
+      }
+     n.setWeights(nW);
+    }
+  }
   
-  public float[] loadWeights(int weightCount){
+  private float[] loadWeights(int weightCount){
     BufferedReader weightsLog = createReader("Weights.txt");
     
     float[] weights_ = new float[weightCount];

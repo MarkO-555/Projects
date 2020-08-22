@@ -11,7 +11,7 @@ class Neuron{
     axonValue = sigmoid(axonValue);
   }
   
-  void updateWeights(ArrayList<Float> weights){
+  void setWeights(ArrayList<Float> weights){
     this.weights = weights;
   }
   
