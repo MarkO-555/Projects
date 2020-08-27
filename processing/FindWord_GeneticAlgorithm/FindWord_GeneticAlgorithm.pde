@@ -29,7 +29,7 @@ void setup(){
    
 }
 
-void draw(){  
+void draw(){
   if(bestScore != (expected.length()))
     breed();
   else{

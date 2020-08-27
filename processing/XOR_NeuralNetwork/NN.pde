@@ -161,7 +161,7 @@ class NeuralNetwork{
         
       }
         
-      weights[i] += learningrate * avr * nonproc;
+      weights[i] += learningrate * avr * nonproc;//delta = LearningRate * AverageError * 
     }
     
     updateWeights();
