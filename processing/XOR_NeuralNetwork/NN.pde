@@ -167,13 +167,6 @@ class NeuralNetwork{
     updateWeights();
   }
   
-  private float dSigmoid(float x){
-    return sigmoid(x) * (1 - sigmoid(x)); 
-  }
-  
-  private float sigmoid(float x) {
-    return (float)(1/( 1 + Math.pow(Math.E,(-1*x))));
-  }
   
   
   private void updateWeights(){
