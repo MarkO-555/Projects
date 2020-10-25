@@ -43,7 +43,6 @@ void loop() {
       
       // fade the green, yellow, and red LEDs:
       analogWrite(greenPin, green);
-      
       analogWrite(redPin, red);
     }
   }
