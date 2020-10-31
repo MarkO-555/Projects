@@ -1,6 +1,6 @@
 <h1>Possible projects</h1>
 
-<h3>Arduino</h3>
+<h3><a href="Arduino">Arduino</a></h3>
 <ul>
 	<li>DIY Ossiliscope</li>
 	<li>DIY MultiMeter</li>
