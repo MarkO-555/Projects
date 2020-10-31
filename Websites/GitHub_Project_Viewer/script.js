@@ -5,7 +5,9 @@ var urls = ['https://api.github.com/repos/JHstrutton2000/Projects/contents'];
 var prevUrls;
 
 var obj = function (url, json) {
-    this.url = url;
+    this.url = [];
+    for (var i = 0; i < url; i++)
+        this.url[i] = url[i];
     this.json = json;
 };
 
@@ -20,7 +22,6 @@ function load(name) {
     for (var i = 0; i < urls.length; i++) {
         text += urls[i]+'/';
     }
-
 
     var request = new XMLHttpRequest();
     request.onload = rebuild;
@@ -49,11 +50,13 @@ function rebuild() {
     }
 
     if (pass) {
+        console.log("new");
         responseObj = JSON.parse(this.responseText);
         memory.push(new obj(urls, responseObj));
     }
     else {
-        responseObj = memory[index].obj;
+        console.log("Exists");
+        responseObj = memory[index].json;
     }
 
 
