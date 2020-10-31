@@ -1,26 +1,25 @@
 var responseObj;
 var cont = document.getElementById("contents");
-var url = 'https://api.github.com/repos/JHstrutton2000/Projects/contents/';
+
 var urls = ['https://api.github.com/repos/JHstrutton2000/Projects/contents'];
+var prevUrls;
 
+var obj = function (url, json) {
+    this.url = url;
+    this.json = json;
+};
 
-function printRepoCount() {
-    responseObj = JSON.parse(this.responseText);
-    console.log(responseObj);
-}
+var memory = [];
 
 function load(name) {
+    prevUrls = urls;
     urls[urls.length] = name
-    //url += name+"/";
 
     var text = "";
 
     for (var i = 0; i < urls.length; i++) {
         text += urls[i]+'/';
     }
-
-    //console.log(text, urls);
-    
 
 
     var request = new XMLHttpRequest();
@@ -30,18 +29,39 @@ function load(name) {
 }
 
 function back() {
-    url.pop();
-    load();
+    urls.pop();
+    var str = urls[urls.length - 1]
+    urls.pop();
+
+    load(str);
 }
 
 function rebuild() {
-    responseObj = JSON.parse(this.responseText);
+    var pass = true;
+    var index = -1;
 
-    
-    if (urls.length < 0)
+    for (var i = 0; i < memory.length; i++) {
+        if (memory[i].url == urls) {
+            index = i;
+            pass = false;
+            break;
+        }
+    }
+
+    if (pass) {
+        responseObj = JSON.parse(this.responseText);
+        memory.push(new obj(urls, responseObj));
+    }
+    else {
+        responseObj = memory[index].obj;
+    }
+
+
+    if (urls.length > 2)
         cont.innerHTML = "<div class='button' onclick=back()>Back</div>";
     else
         cont.innerHTML = "";
+
     for (var i = 0; i < responseObj.length; i++) {
         cont.innerHTML += "<div onclick='load(this.innerHTML)'>" + responseObj[i].name + "</div>";
     }
