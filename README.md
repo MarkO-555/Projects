@@ -1,6 +1,6 @@
 <h1>Possible projects</h1>
 
-<h3><a href="arduino/files.html">Arduino</a></h3>
+<h3><a href="arduino">Arduino</a></h3>
 <ul>
 	<li>DIY Ossiliscope</li>
 	<li>DIY MultiMeter</li>
@@ -15,7 +15,7 @@
 
 </ul>
 
-<h3><a href="processing/files.html">Processing</a></h3>
+<h3><a href="processing">Processing</a></h3>
 <ul>
 	<li>Kinect Full Body Tracking</li>
 	<li>Voice Interpreter</li>
@@ -34,7 +34,7 @@
 	<li>Solar Systems</li>
 </ul>
 
-<h3><a href="Unity/files.html">Unity</a></h3>
+<h3><a href="Unity">Unity</a></h3>
 <ul>
 	<li>Submarine</li>
 	<li>Tron</li>
@@ -48,7 +48,7 @@
 	<li>VR DuckHunt</li>
 </ul>
 
-<h3><a href="Websites/files.html">Websites/WebApps</a></h3>
+<h3><a href="Websites">Websites/WebApps</a></h3>
 <ul>
 	<li>Search engine</li>
 	<li>Weather Prediction</li>
