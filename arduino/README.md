@@ -1,9 +1,0 @@
-<h3>Complete</h3>
-<ul>
-	<li>Arduino_as_ISP</li>
-	<li>Arduino_Skype_Indicator</li>
-</ul>
-<h3>Incomplete</h3>
-<ul>
-	<li>Arduino_GBA_Dumper</li>
-</ul>
