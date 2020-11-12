@@ -25,6 +25,13 @@ void setup() {
 void draw() {
   //println(ga.nets.size());
   ga.update();
+  
+  if(loading){
+    setup();
+    
+    loading = false; 
+  }
+  
   //tdT.run();
   //if(trained)
   //td.display();
@@ -41,9 +48,10 @@ void mousePressed(){
 
 void keyPressed(){
   if(key=='q'){
-    //noLoop();
     loading = true;
-    ga.bestNetwork.saveWeights();
-    println("Saved Weights");
+  }
+  if(key=='w'){
+   noLoop();
+   ga.bestNetwork.saveWeights();
   }
 }

@@ -66,7 +66,8 @@ class GA {
     }
     else{
       nets.add(new Network(InputNodes, HiddenXNodes, HiddenYNodes, OutputNodes, weightlen, loading));
-      grade(nets.get(0));
+      bestNetwork = nets.get(0);
+      //grade(nets.get(0));
       trained = true;
       
       println("100%");
@@ -181,9 +182,9 @@ class GA {
       c++;
       p=false;
     }
-    else if(c>breedAmt){
+    else if(c>breedAmt || trained == true){
       trained = true;
-      bestNetwork.saveWeights();
+      //bestNetwork.saveWeights();
     }
   }
   
