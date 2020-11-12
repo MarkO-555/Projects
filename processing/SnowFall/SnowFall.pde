@@ -1,22 +1,21 @@
-Snowflake[] snow = new Snowflake[0];
-
+ArrayList<Snowflake> snow = new ArrayList();
+PVector gravity = new PVector(0, 0.03);
+  
 void setup() {
   size(600, 600);
 }
 void draw() {
   background(0);
-  PVector gravity = new PVector(0, 0.03);
 
-  int index = snow.length;
-  for (int i=0; i<snow.length; i++) {
-    snow[i].render();
-    snow[i].update();
-    snow[i].applyForce(gravity);
-    if(snow[i].offScreen()){
-      Snowflake_Slice(i); 
+  for (int i=0; i<snow.size(); i++) {
+    snow.get(i).render();
+    snow.get(i).update();
+    snow.get(i).applyForce(gravity);
+    if(snow.get(i).offScreen()){
+      snow.remove(i);
     }
   }
   
-  Snowflake_Push(new Snowflake());
+  snow.add(new Snowflake());
   
 }

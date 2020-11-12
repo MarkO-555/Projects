@@ -4,8 +4,6 @@ class Snowflake {
   PVector acc = new PVector(0, 0);
   float r= random(1,8);
   
-
-
   void update() {
     vel.add(acc);
     vel.limit(r*.2);
@@ -14,7 +12,6 @@ class Snowflake {
   }
   
   void applyForce(PVector force){
-    //Parallax effect
     PVector f = force.copy();
     f.mult(r);
     
@@ -29,32 +26,8 @@ class Snowflake {
   }
   
   Boolean offScreen(){
-      return (pos.y > height+r);
+    return (pos.y > height+r);
   }
   
   
-}
-
-int snowLength =0;
-void Snowflake_Push(Snowflake flake) {
-  Snowflake[] temp = snow;
-  snow = new Snowflake[snow.length+1];
-
-  for (int i=0; i<temp.length; i++) {
-    snow[i] = temp[i];
-  }
-  snow[snow.length-1] = new Snowflake();
-}
-
-void Snowflake_Slice(int index) {
-  Snowflake[] temp = snow;
-  snow = new Snowflake[snow.length-1];
-
-  int v=0;
-  for (int i=0; i<temp.length; i++) {
-    if(i==index)
-      i++;
-    snow[v] = temp[i];
-    v++;
-  }
 }
