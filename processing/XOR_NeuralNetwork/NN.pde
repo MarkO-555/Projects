@@ -1,5 +1,5 @@
 class NeuralNetwork{
-  private float Weightrange = 1;
+  private float Weightrange = 10;
   
   private Neuron[] Neurons;
   
@@ -12,7 +12,7 @@ class NeuralNetwork{
   private int[] weightsHXmap;
   private int[] weightsHYmap;
   
-  private float learningrate =0.1;
+  private float learningrate = 0.1;
   
   NeuralNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading){
     
@@ -56,8 +56,7 @@ class NeuralNetwork{
         else{
           for(int j=0; j<HiddenY; j++){
             Neurons[y].addDendrite(Neurons[Hiddens[i-1][j]], weights[Count]);
-            
-          } 
+          }
         }
         Count++;
         y++;
@@ -87,8 +86,8 @@ class NeuralNetwork{
       weights = loadWeights(weights.length);
     else{
       for(int i=0; i<weights.length; i++){
-        weights[i] = 0;
-        //weights[i] = random(-Weightrange, Weightrange);
+        //weights[i] = 1;
+        weights[i] = random(-Weightrange, Weightrange);
         
         if(i<=Inputs.length * Hiddens[0].length-1)//IH
           weightsmap[i] = 0;
@@ -137,6 +136,16 @@ class NeuralNetwork{
     float[] error = new float[len];
     float avr = 0;
     
+    //Neuron[][] hiddens = new Neuron[Hiddens.length][Hiddens[0].length];
+    float[][] hiddens = new float[Hiddens.length][Hiddens[0].length];
+    
+    
+    for(int x=0; x<Hiddens.length; x++){
+      for(int y=0; y<Hiddens[x].length; y++){
+        hiddens[x][y] = Neurons[Hiddens[x][y]].axonValue;
+      }
+    }
+    
     for(int i=0; i<len; i++){
        error[i] = (float)Math.pow(expected[i] - result[i], 2);
        avr+= error[i];
@@ -151,16 +160,18 @@ class NeuralNetwork{
     for(int i=0; i<len; i++){
       float nonproc = 1;
       
+      //println(weightsmap[i], i%2);
+      
       if(weightsmap[i] == 0){//Connected Hiddens, Inputs
-        
+        nonproc = inputs[i%inputs.length];
       }
       else if(weightsmap[i] == 1){//Connected Hiddens, Hiddens
-        
+        nonproc = 0;
       }
       else{//Connected to Outputs, Hiddens
-        
+        nonproc = result[i%result.length];
       }
-        
+      
       weights[i] += learningrate * avr * nonproc;//delta = LearningRate * AverageError * 
     }
     
