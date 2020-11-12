@@ -1,5 +1,5 @@
 class NeuralNetwork{
-  private float Weightrange = 1;
+  private float Weightrange = 10;
   
   private Neuron[] Neurons;
   

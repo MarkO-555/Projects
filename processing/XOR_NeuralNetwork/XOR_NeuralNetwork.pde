@@ -7,7 +7,7 @@ void setup(){
   nn = new NeuralNetwork(2, 1, 2, 2, false);
   
   float[] inputs = {0, 0};
-  float[] expected = {0.75, 1};
+  float[] expected = {1, 1};
   
   float[] result = new float[2];// = nn.feedForward(inputs);
   
