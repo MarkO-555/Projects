@@ -1,27 +1,45 @@
-NeuralNetwork nn = new NeuralNetwork(2, 1, 2, 2, false);
+NeuralNetwork nn;
 
-void setup(){
-  float[] inputs = {0, 0};
-  float[] expected = {1, 1};
+
+
+void setup(){    
   
-  float[] result = nn.feedForward(inputs);
+  nn = new NeuralNetwork(2, 1, 2, 2, false);
+  
+  float[] inputs = {0, 0};
+  float[] expected = {0.75, 1};
+  
+  float[] result = new float[2];// = nn.feedForward(inputs);
+  
+  result = nn.feedForward(inputs);
   
   println("");
   println("before");
   println(result);
   
-  int num = 100;
+  int num = 10000;
   for(int i=0; i<num; i++){
-    println("");
-    println("Pass "+i+" has started");
+    //println("");
+    //println("Pass "+i+" has started");
     nn.train(inputs, expected);
     
-    result = nn.feedForward(inputs);
+    //result = nn.feedForward(inputs);
     
-    println(result);
+    //println(result);
   }
   
   //nn.train(inputs, expected);
+  result = nn.feedForward(inputs);
+  
+  
+  println("");
+  println("after");
+  println(result);
+}
+
+void keyPressed(){
+  if(key == 's')
+    nn.saveWeights();
 }
 
 void draw(){

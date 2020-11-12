@@ -1,5 +1,5 @@
 class NeuralNetwork{
-  private float Weightrange = 10;
+  private float Weightrange = 1;
   
   private Neuron[] Neurons;
   
@@ -15,7 +15,6 @@ class NeuralNetwork{
   private float learningrate = 0.1;
   
   NeuralNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading){
-    
     Inputs = new int[Input];
     Hiddens = new int[HiddenX][HiddenY];
     Outputs = new int[Output];
@@ -51,17 +50,20 @@ class NeuralNetwork{
         if(i==0){
           for(int j=0; j<Input; j++){
             Neurons[y].addDendrite(new Neuron(), weights[Count]);
+            Count++;
           }
         }
         else{
           for(int j=0; j<HiddenY; j++){
             Neurons[y].addDendrite(Neurons[Hiddens[i-1][j]], weights[Count]);
+            Count++;
           }
+          Count -= HiddenY;
         }
-        Count++;
         y++;
       }
     }
+    
     
     for(int i=0; i<Output; i++){
       Outputs[i] = y;
@@ -74,7 +76,6 @@ class NeuralNetwork{
          
       y++;
     }
-    
   }
   
   private void initWeights(boolean loading){
@@ -166,13 +167,14 @@ class NeuralNetwork{
         nonproc = inputs[i%inputs.length];
       }
       else if(weightsmap[i] == 1){//Connected Hiddens, Hiddens
-        nonproc = 0;
+        nonproc = 0; 
       }
       else{//Connected to Outputs, Hiddens
         nonproc = result[i%result.length];
       }
       
-      weights[i] += learningrate * avr * nonproc;//delta = LearningRate * AverageError * 
+      nonproc = dSigmoid(nonproc);
+      weights[i] += learningrate * avr * nonproc;//delta = LearningRate * AverageError *
     }
     
     updateWeights();
@@ -181,16 +183,31 @@ class NeuralNetwork{
   
   
   private void updateWeights(){
+    //println("");
+    
+    ArrayList<Float> ls = new ArrayList();  
+      
     int Count = 0;
     for(int i=0; i<Neurons.length; i++){
-      Neuron n = Neurons[i];
       ArrayList<Float> nW = new ArrayList<Float>(); 
-      for(int v=0; v<Neurons[i].weights.size(); v++){
+      Neuron n = Neurons[i];
+      
+      for(int v=0; v<n.weights.size(); v++){
+        ls.add(weights[Count]);
         nW.add(weights[Count]);
         Count++;
       }
-     n.setWeights(nW);
+      
+      //println(nW, n.weights, nW.equals(n.weights));
+      
+      n.setWeights(nW);
     }
+    
+    //println("");
+    //for(int i=0; i<weights.length; i++){
+    //  println(weights[i], ls.get(i), weights[i] == ls.get(i));
+    //}
+    
   }
   
   private void saveWeights(){
@@ -202,6 +219,8 @@ class NeuralNetwork{
       weightLog.println(weights[i]); 
     }
     weightLog.flush();
+    
+    println("saved Network");
   }
   
   private float[] loadWeights(int weightCount){
