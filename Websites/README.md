@@ -5,5 +5,4 @@
 
 <h3>Incomplete</h3>
 <ul>
-	<li>GitHub_Project_Viewer</li>
 </ul>
