@@ -13,7 +13,7 @@
 
 </ul>
 
-<h3>Atmel</h3>
+<h3><a href="Atmel">Atmel</a></h3>
 <ul>
 	<li>keypad unlocks AC Relay</li>
 	<li>Robot Arm</li>
