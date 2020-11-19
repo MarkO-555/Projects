@@ -2,8 +2,6 @@
 
 <h3><a href="arduino">Arduino</a></h3>
 <ul>
-	<li>DIY Ossiliscope</li>
-	<li>DIY MultiMeter</li>
 	<li>Bluetooth Serial Communication</li>
 	<li>Home Automation</li>
 	<li>I2C communication</li>
@@ -13,6 +11,12 @@
 	<li>Heart Monitor</li>
 	<li>Fan LED Display</li>
 
+</ul>
+
+<h3>Atmel</h3>
+<ul>
+	<li>keypad unlocks AC Relay</li>
+	<li>Robot Arm</li>
 </ul>
 
 <h3><a href="processing">Processing</a></h3>
