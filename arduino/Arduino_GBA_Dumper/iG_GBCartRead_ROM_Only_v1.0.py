@@ -7,8 +7,8 @@ progress = 1
 
 print ("GBCartRead - ROM Only v1.0 by InsideGadgets")
 
-f = open('myrom.rom', 'wb')
-ser = serial.Serial('COM2', 57600)
+f = open('myrom.gba', 'wb')
+ser = serial.Serial('COM3', 57600)
 while 1:
     line = ser.readline()
     lineascii = ascii(line)
@@ -25,5 +25,6 @@ while 1:
         readBytes = 1
     if progress % 1024 == 0:
         sys.stdout.write('#')
+    print(lineascii)
 ser.close()
 f.close()
