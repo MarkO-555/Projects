@@ -163,16 +163,20 @@ class NeuralNetwork {
             Neuron output = Neurons[Outputs[i]];
             int index = i*Hiddens[x].length + y;
 
-            println(index);
+            //println(index);
 
             Neurons[Hiddens[x][y]].addError(OutputErrors[i] * output.getWeight(index));//error * weight
           }
         } else if (x != 0) {
           for (int i=0; i<Hiddens[x].length; i++) {
             Neuron hidden = Neurons[Hiddens[x+1][i]];
-            int index = i*Hiddens[x].length + y;
+            
+            //int index = i*(Hiddens[x].length) + y;
 
-            Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(index));//error * weight
+            //println(index,i, y, hidden.weightlen());
+            
+            Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(i));//error * weight
+            //Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(index));//error * weight
           }
         } else if (x==0) {
           //println("test");
@@ -194,6 +198,9 @@ class NeuralNetwork {
 
     //avr /= len;
 
+    //println(weightsHXmap);
+    //println(weightsHYmap);
+    
     len = weights.length;
 
     //println(weightsmap);
@@ -204,6 +211,30 @@ class NeuralNetwork {
 
       //println(weightsmap[i], i%2);
 
+      if (weightsmap[i] == 1) {//Connected Hiddens, Hiddens
+        //println("test");
+        int index = i - inputs.length*hiddens[0].length;
+        
+        int x = index/(hiddens.length *hiddens[0].length);//0, 9
+        int y = index%hiddens[0].length;//0, 1
+        
+        //println(x, y, hiddens.length, hiddens[0].length);
+        
+        nonproc = hiddens[x][y];
+      }
+      else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
+        nonproc = hiddens[hiddens.length-1][i%hiddens[0].length];
+      }
+  
+      if (weightsmap[i] == 0) {//Connected Hiddens, Inputs
+        nonproc = inputs[i%inputs.length];
+      }
+      else {
+        nonproc = dSigmoid(nonproc);
+      }
+
+
+      
       //if (weightsmap[i] == 1) {//Connected Hiddens, Hiddens    nonprocessed should be the left hidden!!!
       //  nonproc = 0;
       //} else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
@@ -221,8 +252,6 @@ class NeuralNetwork {
 
       weights[i] += learningrate * error * nonproc;
       //weights[i] += learningrate * avr * nonproc;//delta = LearningRate * AverageError *
-
-      //weights[i] += learningrate * error * nonproc;
     }
 
     updateWeights();

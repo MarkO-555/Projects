@@ -33,6 +33,10 @@ class Neuron{
    return weights.get(index); 
   }
   
+  int weightlen(){
+    return weights.size(); 
+  }
+  
   float getError(){
     return this.error; 
   }
