@@ -1,7 +1,5 @@
 NeuralNetwork nn;
 
-
-
 void setup(){    
   
   nn = new NeuralNetwork(2, 1, 2, 2, false);

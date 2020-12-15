@@ -152,7 +152,7 @@ class NeuralNetwork{
        avr+= error[i];
     }
     
-    avr /= len;
+    //avr /= len;
     
     len = weights.length;
     
