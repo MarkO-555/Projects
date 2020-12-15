@@ -1,11 +1,11 @@
 NeuralNetwork nn;
-
+  
 void setup(){    
   
   nn = new NeuralNetwork(2, 1, 2, 2, false);
   
-  float[] inputs = {0, 0};
-  float[] expected = {1, 1};
+  float[] inputs = {1, 1};
+  float[] expected = {0, 1};
   
   float[] result = new float[2];// = nn.feedForward(inputs);
   
@@ -14,16 +14,22 @@ void setup(){
   println("");
   println("before");
   println(result);
+  println("");
   
-  int num = 10000;
+  boolean debug = false;
+  
+  int num = 1;
   for(int i=0; i<num; i++){
-    //println("");
-    //println("Pass "+i+" has started");
+    if(debug){
+      println("");
+      println("Pass "+i+" has started");
+    }
     nn.train(inputs, expected);
     
-    //result = nn.feedForward(inputs);
+    result = nn.feedForward(inputs);
     
-    //println(result);
+    if(debug)
+      println(result);
   }
   
   //nn.train(inputs, expected);
