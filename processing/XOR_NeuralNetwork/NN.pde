@@ -86,8 +86,8 @@ class NeuralNetwork {
       weights = loadWeights(weights.length);
     else {
       for (int i=0; i<weights.length; i++) {
-        weights[i] = 1;
-        //weights[i] = random(-Weightrange, Weightrange);
+        //weights[i] = 1;
+        weights[i] = random(-Weightrange, Weightrange);
 
         if (i<=Inputs.length * Hiddens[0].length-1)//IH
           weightsmap[i] = 0;
@@ -224,7 +224,7 @@ class NeuralNetwork {
         //println(x, y, hiddens.length, hiddens[0].length);
 
         //println(index, "|", x, y);
-        println(x);
+        //println(x);
 
         nonproc = hiddens[x][y];
 
@@ -232,13 +232,27 @@ class NeuralNetwork {
 
         //int x = index/4;
       } else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
-        nonproc = hiddens[hiddens.length-1][i%hiddens[0].length];
+      
+        //int index = i - ((hiddens.length-1)*hiddens[0].length + hiddens[0].length+inputs.length);
+        int index = i - ((int)Math.pow(hiddens.length-1, hiddens[0].length) + hiddens[0].length*inputs.length);
+        
+        nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];
+        
+        //println(i, Math.pow(hiddens.length-1, hiddens[0].length), hiddens[0].length*inputs.length);
+        //println(index);
+        
+        error = Neurons[Outputs[index/hiddens[0].length]].getError();
         
         //println((i-(hiddens.length*hiddens[0].length))/hiddens[0].length -1, hiddens.length-1,i%hiddens[0].length, hiddens[0].length);
       }
 
       if (weightsmap[i] == 0) {//Connected Hiddens, Inputs
+        //int index = i/(hiddens[0].length-1);
+        int index = i/inputs.length;
+        
+        error = Neurons[Hiddens[0][index]].getError();
         nonproc = inputs[i%inputs.length];
+        
       } else {
         nonproc = dSigmoid(nonproc);
       }

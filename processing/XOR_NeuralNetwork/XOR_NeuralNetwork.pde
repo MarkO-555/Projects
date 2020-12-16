@@ -5,7 +5,7 @@ void setup(){
   nn = new NeuralNetwork(2, 1, 2, 2, false);
   
   float[] inputs = {1, 1};
-  float[] expected = {0, 0, 0};
+  float[] expected = {1, 1};
   
   float[] result = new float[2];// = nn.feedForward(inputs);
   
@@ -16,9 +16,9 @@ void setup(){
   println(result);
   println("");
   
-  boolean debug = false;
+  boolean debug = true;
   
-  int num = 1;
+  int num = 100;
   for(int i=0; i<num; i++){
     if(debug){
       println("");
