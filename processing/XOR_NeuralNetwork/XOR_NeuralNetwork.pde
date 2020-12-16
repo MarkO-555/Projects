@@ -2,10 +2,10 @@ NeuralNetwork nn;
   
 void setup(){    
   
-  nn = new NeuralNetwork(2, 5, 2, 2, false);
+  nn = new NeuralNetwork(2, 1, 2, 2, false);
   
   float[] inputs = {1, 1};
-  float[] expected = {0, 1};
+  float[] expected = {0, 0, 0};
   
   float[] result = new float[2];// = nn.feedForward(inputs);
   
