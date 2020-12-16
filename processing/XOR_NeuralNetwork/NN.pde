@@ -164,7 +164,7 @@ class NeuralNetwork {
             //int index = i*Hiddens[x].length + y;
             //int index = i*Hiddens.length + y;
 
-            //println(i,y, index, output.weightlen());
+            //println(i,y, output.weightlen());
 
             //Neurons[Hiddens[x][y]].addError(OutputErrors[i] * output.getWeight(index));//error * weight
             Neurons[Hiddens[x][y]].addError(OutputErrors[i] * output.getWeight(y));//error * weight
@@ -176,8 +176,10 @@ class NeuralNetwork {
             //int index = i*(Hiddens[x].length) + y;
 
             //println(index,i, y, hidden.weightlen());
-
-            Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(i));
+            
+            //println(y);
+            
+            Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(y));
           }
         }
 
