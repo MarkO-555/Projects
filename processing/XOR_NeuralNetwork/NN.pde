@@ -263,7 +263,12 @@ class NeuralNetwork {
 
     updateWeights();
   }
-
+  
+  void train(float[][][] dataset){
+    for(int i=0; i<dataset.length; i++){
+      train(dataset[i][0], dataset[i][1]); 
+    }
+  }
 
 
   private void updateWeights() {

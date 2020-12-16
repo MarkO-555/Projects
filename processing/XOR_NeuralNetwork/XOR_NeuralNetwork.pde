@@ -1,8 +1,15 @@
 NeuralNetwork nn;
-  
+
 void setup(){    
   
-  nn = new NeuralNetwork(2, 1, 2, 2, false);
+  nn = new NeuralNetwork(2, 1, 2, 1, false);
+  
+  float[][][] dataset = {
+    {{0, 0}, {0}},
+    {{0, 1}, {1}},
+    {{1, 0}, {1}},
+    {{1, 1}, {0}}
+  };
   
   float[] inputs = {1, 1};
   float[] expected = {1, 1};
@@ -16,9 +23,9 @@ void setup(){
   println(result);
   println("");
   
-  boolean debug = true;
+  boolean debug = false;
   
-  int num = 100;
+  int num = 1000;
   for(int i=0; i<num; i++){
     if(debug){
       println("");
