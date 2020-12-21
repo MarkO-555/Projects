@@ -28,8 +28,6 @@ class NeuralNetwork {
 
     weights = new float[weightCount];
     weightsmap = new int[weightCount];
-    //weightsHXmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
-    //weightsHYmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
 
     initWeights(loading);
 
