@@ -10,6 +10,7 @@ class Neuron{
     axonValue = 0;
     for(int i=0; i<dendrites.size(); i++)
       axonValue += dendrites.get(i).axonValue * weights.get(i);
+      
     nonProcessed = axonValue;
     axonValue = sigmoid(axonValue);
   }
@@ -43,6 +44,11 @@ class Neuron{
   
   void setWeights(ArrayList<Float> weights){
     this.weights = weights;
+  }
+  
+  void setDendrite(int index, Neuron n){
+    //println(index, dendrites.size());
+    dendrites.set(index, n); 
   }
   
   void clearWeights(){

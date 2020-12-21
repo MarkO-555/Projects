@@ -1,7 +1,8 @@
 class NeuralNetwork {
-  private float Weightrange = 10;
+  private float Weightrange = 2;
 
   private Neuron[] Neurons;
+  private float[] axons;
 
   private int[] Inputs;
   private int[][] Hiddens;
@@ -9,8 +10,6 @@ class NeuralNetwork {
 
   private float[] weights;
   private int[] weightsmap;
-  private int[] weightsHXmap;
-  private int[] weightsHYmap;
 
   private float learningrate = 0.1;
 
@@ -19,6 +18,7 @@ class NeuralNetwork {
     Hiddens = new int[HiddenX][HiddenY];
     Outputs = new int[Output];
     Neurons = new Neuron[Input+HiddenX*HiddenY+Output];
+    axons = new float[Input+HiddenX*HiddenY+Output];
 
     int weightCount = 0;
     if (HiddenX>0)
@@ -28,8 +28,8 @@ class NeuralNetwork {
 
     weights = new float[weightCount];
     weightsmap = new int[weightCount];
-    weightsHXmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
-    weightsHYmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
+    //weightsHXmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
+    //weightsHYmap = new int[weightCount - Input*HiddenY - HiddenY*Output];
 
     initWeights(loading);
 
@@ -78,31 +78,17 @@ class NeuralNetwork {
   }
 
   private void initWeights(boolean loading) {
-    int count =0;
-    int xcount =0;
-    int ycount =0;
-
     if (loading)
       weights = loadWeights(weights.length);
     else {
       for (int i=0; i<weights.length; i++) {
-        weights[i] = 1;
-        //weights[i] = random(-Weightrange, Weightrange);
+        //weights[i] = 1;
+        weights[i] = random(-Weightrange, Weightrange);
 
         if (i<=Inputs.length * Hiddens[0].length-1)//IH
           weightsmap[i] = 0;
         else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2)-1) {//HH
           weightsmap[i] = 1;
-
-          if (ycount >= Hiddens[0].length) {
-            xcount++;
-            ycount=0;
-          }
-
-          weightsHXmap[count]=xcount;
-          weightsHYmap[count]=ycount;
-          ycount++;
-          count++;
         } else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2) + Hiddens[0].length*Outputs.length-1)//HO
           weightsmap[i] = 2;
       }
@@ -115,9 +101,34 @@ class NeuralNetwork {
     if (len != Inputs.length) {
       println("The inputs length is not expected value");
     }
-
-    for (int i=0; i<Neurons.length-len; i++) {
-      Neurons[len+i].process();
+    
+    for(int i=0; i<Inputs.length; i++){
+      Neurons[i].axonValue = Inputs[i]; 
+    }
+    
+    for(int i=0; i<Hiddens.length; i++){
+      for(int j=0; j<Hiddens[i].length; j++){
+        Neuron n = Neurons[Hiddens[i][j]];
+        if(i==0){//Input Hidden
+          for(int v=0; v<Inputs.length; v++){
+            n.setDendrite(v, Neurons[v]);
+          }
+        }
+        else{//Hidden Hidden
+          for(int v=0; v<Hiddens[0].length; v++){
+            n.setDendrite(v, Neurons[Hiddens[i-1][v]]); 
+          }
+        }
+        n.process();
+      }
+    }
+    
+    for(int i=0; i<Outputs.length; i++){
+      Neuron n =Neurons[Outputs[i]];
+      for(int v=0; v<Hiddens[0].length; v++){
+         n.setDendrite(v, Neurons[Hiddens[Hiddens.length-1][v]]);
+      }
+      n.process();
     }
 
     len = this.Outputs.length;
@@ -125,7 +136,11 @@ class NeuralNetwork {
 
     for (int i=0; i<len; i++)
       Outputs[i] = Neurons[this.Outputs[i]].axonValue;
-
+    
+    for(int i=0; i<Neurons.length; i++){
+      axons[i] = Neurons[i].axonValue; 
+    }
+    
     return Outputs;
   }
 
@@ -133,14 +148,9 @@ class NeuralNetwork {
     int len = expected.length;
     float[] result = feedForward(inputs);
 
-    //float[] error = new float[len];
-    //float avr = 0;
-
     float[] OutputErrors = new float[len];
     float[][] hiddenErrors = new float[Hiddens.length][Hiddens[0].length];
     float[][] hiddens = new float[Hiddens.length][Hiddens[0].length];
-
-    //Neuron[][] hiddens = new Neuron[Hiddens.length][Hiddens[0].length];
 
     for (int i=0; i<result.length; i++) {
       OutputErrors[i] = expected[i] - result[i];
@@ -193,19 +203,6 @@ class NeuralNetwork {
         hiddenErrors[x][y] = Neurons[Hiddens[x][y]].getError();
       }
     }
-
-
-
-    //for(int i=0; i<len; i++){
-    //   //error[i] = (float)Math.pow(expected[i] - result[i], 2);
-    //   error[i] = (expected[i] - result[i]);
-    //   avr+= error[i];
-    //}
-
-    //avr /= len;
-
-    //println(weightsHXmap);
-    //println(weightsHYmap);
 
     len = weights.length;
 
@@ -283,7 +280,7 @@ class NeuralNetwork {
   }
 
   void train(float[][][] dataset) {
-    for (int i=0; i<dataset.length; i++) {
+    for (int i=0; i<dataset.length; i++) {      
       train(dataset[i][0], dataset[i][1]);
     }
   }
