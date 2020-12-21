@@ -86,8 +86,8 @@ class NeuralNetwork {
       weights = loadWeights(weights.length);
     else {
       for (int i=0; i<weights.length; i++) {
-        //weights[i] = 1;
-        weights[i] = random(-Weightrange, Weightrange);
+        weights[i] = 1;
+        //weights[i] = random(-Weightrange, Weightrange);
 
         if (i<=Inputs.length * Hiddens[0].length-1)//IH
           weightsmap[i] = 0;
@@ -169,21 +169,26 @@ class NeuralNetwork {
             //Neurons[Hiddens[x][y]].addError(OutputErrors[i] * output.getWeight(index));//error * weight
             Neurons[Hiddens[x][y]].addError(OutputErrors[i] * output.getWeight(y));//error * weight
           }
-        } else if (x != 0) {
+        }
+        else {//Hidden Hidden
+            //println("test");
           for (int i=0; i<Hiddens[x].length; i++) {
             Neuron hidden = Neurons[Hiddens[x+1][i]];
 
             //int index = i*(Hiddens[x].length) + y;
 
             //println(index,i, y, hidden.weightlen());
-            
+
             //println(y);
-            
+
+            //println("test", hidden.getError() * hidden.getWeight(y));
+
             Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(y));
           }
         }
 
-
+        //println(x);
+        
         Neurons[Hiddens[x][y]].processErrors();
         hiddenErrors[x][y] = Neurons[Hiddens[x][y]].getError();
       }
@@ -216,43 +221,56 @@ class NeuralNetwork {
         int index = i - inputs.length*hiddens[0].length;
 
         //int x = index/(hiddens.length *hiddens[0].length);
-        
-        int x = index / 4;
+
+        int x = index / (int)Math.pow(hiddens[0].length, 2);
 
         int y = index%hiddens[0].length;//0, 1
 
-        //println(x, y, hiddens.length, hiddens[0].length);
+        //println(index/hiddens[0].length);
 
         //println(index, "|", x, y);
         //println(x);
 
         nonproc = hiddens[x][y];
+        error = Neurons[Hiddens[x+1][index/hiddens[0].length]].getError();
 
         //int index = i - inputs.length*hiddens[0].length;
 
         //int x = index/4;
       } else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
-      
-        //int index = i - ((hiddens.length-1)*hiddens[0].length + hiddens[0].length+inputs.length);
-        int index = i - ((int)Math.pow(hiddens.length-1, hiddens[0].length) + hiddens[0].length*inputs.length);
-        
+
+        //int index = i - ((int)Math.pow(hiddens.length-1, hiddens[0].length) + hiddens[0].length*inputs.length);
+
+        int index = 0;
+
+        if (hiddens.length <= 1)
+          index = i - (hiddens[0].length*inputs.length);
+        else
+          index = i - (hiddens[0].length*inputs.length + (int)Math.pow(hiddens[0].length, hiddens.length));
+
         nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];
-        
+
         //println(i, Math.pow(hiddens.length-1, hiddens[0].length), hiddens[0].length*inputs.length);
-        //println(index);
+
+        //println(i - (hiddens[0].length*inputs.length + (int)Math.pow(hiddens[0].length, hiddens.length)));
+
+        //println(index, index%2, Math.abs(1-index%2));
+        //println(expected.length);
         
-        error = Neurons[Outputs[index/hiddens[0].length]].getError();
-        
+        if(expected.length == 1)
+          error = Neurons[Outputs[0]].getError();
+        else
+          error = Neurons[Outputs[index/expected.length]].getError();
+
         //println((i-(hiddens.length*hiddens[0].length))/hiddens[0].length -1, hiddens.length-1,i%hiddens[0].length, hiddens[0].length);
       }
 
       if (weightsmap[i] == 0) {//Connected Hiddens, Inputs
         //int index = i/(hiddens[0].length-1);
         int index = i/inputs.length;
-        
+
         error = Neurons[Hiddens[0][index]].getError();
         nonproc = inputs[i%inputs.length];
-        
       } else {
         nonproc = dSigmoid(nonproc);
       }
@@ -263,10 +281,10 @@ class NeuralNetwork {
 
     updateWeights();
   }
-  
-  void train(float[][][] dataset){
-    for(int i=0; i<dataset.length; i++){
-      train(dataset[i][0], dataset[i][1]); 
+
+  void train(float[][][] dataset) {
+    for (int i=0; i<dataset.length; i++) {
+      train(dataset[i][0], dataset[i][1]);
     }
   }
 
