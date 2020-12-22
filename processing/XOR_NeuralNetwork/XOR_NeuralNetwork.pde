@@ -3,11 +3,11 @@ CounterThread CT;
 ResultThead RT;
 
 int TrainCount = 0;
-int TrainMax = 10;
+int TrainMax = 10000;
 float[][] result;
 
-boolean debug = true;
-boolean Counting = false;
+boolean debug = false;
+boolean Counting = true;
 
 //boolean running = true;
 
@@ -44,7 +44,8 @@ void setup() {
   for(int v=0; v<dataset.length; v++){
     result[v] = nn.feedForward(dataset[v][0]);
   }
-
+  
+  println("");
   println("after");
   RT.run();
 }
