@@ -1,65 +1,52 @@
 NeuralNetwork nn;
+CounterThread CT;
+ResultThead RT;
 
-void setup() {
+int TrainCount = 0;
+int TrainMax = 10;
+float[][] result;
+
+boolean debug = true;
+boolean Counting = false;
+
+//boolean running = true;
+
   float[][][] dataset = {
     {{0, 0}, {0}}, 
     {{0, 1}, {1}}, 
-    {{1, 0}, {0}}, 
+    {{1, 0}, {1}}, 
     {{1, 1}, {0}}
   };
 
-  nn = new NeuralNetwork(dataset[0][0].length, 2, 2, dataset[0][1].length, false);
+void setup() {
+  nn = new NeuralNetwork(dataset[0][0].length, 1, 5, dataset[0][1].length, false);
+  if(Counting)
+    CT = new CounterThread();
+  RT = new ResultThead();
 
-  float[][] result = new float[dataset.length][dataset[0][1].length];// = nn.feedForward(inputs);
+  result = new float[dataset.length][dataset[0][1].length];// = nn.feedForward(inputs);
 
-  for(int v=0; v<dataset.length; v++){
-    result[v] = nn.feedForward(dataset[v][0]);
-  }
-
-  println("");
-  println("before");
-  for(int v=0; v<result.length; v++){
-    for(int j=0; j<result[v].length; j++){
-      println("["+v+"]"+"["+j+"]", result[v][j]);
-    }
-  }
-  println("");
-
-  boolean debug = false;
-
-  int num = 1000;
-  for(int i=0; i<num; i++){
-    if(debug){
-      println("");
-      println("Pass "+i+" has started");
-    }
+  println("Begining");
+  RT.run();
+  
+  for(int i=0; i<TrainMax; i++){
+    if(Counting)
+      CT.run();
 
     nn.train(dataset);
 
-    for(int v=0; v<dataset.length; v++){
-      result[v] = nn.feedForward(dataset[v][0]);
-    }
-
-    if(debug){
-      for(int v=0; v<result.length; v++){
-        for(int j=0; j<result[v].length; j++){
-          println("["+v+"]"+"["+j+"]", result[v][j]);
-        }
-      }
-    }
+    if(debug)
+      RT.run();
+    
+    TrainCount = i;
   }
 
   for(int v=0; v<dataset.length; v++){
     result[v] = nn.feedForward(dataset[v][0]);
   }
 
-  println("");
   println("after");
-  for(int v=0; v<result.length; v++){
-    for(int j=0; j<result[v].length; j++){
-      println("["+v+"]"+"["+j+"]", result[v][j]);
-    }
-  }
+  RT.run();
 }
 
 void keyPressed() {
@@ -68,4 +55,17 @@ void keyPressed() {
 }
 
 void draw() {
+  //if(TrainCount < TrainMax){
+  //  if(Counting)
+  //    CT.run();
+  //  nn.train(dataset);
+    
+  //  if(debug)
+  //    RT.run();
+  //  TrainCount++;
+  //}
+  //else if(running){
+  //  RT.run();
+  //  running = false;
+  //}
 }

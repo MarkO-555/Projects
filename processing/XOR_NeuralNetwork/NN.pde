@@ -1,5 +1,5 @@
 class NeuralNetwork {
-  private float Weightrange = 2;
+  private float Weightrange = 10;
 
   private Neuron[] Neurons;
   private float[] axons;
@@ -213,7 +213,7 @@ class NeuralNetwork {
       //println(weightsmap[i], i%2);
 
       if (weightsmap[i] == 1) {//Connected Hiddens, Hiddens
-        int index = i - inputs.length*hiddens[0].length;
+        int index = (i - inputs.length*hiddens[0].length);//index in current hidden hidden weights
 
         //int x = index/(hiddens.length *hiddens[0].length);
 
@@ -227,7 +227,11 @@ class NeuralNetwork {
         //println(x);
 
         nonproc = hiddens[x][y];
-        error = Neurons[Hiddens[x+1][index/hiddens[0].length]].getError();
+        
+        //println(index, index/hiddens[0].length, x+1, hiddens[0].length);
+        //println(index, hiddens[0].length, index%hiddens[0].length, x, y);
+        
+        error = Neurons[Hiddens[x+1][index%hiddens[0].length]].getError();
 
         //int index = i - inputs.length*hiddens[0].length;
 
@@ -238,12 +242,22 @@ class NeuralNetwork {
 
         int index = 0;
 
-        if (hiddens.length <= 1)
-          index = i - (hiddens[0].length*inputs.length);
-        else
-          index = i - (hiddens[0].length*inputs.length + (int)Math.pow(hiddens[0].length, hiddens.length));
-
-        nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];
+        //if (hiddens.length <= 1)
+        //  index = i - (hiddens[0].length*inputs.length);
+        //else
+        //  //index = i - (hiddens[0].length*inputs.length + (int)Math.pow(hiddens[0].length, hiddens.length));
+        //  //index = i - inputs.length*hiddens[0].length - ((hiddens[0].length) *hiddens[0].length * hiddens.length);
+        //  index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
+          
+          
+        index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
+          
+          
+        //println(index);
+          
+        //println(i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1)); 
+        
+        nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];//bug!!!
 
         //println(i, Math.pow(hiddens.length-1, hiddens[0].length), hiddens[0].length*inputs.length);
 
