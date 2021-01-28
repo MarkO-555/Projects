@@ -37,6 +37,13 @@ class NeuralNetwork {
     for (int i=0; i<Input; i++) {
       Inputs[i] = y;
       Neurons[y] = new Neuron();
+      
+      float it = height/Input;
+      
+      Neurons[y].setX(Distance);
+      Neurons[y].setY(it*i + it/2);
+      
+      
       y++;
     }
 
@@ -44,7 +51,12 @@ class NeuralNetwork {
       for (int v=0; v<HiddenY; v++) {
         Hiddens[i][v] = y;
         Neurons[y] = new Neuron();
-
+        
+        float it = height/HiddenY;
+        
+        Neurons[y].setX(i*Distance+2*Distance);
+        Neurons[y].setY(it*v + it/2);
+        
         if (i==0) {
           for (int j=0; j<Input; j++) {
             Neurons[y].addDendrite(new Neuron(), weights[Count]);
@@ -65,6 +77,11 @@ class NeuralNetwork {
     for (int i=0; i<Output; i++) {
       Outputs[i] = y;
       Neurons[y] = new Neuron();
+      
+      float it = height/Output;
+      
+      Neurons[y].setX(Hiddens.length*Distance+2*Distance);
+      Neurons[y].setY(it*i + it/2);
 
       for (int j=0; j<HiddenY; j++) {
         Neurons[y].addDendrite(Neurons[Hiddens[HiddenX-1][j]], weights[Count]);

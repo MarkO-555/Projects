@@ -6,6 +6,9 @@ class Neuron{
   private ArrayList<Float> errors = new ArrayList<Float>();
   private float error;
   
+  private float xPos = 0;
+  private float yPos = 0;
+  
   void process(){
     axonValue = 0;
     for(int i=0; i<dendrites.size(); i++)
@@ -13,6 +16,21 @@ class Neuron{
       
     nonProcessed = axonValue;
     axonValue = sigmoid(axonValue);
+  }
+  
+  void setX(float xPos){
+    this.xPos = xPos; 
+  }
+  void setY(float yPos){
+    this.yPos = yPos; 
+  }
+  
+  float getX(){
+    return xPos; 
+  }
+  
+  float getY(){
+    return yPos; 
   }
   
   void setError(float error){
