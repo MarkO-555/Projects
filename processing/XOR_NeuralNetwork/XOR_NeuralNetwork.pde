@@ -4,7 +4,7 @@ ResultThead RT;
 MainThread MT;
 
 float Size = 50;
-float Distance = 135;
+float Distance = 100;
 
 int TrainCount = 0;
 int TrainMax = 10;
@@ -23,7 +23,7 @@ float[][][] dataset = {
 
 void setup() {
   size(800, 800);
-  nn = new NeuralNetwork(dataset[0][0].length, 5, 2, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 4, 3, dataset[0][1].length, false);
   if(Counting)
     CT = new CounterThread();
   RT = new ResultThead();
@@ -32,7 +32,7 @@ void setup() {
   result = new float[dataset.length][dataset[0][1].length];
   lastResult = new float[dataset.length][dataset[0][1].length];
   
-  MT.run();
+  //MT.run();
 }
 
 void keyPressed() {

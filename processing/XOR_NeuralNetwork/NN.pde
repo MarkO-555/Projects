@@ -59,10 +59,10 @@ class NeuralNetwork {
         
         if (i==0) {
           for (int j=0; j<Input; j++) {
-            Neurons[y].addDendrite(new Neuron(), weights[Count]);
+            Neurons[y].addDendrite(Neurons[j], weights[Count]);
             Count++;
           }
-        } else {
+        } else{
           for (int j=0; j<HiddenY; j++) {
             Neurons[y].addDendrite(Neurons[Hiddens[i-1][j]], weights[Count]);
             Count++;
