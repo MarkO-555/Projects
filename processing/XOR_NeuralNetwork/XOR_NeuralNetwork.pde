@@ -3,11 +3,11 @@ CounterThread CT;
 ResultThead RT;
 MainThread MT;
 
-float Size = 50;
+float Size = 25;
 float Distance = 100;
 
 int TrainCount = 0;
-int TrainMax = 10;
+int TrainMax = 1000;
 float[][] result;
 float[][] lastResult;
 
@@ -23,7 +23,7 @@ float[][][] dataset = {
 
 void setup() {
   size(800, 800);
-  nn = new NeuralNetwork(dataset[0][0].length, 3, 3, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 4, 3, dataset[0][1].length, false);
   if(Counting)
     CT = new CounterThread();
   RT = new ResultThead();
@@ -31,8 +31,6 @@ void setup() {
 
   result = new float[dataset.length][dataset[0][1].length];
   lastResult = new float[dataset.length][dataset[0][1].length];
-  
-  MT.run();
 }
 
 void keyPressed() {
@@ -41,8 +39,10 @@ void keyPressed() {
 }
 
 
-
+boolean started = false;
 void draw() {
+  if(!started)
+    MT.start();
   for(int i=0; i<nn.Neurons.length; i++){
     Neuron n =  nn.Neurons[i];
     
@@ -54,4 +54,8 @@ void draw() {
       line(n.getX(), n.getY(), tn.getX(), tn.getY());
     }
   }
+}
+
+void mousePressed(){
+  RT.run();
 }

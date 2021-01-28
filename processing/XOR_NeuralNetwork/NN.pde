@@ -1,5 +1,5 @@
 class NeuralNetwork {
-  private float Weightrange = 10;
+  private float Weightrange = 2;
 
   private Neuron[] Neurons;
   private float[] axons;
@@ -11,7 +11,7 @@ class NeuralNetwork {
   private float[] weights;
   private int[] weightsmap;
 
-  private float learningrate = 0.1;
+  private float learningrate = 0.01;
 
   NeuralNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading) {
     Inputs = new int[Input];

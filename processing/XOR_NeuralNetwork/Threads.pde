@@ -2,6 +2,7 @@ boolean changeDebug = true;
 
 public class MainThread extends Thread{
   public void run(){
+    started = true;
     for(int i=0; i<TrainMax; i++){
       TrainCount = i;
     
@@ -12,11 +13,7 @@ public class MainThread extends Thread{
       
       if(debug || i==0 || i+1==TrainMax)
         RT.run();
-    }
-    
-    //println("");
-    //println("Trained Results");
-    //RT.run(); 
+    } 
   }
 }
 
@@ -48,7 +45,7 @@ public class ResultThead extends Thread{
       result[v] = nn.feedForward(dataset[v][0]);
     }
     
-    println("Pass "+TrainCount+" has started");
+    println("Pass "+TrainCount);
     for(int v=0; v<result.length; v++){
       for(int j=0; j<result[v].length; j++){
         println("["+v+"]"+"["+j+"]", result[v][j]);
