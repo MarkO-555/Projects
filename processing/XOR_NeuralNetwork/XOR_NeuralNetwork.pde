@@ -11,7 +11,7 @@ int TrainMax = 10;
 float[][] result;
 float[][] lastResult;
 
-boolean debug = true;
+boolean debug = false;
 boolean Counting = false;
 
 float[][][] dataset = {
@@ -23,7 +23,7 @@ float[][][] dataset = {
 
 void setup() {
   size(800, 800);
-  nn = new NeuralNetwork(dataset[0][0].length, 4, 3, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 3, 3, dataset[0][1].length, false);
   if(Counting)
     CT = new CounterThread();
   RT = new ResultThead();
@@ -32,7 +32,7 @@ void setup() {
   result = new float[dataset.length][dataset[0][1].length];
   lastResult = new float[dataset.length][dataset[0][1].length];
   
-  //MT.run();
+  MT.run();
 }
 
 void keyPressed() {

@@ -283,10 +283,15 @@ class NeuralNetwork {
         //println(index, index%2, Math.abs(1-index%2));
         //println(expected.length);
         
-        if(expected.length == 1)
-          error = Neurons[Outputs[0]].getError();
-        else
-          error = Neurons[Outputs[index/expected.length]].getError();
+        //println(index, expected.length);
+        
+        //println(index/hiddens[0].length);
+        
+        error = Neurons[Outputs[index/hiddens[0].length]].getError();
+        //if(expected.length == 1)
+        //  error = Neurons[Outputs[0]].getError();
+        //else
+        //  error = Neurons[Outputs[index/expected.length]].getError();
 
         //println((i-(hiddens.length*hiddens[0].length))/hiddens[0].length -1, hiddens.length-1,i%hiddens[0].length, hiddens[0].length);
       }
