@@ -7,11 +7,11 @@ float Size = 25;
 float Distance = 100;
 
 int TrainCount = 0;
-int TrainMax = 1000;
+int TrainMax = 100;
 float[][] result;
 float[][] lastResult;
 
-boolean debug = false;
+boolean debug = true;
 boolean Counting = false;
 
 float[][][] dataset = {

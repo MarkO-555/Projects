@@ -1,5 +1,5 @@
 class NeuralNetwork {
-  private float Weightrange = 2;
+  private float Weightrange = 1;
 
   private Neuron[] Neurons;
   private float[] axons;
@@ -11,7 +11,7 @@ class NeuralNetwork {
   private float[] weights;
   private int[] weightsmap;
 
-  private float learningrate = 0.01;
+  private float learningrate = 0.1;
 
   NeuralNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading) {
     Inputs = new int[Input];
@@ -172,6 +172,10 @@ class NeuralNetwork {
       Neurons[Outputs[i]].addError(OutputErrors[i]);
       Neurons[Outputs[i]].processErrors();
     }
+    
+    //println("");
+    //println("Output Errors");
+    //println(OutputErrors);
 
     for (int x=0; x<Hiddens.length; x++) {
       for (int y=0; y<Hiddens[x].length; y++) {
@@ -191,8 +195,8 @@ class NeuralNetwork {
 
             //println(i,y, output.weightlen());
 
-            //Neurons[Hiddens[x][y]].addError(OutputErrors[i] * output.getWeight(index));//error * weight
             Neurons[Hiddens[x][y]].addError(OutputErrors[i] * output.getWeight(y));//error * weight
+            //Neurons[Hiddens[x][y]].addError(2);//error * weight //possible bug!!!
           }
         }
         else {//Hidden Hidden
@@ -209,6 +213,8 @@ class NeuralNetwork {
             //println("test", hidden.getError() * hidden.getWeight(y));
 
             Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(y));
+            
+            //Neurons[Hiddens[x][y]].addError(0);
           }
         }
 
@@ -218,7 +224,16 @@ class NeuralNetwork {
         hiddenErrors[x][y] = Neurons[Hiddens[x][y]].getError();
       }
     }
-
+    
+    
+    //println("");
+    //println("Hidden Errors");
+    //for(int i=0; i<hiddenErrors.length; i++){
+    //  for(int v=0; v<hiddenErrors[i].length; v++){
+    //    println("["+i+"]["+v+"]"+hiddenErrors[i][v]); 
+    //  }
+    //}
+    
     len = weights.length;
 
     //println(weightsmap);
@@ -244,7 +259,6 @@ class NeuralNetwork {
         //println(x);
 
         nonproc = hiddens[x][y];
-        
         //println(index, index/hiddens[0].length, x+1, hiddens[0].length);
         //println(index, hiddens[0].length, index%hiddens[0].length, x, y);
         
@@ -275,7 +289,7 @@ class NeuralNetwork {
         //println(i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1)); 
         
         nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];//bug!!!
-
+        //derivitive = hiddens[hiddens.length-1][index%hiddens[0].length].getDerivitive();
         //println(i, Math.pow(hiddens.length-1, hiddens[0].length), hiddens[0].length*inputs.length);
 
         //println(i - (hiddens[0].length*inputs.length + (int)Math.pow(hiddens[0].length, hiddens.length)));
@@ -302,11 +316,20 @@ class NeuralNetwork {
 
         error = Neurons[Hiddens[0][index]].getError();
         nonproc = inputs[i%inputs.length];
+        //derivitive = inputs[i%inputs.length] * (1-inputs[i%inputs.length]);
       } else {
         nonproc = dSigmoid(nonproc);
+        //nonproc = nonproc * (1-nonproc);
+        //derivitive = neuron.getDerivitive();
       }
-
+      
+      
+      //nonproc = nonproc * (1-nonproc);
+      
       weights[i] += learningrate * error * nonproc;
+      
+      //weights[i] += error;//temp!!!
+      
       //weights[i] += learningrate * avr * nonproc;//delta = LearningRate * AverageError *
     }
 

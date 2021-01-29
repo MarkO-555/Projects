@@ -1,10 +1,11 @@
 class Neuron{
   private ArrayList<Float> weights = new ArrayList<Float>();
+  private ArrayList<Float> errors = new ArrayList<Float>();
   private ArrayList<Neuron> dendrites = new ArrayList<Neuron>();
   private float axonValue, nonProcessed;
   
-  private ArrayList<Float> errors = new ArrayList<Float>();
   private float error;
+  private float axonDerivative;
   
   private float xPos = 0;
   private float yPos = 0;
@@ -16,6 +17,14 @@ class Neuron{
       
     nonProcessed = axonValue;
     axonValue = sigmoid(axonValue);
+    
+    //axonValue = 1;//temp, for testing!!!
+    
+    axonDerivative = axonValue * (1-axonValue);
+  }
+  
+  float getDerivitive(){
+    return axonDerivative; 
   }
   
   void setX(float xPos){
@@ -42,10 +51,12 @@ class Neuron{
   }
   
   void processErrors(){
-    for(int i=0; i<errors.size(); i++){
-      error += errors.get(i); 
+    this.error = 0;
+    for(int i=0; i<this.errors.size(); i++){
+      this.error += this.errors.get(i); 
     }
-    error /= errors.size();
+    this.error /= errors.size();
+    errors = new ArrayList<Float>();
   }
   
   float getWeight(int index){
