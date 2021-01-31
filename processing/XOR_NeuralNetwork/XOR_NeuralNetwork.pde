@@ -37,11 +37,11 @@ float[][][] dataset = {
 
 void setup() {
   
-  size(800, 800);
-  //fullScreen();
+  //size(800, 800);
+  fullScreen();
   
   mousePos = new PVector();
-  pos = new PVector();
+  pos = new PVector(0, 0);
   nn = new NeuralNetwork(dataset[0][0].length, 1, 10, dataset[0][1].length, false);
   //if(Counting)
   //  CT = new CounterThread();
