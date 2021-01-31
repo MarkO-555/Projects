@@ -7,15 +7,24 @@ float Size = 25;
 float Distance = 100;
 
 int TrainCount = 0;
-int TrainMax = 2;
+int TrainMax = 100;
+
 float[][] result;
 float[][] lastResult;
+float error = 100;
+float scale = 1;
 
 boolean debug = false;
 boolean Counting = false;
+boolean limit = false;
+
+PVector mousePos;
+PVector pos;
+PVector prevPos;
+boolean mouseDown = false;
 
 float[][][] dataset = {
-  {{0.05, 0}, {0}}, 
+  {{0, 0}, {0}}, 
   {{0, 1}, {1}}, 
   {{1, 0}, {1}}, 
   {{1, 1}, {0}}
@@ -23,7 +32,10 @@ float[][][] dataset = {
 
 void setup() {
   size(800, 800);
-  nn = new NeuralNetwork(dataset[0][0].length, 4, 3, dataset[0][1].length, false);
+  //fullScreen();
+  mousePos = new PVector();
+  pos = new PVector();
+  nn = new NeuralNetwork(dataset[0][0].length, 5, 10, dataset[0][1].length, false);
   if(Counting)
     CT = new CounterThread();
   RT = new ResultThead();
@@ -35,27 +47,28 @@ void setup() {
   MT.start();
 }
 
-void keyPressed() {
-  if (key == 's')
-    nn.saveWeights();
-}
-
-
 boolean started = false;
 void draw() {
   background(200);
+  
+  if(mouseDown){
+    pos.set(prevPos.copy().sub(mousePos.x-mouseX, mousePos.y-mouseY));
+  }
+  
   //text("test",10, 10);
+  push();
+  translate(pos.x, pos.y);
   for(int i=0; i<nn.Neurons.length; i++){
     fill(255);
     Neuron n =  nn.Neurons[i];
     
-    ellipse(n.getX(), n.getY(), Size, Size);
+    ellipse(n.getX()/scale, n.getY()/scale, Size/scale, Size/scale);
     
     for(int j=0; j<n.dendrites.size(); j++){
       Neuron tn = n.dendrites.get(j);
       float weight = n.weights.get(j);
       fill(0);
-      line(n.getX(), n.getY(), tn.getX(), tn.getY());
+      line(n.getX()/scale, n.getY()/scale, tn.getX()/scale, tn.getY()/scale);
       
       //println();
       
@@ -64,7 +77,7 @@ void draw() {
       float x = n.getX() - (n.getX() - tn.getX())/scaler;
       float y = n.getY() - (n.getY() - tn.getY())/scaler;
       
-      text(weight, x, y);
+      text(weight, x/scale, y/scale);
     }
   }
   
@@ -119,20 +132,33 @@ void draw() {
     else if(outputlen > Olen){
       outputstr+="0";
     }
-    
     str = " "+inputstr+"  "  + outputstr +" ";
     
-    //7 length of characters!!!
-    text(str, width-100 - 50, 30+i*10);
+    pop();
+      fill(0);
+      translate(0, 0);
+      text(str, width-100 - 50, 30+i*10);
+    push();
   }
-  
+  pop();
   
   text("Input", width-100- 50 +15, 17);
   text("Ouput", width-100 - 50 +inputstr.length()*6.5, 17);
   //text("Expected", width-100 - (str.length()*4)+(inputstr.length()*6.5), 20);
-  
 }
 
 void mousePressed(){
-  RT.run();
+  mouseDown = true;
+  prevPos = pos.copy();
+  mousePos.set(mouseX, mouseY);
+}
+void mouseReleased(){
+  mouseDown = false;
+}
+
+void mouseWheel(MouseEvent event) {
+  float delta = (float)event.getCount()/10;
+  if(scale + delta == 0)
+    scale += delta;
+  scale += delta;
 }

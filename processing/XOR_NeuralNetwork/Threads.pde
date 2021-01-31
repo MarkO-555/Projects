@@ -3,7 +3,25 @@ boolean changeDebug = true;
 public class MainThread extends Thread{
   public void run(){
     started = true;
-    for(int i=0; i<TrainMax; i++){
+    
+    int i=0;
+    
+    //error ==0 || (!limit && i>TrainMax)
+    while(error > 0.001 || (limit && i<TrainMax)){
+      error = 100;
+      
+      for(int j=0; j<dataset.length; j++){
+        for(int v =0; v<result[0].length; v++){
+          if(error == 100)
+            error=Math.abs(result[j][v] - dataset[j][1][v]);
+          else
+            error+= Math.abs(result[j][v] - dataset[j][1][v]);
+        }
+      }
+      error /= dataset.length * result[0].length;
+    
+    
+    
       TrainCount = i;
     
       if(Counting)
@@ -11,9 +29,11 @@ public class MainThread extends Thread{
   
       nn.train(dataset);
       
-      if(debug || i==0 || i+1==TrainMax)
+      if(debug || i==0 || (i+1==TrainMax && limit))
         RT.run();
-    } 
+      
+      i++;
+    }
   }
 }
 
