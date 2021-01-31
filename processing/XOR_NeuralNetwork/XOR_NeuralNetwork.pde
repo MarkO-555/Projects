@@ -11,7 +11,7 @@ int TrainMax = 100;
 float[][] result;
 float[][] lastResult;
 
-boolean debug = true;
+boolean debug = false;
 boolean Counting = false;
 
 float[][][] dataset = {

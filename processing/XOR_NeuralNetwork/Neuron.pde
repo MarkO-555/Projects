@@ -17,9 +17,6 @@ class Neuron{
       
     nonProcessed = axonValue;
     axonValue = sigmoid(axonValue);
-    
-    //axonValue = 1;//temp, for testing!!!
-    
     axonDerivative = axonValue * (1-axonValue);
   }
   
@@ -76,7 +73,6 @@ class Neuron{
   }
   
   void setDendrite(int index, Neuron n){
-    //println(index, dendrites.size());
     dendrites.set(index, n); 
   }
   
