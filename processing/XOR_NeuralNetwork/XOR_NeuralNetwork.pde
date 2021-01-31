@@ -1,8 +1,6 @@
 NeuralNetwork nn;
-CounterThread CT;
-MainThread MT;
-
-boolean updating = false;
+//CounterThread CT;
+//MainThread MT;
 
 float Size = 25;
 float Distance = 100;
@@ -18,6 +16,7 @@ float scale = 1;
 boolean debug = false;
 boolean Counting = false;
 boolean limit = false;
+boolean Running = true;
 
 PVector mousePos;
 PVector pos;
@@ -37,31 +36,35 @@ float[][][] dataset = {
 //};
 
 void setup() {
+  
   size(800, 800);
   //fullScreen();
   
   mousePos = new PVector();
   pos = new PVector();
-  nn = new NeuralNetwork(dataset[0][0].length, 10, 10, dataset[0][1].length, false);
-  if(Counting)
-    CT = new CounterThread();
-  MT = new MainThread();
+  nn = new NeuralNetwork(dataset[0][0].length, 1, 10, dataset[0][1].length, false);
+  //if(Counting)
+  //  CT = new CounterThread();
+  //MT = new MainThread();
 
   resulted = new float[dataset.length][dataset[0][1].length];
   lastResult = new float[dataset.length][dataset[0][1].length];
   UpdateResult();
   
-  MT.start();
+  //MT.start();
+  //thread("mainThread");
 }
 
 void draw() {
   background(200);
-  //MT.run();
-  UpdateResult();
-  
-  //println(resulted[0][0], nn.feedForward(dataset)[0][0], dataset[0][0][0], dataset[0][1][0]);
-  //println(nn.axons);
-  
+  if(Running){
+    UpdateResult();
+    if(mainThread()){
+      println("Done!!!!");
+      nn.saveWeights();
+      Running = false;
+    }
+  }
   if(mouseDown){
     pos.set(prevPos.copy().sub(mousePos.x-mouseX, mousePos.y-mouseY));
   }
@@ -132,9 +135,12 @@ void draw() {
       expectedstr += expected[v];
     }
     
-    
-    outputstr += resulted[i][0];
-    
+    try{
+      outputstr += resulted[i][0];
+    }
+    catch(Exception ext){
+      
+    }
     
     int Olen = outputstr.length();
     

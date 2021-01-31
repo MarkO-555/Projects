@@ -1,5 +1,5 @@
 class NeuralNetwork {
-  private float Weightrange = 1;
+  private float Weightrange = 10;
 
   private Neuron[] Neurons;
   //private float[] axons;
@@ -171,17 +171,15 @@ class NeuralNetwork {
     for (int i=0; i<len; i++)
       Outputs[i] = Neurons[this.Outputs[i]].axonValue;
     
-    //for(int i=0; i<Neurons.length; i++){
-    //  axons[i] = Neurons[i].axonValue; 
-    //}
-    
     return Outputs;
   }
   
   public float[][] feedForward(float[][][] dataset){
     float[][] out = new float[dataset.length][dataset[0][1].length];
-    for (int i=0; i<dataset.length; i++) {      
+    for (int i=0; i<dataset.length; i++) {
       out[i] = feedForward(dataset[i][0]);
+      if(out[i] == null)
+        out[i] = lastResult[i];
     }
     
     return out;
@@ -191,6 +189,13 @@ class NeuralNetwork {
     int len = expected.length;
     float[] result = feedForward(inputs);
     
+    
+    if(result == null)
+      return;
+    
+    //while(result==null)
+    //  result = feedForward(inputs);
+      
     float[] OutputErrors = new float[len];
     float[][] hiddenErrors;// = new float[Hiddens.length][Hiddens[0].length];
     float[][] hiddens;// = new float[Hiddens.length][Hiddens[0].length];
@@ -215,7 +220,6 @@ class NeuralNetwork {
         hiddens[x][y] = Neurons[Hiddens[x][y]].axonValue;
       }
     }
-
 
     for (int x=Hiddens.length-1; x>=0; x--) {
       for (int y=0; y<Hiddens[x].length; y++) {
@@ -275,8 +279,8 @@ class NeuralNetwork {
         nonproc = inputs[i%inputs.length];
       }
       else {
-        //nonproc = nonproc *(1-nonproc);
-        nonproc = dSigmoid(nonproc);
+        nonproc = nonproc *(1-nonproc);
+        //nonproc = dSigmoid(nonproc);
       }
       //println(learningrate, error, nonproc);
       weights[i] += learningrate * error * nonproc;
@@ -286,11 +290,10 @@ class NeuralNetwork {
   }
 
   void train(float[][][] dataset) {
-    for (int i=0; i<dataset.length; i++) {      
+    for (int i=0; i<dataset.length; i++) {
       train(dataset[i][0], dataset[i][1]);
     }
   }
-
 
   private void updateWeights() {
     ArrayList<Float> ls = new ArrayList();  

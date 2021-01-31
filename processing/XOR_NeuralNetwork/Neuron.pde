@@ -71,6 +71,10 @@ class Neuron{
   
   void setWeights(ArrayList<Float> weights){
     this.weights = weights;
+    
+    for(int i=0; i<weights.size(); i++){
+       this.weights.set(i, constrain(this.weights.get(i), -1000000000, 1000000000));
+    }
   }
   
   void setDendrite(int index, Neuron n){
