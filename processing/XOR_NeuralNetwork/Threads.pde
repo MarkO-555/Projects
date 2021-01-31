@@ -64,12 +64,15 @@ public boolean mainThread() {
 
     //if (Counting)
     //  CT.run();
-
-    nn.train(dataset);
+    if(!nn.loading)
+      nn.train(dataset);
     i++;
   }
+  else
+    return true;
+  return false;
   
-  return !((error > 0.001) || (limit && i<TrainMax));
+  //return !((error > 0.001) || (limit && i<TrainMax));
 }
 
 

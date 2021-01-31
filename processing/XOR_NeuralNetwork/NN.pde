@@ -10,6 +10,7 @@ class NeuralNetwork {
 
   private float[] weights;
   private int[] weightsmap;
+  public boolean loading;
 
   private float learningrate = 0.1;
 
@@ -18,6 +19,7 @@ class NeuralNetwork {
     Hiddens = new int[HiddenX][HiddenY];
     Outputs = new int[Output];
     Neurons = new Neuron[Input+HiddenX*HiddenY+Output];
+    this.loading = loading;
     //axons = new float[Input+HiddenX*HiddenY+Output];
 
     int weightCount = 0;

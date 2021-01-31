@@ -42,7 +42,7 @@ void setup() {
   
   mousePos = new PVector();
   pos = new PVector(0, 0);
-  nn = new NeuralNetwork(dataset[0][0].length, 1, 10, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 1, 10, dataset[0][1].length, true);
   //if(Counting)
   //  CT = new CounterThread();
   //MT = new MainThread();
@@ -134,13 +134,13 @@ void draw() {
         expectedstr += ", ";
       expectedstr += expected[v];
     }
+    //println(expected);
     
-    try{
-      outputstr += resulted[i][0];
-    }
-    catch(Exception ext){
-      
-    }
+      for(int v=0; v<resulted[i].length; v++){
+        if(outputstr != "")
+          outputstr += ", ";
+        outputstr += resulted[i][v];
+      }
     
     int Olen = outputstr.length();
     
@@ -156,7 +156,7 @@ void draw() {
       fill(0);
       translate(0, 0);
       //text(str, width-100 - 50 -outputstr.length() -inputstr.length(), 30+i*10);
-      text(str, width-100 - 70, 30+i*10);
+      text(str, width-100 - 50 -100*(expected.length-1), 30+i*10);
     push();
   }
   pop();
