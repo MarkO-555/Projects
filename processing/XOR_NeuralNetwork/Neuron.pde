@@ -17,7 +17,8 @@ class Neuron{
       
     nonProcessed = axonValue;
     axonValue = sigmoid(axonValue);
-    axonDerivative = axonValue * (1-axonValue);
+    //axonValue = bianary(axonValue);
+    //axonDerivative = axonValue * (1-axonValue);
   }
   
   float getDerivitive(){

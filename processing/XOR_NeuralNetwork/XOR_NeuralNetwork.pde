@@ -1,7 +1,8 @@
 NeuralNetwork nn;
 CounterThread CT;
-ResultThead RT;
 MainThread MT;
+
+boolean updating = false;
 
 float Size = 25;
 float Distance = 100;
@@ -9,9 +10,9 @@ float Distance = 100;
 int TrainCount = 0;
 int TrainMax = 100;
 
-float[][] result;
+float[][] resulted;
 float[][] lastResult;
-float error = 100;
+float error = 100;//stand in (temp, needs to be high number!!!)
 float scale = 1;
 
 boolean debug = false;
@@ -23,37 +24,43 @@ PVector pos;
 PVector prevPos;
 boolean mouseDown = false;
 
-//float[][][] dataset = {
-//  {{0, 0}, {1}}, 
-//  {{0, 1}, {1}}, 
-//  {{1, 0}, {1}}, 
-//  {{1, 1}, {1}}
-//};
-
 float[][][] dataset = {
-  {{0, 0},{1}} 
+  {{0, 0}, {1}}, 
+  {{0, 1}, {0}}, 
+  {{1, 0}, {0}}, 
+  {{1, 1}, {1}}
 };
 
+//float[][][] dataset = {
+//  {{0, 1}, {1}},
+//  {{1, 0}, {0}}
+//};
+
 void setup() {
-  //size(800, 800);
-  fullScreen();
+  size(800, 800);
+  //fullScreen();
+  
   mousePos = new PVector();
   pos = new PVector();
-  nn = new NeuralNetwork(dataset[0][0].length, 0, 0, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 10, 10, dataset[0][1].length, false);
   if(Counting)
     CT = new CounterThread();
-  RT = new ResultThead();
   MT = new MainThread();
 
-  result = new float[dataset.length][dataset[0][1].length];
+  resulted = new float[dataset.length][dataset[0][1].length];
   lastResult = new float[dataset.length][dataset[0][1].length];
+  UpdateResult();
   
   MT.start();
 }
 
-boolean started = false;
 void draw() {
   background(200);
+  //MT.run();
+  UpdateResult();
+  
+  //println(resulted[0][0], nn.feedForward(dataset)[0][0], dataset[0][0][0], dataset[0][1][0]);
+  //println(nn.axons);
   
   if(mouseDown){
     pos.set(prevPos.copy().sub(mousePos.x-mouseX, mousePos.y-mouseY));
@@ -71,6 +78,7 @@ void draw() {
     for(int j=0; j<n.dendrites.size(); j++){
       Neuron tn = n.dendrites.get(j);
       float weight = n.weights.get(j);
+      //fill(weight);
       fill(0);
       line(n.getX()/scale, n.getY()/scale, tn.getX()/scale, tn.getY()/scale);
       
@@ -85,8 +93,6 @@ void draw() {
     }
   }
   
-  
-  //text("inputs", width-100, 80);
   String str = "";
   
   String inputstr = "";
@@ -126,7 +132,9 @@ void draw() {
       expectedstr += expected[v];
     }
     
-    outputstr += result[i][0];
+    
+    outputstr += resulted[i][0];
+    
     
     int Olen = outputstr.length();
     
@@ -141,19 +149,23 @@ void draw() {
     pop();
       fill(0);
       translate(0, 0);
-      text(str, width-100 - 50, 30+i*10);
+      //text(str, width-100 - 50 -outputstr.length() -inputstr.length(), 30+i*10);
+      text(str, width-100 - 70, 30+i*10);
     push();
   }
   pop();
   
-  text("Input", width-100- 50 +15, 17);
-  text("Ouput", width-100 - 50 +inputstr.length()*6.5, 17);
+  text("Input", width-100- 70 +15, 17);
+  text("Ouput", width-100 - 70 +inputstr.length()*6.5, 17);
   
   
   
   text("Average Error", width-100, 30+ dataset.length*10 + 10);
-  text(error, width-100 ,30 + dataset.length*10 + 22.5);
+  text(""+error, width-100 ,30 + dataset.length*10 + 22.5);
   //text("Expected", width-100 - (str.length()*4)+(inputstr.length()*6.5), 20);
+  
+  
+  //println(resulted[0]);
 }
 
 void mousePressed(){

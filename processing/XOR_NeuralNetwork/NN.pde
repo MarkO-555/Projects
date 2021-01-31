@@ -1,8 +1,8 @@
 class NeuralNetwork {
-  private float Weightrange = 10;
+  private float Weightrange = 1;
 
   private Neuron[] Neurons;
-  private float[] axons;
+  //private float[] axons;
 
   private int[] Inputs;
   private int[][] Hiddens;
@@ -18,7 +18,7 @@ class NeuralNetwork {
     Hiddens = new int[HiddenX][HiddenY];
     Outputs = new int[Output];
     Neurons = new Neuron[Input+HiddenX*HiddenY+Output];
-    axons = new float[Input+HiddenX*HiddenY+Output];
+    //axons = new float[Input+HiddenX*HiddenY+Output];
 
     int weightCount = 0;
     if (HiddenX>0)
@@ -107,7 +107,7 @@ class NeuralNetwork {
       for (int i=0; i<weights.length; i++) {
         //weights[i] = 1;
         weights[i] = random(-Weightrange, Weightrange);
-        if(Hiddens.length == 0){
+        if(Hiddens.length == 0){//IO
           weightsmap[i] = 2;
         }
         else{
@@ -171,21 +171,30 @@ class NeuralNetwork {
     for (int i=0; i<len; i++)
       Outputs[i] = Neurons[this.Outputs[i]].axonValue;
     
-    for(int i=0; i<Neurons.length; i++){
-      axons[i] = Neurons[i].axonValue; 
-    }
+    //for(int i=0; i<Neurons.length; i++){
+    //  axons[i] = Neurons[i].axonValue; 
+    //}
     
     return Outputs;
+  }
+  
+  public float[][] feedForward(float[][][] dataset){
+    float[][] out = new float[dataset.length][dataset[0][1].length];
+    for (int i=0; i<dataset.length; i++) {      
+      out[i] = feedForward(dataset[i][0]);
+    }
+    
+    return out;
   }
 
   public void train(float[] inputs, float[] expected) {
     int len = expected.length;
     float[] result = feedForward(inputs);
-
+    
     float[] OutputErrors = new float[len];
     float[][] hiddenErrors;// = new float[Hiddens.length][Hiddens[0].length];
     float[][] hiddens;// = new float[Hiddens.length][Hiddens[0].length];
-    
+
     if(Hiddens.length == 0){
       hiddenErrors = new float[0][0];
       hiddens = new float[0][0];
@@ -231,7 +240,7 @@ class NeuralNetwork {
     for (int i=0; i<len; i++) {
       float nonproc = 0;
       float error = 0;
-
+      //println(weightsmap[i]);
       if (weightsmap[i] == 1) {//Connected Hiddens, Hiddens
         int index = (i - inputs.length*hiddens[0].length);//index in current hidden hidden weights
 
@@ -245,13 +254,16 @@ class NeuralNetwork {
         int index =0;
         
         if(hiddens.length ==0){
-          index = i - inputs.length;
-          //nonproc = Neurons[Inputs[index%Inputs.length]].axonValue;
-          //error = Neurons[Outputs[index/Inputs.length]].getError();
+          nonproc = Neurons[Inputs[i%inputs.length]].axonValue;
+          error = Neurons[Outputs[i%Outputs.length]].getError();
+          //nonproc = 1;
+          //error =0;
         }
-        else{
+        else{//hidden, output
           index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
           nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];//possible bug!!!
+          //println(hiddens.length-1, index%hiddens[0].length);
+          
           error = Neurons[Outputs[index/hiddens[0].length]].getError();
         }
       }
@@ -263,8 +275,10 @@ class NeuralNetwork {
         nonproc = inputs[i%inputs.length];
       }
       else {
+        //nonproc = nonproc *(1-nonproc);
         nonproc = dSigmoid(nonproc);
       }
+      //println(learningrate, error, nonproc);
       weights[i] += learningrate * error * nonproc;
     }
 
