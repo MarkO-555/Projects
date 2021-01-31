@@ -23,19 +23,23 @@ PVector pos;
 PVector prevPos;
 boolean mouseDown = false;
 
+//float[][][] dataset = {
+//  {{0, 0}, {1}}, 
+//  {{0, 1}, {1}}, 
+//  {{1, 0}, {1}}, 
+//  {{1, 1}, {1}}
+//};
+
 float[][][] dataset = {
-  {{0, 0}, {0}}, 
-  {{0, 1}, {1}}, 
-  {{1, 0}, {1}}, 
-  {{1, 1}, {0}}
+  {{0, 0},{1}} 
 };
 
 void setup() {
-  size(800, 800);
-  //fullScreen();
+  //size(800, 800);
+  fullScreen();
   mousePos = new PVector();
   pos = new PVector();
-  nn = new NeuralNetwork(dataset[0][0].length, 5, 10, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 0, 0, dataset[0][1].length, false);
   if(Counting)
     CT = new CounterThread();
   RT = new ResultThead();
@@ -144,6 +148,11 @@ void draw() {
   
   text("Input", width-100- 50 +15, 17);
   text("Ouput", width-100 - 50 +inputstr.length()*6.5, 17);
+  
+  
+  
+  text("Average Error", width-100, 30+ dataset.length*10 + 10);
+  text(error, width-100 ,30 + dataset.length*10 + 22.5);
   //text("Expected", width-100 - (str.length()*4)+(inputstr.length()*6.5), 20);
 }
 

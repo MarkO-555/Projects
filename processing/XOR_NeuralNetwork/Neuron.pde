@@ -73,7 +73,8 @@ class Neuron{
   }
   
   void setDendrite(int index, Neuron n){
-    dendrites.set(index, n); 
+    if(dendrites.size() != 0)
+      dendrites.set(index, n); 
   }
   
   void clearWeights(){

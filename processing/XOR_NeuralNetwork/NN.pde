@@ -1,5 +1,5 @@
 class NeuralNetwork {
-  private float Weightrange = 1;
+  private float Weightrange = 10;
 
   private Neuron[] Neurons;
   private float[] axons;
@@ -23,8 +23,8 @@ class NeuralNetwork {
     int weightCount = 0;
     if (HiddenX>0)
       weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + HiddenY*Output;
-    else
-      weightCount = Input*HiddenY+HiddenY*Output;
+    else if(HiddenX == 0 || HiddenY ==0)
+      weightCount = Input *Output;
 
     weights = new float[weightCount];
     weightsmap = new int[weightCount];
@@ -82,10 +82,18 @@ class NeuralNetwork {
       
       Neurons[y].setX(Hiddens.length*Distance+2*Distance);
       Neurons[y].setY(it*i + it/2);
-
-      for (int j=0; j<HiddenY; j++) {
-        Neurons[y].addDendrite(Neurons[Hiddens[HiddenX-1][j]], weights[Count]);
-        Count++;
+      
+      if(HiddenY ==0 || HiddenX ==0){
+          for (int j=0; j<Input; j++) {
+            Neurons[y].addDendrite(Neurons[j], 0);
+            Count++;
+          }
+      }
+      else{
+        for (int j=0; j<HiddenY; j++) {
+          Neurons[y].addDendrite(Neurons[Hiddens[HiddenX-1][j]], weights[Count]);
+          Count++;
+        }
       }
 
       y++;
@@ -99,13 +107,17 @@ class NeuralNetwork {
       for (int i=0; i<weights.length; i++) {
         //weights[i] = 1;
         weights[i] = random(-Weightrange, Weightrange);
-
-        if (i<=Inputs.length * Hiddens[0].length-1)//IH
-          weightsmap[i] = 0;
-        else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2)-1) {//HH
-          weightsmap[i] = 1;
-        } else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2) + Hiddens[0].length*Outputs.length-1)//HO
+        if(Hiddens.length == 0){
           weightsmap[i] = 2;
+        }
+        else{
+          if (i<=Inputs.length * Hiddens[0].length-1)//IH
+            weightsmap[i] = 0;
+          else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2)-1) {//HH
+            weightsmap[i] = 1;
+          } else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2) + Hiddens[0].length*Outputs.length-1)//HO
+            weightsmap[i] = 2;
+        }
       }
     }
   }
@@ -140,8 +152,15 @@ class NeuralNetwork {
     
     for(int i=0; i<Outputs.length; i++){
       Neuron n =Neurons[Outputs[i]];
-      for(int v=0; v<Hiddens[0].length; v++){
-         n.setDendrite(v, Neurons[Hiddens[Hiddens.length-1][v]]);
+      if(Hiddens.length==0){
+          for(int v=0; v<Inputs.length; v++){
+            n.setDendrite(v, Neurons[v]);
+          }
+      }
+      else{
+        for(int v=0; v<Hiddens[0].length; v++){
+           n.setDendrite(v, Neurons[Hiddens[Hiddens.length-1][v]]);
+        }
       }
       n.process();
     }
@@ -164,8 +183,17 @@ class NeuralNetwork {
     float[] result = feedForward(inputs);
 
     float[] OutputErrors = new float[len];
-    float[][] hiddenErrors = new float[Hiddens.length][Hiddens[0].length];
-    float[][] hiddens = new float[Hiddens.length][Hiddens[0].length];
+    float[][] hiddenErrors;// = new float[Hiddens.length][Hiddens[0].length];
+    float[][] hiddens;// = new float[Hiddens.length][Hiddens[0].length];
+    
+    if(Hiddens.length == 0){
+      hiddenErrors = new float[0][0];
+      hiddens = new float[0][0];
+    }
+    else{
+      hiddenErrors = new float[Hiddens.length][Hiddens[0].length];
+      hiddens = new float[Hiddens.length][Hiddens[0].length];
+    }
 
     for (int i=0; i<result.length; i++) {
       OutputErrors[i] = expected[i] - result[i];
@@ -214,10 +242,18 @@ class NeuralNetwork {
         error = Neurons[Hiddens[x+1][index%hiddens[0].length]].getError();
       }
       else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
-        int index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
+        int index =0;
         
-        nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];//possible bug!!!
-        error = Neurons[Outputs[index/hiddens[0].length]].getError();
+        if(hiddens.length ==0){
+          index = i - inputs.length;
+          //nonproc = Neurons[Inputs[index%Inputs.length]].axonValue;
+          //error = Neurons[Outputs[index/Inputs.length]].getError();
+        }
+        else{
+          index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
+          nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];//possible bug!!!
+          error = Neurons[Outputs[index/hiddens[0].length]].getError();
+        }
       }
 
       if (weightsmap[i] == 0) {//Connected Hiddens, Inputs

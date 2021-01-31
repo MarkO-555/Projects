@@ -7,7 +7,7 @@ public class MainThread extends Thread{
     int i=0;
     
     //error ==0 || (!limit && i>TrainMax)
-    while(error > 0.001 || (limit && i<TrainMax)){
+    while(error > 0.00001 || (limit && i<TrainMax)){
       error = 100;
       
       for(int j=0; j<dataset.length; j++){
@@ -31,7 +31,6 @@ public class MainThread extends Thread{
       
       if(debug || i==0 || (i+1==TrainMax && limit))
         RT.run();
-      
       i++;
     }
   }
