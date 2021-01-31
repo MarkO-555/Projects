@@ -42,7 +42,9 @@ void setup() {
   
   mousePos = new PVector();
   pos = new PVector(0, 0);
-  nn = new NeuralNetwork(dataset[0][0].length, 1, 10, dataset[0][1].length, true);
+  //nn = new NeuralNetwork(dataset[0][0].length, 1, 10, dataset[0][1].length, true);
+  nn = new NeuralNetwork(true);
+  
   //if(Counting)
   //  CT = new CounterThread();
   //MT = new MainThread();
@@ -61,7 +63,8 @@ void draw() {
     UpdateResult();
     if(mainThread()){
       println("Done!!!!");
-      nn.saveWeights();
+      nn.saveNetwork();
+      //nn.saveWeights();
       Running = false;
     }
   }

@@ -7,14 +7,34 @@ class NeuralNetwork {
   private int[] Inputs;
   private int[][] Hiddens;
   private int[] Outputs;
+  
+  //private int[] Config;
 
   private float[] weights;
   private int[] weightsmap;
   public boolean loading;
 
   private float learningrate = 0.1;
-
+  
+  NeuralNetwork(boolean loading){
+    int[] conf = loadNetwork();
+    
+    if(loading)
+      buildNetwork(conf[0], conf[1], conf[2], conf[3], loading);
+    else
+      buildNetwork(dataset[0][0].length, 1, 1, dataset[0][1].length, true);
+    
+  }
+  
   NeuralNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading) {
+    //config[0] = Inputs;
+    //config[1] = HiddenX;
+    //config[2] = HiddenY;
+    //config[3] = Output;
+    buildNetwork(Input, HiddenX, HiddenY, Output, loading);
+  }
+  
+  private void buildNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading){
     Inputs = new int[Input];
     Hiddens = new int[HiddenX][HiddenY];
     Outputs = new int[Output];
@@ -99,7 +119,7 @@ class NeuralNetwork {
       }
 
       y++;
-    }
+    } 
   }
 
   private void initWeights(boolean loading) {
@@ -125,8 +145,10 @@ class NeuralNetwork {
   }
 
   public float[] feedForward(float[] Inputs) {
-    int len = this.Inputs.length;
-
+    int len = Inputs.length;
+    
+    //println(Neurons.length);
+    
     if (len != Inputs.length) {
       println("The inputs length is not expected value");
     }
@@ -313,7 +335,29 @@ class NeuralNetwork {
       n.setWeights(nW);
     }
   }
+  
+  private void saveNetwork(){
+    PrintWriter NetworkLog;
+    
+    NetworkLog = createWriter("Network.txt");
+    
+    NetworkLog.println(Inputs.length);
+    if(Hiddens.length != 0){
+      NetworkLog.println(Hiddens.length);
+      NetworkLog.println(Hiddens[0].length);
+    }
+    else{
+       NetworkLog.println(0);
+       NetworkLog.println(0);
+    }
+    NetworkLog.println(Outputs.length);
+    
+    NetworkLog.flush();
 
+    println("saved Network");
+    saveWeights();
+  }
+  
   private void saveWeights() {
     PrintWriter weightLog;
 
@@ -324,7 +368,30 @@ class NeuralNetwork {
     }
     weightLog.flush();
 
-    println("saved Network");
+    println("saved Weights");
+  }
+  
+  private int[] loadNetwork(){
+    BufferedReader NetworkLog = createReader("Network.txt");
+
+    //float[] weights_ = new float[weightCount];
+    int[] out = new int[4];
+    
+    String line = null;
+    int i=0;
+
+    try {
+      while ((line = NetworkLog.readLine()) != null) {
+        out[i] = int(line);
+        i++;
+      }
+      NetworkLog.close();
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    return out;
   }
 
   private float[] loadWeights(int weightCount) {
