@@ -14,7 +14,7 @@ class NeuralNetwork {
   private int[] weightsmap;
   public boolean loading;
 
-  private float learningrate = 0.1;
+  private float learningrate = 0.01;
   
   NeuralNetwork(boolean loading){
     int[] conf = loadNetwork();
@@ -27,10 +27,6 @@ class NeuralNetwork {
   }
   
   NeuralNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading) {
-    //config[0] = Inputs;
-    //config[1] = HiddenX;
-    //config[2] = HiddenY;
-    //config[3] = Output;
     buildNetwork(Input, HiddenX, HiddenY, Output, loading);
   }
   
@@ -74,6 +70,9 @@ class NeuralNetwork {
         Hiddens[i][v] = y;
         Neurons[y] = new Neuron();
         
+        //it = width/HiddenX;
+        //Neurons[y].setX(it*(i+1));
+        
         it = height/HiddenY;
         
         Neurons[y].setX(i*Distance+2*Distance);
@@ -103,6 +102,7 @@ class NeuralNetwork {
       it = height/Output;
       
       Neurons[y].setX(Hiddens.length*Distance+2*Distance);
+      //Neurons[y].setX(width - (Hiddens.length*Distance+2*Distance));
       Neurons[y].setY(it*i + it/2);
       
       if(HiddenY ==0 || HiddenX ==0){

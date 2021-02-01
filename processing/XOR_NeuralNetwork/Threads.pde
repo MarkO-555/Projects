@@ -45,7 +45,7 @@ boolean changeDebug = true;
 
 public boolean mainThread() {
   int i=0;
-  if((error >= 0.001) || (limit && i<TrainMax)){
+  if((error >= thresh) || (limit && i<TrainMax)){
   //while (true || (error > 0.001) || (limit && i<TrainMax)) {
     error = 100;
     
