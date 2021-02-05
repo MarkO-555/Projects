@@ -29,7 +29,7 @@
 	<li>Temple</li>
 </ul>
 
-<h3><a href="Minecraft_Modded">MinecraftMods</a></h3>
+<h3><a href="Minecraft_Modded">Minecraft_Modded</a></h3>
 <ul>
 	<li>Computer controlling reactor, smeltery, etc</li>
 	<li>Robots</li>
