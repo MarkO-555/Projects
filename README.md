@@ -10,13 +10,18 @@
 	<li>Guitar Tuner</li>
 	<li>Heart Monitor</li>
 	<li>Fan LED Display</li>
-
 </ul>
 
 <h3><a href="Atmel">Atmel</a></h3>
 <ul>
 	<li>keypad unlocks AC Relay</li>
 	<li>Robot Arm</li>
+</ul>
+
+<h3><a href="Minecraft"></a></h3>
+<ul>
+	<li>7-Segment Display</li>
+	<li>XOR Neural Network</li>
 </ul>
 
 <h3><a href="processing">Processing</a></h3>
