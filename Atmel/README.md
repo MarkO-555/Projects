@@ -3,5 +3,4 @@
 </ul>
 <h3>Incomplete</h3>
 <ul>
-	<li>VirtualUSB</li>
 </ul>
