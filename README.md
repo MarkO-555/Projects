@@ -91,5 +91,5 @@
 <h3>Useful Links</h3>
 <ul>
 	<li><a href="http://www.bristolwatch.com/">bristolwatch</a></li>
-	<li><a htef="https://www.obdev.at/products/vusb/index.html">Virtual USB</a></li>
+	<li><a href="https://www.obdev.at/products/vusb/index.html">Virtual USB</a></li>
 </ul>
