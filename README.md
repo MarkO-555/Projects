@@ -18,10 +18,25 @@
 	<li>Robot Arm</li>
 </ul>
 
-<h3><a href="Minecraft"></a></h3>
+<h3><a href="Minecraft_Vanilla"></a></h3>
 <ul>
-	<li>7-Segment Display</li>
+	<li>Redstone I2C</li>
+	<li>Redstone SPI</li>
+	<li>Redstone PCIE</li>
+	<li>Redstone Computer</li>
 	<li>XOR Neural Network</li>
+	<li>Dynamite</li>
+	<li>Temple</li>
+</ul>
+
+<h3><a href="Minecraft_Modded">MinecraftMods</a></h3>
+<ul>
+	<li>Computer controlling reactor, smeltery, etc</li>
+	<li>Robots</li>
+</ul>
+
+<h3><a href="Minecraft_Plugins"></a></h3>
+<ul>
 </ul>
 
 <h3><a href="processing">Processing</a></h3>
