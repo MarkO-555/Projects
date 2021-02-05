@@ -18,7 +18,7 @@
 	<li>Robot Arm</li>
 </ul>
 
-<h3><a href="Minecraft_Vanilla"></a></h3>
+<h3><a href="Minecraft_Vanilla">Minecraft_Vanilla</a></h3>
 <ul>
 	<li>Redstone I2C</li>
 	<li>Redstone SPI</li>
@@ -29,13 +29,13 @@
 	<li>Temple</li>
 </ul>
 
-<h3><a href="Minecraft_Modded">MinecraftMods</a></h3>
+<h3><a href="Minecraft_Modded">Minecraft_Modded</a></h3>
 <ul>
 	<li>Computer controlling reactor, smeltery, etc</li>
 	<li>Robots</li>
 </ul>
 
-<h3><a href="Minecraft_Plugins"></a></h3>
+<h3><a href="Minecraft_Plugins">Minecraft_Plugins</a></h3>
 <ul>
 </ul>
 
