@@ -8,15 +8,15 @@ float Distance = 100;
 int TrainCount = 0;
 int TrainMax = 100;
 
-float[][] resulted;
-float[][] lastResult;
-float error = 100;//stand in (temp, needs to be high number!!!)
-float scale = 1;
+double[][] resulted;
+double[][] lastResult;
+double error = 100;//stand in (temp, needs to be high number!!!)
+double scale = 1;
 
 float Xscale =1;
 float Yscale =1;
 
-float thresh = 0.0001;
+double thresh = 0.0001;
 
 boolean debug = false;
 boolean Counting = false;
@@ -28,19 +28,19 @@ PVector pos;
 PVector prevPos;
 boolean mouseDown = false;
 
-float[][][] dataset = {
+double[][][] dataset = {
   
-  {{0.25, 0.00}, {0.90}},
-  {{0.00, 0.25}, {1.00}},
-  {{0.25, 0.25}, {0.00}},
+  //{{0.25, 0.00}, {0.90}},
+  //{{0.00, 0.25}, {1.00}},
+  //{{0.25, 0.25}, {0.00}},
   
-  {{0.50, 0.00}, {0.50}},
-  {{0.00, 0.50}, {0.10}},
-  {{0.50, 0.50}, {0.70}},
+  //{{0.50, 0.00}, {0.50}},
+  //{{0.00, 0.50}, {0.10}},
+  //{{0.50, 0.50}, {0.70}},
   
-  {{0.75, 0.00}, {0.05}},
-  {{0.00, 0.75}, {0.10}},
-  {{0.75, 0.75}, {0.00}},
+  //{{0.75, 0.00}, {0.05}},
+  //{{0.00, 0.75}, {0.10}},
+  //{{0.75, 0.75}, {0.00}},
   
   {{0, 0}, {1}},
   {{0, 1}, {0}}, 
@@ -48,7 +48,7 @@ float[][][] dataset = {
   {{1, 1}, {1}}
 };
 
-//float[][][] dataset = {
+//double[][][] dataset = {
   
 //  {{0.25, 0.00}, {0.00}},
 //  {{0.00, 0.25}, {0.00}},
@@ -68,7 +68,7 @@ float[][][] dataset = {
 //  {{1.00, 1.00}, {1.00}}
 //};
 
-//float[][][] dataset = {
+//double[][][] dataset = {
 //  {{0, 0}, {1}},
 //  {{0, 1}, {0}}, 
 //  {{1, 0}, {1}},
@@ -83,15 +83,15 @@ void setup() {
   mousePos = new PVector();
   //pos = new PVector(Distance*2, height/2);
   pos = new PVector(width/2, height/2);
-  nn = new NeuralNetwork(dataset[0][0].length, 1, 20, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 100, 10, dataset[0][1].length, false);
   //nn = new NeuralNetwork(true);
   
   //if(Counting)
   //  CT = new CounterThread();
   //MT = new MainThread();
 
-  resulted = new float[dataset.length][dataset[0][1].length];
-  lastResult = new float[dataset.length][dataset[0][1].length];
+  resulted = new double[dataset.length][dataset[0][1].length];
+  lastResult = new double[dataset.length][dataset[0][1].length];
   UpdateResult();
   
   //MT.start();
@@ -122,31 +122,31 @@ void draw() {
   push();
   translate(pos.x, pos.y);
   
-  float Xoff = (1 + nn.Hiddens.length)*Distance;
-  float Yoff = height/2;
+  double Xoff = (1 + nn.Hiddens.length)*Distance;
+  double Yoff = height/2;
   
   
   for(int i=0; i<nn.Neurons.length; i++){
     Neuron n =  nn.Neurons[i];
     
     fill(255);
-    ellipse((n.getX() - Xoff)/Xscale, (n.getY() - Yoff)/Yscale, Size/((Xscale+Yscale)/2), Size/((Xscale+Yscale)/2));
+    ellipse((float)(n.getX() - Xoff)/Xscale, (float)(n.getY() - Yoff)/Yscale, Size/((Xscale+Yscale)/2), Size/((Xscale+Yscale)/2));
     
     for(int j=0; j<n.dendrites.size(); j++){
       Neuron tn = n.dendrites.get(j);
-      float weight = n.weights.get(j);
+      double weight = n.weights.get(j);
       //fill(weight);
       fill(0);
-      line((n.getX()-Xoff)/Xscale, (n.getY()-Yoff)/Yscale, (tn.getX()-Xoff)/Xscale, (tn.getY()-Yoff)/Yscale);
+      line((float)(n.getX()-Xoff)/Xscale, (float)(n.getY()-Yoff)/Yscale, (float)(tn.getX()-Xoff)/Xscale, (float)(tn.getY()-Yoff)/Yscale);
       
       //println();
       
-      float scaler = 1.2;
+      double scaler = 1.2;
       
-      float x = n.getX() - (n.getX() - tn.getX())/scaler;
-      float y = n.getY() - (n.getY() - tn.getY())/scaler;
+      double x = n.getX() - (n.getX() - tn.getX())/scaler;
+      double y = n.getY() - (n.getY() - tn.getY())/scaler;
       
-      text(weight, (x-Xoff)/Xscale, (y-Yoff)/Yscale);
+      text((float)weight, (float)(x-Xoff)/Xscale, (float)(y-Yoff)/Yscale);
     }
   }
   
@@ -164,8 +164,8 @@ void draw() {
     expectedstr = "";
     outputstr = "";
     
-    float[] inputs = dataset[i][0];
-    float[] expected = dataset[i][1];
+    double[] inputs = dataset[i][0];
+    double[] expected = dataset[i][1];
     for(int v=0; v<inputs.length; v++){
       if(inputstr != "")
         inputstr += ", ";
@@ -238,7 +238,7 @@ void mouseReleased(){
 }
 
 void mouseWheel(MouseEvent event) {
-  float delta = (float)event.getCount()/10;
+  double delta = (double)event.getCount()/10;
   if(Xscale+delta > 0 && Yscale+delta > 0){
     if(mouseDown)
       Xscale+=delta;

@@ -1,14 +1,14 @@
 class Neuron{
-  private ArrayList<Float> weights = new ArrayList<Float>();
-  private ArrayList<Float> errors = new ArrayList<Float>();
+  private ArrayList<Double> weights = new ArrayList<Double>();
+  private ArrayList<Double> errors = new ArrayList<Double>();
   private ArrayList<Neuron> dendrites = new ArrayList<Neuron>();
-  private float axonValue, nonProcessed;
+  private double axonValue, nonProcessed;
   
-  private float error;
-  private float axonDerivative;
+  private double error;
+  private double axonDerivative;
   
-  private float xPos = 0;
-  private float yPos = 0;
+  private double xPos = 0;
+  private double yPos = 0;
   
   void process(){
     axonValue = 0;
@@ -22,30 +22,30 @@ class Neuron{
     //axonDerivative = axonValue * (1-axonValue);
   }
   
-  float getDerivitive(){
+  double getDerivitive(){
     return axonDerivative; 
   }
   
-  void setX(float xPos){
+  void setX(double xPos){
     this.xPos = xPos; 
   }
-  void setY(float yPos){
+  void setY(double yPos){
     this.yPos = yPos; 
   }
   
-  float getX(){
+  double getX(){
     return xPos; 
   }
   
-  float getY(){
+  double getY(){
     return yPos; 
   }
   
-  void setError(float error){
+  void setError(double error){
     this.error = error; 
   }
   
-  void addError(float error){
+  void addError(double error){
     errors.add(error); 
   }
   
@@ -55,10 +55,10 @@ class Neuron{
       this.error += this.errors.get(i); 
     }
     this.error /= errors.size();
-    errors = new ArrayList<Float>();
+    errors = new ArrayList<Double>();
   }
   
-  float getWeight(int index){
+  double getWeight(int index){
    return weights.get(index); 
   }
   
@@ -66,15 +66,26 @@ class Neuron{
     return weights.size(); 
   }
   
-  float getError(){
+  double getError(){
     return this.error; 
   }
   
-  void setWeights(ArrayList<Float> weights){
+  void setWeights(ArrayList<Double> weights){
     this.weights = weights;
     
     for(int i=0; i<weights.size(); i++){
-       this.weights.set(i, constrain(this.weights.get(i), -1000000000, 1000000000));
+       //this.weights.set(i, constrain((float)this.weights.get(i), -1000000000, 1000000000));
+       
+       double maxnum = 1000000000;
+       
+       if(this.weights.get(i) >= maxnum){
+         this.weights.set(i, maxnum); 
+       }
+       else if(this.weights.get(i) <= -maxnum){
+         this.weights.set(i, -maxnum);
+       }
+       
+       //this.weights.set(i, this.weights.get(i));//unconstrained!!!
     }
   }
   
@@ -84,18 +95,18 @@ class Neuron{
   }
   
   void clearWeights(){
-    this.weights = new ArrayList<Float>();
+    this.weights = new ArrayList<Double>();
   }
   
-  float getAxon(){
+  double getAxon(){
    return axonValue; 
   }
   
-  float getNonProcessedAxon(){
+  double getNonProcessedAxon(){
    return nonProcessed;
   }
   
-  void addDendrite(Neuron neuron, float weight){
+  void addDendrite(Neuron neuron, double weight){
     dendrites.add(neuron);
     weights.add(weight);
   }

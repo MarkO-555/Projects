@@ -2,7 +2,7 @@ class NeuralNetwork {
   private float Weightrange = 10;
 
   private Neuron[] Neurons;
-  //private float[] axons;
+  //private double[] axons;
 
   private int[] Inputs;
   private int[][] Hiddens;
@@ -10,11 +10,11 @@ class NeuralNetwork {
   
   //private int[] Config;
 
-  private float[] weights;
+  private double[] weights;
   private int[] weightsmap;
   public boolean loading;
 
-  private float learningrate = 0.01;
+  private double learningrate = 0.01;
   
   NeuralNetwork(boolean loading){
     int[] conf = loadNetwork();
@@ -36,7 +36,7 @@ class NeuralNetwork {
     Outputs = new int[Output];
     Neurons = new Neuron[Input+HiddenX*HiddenY+Output];
     this.loading = loading;
-    //axons = new float[Input+HiddenX*HiddenY+Output];
+    //axons = new double[Input+HiddenX*HiddenY+Output];
 
     int weightCount = 0;
     if (HiddenX>0)
@@ -44,14 +44,14 @@ class NeuralNetwork {
     else if(HiddenX == 0 || HiddenY ==0)
       weightCount = Input *Output;
 
-    weights = new float[weightCount];
+    weights = new double[weightCount];
     weightsmap = new int[weightCount];
 
     initWeights(loading);
 
     int y = 0;
     int Count = 0;
-    float it;
+    double it;
     
     for (int i=0; i<Input; i++) {
       Inputs[i] = y;
@@ -144,7 +144,7 @@ class NeuralNetwork {
     }
   }
 
-  public float[] feedForward(float[] Inputs) {
+  public double[] feedForward(double[] Inputs) {
     int len = Inputs.length;
     
     //println(Neurons.length);
@@ -190,7 +190,7 @@ class NeuralNetwork {
     }
 
     len = this.Outputs.length;
-    float[] Outputs = new float[len];
+    double[] Outputs = new double[len];
 
     for (int i=0; i<len; i++)
       Outputs[i] = Neurons[this.Outputs[i]].axonValue;
@@ -198,8 +198,8 @@ class NeuralNetwork {
     return Outputs;
   }
   
-  public float[][] feedForward(float[][][] dataset){
-    float[][] out = new float[dataset.length][dataset[0][1].length];
+  public double[][] feedForward(double[][][] dataset){
+    double[][] out = new double[dataset.length][dataset[0][1].length];
     for (int i=0; i<dataset.length; i++) {
       out[i] = feedForward(dataset[i][0]);
       if(out[i] == null)
@@ -209,9 +209,9 @@ class NeuralNetwork {
     return out;
   }
 
-  public void train(float[] inputs, float[] expected) {
+  public void train(double[] inputs, double[] expected) {
     int len = expected.length;
-    float[] result = feedForward(inputs);
+    double[] result = feedForward(inputs);
     
     
     if(result == null)
@@ -220,17 +220,17 @@ class NeuralNetwork {
     //while(result==null)
     //  result = feedForward(inputs);
       
-    float[] OutputErrors = new float[len];
-    float[][] hiddenErrors;// = new float[Hiddens.length][Hiddens[0].length];
-    float[][] hiddens;// = new float[Hiddens.length][Hiddens[0].length];
+    double[] OutputErrors = new double[len];
+    double[][] hiddenErrors;// = new double[Hiddens.length][Hiddens[0].length];
+    double[][] hiddens;// = new double[Hiddens.length][Hiddens[0].length];
 
     if(Hiddens.length == 0){
-      hiddenErrors = new float[0][0];
-      hiddens = new float[0][0];
+      hiddenErrors = new double[0][0];
+      hiddens = new double[0][0];
     }
     else{
-      hiddenErrors = new float[Hiddens.length][Hiddens[0].length];
-      hiddens = new float[Hiddens.length][Hiddens[0].length];
+      hiddenErrors = new double[Hiddens.length][Hiddens[0].length];
+      hiddens = new double[Hiddens.length][Hiddens[0].length];
     }
 
     for (int i=0; i<result.length; i++) {
@@ -266,8 +266,8 @@ class NeuralNetwork {
     len = weights.length;
     
     for (int i=0; i<len; i++) {
-      float nonproc = 0;
-      float error = 0;
+      double nonproc = 0;
+      double error = 0;
       //println(weightsmap[i]);
       if (weightsmap[i] == 1) {//Connected Hiddens, Hiddens
         int index = (i - inputs.length*hiddens[0].length);//index in current hidden hidden weights
@@ -303,9 +303,11 @@ class NeuralNetwork {
         nonproc = inputs[i%inputs.length];
       }
       else {
-        nonproc = nonproc *(1-nonproc);
-        //nonproc = dSigmoid(nonproc);
+        //nonproc = nonproc *(1-nonproc);
+        nonproc = dSigmoid(nonproc);
       }
+      
+      
       //println(learningrate, error, nonproc);
       weights[i] += learningrate * error * nonproc;
     }
@@ -313,18 +315,18 @@ class NeuralNetwork {
     updateWeights();
   }
 
-  void train(float[][][] dataset) {
+  void train(double[][][] dataset) {
     for (int i=0; i<dataset.length; i++) {
       train(dataset[i][0], dataset[i][1]);
     }
   }
 
   private void updateWeights() {
-    ArrayList<Float> ls = new ArrayList();  
+    ArrayList<Double> ls = new ArrayList();  
 
     int Count = 0;
     for (int i=0; i<Neurons.length; i++) {
-      ArrayList<Float> nW = new ArrayList<Float>(); 
+      ArrayList<Double> nW = new ArrayList<Double>(); 
       Neuron n = Neurons[i];
 
       for (int v=0; v<n.weights.size(); v++) {
@@ -374,7 +376,7 @@ class NeuralNetwork {
   private int[] loadNetwork(){
     BufferedReader NetworkLog = createReader("Network.txt");
 
-    //float[] weights_ = new float[weightCount];
+    //double[] weights_ = new double[weightCount];
     int[] out = new int[4];
     
     String line = null;
@@ -394,10 +396,10 @@ class NeuralNetwork {
     return out;
   }
 
-  private float[] loadWeights(int weightCount) {
+  private double[] loadWeights(int weightCount) {
     BufferedReader weightsLog = createReader("Weights.txt");
 
-    float[] weights_ = new float[weightCount];
+    double[] weights_ = new double[weightCount];
     String line = null;
     int i=0;
 
