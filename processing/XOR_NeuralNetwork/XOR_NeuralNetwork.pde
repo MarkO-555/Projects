@@ -16,7 +16,7 @@ double scale = 1;
 float Xscale =1;
 float Yscale =1;
 
-double thresh = 0.0001;
+double thresh = 0.001;
 
 boolean debug = false;
 boolean Counting = false;
@@ -77,13 +77,15 @@ double[][][] dataset = {
 
 void setup() {
   
+  //println("val:", (long)4.5); 
+  
   //size(800, 800);
   fullScreen();
   
   mousePos = new PVector();
   //pos = new PVector(Distance*2, height/2);
   pos = new PVector(width/2, height/2);
-  nn = new NeuralNetwork(dataset[0][0].length, 100, 10, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 1, 5, dataset[0][1].length, false);
   //nn = new NeuralNetwork(true);
   
   //if(Counting)

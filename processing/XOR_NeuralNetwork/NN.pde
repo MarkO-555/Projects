@@ -14,15 +14,16 @@ class NeuralNetwork {
   private int[] weightsmap;
   public boolean loading;
 
-  private double learningrate = 0.01;
+  private double learningrate = 0.001;
   
   NeuralNetwork(boolean loading){
-    int[] conf = loadNetwork();
     
-    if(loading)
+    if(loading){
+      int[] conf = loadNetwork();
       buildNetwork(conf[0], conf[1], conf[2], conf[3], loading);
+    }
     else
-      buildNetwork(dataset[0][0].length, 1, 1, dataset[0][1].length, true);
+      buildNetwork(dataset[0][0].length, 1, 1, dataset[0][1].length, false);
     
   }
   
