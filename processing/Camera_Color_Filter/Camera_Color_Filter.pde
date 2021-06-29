@@ -1,5 +1,5 @@
 import processing.video.*;
-import ipcapture.*;
+//import ipcapture.*;
 
 Capture cam;
 //IPCapture cam;
@@ -10,7 +10,7 @@ int c = 0;
 int ra = 255;
 int ga = 255;
 int ba = 255;
-int tha = 50;
+int tha = 100;
 
 //0
 int rb = 0;
@@ -20,13 +20,29 @@ int thb = 0;
 
 boolean bypass = false;
 
+int[][] pixs;
+
+int Crashes = 0;
+
 void setup() {
   //size(640, 180); // 320/90
   size(640, 480);
+  pixs = new int[width][height];
   //size(1280, 960);
 
   //cam = new Capture(this, Capture.list()[87]);
-  cam = new Capture(this, Capture.list()[1]);
+  try{
+    cam = new Capture(this, Capture.list()[0]);
+  }
+  catch(Exception exc){
+    if(Crashes<=100){
+      Crashes++;
+      setup();
+    }
+    else
+     println("could not load camera");
+     println(Capture.list());
+  }
   //cam = new IPCapture(this, "http://frcvision.local:1181/stream.mjpg", "", "");
 
   //String[] list = cam.list();
@@ -35,6 +51,7 @@ void setup() {
   //  println(i, list[i]); 
   //}
   cam.start();
+  thread("FindLocation");
 }
 
 void draw() {
@@ -95,6 +112,7 @@ void draw() {
             for (int x_=-c/2; x_<c/2; x_++) {
               for (int y_=-c/2; y_<c/2; y_++) {   
                 set((x+x_), (y+y_), cols[(y+y_)*cam.width+(x+x_)]);
+                pixs[x+x_][y+y_] = cols[(y+y_)*cam.width+(x+x_)];
               }
             }
           }
@@ -103,9 +121,17 @@ void draw() {
           float val = (Math.abs(red(current)-r)+Math.abs(green(current)-g)+Math.abs(blue(current)-b))/3;
           if ((val <=tha && val>=thb) || bypass) {
                 set(x, y, current);
+                pixs[x][y] = current;
           }
+          else
+            pixs[x][y] = 0;
         }
+        else
+          pixs[x][y] = 0;
       }
+      else
+        pixs[x][y] = 0;
+      //set(x, y, pixs[x][y]); 
       if(c==0)
         y++;
     }
@@ -120,28 +146,32 @@ void draw() {
   text("upper: ra "+ra+" ga "+ga+" ba "+ba, 10, 60);
   text("lower: rb "+rb+" gb "+gb+" bb "+bb, 10, 80);
   text("th "+tha+" / "+thb, 10, 100);
+  
+  
+  
+  //DrawLocation();
 }
 
 void mouseWheel(MouseEvent event) {
   int t = -event.getCount();
   
-  if(key=='q' && ((ra<255 && t>0) || (ra>0 && t<0)))
+  if(key=='q' && ((ra+t<=255 && t>0) || (ra+t>=0 && t<0)))
     ra+=t; 
-  else if(key=='a' && ((rb<255 && t>0) || (rb>0 && t<0)))
+  else if(key=='a' && ((rb+t<=255 && t>0) || (rb+t>=0 && t<0)))
     rb+=t;
-  else if(key=='w' && ((ga<255 && t>0) || (ga>0 && t<0)))
+  else if(key=='w' && ((ga+t<=255 && t>0) || (ga+t>=0 && t<0)))
     ga+=t;
-  else if(key=='s' && ((gb<255 && t>0) || (gb>0 && t<0)))
+  else if(key=='s' && ((gb+t<=255 && t>0) || (gb+t>=0 && t<0)))
     gb+=t;
-  else if(key=='e' && ((ba<255 && t>0) || (ba>0 && t<0)))
+  else if(key=='e' && ((ba+t<=255 && t>0) || (ba+t>=0 && t<0)))
     ba+=t;
-  else if(key=='d' && ((bb<255 && t>0) || (bb>0 && t<0)))
+  else if(key=='d' && ((bb+t<=255 && t>0) || (bb+t>=0 && t<0)))
     bb+=t;
-  else if(key=='r' && ((tha<255 && t>0) || (tha>0 && t<0)))
+  else if(key=='r' && ((tha+t<=255 && t>0) || (tha+t>=0 && t<0)) && (tha+t >= thb))
     tha+=t;
-  else if(key=='f' && ((thb<255 && t>0) || (thb>0 && t<0)))
+  else if(key=='f' && ((thb+t<=255 && t>0) || (thb+t>=0 && t<0)) && (thb+t <= tha))
     thb+=t;
-  else if (key=='x' && ((c>0 && t<0) || (t>0)))
+  else if (key=='x' && ((c+2*t>0 && t<0) || (t>0)))
     c+=2*t;
 }
 
