@@ -1,6 +1,5 @@
 PVector Center = new PVector();
 
-
 void FindLocation(){
   while(true){
      //sleep(5);
