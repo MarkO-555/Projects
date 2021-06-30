@@ -7,15 +7,15 @@ Capture cam;
 int c = 0;
 
 //255
-int ra = 255;
-int ga = 255;
-int ba = 255;
+int ra = 169;
+int ga = 169;
+int ba = 169;
 //int tha = 100;
 
 //0
-int rb = 0;
-int gb = 0;
-int bb = 0;
+int rb = 63;
+int gb = 85;
+int bb = 78;
 //int thb = 0;
 
 boolean avflag = false;
