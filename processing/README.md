@@ -7,13 +7,13 @@
   <li>SnowFall</li>
   <li>sketch_2DRay_casting</li>
   <li>terrain_generator_with_perlin_noise</li>
-  <li>Camera_Color_Filter</li>
   <li>tick_tack_toe</li>
   <li>FindWord_GeneticAlgorithm</li>
   <li>ParticleSystems</li>
 </ul>
 <h3>Incomplete</h3>
 <ul>
+  <li>Camera_Color_Filter</li>
   <li>IdentifyBox_NeuralNetwork</li>
   <li>Camera_OpenCV</li>
   <li>Four_in_a_row</li>
