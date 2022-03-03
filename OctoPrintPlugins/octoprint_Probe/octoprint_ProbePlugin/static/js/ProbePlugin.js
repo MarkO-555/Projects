@@ -1,7 +1,7 @@
 var Probebusy = false;
 var ProbeAverage = 0;
 var ProbeCount = 0;
-var ProbeNumber = 0;
+var ProbeNumber = 5;
 
 $(function() {
 	
@@ -15,22 +15,21 @@ $(function() {
 			alert("Busy Processing!!!");
 			return;
 		}
-		
+
+		ProbeAverage = 0;
 		ProbeNumber = this.ProbeNumber;
 		Probebusy = true;
 		
-		for(int i=0; i<ProbeNumber; i++){
-			OctoPrint.control.sendGcode("G30").done(function(response){
+		for(var i=0; i<ProbeNumber; i++){
+			OctoPrint.control.sendGcode("G30").done(function (response) {
 				console.log(response);
-				
-				var responseNumber;
-				
+
 				ProbeAverage += parseFloat(responseNumber.substring(responseNumber.indexOf("Z: ")));
-				
-				ProbeCount+=1;
-				
-				if(ProbeCount>=ProbeNumber){
-					ProbeAverage/=number;
+				ProbeCount += 1;
+
+				if (ProbeCount >= ProbeNumber) {
+					ProbeAverage /= number;
+
 					document.getElementById("Proberesult").text = ProbeAverage;
 					Probebusy = false;
 				}
