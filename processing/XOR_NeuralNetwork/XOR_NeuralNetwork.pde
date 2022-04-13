@@ -28,6 +28,10 @@ PVector pos;
 PVector prevPos;
 boolean mouseDown = false;
 
+int inputlen = 0;
+int outputlen = 0;
+int errorlen = 0;
+
 double[][][] dataset = {
   
   //{{0.25, 0.00}, {0.90}},
@@ -38,14 +42,15 @@ double[][][] dataset = {
   //{{0.00, 0.50}, {0.10}},
   //{{0.50, 0.50}, {0.70}},
   
-  //{{0.75, 0.00}, {0.05}},
-  //{{0.00, 0.75}, {0.10}},
-  //{{0.75, 0.75}, {0.00}},
+  {{0.00, 0.00}, {1.00}},
+  {{0.75, 0.00}, {0.05}},
+  {{0.00, 0.75}, {0.50}},
+  {{0.75, 0.75}, {0.00}},
   
-  {{0, 0}, {1}},
-  {{0, 1}, {0}}, 
-  {{1, 0}, {0}}, 
-  {{1, 1}, {1}}
+  //{{0, 0}, {1}},
+  //{{0, 1}, {0}}, 
+  //{{1, 0}, {0}}, 
+  //{{1, 1}, {1}}
 };
 
 //double[][][] dataset = {
@@ -79,13 +84,13 @@ void setup() {
   
   //println("val:", (long)4.5); 
   
-  //size(800, 800);
-  fullScreen();
+  size(800, 800);
+  //fullScreen();
   
   mousePos = new PVector();
   //pos = new PVector(Distance*2, height/2);
   pos = new PVector(width/2, height/2);
-  nn = new NeuralNetwork(dataset[0][0].length, 1, 5, dataset[0][1].length, false);
+  nn = new NeuralNetwork(dataset[0][0].length, 1, 2, dataset[0][1].length, false);
   //nn = new NeuralNetwork(true);
   
   //if(Counting)
@@ -156,74 +161,84 @@ void draw() {
   
   String inputstr = "";
   String outputstr = "";
-  String expectedstr = "";
+  String errorstr = "";
   
-  int inputlen = 0;
-  int outputlen = 0;
+  
   
   for(int i=0; i<dataset.length; i++){
-    inputstr = "";
-    expectedstr = "";
+    errorstr = "";
     outputstr = "";
+    //inputstr = "";
     
     double[] inputs = dataset[i][0];
     double[] expected = dataset[i][1];
     for(int v=0; v<inputs.length; v++){
-      if(inputstr != "")
-        inputstr += ", ";
+      inputstr = "";
+      
+      for(int k = 0; k<dataset[i][0].length; k++){
+        if(inputstr != "")
+          inputstr += ", ";
+        int len = (dataset[i][0][k]+"").length();
+        inputstr += dataset[i][0][k];
         
-      int Ilen = inputstr.length();
-      
-      inputstr += inputs[v];
-      
-      Ilen = inputstr.length() - Ilen;
-      if(inputlen < Ilen){
-        inputlen = Ilen;        
-      }
-      else if(inputlen > Ilen){
-        inputstr+="0";
+        if(inputlen<len)
+          inputlen = len;
+        while(inputlen > len){
+          inputstr+="0";
+          len+=1;
+        }
       }
     }
     
-    for(int v=0; v<expected.length; v++){
-      if(expectedstr != "")
-        expectedstr += ", ";
-      expectedstr += expected[v];
-    }
-    //println(expected);
+    //for(int v=0; v<expected.length; v++){
+    //  if(expectedstr != "")
+    //    expectedstr += ", ";
+    //  expectedstr += expected[v];
+    //}
+    //println(expectedstr);
     
       for(int v=0; v<resulted[i].length; v++){
         if(outputstr != "")
           outputstr += ", ";
-        outputstr += resulted[i][v];
+        
+        outputstr += resulted[i][0];
+        String tempoutputstr = resulted[i][0]+"";
+        
+        int Olen = tempoutputstr.length();
+        if(outputlen < Olen)
+          outputlen = Olen;
+        while(outputlen > Olen){
+          outputstr+="0";
+          Olen+=1;
+        }
+        
       }
     
-    int Olen = outputstr.length();
-    
-    if(outputlen < Olen){
-      outputlen = Olen;        
-    }
-    else if(outputlen > Olen){
-      outputstr+="0";
-    }
     str = " "+inputstr+" | "  + outputstr +" ";
     
     pop();
       fill(0);
       translate(0, 0);
-      //text(str, width-100 - 50 -outputstr.length() -inputstr.length(), 30+i*10);
-      text(str, width-100 - 50 -100*(expected.length-1) -2*(inputstr.length()), 30+i*10);
+      //text(str, width-100 - 50 -2*(expected.length) -2*(inputstr.length()), 30+i*10);
+      text(str, width -5 * (str.length()+4), 30+i*10);
     push();
   }
   pop();
   
-  text("Input", width-100- 70 +15, 17);
-  text("Ouput", width-100 - 70 +inputstr.length()*8, 17);
+  text("Input",  width -5 * (str.length()+2.5), 17);
+  text("Ouput(s)",  width -5 * (str.length() - inputlen*dataset[0][0].length - (dataset[0][1].length-1)*(outputlen)), 17);
   
+  String errorString = error+"";
+  int Elen = errorString.length();
+  if(errorlen<Elen)
+    errorlen = Elen;
+  while(errorlen>Elen){
+    errorString+="0"; 
+    Elen+=1;
+  }
   
-  
-  text("Average Error", width-100, 30+ dataset.length*10 + 10);
-  text(""+error, width-100 ,30 + dataset.length*10 + 22.5);
+  text("Average Error", width-(6*errorlen) ,30 + dataset[0][1].length*10 + 100);
+  text(errorString    , width-(6*errorlen) ,30 + dataset[0][1].length*10 + 112.5);
   //text("Expected", width-100 - (str.length()*4)+(inputstr.length()*6.5), 20);
   
   

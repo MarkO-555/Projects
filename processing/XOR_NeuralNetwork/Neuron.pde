@@ -9,17 +9,19 @@ class Neuron {
 
   private double xPos = 0;
   private double yPos = 0;
+  private double bias = 0.0001;
 
   void process() {
     axonValue = 0;
     for (int i=0; i<dendrites.size(); i++)
-      axonValue += dendrites.get(i).axonValue * weights.get(i);
+      axonValue += dendrites.get(i).axonValue * weights.get(i) +bias;
 
     nonProcessed = axonValue;
     axonValue = sigmoid(axonValue);
     //axonValue = relu(axonValue);
     //axonValue = bianary(axonValue);
     //axonDerivative = axonValue * (1-axonValue);
+    
   }
 
   double getDerivitive() {
