@@ -1,5 +1,6 @@
 class NeuralNetwork {
   private float Weightrange = 5;
+  private float BiasInput = 1;
 
   private Neuron[] Neurons;
   //private double[] axons;
@@ -7,6 +8,7 @@ class NeuralNetwork {
   private int[] Inputs;
   private int[][] Hiddens;
   private int[] Outputs;
+  private int[] Bias;
   
   //private int[] Config;
 
@@ -20,30 +22,35 @@ class NeuralNetwork {
     
     if(loading){
       int[] conf = loadNetwork();
-      buildNetwork(conf[0], conf[1], conf[2], conf[3], loading);
+      buildNetwork(conf[0], conf[1], conf[2], conf[3], loading, 1);
     }
     else
-      buildNetwork(dataset[0][0].length, 1, 1, dataset[0][1].length, false);
+      buildNetwork(dataset[0][0].length, 1, 1, dataset[0][1].length, false, 1);
     
   }
   
   NeuralNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading) {
-    buildNetwork(Input, HiddenX, HiddenY, Output, loading);
+    buildNetwork(Input, HiddenX, HiddenY, Output, loading, 1);
   }
   
-  private void buildNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading){
+  private void buildNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading, int Bias){
+    //Bias = 0;
+    
     Inputs = new int[Input];
     Hiddens = new int[HiddenX][HiddenY];
     Outputs = new int[Output];
-    Neurons = new Neuron[Input+HiddenX*HiddenY+Output];
+    Neurons = new Neuron[Input+HiddenX*HiddenY+Output+Bias];
+    this.Bias = new int[Bias];
     this.loading = loading;
     //axons = new double[Input+HiddenX*HiddenY+Output];
 
     int weightCount = 0;
     if (HiddenX>0)
-      weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + HiddenY*Output;
+      weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + Output;
     else if(HiddenX == 0 || HiddenY ==0)
       weightCount = Input *Output;
+    //if(Bias>0)
+    //  weightCount+=Bias*(HiddenX*HiddenY+Output);
 
     weights = new double[weightCount];
     weightsmap = new int[weightCount];
@@ -54,7 +61,22 @@ class NeuralNetwork {
     int Count = 0;
     double it;
     
+        
+    for(int i=0; i<Bias; i++){
+      this.Bias[i] = y;
+      Neurons[y] = new Neuron();
+      
+      it = width/Bias;
+      
+      //Neurons[y].setX((Hiddens.length*Distance+2*Distance)/Bias * i);
+      //Neurons[y].setY(-100);
+      
+      y++;
+    }
+    
     for (int i=0; i<Input; i++) {
+      println(y);
+      
       Inputs[i] = y;
       Neurons[y] = new Neuron();
       
@@ -62,6 +84,8 @@ class NeuralNetwork {
       
       Neurons[y].setX(Distance);
       Neurons[y].setY(it*i + it/2);
+      //Neurons[y].setX(0);
+      //Neurons[y].setY(100);
       
       y++;
     }
@@ -81,7 +105,8 @@ class NeuralNetwork {
         
         if (i==0) {
           for (int j=0; j<Input; j++) {
-            Neurons[y].addDendrite(Neurons[j], weights[Count]);
+            println("we", weights.length, Count);
+            Neurons[y].addDendrite(Neurons[this.Inputs[j]], weights[Count]);
             Count++;
           }
         } else{
@@ -120,7 +145,8 @@ class NeuralNetwork {
       }
 
       y++;
-    } 
+    }
+    
   }
 
   private void initWeights(boolean loading) {
@@ -146,6 +172,7 @@ class NeuralNetwork {
   }
 
   public double[] feedForward(double[] Inputs) {
+    println(weights);
     int len = Inputs.length;
     
     //println(Neurons.length);
@@ -154,8 +181,12 @@ class NeuralNetwork {
       println("The inputs length is not expected value");
     }
     
+    for(int i=0; i<Bias.length; i++){
+      Neurons[this.Bias[i]].axonValue = BiasInput; 
+    }
+    
     for(int i=0; i<Inputs.length; i++){
-      Neurons[i].axonValue = Inputs[i]; 
+      Neurons[this.Inputs[i]].axonValue = Inputs[i];
     }
     
     for(int i=0; i<Hiddens.length; i++){
@@ -163,7 +194,7 @@ class NeuralNetwork {
         Neuron n = Neurons[Hiddens[i][j]];
         if(i==0){//Input Hidden
           for(int v=0; v<Inputs.length; v++){
-            n.setDendrite(v, Neurons[v]);
+            n.setDendrite(v, Neurons[this.Inputs[v]]);
           }
         }
         else{//Hidden Hidden
@@ -296,6 +327,7 @@ class NeuralNetwork {
           error = Neurons[Outputs[index/hiddens[0].length]].getError();
         }
       }
+      
 
       if (weightsmap[i] == 0) {//Connected Hiddens, Inputs
         int index = i/inputs.length;
