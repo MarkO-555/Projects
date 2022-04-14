@@ -1,6 +1,6 @@
 class NeuralNetwork {
-  private float Weightrange = 5;
-  private float BiasInput = 1;
+  private float Weightrange = 10;
+  private float BiasValue = 1;
 
   private Neuron[] Neurons;
   //private double[] axons;
@@ -34,23 +34,23 @@ class NeuralNetwork {
   }
   
   private void buildNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading, int Bias){
-    //Bias = 0;
+    this.Bias = new int[Bias];
+    
+    Input+=Bias;
+    HiddenY+=Bias;
     
     Inputs = new int[Input];
     Hiddens = new int[HiddenX][HiddenY];
     Outputs = new int[Output];
-    Neurons = new Neuron[Input+HiddenX*HiddenY+Output+Bias];
-    this.Bias = new int[Bias];
+    Neurons = new Neuron[Input+HiddenX*HiddenY+Output];
     this.loading = loading;
     //axons = new double[Input+HiddenX*HiddenY+Output];
 
     int weightCount = 0;
     if (HiddenX>0)
-      weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + Output;
+      weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + HiddenY*Output;
     else if(HiddenX == 0 || HiddenY ==0)
       weightCount = Input *Output;
-    //if(Bias>0)
-    //  weightCount+=Bias*(HiddenX*HiddenY+Output);
 
     weights = new double[weightCount];
     weightsmap = new int[weightCount];
@@ -61,35 +61,17 @@ class NeuralNetwork {
     int Count = 0;
     double it;
     
-        
-    for(int i=0; i<Bias; i++){
-      this.Bias[i] = y;
-      Neurons[y] = new Neuron();
-      
-      it = width/Bias;
-      
-      //Neurons[y].setX((Hiddens.length*Distance+2*Distance)/Bias * i);
-      //Neurons[y].setY(-100);
-      
-      y++;
-    }
-    
     for (int i=0; i<Input; i++) {
-      println(y);
-      
       Inputs[i] = y;
       Neurons[y] = new Neuron();
       
-      it = height/Input;
+      it = height/(Input);
       
       Neurons[y].setX(Distance);
       Neurons[y].setY(it*i + it/2);
-      //Neurons[y].setX(0);
-      //Neurons[y].setY(100);
       
       y++;
     }
-
     for (int i=0; i<HiddenX; i++) {
       for (int v=0; v<HiddenY; v++) {
         Hiddens[i][v] = y;
@@ -102,19 +84,19 @@ class NeuralNetwork {
         
         Neurons[y].setX(i*Distance+2*Distance);
         Neurons[y].setY(it*v + it/2);
-        
-        if (i==0) {
-          for (int j=0; j<Input; j++) {
-            println("we", weights.length, Count);
-            Neurons[y].addDendrite(Neurons[this.Inputs[j]], weights[Count]);
-            Count++;
+        if(v < HiddenY-Bias){
+          if (i==0) {
+            for (int j=0; j<Input; j++) {
+              Neurons[y].addDendrite(Neurons[j], weights[Count]);
+              Count++;
+            }
+          } else{
+            for (int j=0; j<HiddenY; j++) {
+              Neurons[y].addDendrite(Neurons[Hiddens[i-1][j]], weights[Count]);
+              Count++;
+            }
+            Count -= HiddenY;
           }
-        } else{
-          for (int j=0; j<HiddenY; j++) {
-            Neurons[y].addDendrite(Neurons[Hiddens[i-1][j]], weights[Count]);
-            Count++;
-          }
-          Count -= HiddenY;
         }
         y++;
       }
@@ -145,8 +127,7 @@ class NeuralNetwork {
       }
 
       y++;
-    }
-    
+    } 
   }
 
   private void initWeights(boolean loading) {
@@ -172,7 +153,6 @@ class NeuralNetwork {
   }
 
   public double[] feedForward(double[] Inputs) {
-    println(weights);
     int len = Inputs.length;
     
     //println(Neurons.length);
@@ -181,12 +161,14 @@ class NeuralNetwork {
       println("The inputs length is not expected value");
     }
     
-    for(int i=0; i<Bias.length; i++){
-      Neurons[this.Bias[i]].axonValue = BiasInput; 
-    }
+    //println("inputs",Inputs.length);
     
     for(int i=0; i<Inputs.length; i++){
-      Neurons[this.Inputs[i]].axonValue = Inputs[i];
+      Neurons[i].axonValue = Inputs[i]; 
+    }
+    
+    for(int i=0; i<Bias.length; i++){
+      Neurons[i+Inputs.length].axonValue = BiasValue; 
     }
     
     for(int i=0; i<Hiddens.length; i++){
@@ -194,7 +176,7 @@ class NeuralNetwork {
         Neuron n = Neurons[Hiddens[i][j]];
         if(i==0){//Input Hidden
           for(int v=0; v<Inputs.length; v++){
-            n.setDendrite(v, Neurons[this.Inputs[v]]);
+            n.setDendrite(v, Neurons[v]);
           }
         }
         else{//Hidden Hidden
@@ -286,9 +268,14 @@ class NeuralNetwork {
           }
         }
         else {//Hidden Hidden
-          for (int i=0; i<Hiddens[x].length; i++) {
+          for (int i=0; i<Hiddens[x].length-Bias.length; i++) {
             Neuron hidden = Neurons[Hiddens[x+1][i]];
             Neurons[Hiddens[x][y]].addError(hidden.getError() * hidden.getWeight(y));
+            //Neurons[Hiddens[x][y]].addError(1);
+          }
+          for(int i=Hiddens[x].length-Bias.length; i<Hiddens[x].length; i++){
+            Neuron hidden = Neurons[Hiddens[x+1][i]];
+            Neurons[Hiddens[x][y]].addError(hidden.getError());
           }
         }
         Neurons[Hiddens[x][y]].processErrors();
@@ -308,7 +295,7 @@ class NeuralNetwork {
         int y = index%hiddens[0].length;
         
         nonproc = hiddens[x][y];
-        error = Neurons[Hiddens[x+1][index%hiddens[0].length]].getError();
+        //error = Neurons[Hiddens[x+1][index%hiddens[0].length]].getError();
       }
       else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
         int index =0;
@@ -321,16 +308,16 @@ class NeuralNetwork {
         }
         else{//hidden, output
           index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
-          nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];//possible bug!!!
-          //println(hiddens.length-1, index%hiddens[0].length);
+          nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];
+          //println(index, hiddens[0].length);
           
-          error = Neurons[Outputs[index/hiddens[0].length]].getError();
+          //error = Neurons[Outputs[index%hiddens[0].length]].getError();//BUG!!!!
         }
       }
-      
 
       if (weightsmap[i] == 0) {//Connected Hiddens, Inputs
-        int index = i/inputs.length;
+        int index = i%(inputs.length);
+        //println(i, index);
 
         error = Neurons[Hiddens[0][index]].getError();
         nonproc = inputs[i%inputs.length];

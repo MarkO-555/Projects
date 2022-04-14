@@ -61,6 +61,7 @@ class Neuron {
   }
 
   double getWeight(int index) {
+    //println(xPos, yPos);
     return weights.get(index);
   }
 
