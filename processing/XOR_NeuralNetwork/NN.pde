@@ -1,5 +1,5 @@
 class NeuralNetwork {
-  private float Weightrange = 10;
+  private float Weightrange = 5;
   private float BiasValue = 1;
 
   private Neuron[] Neurons;
@@ -16,7 +16,7 @@ class NeuralNetwork {
   private int[] weightsmap;
   public boolean loading;
 
-  private double learningrate = 0.001;
+  private double learningrate = 0.0005;
   
   NeuralNetwork(boolean loading){
     
@@ -36,6 +36,14 @@ class NeuralNetwork {
   private void buildNetwork(int Input, int HiddenX, int HiddenY, int Output, boolean loading, int Bias){
     this.Bias = new int[Bias];
     
+    int weightCount = 0;
+    if (HiddenX>0)
+      weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + HiddenY*Output;
+    else if(HiddenX == 0 || HiddenY ==0)
+      weightCount = Input *Output;
+      
+    weightCount+=Bias*(HiddenX*HiddenY+Output);
+    
     Input+=Bias;
     HiddenY+=Bias;
     
@@ -46,11 +54,6 @@ class NeuralNetwork {
     this.loading = loading;
     //axons = new double[Input+HiddenX*HiddenY+Output];
 
-    int weightCount = 0;
-    if (HiddenX>0)
-      weightCount = Input*HiddenY + (HiddenX - 1)*HiddenY*HiddenY + HiddenY*Output;
-    else if(HiddenX == 0 || HiddenY ==0)
-      weightCount = Input *Output;
 
     weights = new double[weightCount];
     weightsmap = new int[weightCount];
@@ -141,13 +144,18 @@ class NeuralNetwork {
           weightsmap[i] = 2;
         }
         else{
-          if (i<=Inputs.length * Hiddens[0].length-1)//IH
+          //println(this.Inputs.length * (Hiddens[0].length-Bias.length), (Hiddens.length-1)*Hiddens[0].length*(Hiddens[0].length-Bias.length), Hiddens[0].length*Outputs.length, this.Inputs.length * (Hiddens[0].length-Bias.length)+ (Hiddens.length-1)*Hiddens[0].length*(Hiddens[0].length-Bias.length)+ Hiddens[0].length*Outputs.length, weights.length);
+          
+          
+          if (i<=this.Inputs.length * (Hiddens[0].length-Bias.length)-1)//IH
             weightsmap[i] = 0;
-          else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2)-1) {//HH
+          else if (i<=this.Inputs.length * (Hiddens[0].length-Bias.length) + (Hiddens.length-1)*Hiddens[0].length*(Hiddens[0].length-Bias.length)-1) {//HH
             weightsmap[i] = 1;
-          } else if (i<=Inputs.length * Hiddens[0].length + (Hiddens.length-1) * Math.pow(Hiddens[0].length, 2) + Hiddens[0].length*Outputs.length-1)//HO
+          } else if (i<=this.Inputs.length * (Hiddens[0].length-Bias.length) + (Hiddens.length-1)*Hiddens[0].length*(Hiddens[0].length-Bias.length) + Hiddens[0].length*Outputs.length-1)//HO
             weightsmap[i] = 2;
+            
         }
+        //println(i, weightsmap[i]);
       }
     }
   }
@@ -287,46 +295,79 @@ class NeuralNetwork {
     for (int i=0; i<len; i++) {
       double nonproc = 0;
       double error = 0;
+      
+      //println(i, weightsmap[i]);
+      
+      //println(weights[i], weightsmap[i]);
+      
       //println(weightsmap[i]);
-      if (weightsmap[i] == 1) {//Connected Hiddens, Hiddens
-        int index = (i - inputs.length*hiddens[0].length);//index in current hidden hidden weights
-
-        int x = index / (int)Math.pow(hiddens[0].length, 2);
-        int y = index%hiddens[0].length;
-        
-        nonproc = hiddens[x][y];
-        //error = Neurons[Hiddens[x+1][index%hiddens[0].length]].getError();
-      }
-      else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
-        int index =0;
-        
-        if(hiddens.length ==0){
-          nonproc = Neurons[Inputs[i%inputs.length]].axonValue;
-          error = Neurons[Outputs[i%Outputs.length]].getError();
-          //nonproc = 1;
-          //error =0;
-        }
-        else{//hidden, output
-          index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
-          nonproc = hiddens[hiddens.length-1][index%hiddens[0].length];
-          //println(index, hiddens[0].length);
-          
-          //error = Neurons[Outputs[index%hiddens[0].length]].getError();//BUG!!!!
-        }
-      }
-
+      
       if (weightsmap[i] == 0) {//Connected Hiddens, Inputs
-        int index = i%(inputs.length);
-        //println(i, index);
+        
+        //println(i, i%this.Inputs.length);
+        //error = 1;
 
-        error = Neurons[Hiddens[0][index]].getError();
-        nonproc = inputs[i%inputs.length];
+        error = Neurons[Hiddens[0][i/this.Inputs.length]].getError();
+        if(i%this.Inputs.length >= inputs.length)
+          nonproc = Bias[i%this.Inputs.length-inputs.length];
+        else
+          nonproc = inputs[i%this.Inputs.length];
       }
       else {
         //nonproc = nonproc *(1-nonproc);
         nonproc = dSigmoid(nonproc);
       }
       
+      if (weightsmap[i] == 1) {//Connected Hiddens, Hiddens
+        //int index = i - inputs.length*(hiddens[0].length-Bias.length);//index in current hidden hidden weights
+        int index =0;
+        
+        index = i - (this.Inputs.length*(hiddens[0].length-Bias.length));
+        
+
+        //int x = index / (int)Math.pow(hiddens[0].length, 2);//BUG!!!
+        int x = index/(hiddens[0].length*(hiddens[0].length-Bias.length));
+        int y = index/(hiddens[0].length);
+        
+        if(x>0)
+          y-=2*(x);
+        
+        
+        println(i, index, x, y);
+        
+        //println(i, index, x+1, index%hiddens[0].length);
+        
+        nonproc = hiddens[x][index%hiddens[0].length];
+        error = Neurons[Hiddens[x+1][y]].getError();
+        //error = 1;
+      }
+      else if (weightsmap[i] == 2) {//Connected to Outputs, Hiddens
+        int index =0;
+        
+        if(hiddens.length ==0){//input to output
+          
+          
+          error = Neurons[Outputs[i/this.Inputs.length]].getError();
+          nonproc = Neurons[Inputs[i%Outputs.length]].axonValue;
+          //nonproc = 1;
+          
+          //error =1;
+        }
+        else{//hidden, output
+          //index = i - inputs.length*hiddens[0].length - hiddens[0].length * hiddens[0].length*(hiddens.length-1);
+          index = i - this.Inputs.length*(hiddens[0].length-Bias.length) - hiddens[0].length * (hiddens[0].length-Bias.length)*(hiddens.length-1);
+          //println(i, index, index/Hiddens[0].length);
+          //println(index, hiddens[0].length, index%hiddens[0].length);
+          //println(i);
+          
+          error = Neurons[Outputs[index/Hiddens[0].length]].getError();//BUG!!!!
+          nonproc = hiddens[hiddens.length-1][index%Outputs.length];
+          
+        }
+      }      
+      
+      
+      //println(i);
       
       //println(learningrate, error, nonproc);
       weights[i] += learningrate * error * nonproc;
@@ -344,6 +385,8 @@ class NeuralNetwork {
   private void updateWeights() {
     ArrayList<Double> ls = new ArrayList();  
 
+    //println(weights);
+    
     int Count = 0;
     for (int i=0; i<Neurons.length; i++) {
       ArrayList<Double> nW = new ArrayList<Double>(); 
