@@ -2,8 +2,8 @@
 #include <string>
 
 class guess {
-	float Score;
-	std::string Word;
+	float Score =0;
+	std::string Word = "";
 
 	public:
 		float getScore() {
