@@ -5,4 +5,5 @@
 <h3>Incomplete</h3>
 <ul>
 	<li>NES_Emulator</li>
+	<li>FindWord</li>
 </ul>
