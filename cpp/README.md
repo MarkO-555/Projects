@@ -2,8 +2,11 @@
 <ul>
 	<li>HelloWorld</li>
 </ul>
+<h3>Complete needs memory optimised</h3>
+<ul>
+	<li>FindWord</li>
+</ul>
 <h3>Incomplete</h3>
 <ul>
 	<li>NES_Emulator</li>
-	<li>FindWord</li>
 </ul>
