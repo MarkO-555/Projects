@@ -3,10 +3,12 @@
 #include <random>
 #include <new>
 
+using namespace std;
+
 class guess {
 	float Score;
 	int length;
-	std::string Word;
+	string Word;
 
 	public:
 		float getScore() {
@@ -15,19 +17,19 @@ class guess {
 		void setScore(float Score){
 			this->Score = Score;
 		}
-		std::string getWord() {
+		string getWord() {
 			return this->Word;
 		}
-		void setWord(std::string Word) {
+		void setWord(string Word) {
 			this->Word = Word;
 			this->length = sizeof(this->Word);
 		}
-		void set(std::string Word, float Score) {
+		void set(string Word, float Score) {
 			this->Word = Word;
 			this->Score = Score;
 			this->length = this->Word.length();
 		}
-		void set(std::string Word, float Score, int length) {
+		void set(string Word, float Score, int length) {
 			this->Word = Word;
 			this->Score = Score;
 			this->length = length;
@@ -42,13 +44,13 @@ class guess {
 			this->length = this->Word.length();
 			return this->length;
 		}
-		void addChar(std::string letter) {
+		void addChar(string letter) {
 			this->Word += letter;
-			length++;
+			this->length++;
 		}
 		void addChar(char letter) {
 			this->Word += letter;
-			length++;
+			this->length++;
 		}
 		guess Copy() {
 			guess nguess;
@@ -57,24 +59,29 @@ class guess {
 		}
 };
 
-std::string Expected = "testing";
-guess matingPool[100];
+string Expected = "this is a test of the code";
+guess matingPool[100000];
 guess bestGuess;
-int initSize = 10;
+int initSize = 1000;
 int MatingPoolIndex = 0;
 int MatingOverflowIndex = 0;
 
 char randomChar() {
-	return ('a' + rand() % 26);
+	int rnum = rand() % 27;
+
+	if (rnum != 26)
+		return('a' + rand() % 26);
+	else
+		return(' ');
 }
 
-float Grade(std::string guess) {
+float Grade(string guess) {//String Bug!!!
 	float score = 0;
 
 	for (int i = 0; i < guess.size(); i++) {
-		//std::cout << guess.substr(i, 1) << std::endl;
+		//cout << guess.substr(i, 1) << endl;
 		if (guess.substr(i, 1) == Expected.substr(i, 1))
-			score += 2;
+			score += 1;
 		else
 			score -= 1 / 3;
 	}
@@ -82,12 +89,15 @@ float Grade(std::string guess) {
 	if (score < 0)
 		score = 0;
 
-	//std::cout << Expected << " || " << guess << ", " << score << std::endl;
+	//cout << Expected << " || " << guess << ", " << score << endl;
 
 	for (int i = 0; i < score; i++) {
-		if (MatingPoolIndex <= 2 + (sizeof(matingPool) / sizeof(matingPool[0]))){
+		if ((MatingPoolIndex + 1) >= (sizeof(matingPool) / sizeof(matingPool[0]))) {
 			matingPool[MatingOverflowIndex].set(guess, score);
 			MatingOverflowIndex++;
+
+			if (MatingOverflowIndex >= MatingPoolIndex)
+				MatingOverflowIndex = 0;
 		}
 		else {
 			matingPool[MatingPoolIndex].set(guess, score);
@@ -111,18 +121,18 @@ void breed() {
 	while (parents[0].equals(parents[1])) {
 		parents[1] = matingPool[rand() % MatingPoolIndex];
 		if (Count >= 100) {
-			std::cout << "Breed Loop Overrun!!!" << std::endl;
+			cout << "Breed Loop Overrun!!!" << endl;
 			break;
 		}
 		Count++;
 	}
 
-	//std::cout << parents[0].size()+1 << std::endl;
+	//cout << parents[0].size()+1 << endl;
 
 	guess result;
 	for (int i = 0; i < parents[0].size(); i++) {
 
-		//std::cout << i << ": " << parents[0].getWord().substr(i, 1) << std::endl;
+		//cout << i << ": " << parents[0].getWord().substr(i, 1) << endl;
 		if (rand() % 100 != 0) {
 			result.addChar(parents[rand()%2].getWord().substr(i, 1));
 		}
@@ -132,36 +142,48 @@ void breed() {
 	}
 
 	result.setScore(Grade(result.getWord()));
-
-	std::cout <<parents[0].getWord() << ", " << parents[1].getWord() << " || " << result.getWord() << " || " << Expected << std::endl;
 }
 
 void initalguess() {
-	std::string str = "";
+	string str = "";
 	for (int i = 0; i < Expected.size(); i++)
 		str += randomChar();
 
 	matingPool[MatingPoolIndex].set(str, Grade(str));
 	MatingPoolIndex++;
 
-	//std::cout << str << std::endl;
+	//cout << str << endl;
 }
+
+guess lastGuess;
 
 int main() {
 	//Entry
-	std::cout << "Generating initial Population" << std::endl;
-	std::cout << "_____________________________" << std::endl;
+	cout << "Generating initial Population" << endl;
+	cout << "_____________________________" << endl;
 
 	for (int i = 0; i < initSize; i++) {
 		initalguess();
 	}
 
-	std::cout << "end initial Generation" << std::endl;
+	cout << "end initial Generation" << endl;
 
 	while (true) {//Loop
+
 		if (bestGuess.getScore() != Expected.length())
 			breed();
 		else
 			break;
+
+		//cout << bestGuess.getScore() << ", " << Expected.length() << " || " << bestGuess.getWord() << " || " << Expected << endl;
+		
+		if (!lastGuess.equals(bestGuess)) {
+			cout << bestGuess.getScore() << " || " << bestGuess.getWord() << endl;
+			cout << Expected.length() << " || " << Expected << endl;
+			cout << "=============================================================" << endl;
+		}
+		lastGuess = bestGuess.Copy();
 	}
+
+	cout << "Finished!!!" << endl;
 }
