@@ -22,7 +22,7 @@
 <ul>
 </ul>
 
-<h3><a href="Cad">Blender</a></h3>
+<h3><a href="Cad">Cad</a></h3>
 <ul>
 </ul>
 
