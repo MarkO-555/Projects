@@ -25,6 +25,7 @@
 <h3><a href="Cad">Cad</a></h3>
 <ul>
 </ul>
+
 <h3><a href="cpp">C++</a></h3>
 <ul>
 </ul>
@@ -72,28 +73,45 @@
 <h3><a href="OctoPrintPlugins">OctoPrintPlugins</a></h3>
 <ul>
 </ul>
+
+<h3><a href="PCSX2">PCSX2 Plugins</a></h3>
+<ul>
+	<li>Voice Controlled Controller</li>
+</ul>
+
 <h3><a href="PS2_Moding">PS2_Moding</a></h3>
 <ul>
 	<li>1HP</li>
+	<li>Ingame Modded Infomation</li>
+	<li>Ingame Cheat Menu</li>
+	<li>Enable ingame FPS Counter</li>
 	<li>Inst kill always active</li>
 	<li>Random Effect Generator</li>
 	<li>Always moving forward</li>
 	<li>Fast Movment</li>
+	<li>No Clip</li>
 	<li>No Jump</li>
-	<li>No Transorming</li>
+	<li>No Transforming</li>
 	<li>Fullspeed used on jump</li>
 	<li>Disable FMVs</li>
 	<li>Disable Comms</li>
 	<li>Change Player Size</li>
 	<li>Randomize Levels</li>
 	<li>Randomize Minicons</li>
+	<li>Randomize Each Models</li>
+	<li>Randomize Boss Placment</li>
+	<li>Randomize Boss level assignment</li>
 	<li>Create testing level</li>
 	<li>Port Dev Minicons to release</li>
-	<li>Enable ingame FPS Counter</li>
 	<li>Place bosses</li>
 	<li>StarSaber</li>
 	<li>Spawn Menu</li>
+	<li>MiniconCount Viewer Always Active</li>
+	<li>Inst Recharge</li>
+	<li>No Saving</li>
+	<li>Bingo Fetures</li>
 </ul>
+
 <h3><a href="Unity">Unity</a></h3>
 <ul>
 	<li>Submarine</li>
