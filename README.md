@@ -25,6 +25,9 @@
 <h3><a href="Cad">Cad</a></h3>
 <ul>
 </ul>
+<h3><a href="Desmos">Desmos</a></h3>
+<ul>
+</ul>
 
 <h3><a href="Minecraft_Vanilla">Minecraft_Vanilla</a></h3>
 <ul>
@@ -41,6 +44,7 @@
 <ul>
 	<li>Computer controlling reactor, smeltery, etc</li>
 	<li>Robots</li>
+	<li>No redstone strength decrement</li>
 </ul>
 
 <h3><a href="Minecraft_Plugins">Minecraft_Plugins</a></h3>
@@ -65,7 +69,31 @@
 	<li>Flappy Birds</li>
 	<li>Solar Systems</li>
 </ul>
-
+<h3><a href="OctoPrintPlugins">OctoPrintPlugins</a></h3>
+<ul>
+</ul>
+<h3><a href="PS2_Moding">PS2_Moding</a></h3>
+<ul>
+	<li>1HP</li>
+	<li>Inst kill always active</li>
+	<li>Random Effect Generator</li>
+	<li>Always moving forward</li>
+	<li>Fast Movment</li>
+	<li>No Jump</li>
+	<li>No Transorming</li>
+	<li>Fullspeed used on jump</li>
+	<li>Disable FMVs</li>
+	<li>Disable Comms</li>
+	<li>Change Player Size</li>
+	<li>Randomize Levels</li>
+	<li>Randomize Minicons</li>
+	<li>Create testing level</li>
+	<li>Port Dev Minicons to release</li>
+	<li>Enable ingame FPS Counter</li>
+	<li>Place bosses</li>
+	<li>StarSaber</li>
+	<li>Spawn Menu</li>
+</ul>
 <h3><a href="Unity">Unity</a></h3>
 <ul>
 	<li>Submarine</li>
