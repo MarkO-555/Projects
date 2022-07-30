@@ -25,7 +25,7 @@
 <h3><a href="Cad">Cad</a></h3>
 <ul>
 </ul>
-<h3><a href="Desmos">Desmos</a></h3>
+<h3><a href="cpp">C++</a></h3>
 <ul>
 </ul>
 
