@@ -35,6 +35,7 @@ void start(){
   String  ParmLine = "";
   String[] Parms = new String[2];
   int HeaderLength = 256;
+  String neg = "";
   
   for(int i=0; i<b.length; i++){
     Correct = 0;
@@ -49,10 +50,10 @@ void start(){
     for(int j=0; j<Codes.size(); j++){
       if(i%4 ==3){
         Correct++;
-        if(      Codes.get(j).Hex[0].equals(Hex.get(i-3)) || Codes.get(j).Hex[0].equals("XX") || Codes.get(j).Hex[0].equals("?1") || Codes.get(j).Hex[0].equals("?0")){
-          if(    Codes.get(j).Hex[1].equals(Hex.get(i-2)) || Codes.get(j).Hex[1].equals("XX") || Codes.get(j).Hex[1].equals("?1") || Codes.get(j).Hex[1].equals("?0")){
-            if(  Codes.get(j).Hex[2].equals(Hex.get(i-1)) || Codes.get(j).Hex[2].equals("XX") || Codes.get(j).Hex[2].equals("?1") || Codes.get(j).Hex[2].equals("?0")){
-              if(Codes.get(j).Hex[3].equals(Hex.get(i-0)) || Codes.get(j).Hex[3].equals("XX") || Codes.get(j).Hex[3].equals("?1") || Codes.get(j).Hex[3].equals("?0")){
+        if(      Codes.get(j).Hex[0].equals(Hex.get(i-3)) || Codes.get(j).Hex[0].equals("XX") || Codes.get(j).Hex[0].equals("?1") || Codes.get(j).Hex[0].equals("?0") || Codes.get(j).Hex[0].equals("-?0") || Codes.get(j).Hex[0].equals("-?0x2")){
+          if(    Codes.get(j).Hex[1].equals(Hex.get(i-2)) || Codes.get(j).Hex[1].equals("XX") || Codes.get(j).Hex[1].equals("?1") || Codes.get(j).Hex[1].equals("?0") || Codes.get(j).Hex[1].equals("-?0") || Codes.get(j).Hex[1].equals("-?0x2")){
+            if(  Codes.get(j).Hex[2].equals(Hex.get(i-1)) || Codes.get(j).Hex[2].equals("XX") || Codes.get(j).Hex[2].equals("?1") || Codes.get(j).Hex[2].equals("?0") || Codes.get(j).Hex[2].equals("-?0") || Codes.get(j).Hex[2].equals("-?0x2")){
+              if(Codes.get(j).Hex[3].equals(Hex.get(i-0)) || Codes.get(j).Hex[3].equals("XX") || Codes.get(j).Hex[3].equals("?1") || Codes.get(j).Hex[3].equals("?0") || Codes.get(j).Hex[3].equals("-?0") || Codes.get(j).Hex[3].equals("-?0x2")){
                 ArrayList<String> str = new ArrayList<String>();
                 
                 if(Codes.get(j).Hex[0] == "?0")
@@ -64,6 +65,34 @@ void start(){
                 else if(Codes.get(j).Hex[3] == "?0")
                   str.add(Hex.get(i-0));
                   
+                if(Codes.get(j).Hex[0] == "-?0")
+                  str.add(Hex.get(i-3));
+                else if(Codes.get(j).Hex[1] == "-?0")
+                  str.add(Hex.get(i-2));
+                else if(Codes.get(j).Hex[2] == "-?0")
+                  str.add(Hex.get(i-1));
+                else if(Codes.get(j).Hex[3] == "-?0")
+                  str.add(Hex.get(i-0));
+                  
+                if(Codes.get(j).Hex[0] == "-?0x2")
+                  str.add(Hex.get(i-3));
+                else if(Codes.get(j).Hex[1] == "-?0x1")
+                  str.add(Hex.get(i-2));
+                else if(Codes.get(j).Hex[2] == "-?0x1")
+                  str.add(Hex.get(i-1));
+                else if(Codes.get(j).Hex[3] == "-?0x1")
+                  str.add(Hex.get(i-0));
+                  
+                  
+                if(str.size() > 0 && (Codes.get(j).Hex[0] == "-?0" || Codes.get(j).Hex[1] == "-?0" || Codes.get(j).Hex[2] == "-?0" || Codes.get(j).Hex[3] == "-?0")){
+                  if(binary(unhex(str.get(0)), 8).substring(0, 1).equals("1")){
+                    if(!hex(-unhex(str.get(0))-255-2, 2).equals("00"))
+                      str.set(0, "-"+hex(-unhex(str.get(0))-255-2, 2));
+                    else
+                      str.set(0, "00");
+                  }
+                }
+                  
                 if(Codes.get(j).Hex[0] == "?1")
                   str.add(Hex.get(i-3));
                 else if(Codes.get(j).Hex[1] == "?1")
@@ -72,11 +101,18 @@ void start(){
                   str.add(Hex.get(i-1));
                 else if(Codes.get(j).Hex[3] == "?1")
                   str.add(Hex.get(i-0));
-                //if(str.size() > 0)
-                //  if(str.get(0).equals("00"))
-                //    str.remove(0);
                 if(str.size() > 0)
-                  ParmLine += "#";
+                  if(str.get(0).equals("00"))
+                    str.remove(0);
+                if(str.size() > 0){
+                  //ParmLine += "#";
+                  ParmLine += neg+"0x";
+                  
+                  //if(binary(unhex(str.get(0)), 8).substring(0, 1).equals("1")){
+                  //  str.set(0, "-"+hex(-unhex(str.get(0))-255-2, 2));
+                  //}
+                }
+                  
                   
                 for(var k =0; k<str.size(); k++){
                   ParmLine += str.get(k);
@@ -115,7 +151,6 @@ void OpCodeInit(){
   
   
   Codes.add(new opCode("addiu" , "?1", "?0", "C6", "24"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "E7", "24"));
   Codes.add(new opCode("addiu" , "?1", "?0", "84", "24"));
   Codes.add(new opCode("addiu" , "?1", "?0", "63", "24"));
   Codes.add(new opCode("_addiu", "?1", "?0", "A5", "24"));
@@ -129,7 +164,20 @@ void OpCodeInit(){
   Codes.add(new opCode("addiu" , "?1", "?0", "A9", "27"));
   Codes.add(new opCode("addiu" , "?1", "?0", "AA", "27"));
   
-  Codes.add(new opCode("addiu" , "?1", "XX", "42", "24"));//Missing Parameter Subtraction Sometimes!!!
+  Codes.add(new opCode("j"     , "XX", "XX", "04", "08"));// Missing Parameters
+  Codes.add(new opCode("andi"  , "XX", "XX", "44", "30"));// Missing Parameters
+  
+  Codes.add(new opCode("Clear" , "28", "XX", "00", "70"));// Missing Parameters
+  Codes.add(new opCode("Clear" , "11", "XX", "00", "00"));// Missing Parameters
+  Codes.add(new opCode("Clear" , "11", "XX", "00", "70"));// Missing Parameters
+  Codes.add(new opCode("Clear" , "13", "XX", "00", "00"));// Missing Parameters
+  Codes.add(new opCode("Clear" , "13", "XX", "00", "70"));// Missing Parameters
+  
+  Codes.add(new opCode("Clear" , "00", "XX", "19", "04"));// Missing Parameters
+  Codes.add(new opCode("Clear" , "00", "XX", "80", "44"));// Missing Parameters
+  
+  //Codes.add(new opCode("addiu" , "?1", "-?0", "E7", "24"));
+  Codes.add(new opCode("addiu" , "?1", "-?0", "42", "24"));//Missing Parameter Subtraction Sometimes!!!
   
   
   
