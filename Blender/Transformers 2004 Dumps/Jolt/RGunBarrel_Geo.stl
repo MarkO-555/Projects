@@ -1,0 +1,37 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 487.734 -391.606 33.860
+      vertex 487.749 -392.335 33.843
+      vertex 487.797 -391.606 33.844
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 487.749 -392.335 33.843
+      vertex 487.797 -391.606 33.844
+      vertex 487.795 -392.334 33.932
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 487.797 -391.606 33.844
+      vertex 487.751 -391.606 33.932
+      vertex 487.795 -392.334 33.932
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 487.751 -391.606 33.932
+      vertex 487.795 -392.334 33.932
+      vertex 487.749 -392.335 33.843
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 487.734 -391.606 33.860
+      vertex 487.751 -391.606 33.932
+      vertex 487.749 -392.335 33.843
+    endloop
+  endfacet
+endsolid Default

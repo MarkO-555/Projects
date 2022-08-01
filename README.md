@@ -110,6 +110,7 @@
 	<li>Inst Recharge</li>
 	<li>No Saving</li>
 	<li>Bingo Fetures</li>
+	<li>JumpCounter</li>
 </ul>
 
 <h3><a href="Unity">Unity</a></h3>

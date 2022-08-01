@@ -1,0 +1,44 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 28.624 -4.535 2.540
+      vertex 28.474 -4.759 2.502
+      vertex 28.442 -4.487 2.861
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.474 -4.759 2.502
+      vertex 28.442 -4.487 2.861
+      vertex 28.322 -4.487 2.780
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.322 -4.487 2.780
+      vertex 28.474 -4.759 2.502
+      vertex 28.474 -3.911 2.502
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.474 -3.911 2.502
+      vertex 28.442 -4.487 2.861
+      vertex 28.322 -4.487 2.780
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.474 -3.911 2.502
+      vertex 28.474 -4.759 2.502
+      vertex 28.624 -4.535 2.540
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.442 -4.487 2.861
+      vertex 28.474 -3.911 2.502
+      vertex 28.624 -4.535 2.540
+    endloop
+  endfacet
+endsolid Default

@@ -1,0 +1,37 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 626.457 -502.946 43.508
+      vertex 626.458 -502.964 43.508
+      vertex 626.459 -502.946 43.508
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 626.458 -502.964 43.508
+      vertex 626.459 -502.946 43.508
+      vertex 626.459 -502.963 43.510
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 626.459 -502.946 43.508
+      vertex 626.458 -502.946 43.510
+      vertex 626.459 -502.963 43.510
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 626.458 -502.946 43.510
+      vertex 626.459 -502.963 43.510
+      vertex 626.458 -502.964 43.508
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 626.457 -502.946 43.508
+      vertex 626.458 -502.946 43.510
+      vertex 626.458 -502.964 43.508
+    endloop
+  endfacet
+endsolid Default

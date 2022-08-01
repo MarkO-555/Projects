@@ -1,0 +1,142 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 704.141 201.778 151.291
+      vertex 704.141 201.778 151.981
+      vertex 704.321 201.888 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.141 201.778 151.981
+      vertex 704.321 201.888 151.291
+      vertex 704.321 201.888 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.321 201.888 151.291
+      vertex 704.321 201.888 151.981
+      vertex 704.766 201.893 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.146 201.483 151.291
+      vertex 704.141 201.778 151.291
+      vertex 704.326 201.378 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.141 201.778 151.291
+      vertex 704.326 201.378 151.291
+      vertex 704.321 201.888 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.326 201.378 151.291
+      vertex 704.321 201.888 151.291
+      vertex 704.766 201.893 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.141 201.778 151.981
+      vertex 704.321 201.888 151.981
+      vertex 704.146 201.483 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.321 201.888 151.981
+      vertex 704.146 201.483 151.981
+      vertex 704.326 201.378 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.326 201.378 151.291
+      vertex 704.326 201.378 151.981
+      vertex 704.146 201.483 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.326 201.378 151.981
+      vertex 704.146 201.483 151.291
+      vertex 704.146 201.483 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.141 201.778 151.291
+      vertex 704.141 201.778 151.981
+      vertex 704.146 201.483 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.141 201.778 151.981
+      vertex 704.146 201.483 151.291
+      vertex 704.146 201.483 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.321 201.888 151.981
+      vertex 704.766 201.893 151.981
+      vertex 704.326 201.378 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.766 201.893 151.981
+      vertex 704.326 201.378 151.981
+      vertex 704.856 201.383 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.326 201.378 151.981
+      vertex 704.856 201.383 151.981
+      vertex 704.326 201.378 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.856 201.383 151.981
+      vertex 704.326 201.378 151.291
+      vertex 704.856 201.383 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.766 201.893 151.291
+      vertex 704.856 201.383 151.291
+      vertex 704.766 201.893 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.856 201.383 151.291
+      vertex 704.766 201.893 151.981
+      vertex 704.856 201.383 151.981
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.766 201.893 151.981
+      vertex 704.321 201.888 151.291
+      vertex 704.766 201.893 151.291
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 704.766 201.893 151.291
+      vertex 704.326 201.378 151.291
+      vertex 704.856 201.383 151.291
+    endloop
+  endfacet
+endsolid Default

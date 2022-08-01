@@ -1,0 +1,86 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 27.162 -27.402 -22.780
+      vertex 27.162 14.664 -22.780
+      vertex 46.678 -27.402 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 27.162 14.664 -22.780
+      vertex 46.678 -27.402 3.469
+      vertex 46.678 14.664 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 46.678 -27.402 3.469
+      vertex 46.678 14.664 3.469
+      vertex 72.948 -27.402 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 46.678 14.664 3.469
+      vertex 72.948 -27.402 3.469
+      vertex 72.948 14.664 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 72.948 14.664 -22.780
+      vertex 72.948 -27.402 -22.780
+      vertex 27.162 14.664 -22.780
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 72.948 -27.402 -22.780
+      vertex 27.162 14.664 -22.780
+      vertex 27.162 -27.402 -22.780
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 27.162 14.664 -22.780
+      vertex 72.948 14.664 -22.780
+      vertex 46.678 14.664 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 72.948 14.664 -22.780
+      vertex 46.678 14.664 3.469
+      vertex 72.948 14.664 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 27.162 -27.402 -22.780
+      vertex 46.678 -27.402 3.469
+      vertex 72.948 -27.402 -22.780
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 46.678 -27.402 3.469
+      vertex 72.948 -27.402 -22.780
+      vertex 72.948 -27.402 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 72.948 14.664 3.469
+      vertex 72.948 14.664 -22.780
+      vertex 72.948 -27.402 3.469
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 72.948 14.664 -22.780
+      vertex 72.948 -27.402 3.469
+      vertex 72.948 -27.402 -22.780
+    endloop
+  endfacet
+endsolid Default

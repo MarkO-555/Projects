@@ -1,0 +1,86 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 62.403 -14.254 21.161
+      vertex 62.403 27.128 21.161
+      vertex 90.212 -14.254 7.203
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 62.403 27.128 21.161
+      vertex 90.212 -14.254 7.203
+      vertex 90.212 27.128 7.203
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 90.212 -14.254 7.203
+      vertex 90.212 27.128 7.203
+      vertex 110.475 27.128 -14.150
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 62.403 -14.254 -14.150
+      vertex 62.403 27.128 -14.150
+      vertex 62.403 -14.254 21.161
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 62.403 27.128 -14.150
+      vertex 62.403 -14.254 21.161
+      vertex 62.403 27.128 21.161
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 62.403 -14.254 -14.150
+      vertex 110.475 -14.254 -14.150
+      vertex 62.403 27.128 -14.150
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 110.475 -14.254 -14.150
+      vertex 62.403 27.128 -14.150
+      vertex 110.475 27.128 -14.150
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 110.475 -14.254 -14.150
+      vertex 90.212 -14.254 7.203
+      vertex 62.403 -14.254 -14.150
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 90.212 -14.254 7.203
+      vertex 62.403 -14.254 -14.150
+      vertex 62.403 -14.254 21.161
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 110.475 27.128 -14.150
+      vertex 62.403 27.128 -14.150
+      vertex 90.212 27.128 7.203
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 62.403 27.128 -14.150
+      vertex 90.212 27.128 7.203
+      vertex 62.403 27.128 21.161
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 110.475 27.128 -14.150
+      vertex 90.212 -14.254 7.203
+      vertex 110.475 -14.254 -14.150
+    endloop
+  endfacet
+endsolid Default

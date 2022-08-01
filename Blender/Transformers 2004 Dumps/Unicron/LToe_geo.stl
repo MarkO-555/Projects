@@ -1,0 +1,86 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 1468.502 -225.313 389.103
+      vertex 1468.502 530.969 389.103
+      vertex 1976.727 -225.313 134.014
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1468.502 530.969 389.103
+      vertex 1976.727 -225.313 134.014
+      vertex 1976.727 530.969 134.014
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1976.727 -225.313 134.014
+      vertex 1976.727 530.969 134.014
+      vertex 2347.055 530.969 -256.236
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1468.502 -225.313 -256.236
+      vertex 1468.502 530.969 -256.236
+      vertex 1468.502 -225.313 389.103
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1468.502 530.969 -256.236
+      vertex 1468.502 -225.313 389.103
+      vertex 1468.502 530.969 389.103
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1468.502 -225.313 -256.236
+      vertex 2347.055 -225.313 -256.236
+      vertex 1468.502 530.969 -256.236
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 2347.055 -225.313 -256.236
+      vertex 1468.502 530.969 -256.236
+      vertex 2347.055 530.969 -256.236
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 2347.055 -225.313 -256.236
+      vertex 1976.727 -225.313 134.014
+      vertex 1468.502 -225.313 -256.236
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1976.727 -225.313 134.014
+      vertex 1468.502 -225.313 -256.236
+      vertex 1468.502 -225.313 389.103
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 2347.055 530.969 -256.236
+      vertex 1468.502 530.969 -256.236
+      vertex 1976.727 530.969 134.014
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1468.502 530.969 -256.236
+      vertex 1976.727 530.969 134.014
+      vertex 1468.502 530.969 389.103
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 2347.055 530.969 -256.236
+      vertex 1976.727 -225.313 134.014
+      vertex 2347.055 -225.313 -256.236
+    endloop
+  endfacet
+endsolid Default

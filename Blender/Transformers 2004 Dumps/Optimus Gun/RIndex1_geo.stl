@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.125 9.070
+      vertex 80.922 -9.125 9.070
+      vertex 80.923 -9.125 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.125 9.070
+      vertex 80.923 -9.125 9.070
+      vertex 80.923 -9.125 9.071
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.923 -9.125 9.070
+      vertex 80.923 -9.125 9.071
+      vertex 80.924 -9.125 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.126 9.070
+      vertex 80.922 -9.126 9.070
+      vertex 80.923 -9.126 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.126 9.070
+      vertex 80.923 -9.126 9.070
+      vertex 80.923 -9.126 9.071
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.923 -9.126 9.070
+      vertex 80.923 -9.126 9.071
+      vertex 80.924 -9.126 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.126 9.070
+      vertex 80.922 -9.126 9.070
+      vertex 80.922 -9.125 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.126 9.070
+      vertex 80.922 -9.125 9.070
+      vertex 80.922 -9.125 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.125 9.070
+      vertex 80.922 -9.126 9.070
+      vertex 80.923 -9.125 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.126 9.070
+      vertex 80.923 -9.125 9.070
+      vertex 80.923 -9.126 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.922 -9.125 9.070
+      vertex 80.923 -9.125 9.071
+      vertex 80.922 -9.126 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.923 -9.125 9.071
+      vertex 80.922 -9.126 9.070
+      vertex 80.923 -9.126 9.071
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.923 -9.125 9.071
+      vertex 80.924 -9.125 9.070
+      vertex 80.923 -9.126 9.071
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.924 -9.125 9.070
+      vertex 80.923 -9.126 9.071
+      vertex 80.924 -9.126 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.923 -9.126 9.070
+      vertex 80.924 -9.126 9.070
+      vertex 80.923 -9.125 9.070
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 80.924 -9.126 9.070
+      vertex 80.923 -9.125 9.070
+      vertex 80.924 -9.125 9.070
+    endloop
+  endfacet
+endsolid Default

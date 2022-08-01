@@ -1,0 +1,170 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 224.574 -46.120 245.832
+      vertex 224.686 -46.148 245.816
+      vertex 224.557 -46.137 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -46.148 245.816
+      vertex 224.557 -46.137 245.602
+      vertex 224.686 -46.176 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.557 -46.137 245.602
+      vertex 224.686 -46.176 245.602
+      vertex 224.686 -46.125 245.484
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -46.176 245.602
+      vertex 224.686 -46.125 245.484
+      vertex 224.816 -46.137 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.574 -45.974 245.832
+      vertex 224.574 -46.120 245.832
+      vertex 224.686 -45.945 245.816
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.574 -46.120 245.832
+      vertex 224.686 -45.945 245.816
+      vertex 224.686 -46.148 245.816
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -45.945 245.816
+      vertex 224.686 -46.148 245.816
+      vertex 224.799 -45.974 245.799
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -46.148 245.816
+      vertex 224.799 -45.974 245.799
+      vertex 224.799 -46.120 245.799
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.799 -45.974 245.799
+      vertex 224.686 -45.945 245.816
+      vertex 224.816 -45.957 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -45.945 245.816
+      vertex 224.816 -45.957 245.602
+      vertex 224.686 -45.917 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.816 -45.957 245.602
+      vertex 224.686 -45.917 245.602
+      vertex 224.686 -45.968 245.484
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -45.917 245.602
+      vertex 224.686 -45.968 245.484
+      vertex 224.557 -45.957 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.816 -46.137 245.602
+      vertex 224.686 -46.176 245.602
+      vertex 224.799 -46.120 245.799
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -46.176 245.602
+      vertex 224.799 -46.120 245.799
+      vertex 224.686 -46.148 245.816
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.557 -45.957 245.602
+      vertex 224.686 -45.917 245.602
+      vertex 224.574 -45.974 245.832
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -45.917 245.602
+      vertex 224.574 -45.974 245.832
+      vertex 224.686 -45.945 245.816
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -45.968 245.484
+      vertex 224.686 -46.125 245.484
+      vertex 224.557 -45.957 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -46.125 245.484
+      vertex 224.557 -45.957 245.602
+      vertex 224.557 -46.137 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.574 -46.120 245.832
+      vertex 224.574 -45.974 245.832
+      vertex 224.557 -46.137 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.574 -45.974 245.832
+      vertex 224.557 -46.137 245.602
+      vertex 224.557 -45.957 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.686 -46.125 245.484
+      vertex 224.816 -46.137 245.602
+      vertex 224.686 -45.968 245.484
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.816 -46.137 245.602
+      vertex 224.686 -45.968 245.484
+      vertex 224.816 -45.957 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.799 -46.120 245.799
+      vertex 224.799 -45.974 245.799
+      vertex 224.816 -46.137 245.602
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 224.799 -45.974 245.799
+      vertex 224.816 -46.137 245.602
+      vertex 224.816 -45.957 245.602
+    endloop
+  endfacet
+endsolid Default

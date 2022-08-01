@@ -1,0 +1,100 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 0.181 0.000 6.424
+      vertex 0.181 -0.000 6.424
+      vertex 0.181 -0.000 6.424
+    endloop
+  endfacet
+endsolid Default

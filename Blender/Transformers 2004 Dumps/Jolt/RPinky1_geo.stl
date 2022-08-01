@@ -1,0 +1,142 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 1.401 -1.159 -2.594
+      vertex 1.401 -1.162 -2.594
+      vertex 1.402 -1.159 -2.593
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.401 -1.162 -2.594
+      vertex 1.402 -1.159 -2.593
+      vertex 1.402 -1.162 -2.593
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.402 -1.159 -2.593
+      vertex 1.402 -1.162 -2.593
+      vertex 1.404 -1.162 -2.593
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.402 -1.159 -2.593
+      vertex 1.404 -1.159 -2.593
+      vertex 1.404 -1.162 -2.593
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.159 -2.593
+      vertex 1.404 -1.162 -2.593
+      vertex 1.404 -1.159 -2.594
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.162 -2.593
+      vertex 1.404 -1.159 -2.594
+      vertex 1.404 -1.162 -2.594
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.401 -1.162 -2.596
+      vertex 1.401 -1.159 -2.596
+      vertex 1.401 -1.162 -2.594
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.401 -1.159 -2.596
+      vertex 1.401 -1.162 -2.594
+      vertex 1.401 -1.159 -2.594
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.159 -2.594
+      vertex 1.401 -1.159 -2.594
+      vertex 1.404 -1.159 -2.593
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.401 -1.159 -2.594
+      vertex 1.404 -1.159 -2.593
+      vertex 1.402 -1.159 -2.593
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.159 -2.594
+      vertex 1.404 -1.159 -2.597
+      vertex 1.401 -1.159 -2.594
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.159 -2.597
+      vertex 1.401 -1.159 -2.594
+      vertex 1.401 -1.159 -2.596
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.162 -2.594
+      vertex 1.401 -1.162 -2.594
+      vertex 1.404 -1.162 -2.597
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.401 -1.162 -2.594
+      vertex 1.404 -1.162 -2.597
+      vertex 1.401 -1.162 -2.596
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.159 -2.597
+      vertex 1.404 -1.162 -2.597
+      vertex 1.401 -1.159 -2.596
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.162 -2.597
+      vertex 1.401 -1.159 -2.596
+      vertex 1.401 -1.162 -2.596
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.401 -1.162 -2.594
+      vertex 1.402 -1.162 -2.593
+      vertex 1.404 -1.162 -2.594
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.402 -1.162 -2.593
+      vertex 1.404 -1.162 -2.594
+      vertex 1.404 -1.162 -2.593
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.162 -2.597
+      vertex 1.404 -1.162 -2.594
+      vertex 1.404 -1.159 -2.597
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1.404 -1.162 -2.594
+      vertex 1.404 -1.159 -2.597
+      vertex 1.404 -1.159 -2.594
+    endloop
+  endfacet
+endsolid Default

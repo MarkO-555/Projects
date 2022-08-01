@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.685 2.490
+      vertex 16.179 2.685 2.490
+      vertex 16.180 2.685 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.179 2.685 2.490
+      vertex 16.180 2.685 2.490
+      vertex 16.179 2.685 2.489
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.685 2.490
+      vertex 16.179 2.685 2.489
+      vertex 16.180 2.685 2.489
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.179 2.688 2.490
+      vertex 16.179 2.688 2.489
+      vertex 16.180 2.688 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.179 2.688 2.489
+      vertex 16.180 2.688 2.490
+      vertex 16.180 2.688 2.489
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.685 2.490
+      vertex 16.180 2.688 2.490
+      vertex 16.179 2.685 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.688 2.490
+      vertex 16.179 2.685 2.490
+      vertex 16.179 2.688 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.179 2.685 2.490
+      vertex 16.179 2.685 2.489
+      vertex 16.179 2.688 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.179 2.685 2.489
+      vertex 16.179 2.688 2.490
+      vertex 16.179 2.688 2.489
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.688 2.489
+      vertex 16.180 2.685 2.489
+      vertex 16.179 2.688 2.489
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.685 2.489
+      vertex 16.179 2.688 2.489
+      vertex 16.179 2.685 2.489
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.685 2.490
+      vertex 16.180 2.688 2.490
+      vertex 16.180 2.685 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.688 2.490
+      vertex 16.180 2.685 2.490
+      vertex 16.180 2.688 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.685 2.489
+      vertex 16.180 2.685 2.490
+      vertex 16.180 2.688 2.489
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.180 2.685 2.490
+      vertex 16.180 2.688 2.489
+      vertex 16.180 2.688 2.490
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 16.179 2.688 2.490
+      vertex 16.180 2.688 2.490
+      vertex 16.180 2.688 2.490
+    endloop
+  endfacet
+endsolid Default

@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 478.187 -99.070 519.672
+      vertex 478.079 -99.070 519.805
+      vertex 478.351 -99.070 519.786
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.079 -99.070 519.805
+      vertex 478.351 -99.070 519.786
+      vertex 478.105 -99.070 519.982
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.351 -99.070 519.786
+      vertex 478.105 -99.070 519.982
+      vertex 478.345 -99.070 519.925
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.187 -99.620 519.672
+      vertex 478.079 -99.620 519.799
+      vertex 478.357 -99.620 519.779
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.079 -99.620 519.799
+      vertex 478.357 -99.620 519.779
+      vertex 478.105 -99.620 519.982
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.357 -99.620 519.779
+      vertex 478.105 -99.620 519.982
+      vertex 478.351 -99.620 519.925
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.105 -99.620 519.982
+      vertex 478.105 -99.070 519.982
+      vertex 478.079 -99.620 519.799
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.105 -99.070 519.982
+      vertex 478.079 -99.620 519.799
+      vertex 478.079 -99.070 519.805
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.079 -99.070 519.805
+      vertex 478.079 -99.620 519.799
+      vertex 478.187 -99.070 519.672
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.079 -99.620 519.799
+      vertex 478.187 -99.070 519.672
+      vertex 478.187 -99.620 519.672
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.105 -99.070 519.982
+      vertex 478.345 -99.070 519.925
+      vertex 478.105 -99.620 519.982
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.345 -99.070 519.925
+      vertex 478.105 -99.620 519.982
+      vertex 478.351 -99.620 519.925
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.187 -99.620 519.672
+      vertex 478.357 -99.620 519.779
+      vertex 478.187 -99.070 519.672
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.357 -99.620 519.779
+      vertex 478.187 -99.070 519.672
+      vertex 478.351 -99.070 519.786
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.345 -99.070 519.925
+      vertex 478.351 -99.070 519.786
+      vertex 478.351 -99.620 519.925
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 478.351 -99.070 519.786
+      vertex 478.351 -99.620 519.925
+      vertex 478.357 -99.620 519.779
+    endloop
+  endfacet
+endsolid Default

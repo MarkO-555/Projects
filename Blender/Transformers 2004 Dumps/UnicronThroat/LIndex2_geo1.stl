@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.395 -221.897 1176.264
+      vertex 1082.227 -221.913 1176.400
+      vertex 1082.547 -221.913 1176.416
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.227 -221.913 1176.400
+      vertex 1082.547 -221.913 1176.416
+      vertex 1082.235 -221.897 1176.687
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.547 -221.913 1176.416
+      vertex 1082.235 -221.897 1176.687
+      vertex 1082.515 -221.905 1176.655
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.395 -221.705 1176.264
+      vertex 1082.227 -221.689 1176.400
+      vertex 1082.547 -221.689 1176.416
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.227 -221.689 1176.400
+      vertex 1082.547 -221.689 1176.416
+      vertex 1082.235 -221.705 1176.687
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.547 -221.689 1176.416
+      vertex 1082.235 -221.705 1176.687
+      vertex 1082.515 -221.697 1176.655
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.227 -221.689 1176.400
+      vertex 1082.235 -221.705 1176.687
+      vertex 1082.227 -221.913 1176.400
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.235 -221.705 1176.687
+      vertex 1082.227 -221.913 1176.400
+      vertex 1082.235 -221.897 1176.687
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.227 -221.913 1176.400
+      vertex 1082.395 -221.897 1176.264
+      vertex 1082.227 -221.689 1176.400
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.395 -221.897 1176.264
+      vertex 1082.227 -221.689 1176.400
+      vertex 1082.395 -221.705 1176.264
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.515 -221.905 1176.655
+      vertex 1082.515 -221.697 1176.655
+      vertex 1082.235 -221.897 1176.687
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.515 -221.697 1176.655
+      vertex 1082.235 -221.897 1176.687
+      vertex 1082.235 -221.705 1176.687
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.395 -221.897 1176.264
+      vertex 1082.547 -221.913 1176.416
+      vertex 1082.395 -221.705 1176.264
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.547 -221.913 1176.416
+      vertex 1082.395 -221.705 1176.264
+      vertex 1082.547 -221.689 1176.416
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.515 -221.905 1176.655
+      vertex 1082.515 -221.697 1176.655
+      vertex 1082.547 -221.913 1176.416
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1082.515 -221.697 1176.655
+      vertex 1082.547 -221.913 1176.416
+      vertex 1082.547 -221.689 1176.416
+    endloop
+  endfacet
+endsolid Default

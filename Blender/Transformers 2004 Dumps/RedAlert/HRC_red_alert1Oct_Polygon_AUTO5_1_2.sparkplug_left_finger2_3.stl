@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 31.592 -3.013 31.661
+      vertex 31.571 -3.012 31.594
+      vertex 31.687 -3.013 31.632
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.571 -3.012 31.594
+      vertex 31.687 -3.013 31.632
+      vertex 31.617 -3.012 31.519
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.687 -3.013 31.632
+      vertex 31.617 -3.012 31.519
+      vertex 31.713 -3.012 31.568
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.594 -2.686 31.667
+      vertex 31.574 -2.686 31.600
+      vertex 31.690 -2.686 31.638
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.574 -2.686 31.600
+      vertex 31.690 -2.686 31.638
+      vertex 31.620 -2.685 31.525
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.690 -2.686 31.638
+      vertex 31.620 -2.685 31.525
+      vertex 31.716 -2.686 31.574
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.571 -3.012 31.594
+      vertex 31.617 -3.012 31.519
+      vertex 31.574 -2.686 31.600
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.617 -3.012 31.519
+      vertex 31.574 -2.686 31.600
+      vertex 31.620 -2.685 31.525
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.594 -2.686 31.667
+      vertex 31.690 -2.686 31.638
+      vertex 31.592 -3.013 31.661
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.690 -2.686 31.638
+      vertex 31.592 -3.013 31.661
+      vertex 31.687 -3.013 31.632
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.571 -3.012 31.594
+      vertex 31.574 -2.686 31.600
+      vertex 31.592 -3.013 31.661
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.574 -2.686 31.600
+      vertex 31.592 -3.013 31.661
+      vertex 31.594 -2.686 31.667
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.617 -3.012 31.519
+      vertex 31.713 -3.012 31.568
+      vertex 31.620 -2.685 31.525
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.713 -3.012 31.568
+      vertex 31.620 -2.685 31.525
+      vertex 31.716 -2.686 31.574
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.690 -2.686 31.638
+      vertex 31.716 -2.686 31.574
+      vertex 31.687 -3.013 31.632
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 31.716 -2.686 31.574
+      vertex 31.687 -3.013 31.632
+      vertex 31.713 -3.012 31.568
+    endloop
+  endfacet
+endsolid Default

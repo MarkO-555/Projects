@@ -1,0 +1,142 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.429 -0.208
+      vertex 15.206 2.429 -0.193
+      vertex 15.198 2.403 -0.208
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.206 2.429 -0.193
+      vertex 15.198 2.403 -0.208
+      vertex 15.206 2.403 -0.193
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.206 2.429 -0.193
+      vertex 15.198 2.429 -0.208
+      vertex 15.228 2.429 -0.193
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.429 -0.208
+      vertex 15.228 2.429 -0.193
+      vertex 15.236 2.429 -0.208
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.429 -0.208
+      vertex 15.198 2.429 -0.243
+      vertex 15.236 2.429 -0.208
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.429 -0.243
+      vertex 15.236 2.429 -0.208
+      vertex 15.236 2.429 -0.249
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.403 -0.243
+      vertex 15.198 2.403 -0.208
+      vertex 15.198 2.429 -0.243
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.403 -0.208
+      vertex 15.198 2.429 -0.243
+      vertex 15.198 2.429 -0.208
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.403 -0.208
+      vertex 15.236 2.403 -0.208
+      vertex 15.198 2.403 -0.243
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.236 2.403 -0.208
+      vertex 15.198 2.403 -0.243
+      vertex 15.236 2.403 -0.249
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.236 2.429 -0.249
+      vertex 15.236 2.403 -0.249
+      vertex 15.198 2.429 -0.243
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.236 2.403 -0.249
+      vertex 15.198 2.429 -0.243
+      vertex 15.198 2.403 -0.243
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.198 2.403 -0.208
+      vertex 15.206 2.403 -0.193
+      vertex 15.236 2.403 -0.208
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.206 2.403 -0.193
+      vertex 15.236 2.403 -0.208
+      vertex 15.228 2.403 -0.193
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.228 2.429 -0.193
+      vertex 15.206 2.429 -0.193
+      vertex 15.228 2.403 -0.193
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.206 2.429 -0.193
+      vertex 15.228 2.403 -0.193
+      vertex 15.206 2.403 -0.193
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.228 2.429 -0.193
+      vertex 15.236 2.429 -0.208
+      vertex 15.228 2.403 -0.193
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.236 2.429 -0.208
+      vertex 15.228 2.403 -0.193
+      vertex 15.236 2.403 -0.208
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.236 2.429 -0.208
+      vertex 15.236 2.429 -0.249
+      vertex 15.236 2.403 -0.208
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 15.236 2.429 -0.249
+      vertex 15.236 2.403 -0.208
+      vertex 15.236 2.403 -0.249
+    endloop
+  endfacet
+endsolid Default

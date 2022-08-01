@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 53.757 -13.067 -11.169
+      vertex 53.812 -13.215 -11.160
+      vertex 53.922 -13.069 -11.130
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 53.812 -13.215 -11.160
+      vertex 53.922 -13.069 -11.130
+      vertex 54.028 -13.215 -11.147
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 53.922 -13.069 -11.130
+      vertex 54.028 -13.215 -11.147
+      vertex 54.131 -13.113 -11.201
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.028 -13.215 -11.147
+      vertex 54.131 -13.113 -11.201
+      vertex 54.131 -13.262 -11.201
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 53.815 -13.215 -11.116
+      vertex 53.757 -13.067 -11.169
+      vertex 53.979 -13.080 -11.092
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 53.812 -13.215 -11.160
+      vertex 53.815 -13.215 -11.116
+      vertex 54.028 -13.215 -11.147
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 53.757 -13.067 -11.169
+      vertex 53.815 -13.215 -11.116
+      vertex 53.812 -13.215 -11.160
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.131 -13.113 -11.201
+      vertex 54.131 -13.262 -11.201
+      vertex 54.084 -13.102 -11.125
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.131 -13.262 -11.201
+      vertex 54.028 -13.215 -11.147
+      vertex 54.032 -13.215 -11.103
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.084 -13.102 -11.125
+      vertex 53.922 -13.069 -11.130
+      vertex 54.131 -13.113 -11.201
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 53.979 -13.080 -11.092
+      vertex 54.032 -13.215 -11.103
+      vertex 53.815 -13.215 -11.116
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 53.922 -13.069 -11.130
+      vertex 53.979 -13.080 -11.092
+      vertex 53.757 -13.067 -11.169
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.032 -13.215 -11.103
+      vertex 54.084 -13.102 -11.125
+      vertex 54.131 -13.262 -11.201
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.084 -13.102 -11.125
+      vertex 54.032 -13.215 -11.103
+      vertex 53.979 -13.080 -11.092
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.084 -13.102 -11.125
+      vertex 53.979 -13.080 -11.092
+      vertex 53.922 -13.069 -11.130
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 54.028 -13.215 -11.147
+      vertex 53.815 -13.215 -11.116
+      vertex 54.032 -13.215 -11.103
+    endloop
+  endfacet
+endsolid Default

@@ -1,0 +1,170 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 557.846 124.536 1.289
+      vertex 557.847 124.471 1.289
+      vertex 557.881 124.526 1.239
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.847 124.471 1.289
+      vertex 557.881 124.526 1.239
+      vertex 557.882 124.483 1.238
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.881 124.526 1.239
+      vertex 557.882 124.483 1.238
+      vertex 557.941 124.484 1.192
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.879 124.533 1.366
+      vertex 557.850 124.535 1.331
+      vertex 557.941 124.554 1.307
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.850 124.535 1.331
+      vertex 557.941 124.554 1.307
+      vertex 557.846 124.536 1.289
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.941 124.554 1.307
+      vertex 557.846 124.536 1.289
+      vertex 557.887 124.540 1.246
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.882 124.472 1.365
+      vertex 557.853 124.470 1.329
+      vertex 557.943 124.456 1.306
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.853 124.470 1.329
+      vertex 557.943 124.456 1.306
+      vertex 557.847 124.471 1.289
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.943 124.456 1.306
+      vertex 557.847 124.471 1.289
+      vertex 557.889 124.469 1.245
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.847 124.471 1.289
+      vertex 557.889 124.469 1.245
+      vertex 557.882 124.483 1.238
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.889 124.469 1.245
+      vertex 557.882 124.483 1.238
+      vertex 557.941 124.484 1.192
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.879 124.533 1.366
+      vertex 557.850 124.535 1.331
+      vertex 557.882 124.472 1.365
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.850 124.535 1.331
+      vertex 557.882 124.472 1.365
+      vertex 557.853 124.470 1.329
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.850 124.535 1.331
+      vertex 557.846 124.536 1.289
+      vertex 557.853 124.470 1.329
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.846 124.536 1.289
+      vertex 557.853 124.470 1.329
+      vertex 557.847 124.471 1.289
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.941 124.554 1.307
+      vertex 557.879 124.533 1.366
+      vertex 557.943 124.456 1.306
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.879 124.533 1.366
+      vertex 557.943 124.456 1.306
+      vertex 557.882 124.472 1.365
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.940 124.529 1.192
+      vertex 557.881 124.526 1.239
+      vertex 557.887 124.540 1.246
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.881 124.526 1.239
+      vertex 557.887 124.540 1.246
+      vertex 557.846 124.536 1.289
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.940 124.529 1.192
+      vertex 557.941 124.484 1.192
+      vertex 557.941 124.554 1.307
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.941 124.484 1.192
+      vertex 557.941 124.554 1.307
+      vertex 557.943 124.456 1.306
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.889 124.469 1.245
+      vertex 557.943 124.456 1.306
+      vertex 557.941 124.484 1.192
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.941 124.484 1.192
+      vertex 557.881 124.526 1.239
+      vertex 557.940 124.529 1.192
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 557.887 124.540 1.246
+      vertex 557.941 124.554 1.307
+      vertex 557.940 124.529 1.192
+    endloop
+  endfacet
+endsolid Default

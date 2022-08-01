@@ -1,0 +1,16 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 75.978 173.825 152.716
+      vertex 75.988 170.921 147.356
+      vertex 81.813 173.825 152.716
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 75.988 170.921 147.356
+      vertex 81.813 173.825 152.716
+      vertex 81.813 170.921 147.356
+    endloop
+  endfacet
+endsolid Default

@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 63.727 9.150 -5.105
+      vertex 63.727 9.522 -5.105
+      vertex 63.790 9.150 -4.678
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 63.727 9.522 -5.105
+      vertex 63.790 9.150 -4.678
+      vertex 63.790 9.522 -4.678
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.574 9.260 -5.105
+      vertex 63.727 9.150 -5.105
+      vertex 64.574 9.412 -5.105
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 63.727 9.150 -5.105
+      vertex 64.574 9.412 -5.105
+      vertex 63.727 9.522 -5.105
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 63.727 9.522 -5.105
+      vertex 64.574 9.412 -5.105
+      vertex 64.241 9.522 -4.728
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.574 9.412 -5.105
+      vertex 64.241 9.522 -4.728
+      vertex 64.574 9.412 -4.999
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 63.790 9.522 -4.678
+      vertex 64.241 9.522 -4.728
+      vertex 63.790 9.150 -4.678
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.241 9.522 -4.728
+      vertex 63.790 9.150 -4.678
+      vertex 64.241 9.150 -4.728
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.241 9.522 -4.728
+      vertex 64.574 9.412 -4.999
+      vertex 64.241 9.150 -4.728
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.574 9.412 -4.999
+      vertex 64.241 9.150 -4.728
+      vertex 64.574 9.260 -4.999
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.574 9.412 -5.105
+      vertex 64.574 9.260 -5.105
+      vertex 64.574 9.412 -4.999
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.574 9.260 -5.105
+      vertex 64.574 9.412 -4.999
+      vertex 64.574 9.260 -4.999
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.241 9.150 -4.728
+      vertex 64.574 9.260 -4.999
+      vertex 64.574 9.260 -5.105
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 64.574 9.260 -5.105
+      vertex 63.727 9.150 -5.105
+      vertex 64.241 9.150 -4.728
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 63.727 9.522 -5.105
+      vertex 64.241 9.522 -4.728
+      vertex 63.790 9.522 -4.678
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 63.727 9.150 -5.105
+      vertex 63.790 9.150 -4.678
+      vertex 64.241 9.150 -4.728
+    endloop
+  endfacet
+endsolid Default

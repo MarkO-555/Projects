@@ -1,0 +1,170 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 915.991 -187.660 1003.355
+      vertex 915.991 -187.795 1003.355
+      vertex 916.141 -187.660 1003.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.991 -187.795 1003.355
+      vertex 916.141 -187.660 1003.250
+      vertex 916.141 -187.795 1003.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.141 -187.660 1003.250
+      vertex 916.141 -187.795 1003.250
+      vertex 916.179 -187.645 1003.152
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.141 -187.795 1003.250
+      vertex 916.179 -187.645 1003.152
+      vertex 916.179 -187.810 1003.152
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.179 -187.645 1003.152
+      vertex 916.179 -187.810 1003.152
+      vertex 916.187 -187.629 1003.001
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.179 -187.810 1003.152
+      vertex 916.187 -187.629 1003.001
+      vertex 916.187 -187.825 1003.001
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.043 -187.682 1002.911
+      vertex 916.187 -187.629 1003.001
+      vertex 915.901 -187.629 1003.001
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.187 -187.629 1003.001
+      vertex 915.901 -187.629 1003.001
+      vertex 916.179 -187.645 1003.152
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.901 -187.629 1003.001
+      vertex 916.179 -187.645 1003.152
+      vertex 915.915 -187.645 1003.220
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.179 -187.645 1003.152
+      vertex 915.915 -187.645 1003.220
+      vertex 916.141 -187.660 1003.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.915 -187.645 1003.220
+      vertex 916.141 -187.660 1003.250
+      vertex 915.991 -187.660 1003.355
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.141 -187.795 1003.250
+      vertex 915.991 -187.795 1003.355
+      vertex 916.179 -187.810 1003.152
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.991 -187.795 1003.355
+      vertex 916.179 -187.810 1003.152
+      vertex 915.915 -187.810 1003.220
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.179 -187.810 1003.152
+      vertex 915.915 -187.810 1003.220
+      vertex 916.187 -187.825 1003.001
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.915 -187.810 1003.220
+      vertex 916.187 -187.825 1003.001
+      vertex 915.901 -187.825 1003.001
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.187 -187.825 1003.001
+      vertex 915.901 -187.825 1003.001
+      vertex 916.043 -187.773 1002.911
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.901 -187.629 1003.001
+      vertex 915.901 -187.825 1003.001
+      vertex 915.915 -187.645 1003.220
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.901 -187.825 1003.001
+      vertex 915.915 -187.645 1003.220
+      vertex 915.915 -187.810 1003.220
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.915 -187.645 1003.220
+      vertex 915.915 -187.810 1003.220
+      vertex 915.991 -187.660 1003.355
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.915 -187.810 1003.220
+      vertex 915.991 -187.660 1003.355
+      vertex 915.991 -187.795 1003.355
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 915.901 -187.825 1003.001
+      vertex 916.043 -187.773 1002.911
+      vertex 915.901 -187.629 1003.001
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.043 -187.773 1002.911
+      vertex 915.901 -187.629 1003.001
+      vertex 916.043 -187.682 1002.911
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.187 -187.629 1003.001
+      vertex 916.187 -187.825 1003.001
+      vertex 916.043 -187.682 1002.911
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 916.187 -187.825 1003.001
+      vertex 916.043 -187.682 1002.911
+      vertex 916.043 -187.773 1002.911
+    endloop
+  endfacet
+endsolid Default

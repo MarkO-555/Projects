@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 598.274 449.649 38.067
+      vertex 598.288 449.672 38.065
+      vertex 598.275 449.656 38.153
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.288 449.672 38.065
+      vertex 598.275 449.656 38.153
+      vertex 598.289 449.679 38.151
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.274 449.649 38.067
+      vertex 598.275 449.656 38.153
+      vertex 598.291 449.633 38.068
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.275 449.656 38.153
+      vertex 598.291 449.633 38.068
+      vertex 598.292 449.641 38.154
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.288 449.672 38.065
+      vertex 598.291 449.633 38.068
+      vertex 598.332 449.668 38.064
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.291 449.633 38.068
+      vertex 598.332 449.668 38.064
+      vertex 598.340 449.633 38.068
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.288 449.672 38.065
+      vertex 598.332 449.668 38.064
+      vertex 598.289 449.679 38.151
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.332 449.668 38.064
+      vertex 598.289 449.679 38.151
+      vertex 598.333 449.674 38.151
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.289 449.679 38.151
+      vertex 598.333 449.674 38.151
+      vertex 598.292 449.641 38.154
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.333 449.674 38.151
+      vertex 598.292 449.641 38.154
+      vertex 598.341 449.640 38.154
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.292 449.641 38.154
+      vertex 598.341 449.640 38.154
+      vertex 598.291 449.633 38.068
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.341 449.640 38.154
+      vertex 598.291 449.633 38.068
+      vertex 598.340 449.633 38.068
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.332 449.668 38.064
+      vertex 598.340 449.633 38.068
+      vertex 598.333 449.674 38.151
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.340 449.633 38.068
+      vertex 598.333 449.674 38.151
+      vertex 598.341 449.640 38.154
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.275 449.656 38.153
+      vertex 598.289 449.679 38.151
+      vertex 598.292 449.641 38.154
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 598.274 449.649 38.067
+      vertex 598.291 449.633 38.068
+      vertex 598.288 449.672 38.065
+    endloop
+  endfacet
+endsolid Default

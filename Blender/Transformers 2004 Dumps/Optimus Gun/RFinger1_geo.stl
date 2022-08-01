@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.155 9.179
+      vertex 81.389 -14.155 9.180
+      vertex 81.390 -14.155 9.179
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.155 9.180
+      vertex 81.390 -14.155 9.179
+      vertex 81.390 -14.155 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.390 -14.155 9.179
+      vertex 81.390 -14.155 9.180
+      vertex 81.391 -14.155 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.152 9.179
+      vertex 81.389 -14.152 9.180
+      vertex 81.390 -14.152 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.152 9.180
+      vertex 81.390 -14.152 9.180
+      vertex 81.390 -14.152 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.390 -14.152 9.180
+      vertex 81.390 -14.152 9.180
+      vertex 81.391 -14.152 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.155 9.180
+      vertex 81.389 -14.155 9.179
+      vertex 81.389 -14.152 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.155 9.179
+      vertex 81.389 -14.152 9.180
+      vertex 81.389 -14.152 9.179
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.155 9.179
+      vertex 81.390 -14.155 9.179
+      vertex 81.389 -14.152 9.179
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.390 -14.155 9.179
+      vertex 81.389 -14.152 9.179
+      vertex 81.390 -14.152 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.389 -14.152 9.180
+      vertex 81.390 -14.152 9.180
+      vertex 81.389 -14.155 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.390 -14.152 9.180
+      vertex 81.389 -14.155 9.180
+      vertex 81.390 -14.155 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.390 -14.155 9.179
+      vertex 81.391 -14.155 9.180
+      vertex 81.390 -14.152 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.391 -14.155 9.180
+      vertex 81.390 -14.152 9.180
+      vertex 81.391 -14.152 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.390 -14.152 9.180
+      vertex 81.391 -14.152 9.180
+      vertex 81.390 -14.155 9.180
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 81.391 -14.152 9.180
+      vertex 81.390 -14.155 9.180
+      vertex 81.391 -14.155 9.180
+    endloop
+  endfacet
+endsolid Default

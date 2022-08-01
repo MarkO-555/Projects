@@ -1,0 +1,30 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 3747493.500 5364641.500 11006906.000
+      vertex 3340971.000 5579860.000 10696038.000
+      vertex -1465556.000 1251594.125 10696038.000
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 3340971.000 5579860.000 10696038.000
+      vertex -1465556.000 1251594.125 10696038.000
+      vertex -1465556.000 6034207.000 11174300.000
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 3340971.000 5579860.000 10696038.000
+      vertex 3747493.500 5364641.500 11006906.000
+      vertex -1465556.000 6034207.000 11174300.000
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 3747493.500 5364641.500 11006906.000
+      vertex -1465556.000 1251594.125 10696038.000
+      vertex -1465556.000 6034207.000 11174300.000
+    endloop
+  endfacet
+endsolid Default

@@ -1,0 +1,30 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 28.726 14.857 -0.960
+      vertex 28.726 14.861 -0.960
+      vertex 28.726 14.857 -0.956
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.726 14.861 -0.960
+      vertex 28.726 14.857 -0.956
+      vertex 28.726 14.861 -0.956
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.731 14.861 -0.960
+      vertex 28.731 14.857 -0.960
+      vertex 28.731 14.861 -0.956
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 28.731 14.857 -0.960
+      vertex 28.731 14.861 -0.956
+      vertex 28.731 14.857 -0.956
+    endloop
+  endfacet
+endsolid Default

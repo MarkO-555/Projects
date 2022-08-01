@@ -1,0 +1,170 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 347.241 -71.116 380.530
+      vertex 347.241 -71.223 380.530
+      vertex 347.360 -71.116 380.446
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.241 -71.223 380.530
+      vertex 347.360 -71.116 380.446
+      vertex 347.360 -71.223 380.446
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.360 -71.116 380.446
+      vertex 347.360 -71.223 380.446
+      vertex 347.390 -71.104 380.369
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.360 -71.223 380.446
+      vertex 347.390 -71.104 380.369
+      vertex 347.390 -71.235 380.369
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.390 -71.104 380.369
+      vertex 347.390 -71.235 380.369
+      vertex 347.396 -71.092 380.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.390 -71.235 380.369
+      vertex 347.396 -71.092 380.250
+      vertex 347.396 -71.247 380.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.283 -71.134 380.178
+      vertex 347.396 -71.092 380.250
+      vertex 347.170 -71.092 380.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.396 -71.092 380.250
+      vertex 347.170 -71.092 380.250
+      vertex 347.390 -71.104 380.369
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.170 -71.092 380.250
+      vertex 347.390 -71.104 380.369
+      vertex 347.181 -71.104 380.423
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.390 -71.104 380.369
+      vertex 347.181 -71.104 380.423
+      vertex 347.360 -71.116 380.446
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.181 -71.104 380.423
+      vertex 347.360 -71.116 380.446
+      vertex 347.241 -71.116 380.530
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.360 -71.223 380.446
+      vertex 347.241 -71.223 380.530
+      vertex 347.390 -71.235 380.369
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.241 -71.223 380.530
+      vertex 347.390 -71.235 380.369
+      vertex 347.181 -71.235 380.423
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.390 -71.235 380.369
+      vertex 347.181 -71.235 380.423
+      vertex 347.396 -71.247 380.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.181 -71.235 380.423
+      vertex 347.396 -71.247 380.250
+      vertex 347.170 -71.247 380.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.396 -71.247 380.250
+      vertex 347.170 -71.247 380.250
+      vertex 347.283 -71.205 380.178
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.170 -71.092 380.250
+      vertex 347.170 -71.247 380.250
+      vertex 347.181 -71.104 380.423
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.170 -71.247 380.250
+      vertex 347.181 -71.104 380.423
+      vertex 347.181 -71.235 380.423
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.181 -71.104 380.423
+      vertex 347.181 -71.235 380.423
+      vertex 347.241 -71.116 380.530
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.181 -71.235 380.423
+      vertex 347.241 -71.116 380.530
+      vertex 347.241 -71.223 380.530
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.170 -71.247 380.250
+      vertex 347.283 -71.205 380.178
+      vertex 347.170 -71.092 380.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.283 -71.205 380.178
+      vertex 347.170 -71.092 380.250
+      vertex 347.283 -71.134 380.178
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.396 -71.092 380.250
+      vertex 347.396 -71.247 380.250
+      vertex 347.283 -71.134 380.178
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.396 -71.247 380.250
+      vertex 347.283 -71.134 380.178
+      vertex 347.283 -71.205 380.178
+    endloop
+  endfacet
+endsolid Default

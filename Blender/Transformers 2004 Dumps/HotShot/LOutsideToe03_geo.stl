@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.693 2.392
+      vertex 42.112 8.696 2.392
+      vertex 42.112 8.693 2.396
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.696 2.392
+      vertex 42.112 8.693 2.396
+      vertex 42.112 8.696 2.396
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.696 2.392
+      vertex 42.112 8.693 2.392
+      vertex 42.119 8.695 2.392
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.693 2.392
+      vertex 42.119 8.695 2.392
+      vertex 42.119 8.694 2.392
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.693 2.392
+      vertex 42.116 8.693 2.395
+      vertex 42.119 8.694 2.392
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.116 8.693 2.395
+      vertex 42.119 8.694 2.392
+      vertex 42.119 8.694 2.393
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.696 2.396
+      vertex 42.116 8.696 2.395
+      vertex 42.112 8.693 2.396
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.116 8.696 2.395
+      vertex 42.112 8.693 2.396
+      vertex 42.116 8.693 2.395
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.116 8.696 2.395
+      vertex 42.119 8.695 2.393
+      vertex 42.116 8.693 2.395
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.119 8.695 2.393
+      vertex 42.116 8.693 2.395
+      vertex 42.119 8.694 2.393
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.119 8.694 2.393
+      vertex 42.119 8.694 2.392
+      vertex 42.119 8.695 2.393
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.119 8.694 2.392
+      vertex 42.119 8.695 2.393
+      vertex 42.119 8.695 2.392
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.693 2.392
+      vertex 42.112 8.693 2.396
+      vertex 42.116 8.693 2.395
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.116 8.696 2.395
+      vertex 42.119 8.695 2.392
+      vertex 42.119 8.695 2.393
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.119 8.695 2.392
+      vertex 42.116 8.696 2.395
+      vertex 42.112 8.696 2.392
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 42.112 8.696 2.392
+      vertex 42.116 8.696 2.395
+      vertex 42.112 8.696 2.396
+    endloop
+  endfacet
+endsolid Default

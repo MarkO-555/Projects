@@ -1,0 +1,86 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.223 27.236
+      vertex 21.071 -5.221 27.236
+      vertex 21.068 -5.223 27.237
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.221 27.236
+      vertex 21.068 -5.223 27.237
+      vertex 21.068 -5.222 27.237
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.221 27.236
+      vertex 21.071 -5.223 27.236
+      vertex 21.071 -5.221 27.239
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.223 27.236
+      vertex 21.071 -5.221 27.239
+      vertex 21.071 -5.223 27.239
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.068 -5.223 27.237
+      vertex 21.068 -5.223 27.239
+      vertex 21.071 -5.223 27.236
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.068 -5.223 27.239
+      vertex 21.071 -5.223 27.236
+      vertex 21.071 -5.223 27.239
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.221 27.236
+      vertex 21.071 -5.221 27.239
+      vertex 21.068 -5.222 27.237
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.221 27.239
+      vertex 21.068 -5.222 27.237
+      vertex 21.068 -5.222 27.239
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.068 -5.222 27.239
+      vertex 21.068 -5.222 27.237
+      vertex 21.068 -5.223 27.239
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.068 -5.222 27.237
+      vertex 21.068 -5.223 27.239
+      vertex 21.068 -5.223 27.237
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.221 27.239
+      vertex 21.071 -5.223 27.239
+      vertex 21.068 -5.222 27.239
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 21.071 -5.223 27.239
+      vertex 21.068 -5.222 27.239
+      vertex 21.068 -5.223 27.239
+    endloop
+  endfacet
+endsolid Default

@@ -1,0 +1,142 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.558 229.353
+      vertex 1076.963 266.343 229.353
+      vertex 1077.049 266.633 229.438
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.343 229.353
+      vertex 1077.049 266.633 229.438
+      vertex 1077.043 266.268 229.443
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.049 266.633 229.438
+      vertex 1077.043 266.268 229.443
+      vertex 1077.343 266.563 229.363
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.043 266.268 229.443
+      vertex 1077.343 266.563 229.363
+      vertex 1077.413 266.368 229.368
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.338 229.083
+      vertex 1076.963 266.553 229.083
+      vertex 1077.043 266.263 228.998
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.553 229.083
+      vertex 1077.043 266.263 228.998
+      vertex 1077.049 266.628 228.993
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.043 266.263 228.998
+      vertex 1077.049 266.628 228.993
+      vertex 1077.343 266.563 229.068
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.343 229.353
+      vertex 1076.963 266.338 229.083
+      vertex 1076.963 266.558 229.353
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.338 229.083
+      vertex 1076.963 266.558 229.353
+      vertex 1076.963 266.553 229.083
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.553 229.083
+      vertex 1077.049 266.628 228.993
+      vertex 1076.963 266.558 229.353
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.049 266.628 228.993
+      vertex 1076.963 266.558 229.353
+      vertex 1077.049 266.633 229.438
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.043 266.263 228.998
+      vertex 1077.043 266.268 229.443
+      vertex 1077.413 266.368 229.068
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.043 266.268 229.443
+      vertex 1077.413 266.368 229.068
+      vertex 1077.413 266.368 229.368
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1076.963 266.343 229.353
+      vertex 1077.043 266.268 229.443
+      vertex 1076.963 266.338 229.083
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.043 266.268 229.443
+      vertex 1076.963 266.338 229.083
+      vertex 1077.043 266.263 228.998
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.049 266.633 229.438
+      vertex 1077.049 266.628 228.993
+      vertex 1077.343 266.563 229.363
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.049 266.628 228.993
+      vertex 1077.343 266.563 229.363
+      vertex 1077.343 266.563 229.068
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.343 266.563 229.068
+      vertex 1077.413 266.368 229.068
+      vertex 1077.343 266.563 229.363
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.413 266.368 229.068
+      vertex 1077.343 266.563 229.363
+      vertex 1077.413 266.368 229.368
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 1077.343 266.563 229.068
+      vertex 1077.043 266.263 228.998
+      vertex 1077.413 266.368 229.068
+    endloop
+  endfacet
+endsolid Default

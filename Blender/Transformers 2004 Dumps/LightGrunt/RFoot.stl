@@ -1,0 +1,184 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 8.318 -1.013 1.170
+      vertex 8.336 -1.013 1.167
+      vertex 8.315 -1.013 1.174
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -1.013 1.167
+      vertex 8.315 -1.013 1.174
+      vertex 8.336 -1.013 1.174
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.315 -1.013 1.174
+      vertex 8.336 -1.013 1.174
+      vertex 8.315 -1.013 1.190
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -1.013 1.174
+      vertex 8.315 -1.013 1.190
+      vertex 8.336 -1.013 1.203
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.315 -1.013 1.190
+      vertex 8.336 -1.013 1.203
+      vertex 8.310 -1.012 1.205
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.315 -1.004 1.190
+      vertex 8.315 -1.013 1.190
+      vertex 8.318 -1.003 1.175
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.315 -1.013 1.190
+      vertex 8.318 -1.003 1.175
+      vertex 8.315 -1.013 1.174
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.318 -1.003 1.175
+      vertex 8.315 -1.013 1.174
+      vertex 8.318 -1.006 1.171
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.315 -1.013 1.174
+      vertex 8.318 -1.006 1.171
+      vertex 8.318 -1.013 1.170
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.310 -1.004 1.191
+      vertex 8.310 -1.004 1.205
+      vertex 8.315 -1.004 1.190
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.310 -1.004 1.205
+      vertex 8.315 -1.004 1.190
+      vertex 8.336 -0.999 1.204
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.315 -1.004 1.190
+      vertex 8.336 -0.999 1.204
+      vertex 8.318 -1.003 1.175
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -0.999 1.204
+      vertex 8.318 -1.003 1.175
+      vertex 8.336 -0.992 1.176
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -1.013 1.167
+      vertex 8.336 -0.995 1.170
+      vertex 8.336 -1.013 1.174
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -0.995 1.170
+      vertex 8.336 -1.013 1.174
+      vertex 8.336 -0.992 1.176
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -1.013 1.174
+      vertex 8.336 -0.992 1.176
+      vertex 8.336 -0.999 1.204
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.315 -1.004 1.190
+      vertex 8.310 -1.004 1.191
+      vertex 8.315 -1.013 1.190
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.310 -1.004 1.191
+      vertex 8.315 -1.013 1.190
+      vertex 8.310 -1.012 1.191
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.310 -1.004 1.205
+      vertex 8.336 -0.999 1.204
+      vertex 8.310 -1.012 1.205
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -0.999 1.204
+      vertex 8.310 -1.012 1.205
+      vertex 8.336 -1.013 1.203
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -1.013 1.167
+      vertex 8.318 -1.013 1.170
+      vertex 8.336 -0.995 1.170
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.318 -1.013 1.170
+      vertex 8.336 -0.995 1.170
+      vertex 8.318 -1.006 1.171
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -0.995 1.170
+      vertex 8.336 -0.992 1.176
+      vertex 8.318 -1.006 1.171
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -0.992 1.176
+      vertex 8.318 -1.006 1.171
+      vertex 8.318 -1.003 1.175
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.336 -0.999 1.204
+      vertex 8.336 -1.013 1.174
+      vertex 8.336 -1.013 1.203
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 8.310 -1.012 1.205
+      vertex 8.315 -1.013 1.190
+      vertex 8.310 -1.012 1.191
+    endloop
+  endfacet
+endsolid Default

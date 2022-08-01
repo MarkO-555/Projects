@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 347.955 -72.030 378.125
+      vertex 347.853 -72.030 378.250
+      vertex 348.110 -72.030 378.232
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.853 -72.030 378.250
+      vertex 348.110 -72.030 378.232
+      vertex 347.877 -72.030 378.417
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 348.110 -72.030 378.232
+      vertex 347.877 -72.030 378.417
+      vertex 348.104 -72.030 378.363
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.955 -72.549 378.125
+      vertex 347.853 -72.549 378.244
+      vertex 348.116 -72.549 378.226
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.853 -72.549 378.244
+      vertex 348.116 -72.549 378.226
+      vertex 347.877 -72.549 378.417
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 348.116 -72.549 378.226
+      vertex 347.877 -72.549 378.417
+      vertex 348.110 -72.549 378.363
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.877 -72.549 378.417
+      vertex 347.877 -72.030 378.417
+      vertex 347.853 -72.549 378.244
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.877 -72.030 378.417
+      vertex 347.853 -72.549 378.244
+      vertex 347.853 -72.030 378.250
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.853 -72.030 378.250
+      vertex 347.853 -72.549 378.244
+      vertex 347.955 -72.030 378.125
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.853 -72.549 378.244
+      vertex 347.955 -72.030 378.125
+      vertex 347.955 -72.549 378.125
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.877 -72.030 378.417
+      vertex 348.104 -72.030 378.363
+      vertex 347.877 -72.549 378.417
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 348.104 -72.030 378.363
+      vertex 347.877 -72.549 378.417
+      vertex 348.110 -72.549 378.363
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 347.955 -72.549 378.125
+      vertex 348.116 -72.549 378.226
+      vertex 347.955 -72.030 378.125
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 348.116 -72.549 378.226
+      vertex 347.955 -72.030 378.125
+      vertex 348.110 -72.030 378.232
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 348.104 -72.030 378.363
+      vertex 348.110 -72.030 378.232
+      vertex 348.110 -72.549 378.363
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 348.110 -72.030 378.232
+      vertex 348.110 -72.549 378.363
+      vertex 348.116 -72.549 378.226
+    endloop
+  endfacet
+endsolid Default

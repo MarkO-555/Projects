@@ -1,0 +1,37 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 614.659 -493.477 42.688
+      vertex 614.661 -493.555 42.686
+      vertex 614.666 -493.477 42.686
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 614.661 -493.555 42.686
+      vertex 614.666 -493.477 42.686
+      vertex 614.666 -493.555 42.695
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 614.666 -493.477 42.686
+      vertex 614.661 -493.477 42.695
+      vertex 614.666 -493.555 42.695
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 614.661 -493.477 42.695
+      vertex 614.666 -493.555 42.695
+      vertex 614.661 -493.555 42.686
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 614.659 -493.477 42.688
+      vertex 614.661 -493.477 42.695
+      vertex 614.661 -493.555 42.686
+    endloop
+  endfacet
+endsolid Default

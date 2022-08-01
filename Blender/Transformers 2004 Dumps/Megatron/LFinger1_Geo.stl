@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 77.029 13.139 8.695
+      vertex 77.115 13.139 8.607
+      vertex 77.124 13.132 8.781
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.115 13.139 8.607
+      vertex 77.124 13.132 8.781
+      vertex 77.340 13.132 8.582
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.124 13.132 8.781
+      vertex 77.340 13.132 8.582
+      vertex 77.379 13.124 8.762
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.050 13.719 8.718
+      vertex 77.136 13.719 8.629
+      vertex 77.145 13.712 8.804
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.136 13.719 8.629
+      vertex 77.145 13.712 8.804
+      vertex 77.334 13.713 8.608
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.145 13.712 8.804
+      vertex 77.334 13.713 8.608
+      vertex 77.371 13.704 8.787
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.115 13.139 8.607
+      vertex 77.340 13.132 8.582
+      vertex 77.136 13.719 8.629
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.340 13.132 8.582
+      vertex 77.136 13.719 8.629
+      vertex 77.334 13.713 8.608
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.124 13.132 8.781
+      vertex 77.145 13.712 8.804
+      vertex 77.029 13.139 8.695
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.145 13.712 8.804
+      vertex 77.029 13.139 8.695
+      vertex 77.050 13.719 8.718
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.379 13.124 8.762
+      vertex 77.371 13.704 8.787
+      vertex 77.124 13.132 8.781
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.371 13.704 8.787
+      vertex 77.124 13.132 8.781
+      vertex 77.145 13.712 8.804
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.136 13.719 8.629
+      vertex 77.115 13.139 8.607
+      vertex 77.050 13.719 8.718
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.115 13.139 8.607
+      vertex 77.050 13.719 8.718
+      vertex 77.029 13.139 8.695
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.340 13.132 8.582
+      vertex 77.379 13.124 8.762
+      vertex 77.334 13.713 8.608
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 77.379 13.124 8.762
+      vertex 77.334 13.713 8.608
+      vertex 77.371 13.704 8.787
+    endloop
+  endfacet
+endsolid Default

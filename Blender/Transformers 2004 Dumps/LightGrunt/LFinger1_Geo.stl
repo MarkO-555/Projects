@@ -1,0 +1,114 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 597.584 449.741 38.139
+      vertex 597.597 449.723 38.140
+      vertex 597.583 449.734 38.053
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.597 449.723 38.140
+      vertex 597.583 449.734 38.053
+      vertex 597.597 449.716 38.054
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.583 449.734 38.053
+      vertex 597.601 449.750 38.052
+      vertex 597.584 449.741 38.139
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.601 449.750 38.052
+      vertex 597.584 449.741 38.139
+      vertex 597.601 449.757 38.137
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.601 449.750 38.052
+      vertex 597.597 449.716 38.054
+      vertex 597.640 449.752 38.051
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.597 449.716 38.054
+      vertex 597.640 449.752 38.051
+      vertex 597.641 449.716 38.054
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.597 449.723 38.140
+      vertex 597.636 449.722 38.140
+      vertex 597.597 449.716 38.054
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.636 449.722 38.140
+      vertex 597.597 449.716 38.054
+      vertex 597.641 449.716 38.054
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.601 449.757 38.137
+      vertex 597.636 449.758 38.137
+      vertex 597.597 449.723 38.140
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.636 449.758 38.137
+      vertex 597.597 449.723 38.140
+      vertex 597.636 449.722 38.140
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.601 449.750 38.052
+      vertex 597.640 449.752 38.051
+      vertex 597.601 449.757 38.137
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.640 449.752 38.051
+      vertex 597.601 449.757 38.137
+      vertex 597.636 449.758 38.137
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.636 449.722 38.140
+      vertex 597.636 449.758 38.137
+      vertex 597.641 449.716 38.054
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.636 449.758 38.137
+      vertex 597.641 449.716 38.054
+      vertex 597.640 449.752 38.051
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.583 449.734 38.053
+      vertex 597.597 449.716 38.054
+      vertex 597.601 449.750 38.052
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 597.584 449.741 38.139
+      vertex 597.601 449.757 38.137
+      vertex 597.597 449.723 38.140
+    endloop
+  endfacet
+endsolid Default

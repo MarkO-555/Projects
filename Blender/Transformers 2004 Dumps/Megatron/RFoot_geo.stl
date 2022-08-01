@@ -1,0 +1,254 @@
+solid Default
+  facet normal 0 0 0
+    outer loop
+      vertex 211.278 -37.705 14.295
+      vertex 211.278 -38.331 14.295
+      vertex 212.004 -37.720 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.278 -38.331 14.295
+      vertex 212.004 -37.720 14.295
+      vertex 212.004 -38.301 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -37.720 14.295
+      vertex 212.004 -38.301 14.295
+      vertex 212.655 -37.886 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -38.301 14.295
+      vertex 212.655 -37.886 14.295
+      vertex 212.655 -38.131 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.318 -38.216 14.681
+      vertex 211.278 -38.331 14.295
+      vertex 212.004 -38.201 14.646
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.278 -38.331 14.295
+      vertex 212.004 -38.201 14.646
+      vertex 212.004 -38.301 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -38.201 14.646
+      vertex 212.004 -38.301 14.295
+      vertex 212.300 -38.151 14.581
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.318 -38.216 14.681
+      vertex 211.318 -37.785 14.681
+      vertex 212.004 -38.161 14.681
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.318 -37.785 14.681
+      vertex 212.004 -38.161 14.681
+      vertex 212.004 -37.830 14.681
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -38.161 14.681
+      vertex 212.004 -37.830 14.681
+      vertex 212.315 -37.881 14.606
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.318 -37.785 14.681
+      vertex 212.004 -37.795 14.646
+      vertex 212.004 -37.830 14.681
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -37.795 14.646
+      vertex 212.004 -37.830 14.681
+      vertex 212.300 -37.850 14.581
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -37.830 14.681
+      vertex 212.300 -37.850 14.581
+      vertex 212.315 -37.881 14.606
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.318 -38.216 14.681
+      vertex 212.004 -38.161 14.681
+      vertex 212.004 -38.201 14.646
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -38.161 14.681
+      vertex 212.004 -38.201 14.646
+      vertex 212.315 -38.116 14.606
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -38.201 14.646
+      vertex 212.315 -38.116 14.606
+      vertex 212.300 -38.151 14.581
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.300 -37.850 14.581
+      vertex 212.004 -37.795 14.646
+      vertex 212.004 -37.720 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -37.795 14.646
+      vertex 212.004 -37.720 14.295
+      vertex 211.318 -37.785 14.681
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -37.720 14.295
+      vertex 211.318 -37.785 14.681
+      vertex 211.278 -37.705 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.278 -38.331 14.295
+      vertex 211.278 -37.705 14.295
+      vertex 211.318 -38.216 14.681
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 211.278 -37.705 14.295
+      vertex 211.318 -38.216 14.681
+      vertex 211.318 -37.785 14.681
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.004 -37.720 14.295
+      vertex 212.655 -37.886 14.295
+      vertex 212.300 -37.850 14.581
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.655 -37.886 14.295
+      vertex 212.300 -37.850 14.581
+      vertex 212.655 -37.911 14.366
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.300 -38.151 14.581
+      vertex 212.655 -38.106 14.366
+      vertex 212.004 -38.301 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.655 -38.106 14.366
+      vertex 212.004 -38.301 14.295
+      vertex 212.655 -38.131 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.300 -37.850 14.581
+      vertex 212.655 -37.911 14.366
+      vertex 212.315 -37.881 14.606
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.655 -37.911 14.366
+      vertex 212.315 -37.881 14.606
+      vertex 212.615 -37.931 14.426
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.315 -38.116 14.606
+      vertex 212.615 -38.081 14.426
+      vertex 212.300 -38.151 14.581
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.615 -38.081 14.426
+      vertex 212.300 -38.151 14.581
+      vertex 212.655 -38.106 14.366
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.315 -37.881 14.606
+      vertex 212.615 -37.931 14.426
+      vertex 212.315 -38.116 14.606
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.615 -37.931 14.426
+      vertex 212.315 -38.116 14.606
+      vertex 212.615 -38.081 14.426
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.615 -37.931 14.426
+      vertex 212.655 -37.911 14.366
+      vertex 212.615 -38.081 14.426
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.655 -37.911 14.366
+      vertex 212.615 -38.081 14.426
+      vertex 212.655 -38.106 14.366
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.655 -38.106 14.366
+      vertex 212.655 -37.911 14.366
+      vertex 212.655 -38.131 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.655 -37.911 14.366
+      vertex 212.655 -38.131 14.295
+      vertex 212.655 -37.886 14.295
+    endloop
+  endfacet
+  facet normal 0 0 0
+    outer loop
+      vertex 212.315 -37.881 14.606
+      vertex 212.004 -38.161 14.681
+      vertex 212.315 -38.116 14.606
+    endloop
+  endfacet
+endsolid Default
