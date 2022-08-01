@@ -101,16 +101,14 @@ void start(){
                   str.add(Hex.get(i-1));
                 else if(Codes.get(j).Hex[3] == "?1")
                   str.add(Hex.get(i-0));
-                if(str.size() > 0)
+                if(str.size() > 0){
                   if(str.get(0).equals("00"))
                     str.remove(0);
-                if(str.size() > 0){
-                  //ParmLine += "#";
-                  ParmLine += neg+"0x";
-                  
-                  //if(binary(unhex(str.get(0)), 8).substring(0, 1).equals("1")){
-                  //  str.set(0, "-"+hex(-unhex(str.get(0))-255-2, 2));
-                  //}
+                  else if(str.get(0).substring(0, 1).equals("0"))
+                    str.set(0, str.get(0).substring(1));
+                    
+                  if(str.size() > 0)
+                    ParmLine += neg+"0x";
                 }
                   
                   
@@ -165,7 +163,6 @@ void OpCodeInit(){
   Codes.add(new opCode("addiu" , "?1", "?0", "AA", "27"));
   
   Codes.add(new opCode("j"     , "XX", "XX", "04", "08"));// Missing Parameters
-  Codes.add(new opCode("andi"  , "XX", "XX", "44", "30"));// Missing Parameters
   
   Codes.add(new opCode("Clear" , "28", "XX", "00", "70"));// Missing Parameters
   Codes.add(new opCode("Clear" , "11", "XX", "00", "00"));// Missing Parameters
@@ -180,8 +177,23 @@ void OpCodeInit(){
   Codes.add(new opCode("addiu" , "?1", "-?0", "42", "24"));//Missing Parameter Subtraction Sometimes!!!
   
   
+  Codes.add(new opCode("ori"   , "00", "XX", "84", "34"));// Missing Parameters
+  Codes.add(new opCode("and"   , "XX", "XX", "64", "00"));// Missing Parameters
+  Codes.add(new opCode("andi"  , "XX", "XX", "44", "30"));// Missing Parameters
+  
+  
+  Codes.add(new opCode("sb"  , "XX", "XX", "40", "A0"));// Missing Parameters
+  Codes.add(new opCode("sw"  , "XX", "XX", "B2", "AF"));// Missing Parameters
+  
+  Codes.add(new opCode("beq" , "XX", "XX", "43", "10"));// Missing Parameters
+  
+  
+  Codes.add(new opCode("syscall", "0C", "00", "00", "00"));// Missing Parameters
+  Codes.add(new opCode("_move"  , "XX", "XX", "40", "00"));// Missing Parameters
   
   Codes.add(new opCode("lui" , "?1", "?0", "XX", "3C"));
+  Codes.add(new opCode("li" , "?1", "?0", "03", "24"));
+  
   
   
 }
