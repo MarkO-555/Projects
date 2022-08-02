@@ -1,201 +1,149 @@
 PrintWriter output;
-
-ArrayList<String> Hex;
-ArrayList<Character> Chars;
 ArrayList<opCode> Codes;
 
 class opCode{
-  String[] Hex;
-  String Code = "";
+  String name;
+  String bin;
+  block[] blocks;
   
-  opCode(String Code, String a, String b, String c, String d){
-    String[] Hex = {a, b, c, d};
-    
-    this.Code = Code;
-    this.Hex = Hex;
+  opCode(String name, String bin, block[] blocks, String eq){
+    this.name   = name;
+    this.blocks = blocks;
+  }
+}
+class block{
+  String name;
+  int start;
+  int stop;
+  
+  block(String name, int start, int stop){
+     this.name  = name;
+     this.start = start;
+     this.stop  = stop;
   }
 }
 
-
 void start(){
   Codes = new ArrayList<opCode>();
-  
-  OpCodeInit();
-  
-  byte b[] = loadBytes("elf"); 
-  
-  Hex = new ArrayList<String>();
-  Chars = new ArrayList<Character>();
-  
-  output = createWriter("decompiled");
-  int Correct = 0;
-  String  Charline = "";
-  String   HexLine = "";
-  String CodesLine = "";
-  String  ParmLine = "";
-  String[] Parms = new String[2];
-  int HeaderLength = 256;
-  String neg = "";
-  
-  for(int i=0; i<b.length; i++){
-    Correct = 0;
-    if(i==HeaderLength){
-      output.println("========================");
-      output.println("End of Header");
-    }
-      
-    Hex.add(hex(b[i]));
-    Chars.add((char)Integer.parseInt(Hex.get(i), 16));
-    
-    for(int j=0; j<Codes.size(); j++){
-      if(i%4 ==3){
-        Correct++;
-        if(      Codes.get(j).Hex[0].equals(Hex.get(i-3)) || Codes.get(j).Hex[0].equals("XX") || Codes.get(j).Hex[0].equals("?1") || Codes.get(j).Hex[0].equals("?0") || Codes.get(j).Hex[0].equals("-?0") || Codes.get(j).Hex[0].equals("-?0x2")){
-          if(    Codes.get(j).Hex[1].equals(Hex.get(i-2)) || Codes.get(j).Hex[1].equals("XX") || Codes.get(j).Hex[1].equals("?1") || Codes.get(j).Hex[1].equals("?0") || Codes.get(j).Hex[1].equals("-?0") || Codes.get(j).Hex[1].equals("-?0x2")){
-            if(  Codes.get(j).Hex[2].equals(Hex.get(i-1)) || Codes.get(j).Hex[2].equals("XX") || Codes.get(j).Hex[2].equals("?1") || Codes.get(j).Hex[2].equals("?0") || Codes.get(j).Hex[2].equals("-?0") || Codes.get(j).Hex[2].equals("-?0x2")){
-              if(Codes.get(j).Hex[3].equals(Hex.get(i-0)) || Codes.get(j).Hex[3].equals("XX") || Codes.get(j).Hex[3].equals("?1") || Codes.get(j).Hex[3].equals("?0") || Codes.get(j).Hex[3].equals("-?0") || Codes.get(j).Hex[3].equals("-?0x2")){
-                ArrayList<String> str = new ArrayList<String>();
-                
-                if(Codes.get(j).Hex[0] == "?0")
-                  str.add(Hex.get(i-3));
-                else if(Codes.get(j).Hex[1] == "?0")
-                  str.add(Hex.get(i-2));
-                else if(Codes.get(j).Hex[2] == "?0")
-                  str.add(Hex.get(i-1));
-                else if(Codes.get(j).Hex[3] == "?0")
-                  str.add(Hex.get(i-0));
-                  
-                if(Codes.get(j).Hex[0] == "-?0")
-                  str.add(Hex.get(i-3));
-                else if(Codes.get(j).Hex[1] == "-?0")
-                  str.add(Hex.get(i-2));
-                else if(Codes.get(j).Hex[2] == "-?0")
-                  str.add(Hex.get(i-1));
-                else if(Codes.get(j).Hex[3] == "-?0")
-                  str.add(Hex.get(i-0));
-                  
-                if(Codes.get(j).Hex[0] == "-?0x2")
-                  str.add(Hex.get(i-3));
-                else if(Codes.get(j).Hex[1] == "-?0x1")
-                  str.add(Hex.get(i-2));
-                else if(Codes.get(j).Hex[2] == "-?0x1")
-                  str.add(Hex.get(i-1));
-                else if(Codes.get(j).Hex[3] == "-?0x1")
-                  str.add(Hex.get(i-0));
-                  
-                  
-                if(str.size() > 0 && (Codes.get(j).Hex[0] == "-?0" || Codes.get(j).Hex[1] == "-?0" || Codes.get(j).Hex[2] == "-?0" || Codes.get(j).Hex[3] == "-?0")){
-                  if(binary(unhex(str.get(0)), 8).substring(0, 1).equals("1")){
-                    if(!hex(-unhex(str.get(0))-255-2, 2).equals("00"))
-                      str.set(0, "-"+hex(-unhex(str.get(0))-255-2, 2));
-                    else
-                      str.set(0, "00");
-                  }
-                }
-                  
-                if(Codes.get(j).Hex[0] == "?1")
-                  str.add(Hex.get(i-3));
-                else if(Codes.get(j).Hex[1] == "?1")
-                  str.add(Hex.get(i-2));
-                else if(Codes.get(j).Hex[2] == "?1")
-                  str.add(Hex.get(i-1));
-                else if(Codes.get(j).Hex[3] == "?1")
-                  str.add(Hex.get(i-0));
-                if(str.size() > 0){
-                  if(str.get(0).equals("00"))
-                    str.remove(0);
-                  else if(str.get(0).substring(0, 1).equals("0"))
-                    str.set(0, str.get(0).substring(1));
-                    
-                  if(str.size() > 0)
-                    ParmLine += neg+"0x";
-                }
-                  
-                  
-                for(var k =0; k<str.size(); k++){
-                  ParmLine += str.get(k);
-                }
-                  
-                CodesLine += Codes.get(j).Code;
-              }
-            }
-          }
-        }
-      }
-    }
-    
-    HexLine += Hex.get(i)+" ";
-    Charline += Chars.get(i);
-    
-    if(i%4==3){
-      output.println(floor(i/4)+" || "+HexLine+"|| "+CodesLine+" "+ParmLine);//+Charline);
-      CodesLine = "";
-      Charline  = "";
-      HexLine   = "";
-      ParmLine  = "";
-    }
-  }
   
   println("Done");
 }
 
 void OpCodeInit(){
-  Codes.add(new opCode(".ELF"  , "7F", "45", "4C", "46"));
-  Codes.add(new opCode("nop"   , "00", "00", "00", "00"));
-  Codes.add(new opCode("jr"    , "08", "00", "E0", "03"));
+  //Codes.add(new opCode("", ""));
+  //block b0, b1, b2, b3, b4, b5;
+  block[] blocks = new block[6];
   
-  Codes.add(new opCode("addiu" , "?1", "?0", "65", "26"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "31", "26"));
+  blocks[0] = new block("Name"   , 0,  5);
+  blocks[1] = new block("0"      , 6,  10);
+  blocks[2] = new block("rd"     , 11, 15);
+  blocks[3] = new block("rt"     , 16, 20);
+  blocks[4] = new block("rs"     , 21, 25);
+  blocks[5] = new block("Special", 26, 31);
   
+  Codes.add(new opCode("ADD", "100000", blocks, "rd=rs+rt"));
   
-  Codes.add(new opCode("addiu" , "?1", "?0", "C6", "24"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "84", "24"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "63", "24"));
-  Codes.add(new opCode("_addiu", "?1", "?0", "A5", "24"));
-  Codes.add(new opCode("_addiu", "?1", "?0", "A5", "27"));
-  Codes.add(new opCode("_addiu", "?1", "?0", "A4", "27"));
-  Codes.add(new opCode("_addiu", "?1", "?0", "BD", "27"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "AB", "27"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "AC", "27"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "AE", "27"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "AD", "27"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "A9", "27"));
-  Codes.add(new opCode("addiu" , "?1", "?0", "AA", "27"));
+  blocks = new block[4];  
+  blocks[0] = new block("Immediate", 0, 15);
+  blocks[1] = new block("rt"       , 16, 20);
+  blocks[2] = new block("rs"       , 21, 25);
+  blocks[3] = new block("Special"  , 26, 31);
+  Codes.add(new opCode("ADDI", "??", blocks, "rt=rs+imm"));//Identifier??
   
-  Codes.add(new opCode("j"     , "XX", "XX", "04", "08"));// Missing Parameters
+  blocks[3].name = "Name";
+  Codes.add(new opCode("ADDIU", "001001", blocks, "rt=rs+imm"));
   
-  Codes.add(new opCode("Clear" , "28", "XX", "00", "70"));// Missing Parameters
-  Codes.add(new opCode("Clear" , "11", "XX", "00", "00"));// Missing Parameters
-  Codes.add(new opCode("Clear" , "11", "XX", "00", "70"));// Missing Parameters
-  Codes.add(new opCode("Clear" , "13", "XX", "00", "00"));// Missing Parameters
-  Codes.add(new opCode("Clear" , "13", "XX", "00", "70"));// Missing Parameters
+  blocks = new block[6];
+  blocks[0] = new block("Name", 0, 5);
+  blocks[1] = new block("0" , 6, 10);
+  blocks[2] = new block("rd", 11, 15);
+  blocks[3] = new block("rt", 16, 20);
+  blocks[4] = new block("rs", 21, 25);
+  blocks[5] = new block("Special", 26, 31);
   
-  Codes.add(new opCode("Clear" , "00", "XX", "19", "04"));// Missing Parameters
-  Codes.add(new opCode("Clear" , "00", "XX", "80", "44"));// Missing Parameters
+  Codes.add(new opCode("ADDU", "100001", blocks, "rd=rs+rt"));
+  Codes.add(new opCode("AND", "100100", blocks, "rd=rs&rt"));
   
-  //Codes.add(new opCode("addiu" , "?1", "-?0", "E7", "24"));
-  Codes.add(new opCode("addiu" , "?1", "-?0", "42", "24"));//Missing Parameter Subtraction Sometimes!!!
+  blocks = new block[4];
+  blocks[0] = new block("Immediate", 0, 15);
+  blocks[1] = new block("rt", 16, 20);
+  blocks[2] = new block("rs", 21, 25);
+  blocks[3] = new block("Name", 26, 31);
+  Codes.add(new opCode("ANDI", "001100", blocks, "rt=rs&imm"));
   
-  
-  Codes.add(new opCode("ori"   , "00", "XX", "84", "34"));// Missing Parameters
-  Codes.add(new opCode("and"   , "XX", "XX", "64", "00"));// Missing Parameters
-  Codes.add(new opCode("andi"  , "XX", "XX", "44", "30"));// Missing Parameters
-  
-  
-  Codes.add(new opCode("sb"  , "XX", "XX", "40", "A0"));// Missing Parameters
-  Codes.add(new opCode("sw"  , "XX", "XX", "B2", "AF"));// Missing Parameters
-  
-  Codes.add(new opCode("beq" , "XX", "XX", "43", "10"));// Missing Parameters
+  blocks[0].name = "offset";
+  Codes.add(new opCode("BEQ",  "000100", blocks, "rs==rt@b"));
+  Codes.add(new opCode("BEQL", "010100", blocks, "rs==rt@b"));
   
   
-  Codes.add(new opCode("syscall", "0C", "00", "00", "00"));// Missing Parameters
-  Codes.add(new opCode("_move"  , "XX", "XX", "40", "00"));// Missing Parameters
+  blocks[1].name = "Name";
+  blocks[3].name = "REGIMM";
+  Codes.add(new opCode("BGEZ",    "00001", blocks, "rs>=0@b"));
+  Codes.add(new opCode("BGEZAL",  "10001", blocks, "rs>=0@p"));
+  Codes.add(new opCode("BGEZALL", "10011", blocks, "rs>=0@p"));
+  Codes.add(new opCode("BGQZL",   "00011", blocks, "rs>=0@p"));
   
-  Codes.add(new opCode("lui" , "?1", "?0", "XX", "3C"));
-  Codes.add(new opCode("li" , "?1", "?0", "03", "24"));
+  blocks[0] = new block("offset", 0, 15);
+  blocks[1] = new block("0",     16, 20);
+  blocks[2] = new block("rs",    21, 25);
+  blocks[3] = new block("Name",  26, 31);
+  
+  Codes.add(new opCode("GBTZ",  "000111", blocks, "rs>0@b"));
+  Codes.add(new opCode("GBTZL", "010111", blocks, "rs>0@b"));
+  Codes.add(new opCode("BLEZ",  "000110", blocks, "rs<=0@b"));
+  Codes.add(new opCode("BGTZL", "010111", blocks, "rs>0@b"));
+  Codes.add(new opCode("BLEZ",  "000110", blocks, "rs<=0@b"));
+  
+  Codes.add(new opCode("BLEZL", "010110", blocks, "rs<=0@"));//Work on algorithm
+  
+  blocks[1].name = "Name";
+  blocks[3].name = "REGIMM";
+  Codes.add(new opCode("BLTZ",    "00000",  blocks, "rs<0@b"));
+  Codes.add(new opCode("BLTZAL",  "10000",  blocks, "rs<0@p"));
+  Codes.add(new opCode("BLTZALL", "10010",  blocks, "rs<0@p"));
+  Codes.add(new opCode("BLTZL",   "00010",  blocks, "rs<0@b"));
+  
+  blocks[1].name = "rt";
+  blocks[2].name = "rs";
+  blocks[3].name = "Name";
+  Codes.add(new opCode("BNE",     "000101", blocks, "rs!=rt@b"));
+  Codes.add(new opCode("BNEL",    "010101", blocks, "rs!=rt@b"));
+  
+  blocks = new block[3];
+  blocks[0] = new block("Name",     0, 5);
+  blocks[1] = new block("code",     6, 25);
+  blocks[2] = new block("Special", 26, 31);
+  Codes.add(new opCode("BREAK",   "001101", blocks, "break"));
+  
+  blocks = new block[5];
+  blocks[0] = new block("Name",     0, 5);
+  blocks[1] = new block("0",        6, 10);
+  blocks[1] = new block("rd",      11, 15);
+  blocks[1] = new block("rt",      16, 20);
+  blocks[1] = new block("rs",      21, 25);
+  blocks[1] = new block("Special", 26, 31);
+  Codes.add(new opCode("DADD",    "101100", blocks, "rd=rs+rt"));
+  
+  blocks = new block[4];
+  blocks[0] = new block("Immediate", 0, 15);
+  blocks[1] = new block("rt",       16, 20);
+  blocks[2] = new block("ts",       21, 25);
+  blocks[3] = new block("Name",     26, 31);
+  Codes.add(new opCode("DADDI",   "011000", blocks, "rt=rs+imm"));
+  Codes.add(new opCode("DADDIU",  "011001", blocks, "rt=rs+imm"));
+  Codes.add(new opCode("DADDU",   "101101", blocks, "rd=rs+rt"));
+  
+  blocks = new block[5];
+  blocks[0] = new block("Name",     0,  5);
+  blocks[0] = new block("0",        6, 15);
+  blocks[0] = new block("rt",      16, 20);
+  blocks[0] = new block("rs",      21, 25);
+  blocks[0] = new block("Special", 26, 31);
+  Codes.add(new opCode("DIV", "011010", blocks, "LH=rs/rt"));
   
   
   
+  //Codes.add(new opCode("", "", blocks, ""));
 }
 
 void draw(){
