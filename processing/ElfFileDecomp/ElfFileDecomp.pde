@@ -32,43 +32,37 @@ void start(){
 void OpCodeInit(){
   //Codes.add(new opCode("", ""));
   //block b0, b1, b2, b3, b4, b5;
+  
   block[] blocks = new block[6];
-  
-  blocks[0] = new block("Name"   , 0,  5);
-  blocks[1] = new block("0"      , 6,  10);
-  blocks[2] = new block("rd"     , 11, 15);
-  blocks[3] = new block("rt"     , 16, 20);
-  blocks[4] = new block("rs"     , 21, 25);
-  blocks[5] = new block("Special", 26, 31);
-  
-  Codes.add(new opCode("ADD", "100000", blocks, "rd=rs+rt"));
   
   blocks = new block[4];  
   blocks[0] = new block("Immediate", 0, 15);
-  blocks[1] = new block("rt"       , 16, 20);
-  blocks[2] = new block("rs"       , 21, 25);
-  blocks[3] = new block("Special"  , 26, 31);
+  blocks[1] = new block("rt",       16, 20);
+  blocks[2] = new block("rs",       21, 25);
+  blocks[3] = new block("Special",  26, 31);
   Codes.add(new opCode("ADDI", "??", blocks, "rt=rs+imm"));//Identifier??
   
   blocks[3].name = "Name";
   Codes.add(new opCode("ADDIU", "001001", blocks, "rt=rs+imm"));
   
   blocks = new block[6];
-  blocks[0] = new block("Name", 0, 5);
-  blocks[1] = new block("0" , 6, 10);
-  blocks[2] = new block("rd", 11, 15);
-  blocks[3] = new block("rt", 16, 20);
-  blocks[4] = new block("rs", 21, 25);
+  blocks[0] = new block("Name",    0,   5);
+  blocks[1] = new block("0" ,      6,  10);
+  blocks[2] = new block("rd",      11, 15);
+  blocks[3] = new block("rt",      16, 20);
+  blocks[4] = new block("rs",      21, 25);
   blocks[5] = new block("Special", 26, 31);
   
+  Codes.add(new opCode("DADD", "101100", blocks, "rd=rs+rt"));
+  Codes.add(new opCode("ADD",  "100000", blocks, "rd=rs+rt"));
   Codes.add(new opCode("ADDU", "100001", blocks, "rd=rs+rt"));
-  Codes.add(new opCode("AND", "100100", blocks, "rd=rs&rt"));
+  Codes.add(new opCode("AND",  "100100", blocks, "rd=rs&rt"));
   
   blocks = new block[4];
   blocks[0] = new block("Immediate", 0, 15);
-  blocks[1] = new block("rt", 16, 20);
-  blocks[2] = new block("rs", 21, 25);
-  blocks[3] = new block("Name", 26, 31);
+  blocks[1] = new block("rt",       16, 20);
+  blocks[2] = new block("rs",       21, 25);
+  blocks[3] = new block("Name",     26, 31);
   Codes.add(new opCode("ANDI", "001100", blocks, "rt=rs&imm"));
   
   blocks[0].name = "offset";
@@ -110,19 +104,10 @@ void OpCodeInit(){
   Codes.add(new opCode("BNEL",    "010101", blocks, "rs!=rt@b"));
   
   blocks = new block[3];
-  blocks[0] = new block("Name",     0, 5);
+  blocks[0] = new block("Name",     0,  5);
   blocks[1] = new block("code",     6, 25);
   blocks[2] = new block("Special", 26, 31);
   Codes.add(new opCode("BREAK",   "001101", blocks, "break"));
-  
-  blocks = new block[5];
-  blocks[0] = new block("Name",     0, 5);
-  blocks[1] = new block("0",        6, 10);
-  blocks[1] = new block("rd",      11, 15);
-  blocks[1] = new block("rt",      16, 20);
-  blocks[1] = new block("rs",      21, 25);
-  blocks[1] = new block("Special", 26, 31);
-  Codes.add(new opCode("DADD",    "101100", blocks, "rd=rs+rt"));
   
   blocks = new block[4];
   blocks[0] = new block("Immediate", 0, 15);
@@ -140,6 +125,68 @@ void OpCodeInit(){
   blocks[0] = new block("rs",      21, 25);
   blocks[0] = new block("Special", 26, 31);
   Codes.add(new opCode("DIV", "011010", blocks, "LH=rs/rt"));
+  Codes.add(new opCode("DIVU","011011", blocks, "LH=rs/rt"));
+  
+  blocks = new block[6];
+  blocks[0] = new block("Name",       0,  5);
+  blocks[1] = new block("sa",         6, 10);
+  blocks[2] = new block("rd",        11, 15);
+  blocks[3] = new block("rt",        16, 20);
+  blocks[4] = new block("0",         21, 25);
+  blocks[5] = new block("Special",   26, 31);
+  
+  Codes.add(new opCode("DSLL",   "111000", blocks, "rd=rt<<sa"));
+  Codes.add(new opCode("DSLL32", "111000", blocks, "rd=rt<<sa+32"));//32
+  Codes.add(new opCode("DSRA",   "111000", blocks, "rd=rt>>sa"));
+  Codes.add(new opCode("DSRA32", "111111", blocks, "rd=rt>>sa+32"));
+  Codes.add(new opCode("DSRAV",  "010111", blocks, "rd=rt>>rs"));
+  Codes.add(new opCode("DSRL",   "111010", blocks, "rd=rt>>sa"));
+  Codes.add(new opCode("DSRL32", "111110", blocks, "rd=rt>>sa+32"));
+  
+  blocks[1].name = "0";
+  blocks[2].name = "rd";
+  blocks[3].name = "rt";
+  blocks[4].name = "rs";
+  blocks[5].name = "Special";
+  Codes.add(new opCode("DSRLV",  "010110", blocks, "rd=rt>>rs"));
+  Codes.add(new opCode("DSUB",   "101110", blocks, "rd=rs-rt"));
+  Codes.add(new opCode("DSUBU",  "101111", blocks, "rd=rs-rt"));
+  Codes.add(new opCode("DSLLV", "010100", blocks, "rd=rt<<rs"));
+  
+  blocks[3].name = "0";
+  Codes.add(new opCode("JALR",   "001001", blocks, "rd=Return=rs"));//Working
+  
+  blocks = new block[2];
+  blocks[0] = new block("offset", 0, 25);
+  blocks[1] = new block("Name",   0, 25);
+  Codes.add(new opCode("J", "000010", blocks, "T"));
+  
+  blocks[0].name = "inst_index";
+  Codes.add(new opCode("JAL", "000011", blocks, "T"));
+  
+  blocks = new block[4];
+  blocks[0] = new block("Name",     0,  5);
+  blocks[1] = new block("0",        6, 20);
+  blocks[2] = new block("rs",      21, 25);
+  blocks[1] = new block("Special", 26, 31);
+  Codes.add(new opCode("JR", "001000", blocks, "`rs"));
+  
+  blocks[0] = new block("offset",   0, 15);
+  blocks[1] = new block("rt",      16, 20);
+  blocks[2] = new block("base",    21, 25);
+  blocks[3] = new block("Name",    26, 31);
+  Codes.add(new opCode("LB",  "100000", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LBU", "100100", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LD",  "100100", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LBU", "011010", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LDR", "011011", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LH",  "100001", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LHU", "100101", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LUI", "001111", blocks, "rt=immediate"));
+  Codes.add(new opCode("LW",  "100011", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LWL", "100010", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LWR", "100110", blocks, "rt=mem[base+offset]"));
+  Codes.add(new opCode("LWU", "100111", blocks, "rt=mem[base+offset]"));
   
   
   
