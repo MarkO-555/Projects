@@ -221,8 +221,8 @@ class opCode{
     this.length = identity.length();
     this.index = index;
     
-    for(int v=0; v<length; v++){
-      this.invidentity += this.identity.charAt(7-v);
+    for(int v=0; v<this.length; v++){
+      this.invidentity += this.identity.charAt(this.length-(v+1));
     }
   }
   
@@ -390,7 +390,7 @@ void start(){
   hexs = new String[b.length];
   funs = new String[b.length];
   
-  output = createWriter("file");
+  output = createWriter("file.output");
   String hexline = "";
   String strline = "";
   String invbinsline = "";
