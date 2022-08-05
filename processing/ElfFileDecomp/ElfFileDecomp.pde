@@ -390,7 +390,7 @@ void start(){
   hexs = new String[b.length];
   funs = new String[b.length];
   
-  output = createWriter("file.output");
+  output = createWriter("file.ignore");
   String hexline = "";
   String strline = "";
   String invbinsline = "";
