@@ -4,7 +4,7 @@ String funs[];
 String invbins[];
 PrintWriter output;
 
-String currentHex = "0000FFF0";
+String Currentpc = "0000FFF0";
 int headerlength = 256;
 
 class opCode{
@@ -194,8 +194,8 @@ void start(){
   String strline = "";
   String invbinsline = "";
   
-   output.println("                           31    24 23    16 15     8 7      0     31    24 23    16 15     8 7      0");
-   output.println("======================================================================================================");
+   //output.println("                           31    24 23    16 15     8 7      0     31    24 23    16 15     8 7      0");
+   //output.println("======================================================================================================");
   
   
   for(int i=0; i<b.length; i++){
@@ -218,12 +218,12 @@ void start(){
      
      
     if(i%4==3){
-      output.println(currentHex +" || "+hexline+"|| "+strline+" || "+invbinsline);
+      output.println(Currentpc +" || "+hexline+"|| "+strline+" || "+invbinsline);
       hexline = "";
       strline = "";
       invbinsline="";
       
-      currentHex = hex(unhex(currentHex)+4);
+      Currentpc = hex(unhex(Currentpc)+4);
     }
   }
   
