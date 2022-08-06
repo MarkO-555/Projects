@@ -4,6 +4,9 @@ String funs[];
 String invbins[];
 PrintWriter output;
 
+String currentHex = "0000FFF0";
+int headerlength = 256;
+
 class opCode{
   String name; 
   String identity;
@@ -190,10 +193,18 @@ void start(){
   String hexline = "";
   String strline = "";
   String invbinsline = "";
+  
+   output.println("                           31    24 23    16 15     8 7      0     31    24 23    16 15     8 7      0");
+   output.println("======================================================================================================");
+  
+  
   for(int i=0; i<b.length; i++){
      hexs[i] = hex(b[i]);
      bins[i] = binary(b[i]);
      invbins[i] = "";
+     
+     if(i==headerlength)
+       output.println("End of header");
      
      for(int v=0; v<bins[i].length(); v++){
        invbins[i] += bins[i].charAt(7-v);
@@ -207,10 +218,12 @@ void start(){
      
      
     if(i%4==3){
-      output.println(hexline+"|| "+strline+" || "+invbinsline);
+      output.println(currentHex +" || "+hexline+"|| "+strline+" || "+invbinsline);
       hexline = "";
       strline = "";
       invbinsline="";
+      
+      currentHex = hex(unhex(currentHex)+4);
     }
   }
   
