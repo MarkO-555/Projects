@@ -81,36 +81,37 @@
 
 <h3><a href="PS2_Moding">PS2_Moding</a></h3>
 <ul>
-	<li>1HP</li>
-	<li>Ingame Modded Infomation</li>
-	<li>Ingame Cheat Menu</li>
-	<li>Enable ingame FPS Counter</li>
-	<li>Inst kill always active</li>
-	<li>Random Effect Generator</li>
-	<li>Always moving forward</li>
-	<li>Fast Movment</li>
-	<li>No Clip</li>
-	<li>No Jump</li>
-	<li>No Transforming</li>
-	<li>Fullspeed used on jump</li>
-	<li>Disable FMVs</li>
-	<li>Disable Comms</li>
-	<li>Change Player Size</li>
-	<li>Randomize Levels</li>
-	<li>Randomize Minicons</li>
-	<li>Randomize Each Models</li>
-	<li>Randomize Boss Placment</li>
-	<li>Randomize Boss level assignment</li>
-	<li>Create testing level</li>
-	<li>Port Dev Minicons to release</li>
-	<li>Place bosses</li>
-	<li>StarSaber</li>
-	<li>Spawn Menu</li>
-	<li>MiniconCount Viewer Always Active</li>
-	<li>Inst Recharge</li>
-	<li>No Saving</li>
-	<li>Bingo Fetures</li>
-	<li>JumpCounter</li>
+	<li>TFA- 1HP</li>
+	<li>TFA- Ingame Modded Infomation</li>
+	<li>TFA- Ingame Cheat Menu</li>
+	<li>TFA- Enable ingame FPS Counter</li>
+	<li>TFA- Inst kill always active</li>
+	<li>TFA- Random Effect Generator</li>
+	<li>TFA- Always moving forward</li>
+	<li>TFA- Fast Movment</li>
+	<li>TFA- No Clip</li>
+	<li>TFA- No Jump</li>
+	<li>TFA- No Transforming</li>
+	<li>TFA- Fullspeed used on jump</li>
+	<li>TFA- Disable FMVs</li>
+	<li>TFA- Disable Comms</li>
+	<li>TFA- Change Player Size</li>
+	<li>TFA- Randomize Levels</li>
+	<li>TFA- Randomize Minicons</li>
+	<li>TFA- Randomize Each Models</li>
+	<li>TFA- Randomize Boss Placment</li>
+	<li>TFA- Randomize Boss level assignment</li>
+	<li>TFA- Create testing level</li>
+	<li>TFA- Port Dev Minicons to release</li>
+	<li>TFA- Place bosses</li>
+	<li>TFA- StarSaber</li>
+	<li>TFA- Spawn Menu</li>
+	<li>TFA- MiniconCount Viewer Always Active</li>
+	<li>TFA- Inst Recharge</li>
+	<li>TFA- No Saving</li>
+	<li>TFA- Bingo Fetures</li>
+	<li>TFA- JumpCounter</li>
+	<li>TFA- Coordinate display in retail</li>
 </ul>
 
 <h3><a href="Unity">Unity</a></h3>
