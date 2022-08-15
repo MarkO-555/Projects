@@ -112,6 +112,7 @@
 	<li>TFA- Bingo Fetures</li>
 	<li>TFA- JumpCounter</li>
 	<li>TFA- Coordinate display in retail</li>
+	<li>TFA- More Difficulty Options</li>
 </ul>
 
 <h3><a href="Unity">Unity</a></h3>
