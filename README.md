@@ -1,21 +1,19 @@
 <h1>Possible projects</h1>
 
-<h3><a href="arduino">Arduino</a></h3>
+<h3><a href="HardWare">HardWare</a></h3>
 <ul>
+	<li>keypad unlocks AC Relay</li>
+	<li>Robot Arm</li>
 	<li>Bluetooth Serial Communication</li>
 	<li>Home Automation</li>
-	<li>I2C communication</li>
-	<li>PWM Communication</li>
+	<li>I2C communication Demo</li>
+	<li>PWM Communication Demo</li>
 	<li>Waveform Generator</li>
 	<li>Guitar Tuner</li>
 	<li>Heart Monitor</li>
 	<li>Fan LED Display</li>
-</ul>
-
-<h3><a href="Atmel">Atmel</a></h3>
-<ul>
-	<li>keypad unlocks AC Relay</li>
-	<li>Robot Arm</li>
+	<li>Custom PS2 Controller</li>
+	<li>I2C bus between atmel, esp32, and pic chips</li>
 </ul>
 
 <h3><a href="Blender">Blender</a></h3>
