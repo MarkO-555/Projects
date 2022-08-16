@@ -2,7 +2,7 @@
 <ul>
 	<li>HelloWorld</li>
 </ul>
-<h3>Complete needs memory optimised</h3>
+<h3>Needs memory optimised</h3>
 <ul>
 	<li>FindWord</li>
 </ul>
