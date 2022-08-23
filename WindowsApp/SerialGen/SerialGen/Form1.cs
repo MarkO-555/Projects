@@ -31,13 +31,11 @@ namespace SerialGen
             if (update){
                 timer.Stop();
 
-                for(int i=0; i<listBox1.Items.Count+1; i++){
-                    listBox1.Items.RemoveAt(0);
-                }
-                populatelistBox();
+            clearlistBox();
+            populatelistBox();
 
-                timer.Start();
-                update = false;
+            timer.Start();
+            update = false;
             }
         }
 
@@ -65,10 +63,7 @@ namespace SerialGen
 
                 label2.Text = first + " -> " + last;
             }
-            catch(Exception ext){
-
-            }
-
+            catch(Exception ext){}
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -84,8 +79,8 @@ namespace SerialGen
             label2.Text = first + " -> " + last;
 
             string str = "";
-            for(var i=0; i<count; i++){
-                str += " " + (first+i) +" ";
+            for(var i=0; i<count-1; i++){
+                str += ((first+1)+i) +" ";
             }
 
             richTextBox1.Text = str;
@@ -98,6 +93,9 @@ namespace SerialGen
 
         void populatelistBox()
         {
+
+
+
             using (StreamReader r = new StreamReader(FileName))
             {
                 string text = r.ReadToEnd();
@@ -114,6 +112,36 @@ namespace SerialGen
                     t = t.Next;
                 }
 
+            }
+        }
+
+        void clearlistBox()
+        {
+            for (int i = 0; i < listBox1.Items.Count + 1; i++)
+            {
+                listBox1.Items.RemoveAt(0);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)//Save
+        {
+            JToken t = jobj.First;
+            for (int i = 0; i < Form1.jobj.Count; i++)
+            {
+
+                if (t.Path.Equals(Selected)){
+                    //set json value to last!!!
+                    jobj.Remove(t.Path);
+                    jobj.Add(Selected, last);
+
+                    File.WriteAllText(FileName, JsonConvert.SerializeObject(jobj));
+
+                    clearlistBox();
+                    populatelistBox();
+
+                    break;
+                }
+                t = t.Next;
             }
         }
     }
