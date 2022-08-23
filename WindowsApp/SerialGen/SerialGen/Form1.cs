@@ -17,6 +17,7 @@ namespace SerialGen
         int first = 0;
         int count = 1;
         int last = 0;
+        string lotnum = "";
         Form2 newProduct;
         Timer timer;
 
@@ -80,7 +81,7 @@ namespace SerialGen
 
             string str = "";
             for(var i=0; i<count-1; i++){
-                str += ((first+1)+i) +" ";
+                str += lotnum+"-"+((first+1)+i) +" ";
             }
 
             richTextBox1.Text = str;
@@ -143,6 +144,11 @@ namespace SerialGen
                 }
                 t = t.Next;
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            lotnum = textBox1.Text;
         }
     }
 }
