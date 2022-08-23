@@ -61,7 +61,7 @@ namespace SerialGen
             try{
                 Selected = listBox1.Text;
                 first = jobj.GetValue(Selected).Value<int>();
-                last = first + (count - 1);
+                last = first + (count-1);
 
                 label2.Text = first + " -> " + last;
             }
@@ -73,6 +73,8 @@ namespace SerialGen
 
         private void button1_Click(object sender, EventArgs e)
         {
+            richTextBox1.Text = "";
+
             count = (int)numericUpDown1.Value+1;
             last += (count-1);
 
@@ -80,6 +82,13 @@ namespace SerialGen
                 last = first;
 
             label2.Text = first + " -> " + last;
+
+            string str = "";
+            for(var i=0; i<count; i++){
+                str += " " + (first+i) +" ";
+            }
+
+            richTextBox1.Text = str;
         }
 
         private void button2_Click(object sender, EventArgs e)
