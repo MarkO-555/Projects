@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using bpac;
 using Timer = System.Windows.Forms.Timer;
 
 namespace SerialGen
@@ -10,15 +11,16 @@ namespace SerialGen
         public static bool update = false;
         public static JObject jobj;
         public static string FileName = "Items.json";
+        public static Form2 newProduct;
 
-
+        string template = "Serialtemplate.LBX";
 
         //JObject jobj;
         int first = 0;
         int count = 1;
         int last = 0;
         string lotnum = "";
-        Form2 newProduct;
+        //Form2 newProduct;
         Timer timer;
 
         public Form1()
@@ -28,7 +30,7 @@ namespace SerialGen
 
         private string Selected = "";
 
-        private void TimerTick(Object myObject,EventArgs myEventArgs) {
+        private void TimerTick(System.Object myObject,EventArgs myEventArgs) {
             if (update){
                 timer.Stop();
 
@@ -128,8 +130,9 @@ namespace SerialGen
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)//Save
-        {
+        private void button3_Click(object sender, EventArgs e){
+            Print(richTextBox1.Text);
+
             JToken t = jobj.First;
             for (int i = 0; i < Form1.jobj.Count; i++)
             {
@@ -150,9 +153,26 @@ namespace SerialGen
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+        private void textBox1_TextChanged(object sender, EventArgs e){
             lotnum = textBox1.Text;
+        }
+
+        private void Print(String printedText)
+        {
+            bpac.DocumentClass doc = new DocumentClass();
+            if (doc.Open(template)){
+                doc.GetObject("Text").Text = printedText;
+                
+                doc.StartPrint("", PrintOptionConstants.bpoDefault);
+                doc.PrintOut(1, PrintOptionConstants.bpoDefault);
+
+                doc.EndPrint();
+                doc.Close();
+            }
+            else{
+                MessageBox.Show("Could not find template File...");
+            }
+
         }
     }
 }

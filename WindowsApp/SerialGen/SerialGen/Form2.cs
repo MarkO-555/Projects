@@ -21,9 +21,8 @@ namespace SerialGen
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            this.ControlBox = false;
+        private void Form2_Load(object sender, EventArgs e){
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,9 +58,10 @@ namespace SerialGen
             this.Visible = false;
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Visible = false;
+            Form1.newProduct = new Form2();
+            Form1.newProduct.Visible = false;
         }
     }
 }
