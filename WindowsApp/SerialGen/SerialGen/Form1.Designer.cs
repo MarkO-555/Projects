@@ -78,7 +78,7 @@
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Location = new System.Drawing.Point(157, 417);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
+            9999,
             0,
             0,
             0});

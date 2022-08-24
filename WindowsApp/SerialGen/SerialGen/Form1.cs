@@ -60,9 +60,11 @@ namespace SerialGen
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try{
+            try
+            {
+                first = jobj.GetValue(listBox1.Text).Value<int>()+1;
+
                 Selected = listBox1.Text;
-                first = jobj.GetValue(Selected).Value<int>();
                 last = first + (count-1);
 
                 label2.Text = first + " -> " + last;
@@ -87,7 +89,7 @@ namespace SerialGen
             string lastStr = "";
 
             for (var i=0; i<count-1; i++){
-                lastStr = "" + ((first + 1) + i);
+                lastStr = "" + ((first) + i);
 
                 while (lastStr.Length < 4)
                     lastStr = "0"+ lastStr;
