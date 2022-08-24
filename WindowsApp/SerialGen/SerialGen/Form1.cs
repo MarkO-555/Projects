@@ -8,10 +8,10 @@ namespace SerialGen
 
     public partial class Form1 : Form
     {
-        public static bool update = false;
         public static JObject jobj;
-        public static string FileName = "Items.json";
         public static Form2 newProduct;
+        public static bool update = false;
+        public static string FileName = "Items.json";
 
         string template = "Serialtemplate.LBX";
 
@@ -34,15 +34,16 @@ namespace SerialGen
             if (update){
                 timer.Stop();
 
-            clearlistBox();
-            populatelistBox();
+                clearlistBox();
+                populatelistBox();
 
-            timer.Start();
-            update = false;
+                timer.Start();
+                update = false;
             }
         }
 
         private void Form1_Load(object sender, EventArgs e){
+
             timer = new Timer();
             timer.Interval = 100;
             timer.Tick += new EventHandler(TimerTick);
@@ -170,7 +171,7 @@ namespace SerialGen
                 doc.Close();
             }
             else{
-                MessageBox.Show("Could not find template File...");
+                MessageBox.Show("Could not find template File... ErrorCode: "+doc.ErrorCode);
             }
 
         }
