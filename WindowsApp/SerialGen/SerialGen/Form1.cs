@@ -72,7 +72,8 @@ namespace SerialGen
             richTextBox1.Text = "";
 
             count = (int)numericUpDown1.Value+1;
-            last += (count-1);
+            last = count - 1;
+            //last += (count-1);
 
             if (first >= last)
                 last = first;
@@ -80,8 +81,15 @@ namespace SerialGen
             label2.Text = first + " -> " + last;
 
             string str = "";
-            for(var i=0; i<count-1; i++){
-                str += lotnum+"-"+((first+1)+i) +" ";
+            string lastStr = "";
+
+            for (var i=0; i<count-1; i++){
+                lastStr = "" + ((first + 1) + i);
+
+                while (lastStr.Length < 4)
+                    lastStr = "0"+ lastStr;
+
+                str += lotnum+"-"+ lastStr +" ";
             }
 
             richTextBox1.Text = str;
@@ -94,9 +102,6 @@ namespace SerialGen
 
         void populatelistBox()
         {
-
-
-
             using (StreamReader r = new StreamReader(FileName))
             {
                 string text = r.ReadToEnd();
@@ -112,7 +117,6 @@ namespace SerialGen
 
                     t = t.Next;
                 }
-
             }
         }
 
