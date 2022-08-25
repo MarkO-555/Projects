@@ -94,7 +94,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(260, 152);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(260, 152);
             this.Name = "Form2";
             this.Text = "Add New Product";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
