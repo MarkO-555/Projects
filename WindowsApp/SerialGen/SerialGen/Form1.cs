@@ -18,7 +18,7 @@ namespace SerialGen
 
         //JObject jobj;
         int first = 0;
-        int count = 1;
+        int count = 0;
         int last = 0;
         string lotnum = "";
         //Form2 newProduct;
@@ -44,7 +44,7 @@ namespace SerialGen
         }
 
         private void Form1_Load(object sender, EventArgs e){
-
+            count = (int)numericUpDown1.Value;
             timer = new Timer();
             timer.Interval = 100;
             timer.Tick += new EventHandler(TimerTick);
@@ -59,10 +59,9 @@ namespace SerialGen
             populatelistBox();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e){
+            count = (int)numericUpDown1.Value;
+            try{
                 first = jobj.GetValue(listBox1.Text).Value<int>()+1;
 
                 Selected = listBox1.Text;
@@ -73,8 +72,7 @@ namespace SerialGen
             catch(Exception ext){}
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e){
             richTextBox1.Text = "";
 
             count = (int)numericUpDown1.Value+1;
